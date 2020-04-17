@@ -65,9 +65,10 @@ function x = Golden(f,a,b,iter)
     mu = a+g*(b-a);
     f_lambda = f(lambda);
     f_mu = f(mu); % Funktionswerte fuer Fallunterscheidung
-
+    
+    fprintf("Goldener Schnitt:\n");
     for i=1:iter
-        fprintf("\t[%0.2f,%0.2f], f(lambda): %0.2f, f(mu): %0.2f\n", a, b, f_lambda, f_mu);
+        fprintf("\t[%0.2f,%0.2f], f(lambda): %0.4f, f(mu): %0.4f\n", a, b, f_lambda, f_mu);
         if f_lambda > f_mu
             a=lambda;
             lambda=mu;
