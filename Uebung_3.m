@@ -25,3 +25,30 @@ for xi = x
         f_print(x0, x_opt);
     end
 end
+
+fprintf("-------------------------------------------\n");
+fprintf("-------------------------------------------\n");
+
+% Aufgabe 5
+f_rosen_orig = @(x, y) 100*(y - x.^2).^2 + (1 - x).^2;
+f_rosen = @(x) f_rosen_orig(x(1), x(2));
+
+% a)
+for xi = x
+    for yi = y
+        x0 = [xi, yi];
+        x_opt = fminsearch(f_rosen, x0);
+        f_print(x0, x_opt);
+    end
+end
+
+fprintf("-------------------------------------------\n");
+fprintf("-------------------------------------------\n");
+
+% b)
+x0 = [0.25, -0.5];
+options = optimset('Display','iter','PlotFcns',@optimplotfval);
+x_opt = fminsearch(f_rosen, x0, options);
+
+%c
+
