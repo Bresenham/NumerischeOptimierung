@@ -22,7 +22,7 @@ for xi = x
     for yi = y
         x0 = [xi, yi];
         x_opt = fminsearch(f, x0);
-        f_print(x0, x_opt);
+        %f_print(x0, x_opt);
     end
 end
 
@@ -38,7 +38,7 @@ for xi = x
     for yi = y
         x0 = [xi, yi];
         x_opt = fminsearch(f_rosen, x0);
-        f_print(x0, x_opt);
+        %f_print(x0, x_opt);
     end
 end
 
@@ -48,7 +48,21 @@ fprintf("-------------------------------------------\n");
 % b)
 x0 = [0.25, -0.5];
 options = optimset('Display','iter','PlotFcns',@optimplotfval);
-x_opt = fminsearch(f_rosen, x0, options);
+fminsearch(f_rosen, x0, options);
 
 %c
+%x0 = zeros(50,1);
+x0 = 0.8 * ones(50,1);
+dims = numel(x0);
+f_rosen_multi_dim = @rosen_multi_dim;
+x_opt = fminsearch(f_rosen_multi_dim, x0);
 
+fprintf( ['Solution of %d-dimensional Rosenbrock: [', repmat('%0.4f ', 1, dims), ']\n'], dims, x_opt);
+
+function f_val = rosen_multi_dim(x)
+    f_val = 0;
+    dims = numel(x);
+    for i = 1:(dims-1)
+        f_val = f_val + ( 100*(x(i+1) - x(i).^2).^2 + (1 - x(i)).^2 );
+    end
+end
