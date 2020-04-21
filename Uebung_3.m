@@ -14,5 +14,14 @@ surf( X, Y, f_orig(X, Y) );
 x0 = [-1,1];
 x_opt = fminsearch(f, x0);
 f_print(x0, x_opt);
+fprintf("-------------------------------------------\n");
+fprintf("-------------------------------------------\n");
 
 % d)
+for xi = x
+    for yi = y
+        x0 = [xi, yi];
+        x_opt = fminsearch(f, x0);
+        f_print(x0, x_opt);
+    end
+end
