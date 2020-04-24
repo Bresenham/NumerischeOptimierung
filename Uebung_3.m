@@ -47,15 +47,21 @@ fprintf("-------------------------------------------\n");
 
 % b)
 x0 = [0.25, -0.5];
-options = optimset('Display','iter','PlotFcns',@optimplotfval);
+% options = optimset('Display','iter','PlotFcns',@optimplotfval);
 fminsearch(f_rosen, x0, options);
 
 %c
 %x0 = zeros(50,1);
-x0 = 0.8 * ones(50,1);
+x0 = 0.8 * ones(30,1);
 dims = numel(x0);
+
+% Ohne niedrigere Toleranz kommt man immer weiter weg von (1,1,...,1)
+% als Minimum (besonders bei hohen Dimensionen)
+options.TolX=1e-8;
+options.TolFun=1e-8;
 f_rosen_multi_dim = @rosen_multi_dim;
-x_opt = fminsearch(f_rosen_multi_dim, x0);
+f_rosen_mult = @(x)sum(100*(x(2:length(x))-x(1:(length(x)-1)).^2).^2+(1-x(1:(length(x)-1))).^2);
+x_opt = fminsearch(f_rosen_mult, x0, options);
 
 fprintf( ['Solution of %d-dimensional Rosenbrock: [', repmat('%0.4f ', 1, dims), ']\n'], dims, x_opt);
 
