@@ -60,7 +60,7 @@ dims = numel(x0);
 options.TolX=1e-8;
 options.TolFun=1e-8;
 f_rosen_multi_dim = @rosen_multi_dim;
-f_rosen_mult = @(x)sum(100*(x(2:length(x))-x(1:(length(x)-1)).^2).^2+(1-x(1:(length(x)-1))).^2);
+f_rosen_mult = @(x) sum(100*(x(2:length(x))-x(1:(length(x)-1)).^2).^2+(1-x(1:(length(x)-1))).^2);
 x_opt = fminsearch(f_rosen_mult, x0, options);
 
 fprintf( ['Solution of %d-dimensional Rosenbrock: [', repmat('%0.4f ', 1, dims), ']\n'], dims, x_opt);
