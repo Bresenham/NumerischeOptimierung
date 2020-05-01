@@ -1,0 +1,36 @@
+% Function Name: Bisektion
+%
+% Description: Performs bisektion to search for a minimum
+%
+% Inputs:
+%     Function, Start interval
+%
+% Author: Maximilian Gaul
+% Date: 01.05.2020
+%---------------------------------------------------------
+function min_val = Bisektion(f, start_intrvl)
+
+    k = 1;
+    max_k = 10000;
+
+    a = start_intrvl(1);
+    b = start_intrvl(2);
+    
+    x_eval = @(a, b) (a + b) / 2.0;
+    
+    while k < max_k
+        x = x_eval(a, b);
+        if 
+            a = a;
+            b = x;
+        else
+            a = x;
+            b = b;
+        end
+        fprintf("[%0.4f, %0.4f] mit Funktionswert: %0.4f\n", a, b, f(x));
+        k = k + 1;
+    end
+    
+    min_val = x_eval(a, b);
+end
+
