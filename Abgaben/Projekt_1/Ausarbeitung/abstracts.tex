@@ -131,8 +131,68 @@ Die Intervallgrenzen und Funktionsauswertungen sind wie folgt verteilt:
 Siehe \lstinline[basicstyle=\ttfamily\color{black}]|Mutation.m|.
 
 \subsubsection{Aufgabe 3}
-Abbruchkriterien und Strategie für Wahl von $\alpha$...
-\\
+Eine Möglichkeit für ein Abbruchkriterium ist die Anzahl an Iterationen, d.h. der Algorithmus stoppt nach einer bestimmten Anzahl an Durchläufen
+und gibt den bis dahin berechneten Wert aus. Je nach Funktion und Zufallsvektoren kann die Genauigkeit des Ergebnisses stark schwanken. Während für
+eine festgelegte obere Grenze an Durchläufen für eine simple Funktion ein Minimum bereits ausreichend genau bestimmt werden kann, benötigt eine
+komplexere Funktion ggf. weitaus mehr Durchläufe. Die Anzahl an Iterationen ist also kein adaptives Kriterium.\par
+Weiterhin könnte auch der Betrag aus der Differenz des aktuellen Funktionswertes und des letzten Funktionswertes als Abbruchkriterium funktionieren.
+Dabei aktualisiert man die zu überprüfenden Werte nur, sofern eine Verbesserung eingetreten ist (ansonsten wären letzter und aktueller Funktionswert
+eventuell gleich). Ist der Differenzbetrag kleiner als eine festgelegte Toleranz, endet der Algorithmus. Typische Werte sind hier z.B. $10^{-4}$ oder
+$10^{-8}$.\\\par
+
+\begin{figure}[H]
+  \centering
+  \def\arraystretch{1.25}
+  \begin{tabular}{l|c|c|r}
+    \hline
+    \textbf{Kriterium} & \textbf{Funktion} & \textbf{Genauigkeit} & \textbf{Anzahl Schritte}\\
+    \hline
+    Differenzbetrag & f & $10^{-6}$ & 4.924.700\\
+    \hline
+    Differenzbetrag & f & $10^{-6}$ & 282.179\\
+    \hline
+    Differenzbetrag & f & $10^{-6}$ & 24.907\\
+    \hline
+    Differenzbetrag & g & $10^{-6}$ & 36.655\\
+    \hline
+    Differenzbetrag & g & $10^{-6}$ & 9.758\\
+    \hline
+    Differenzbetrag & g & $10^{-6}$ & 882\\
+    \hline
+  \end{tabular}
+\end{figure}
+
+Durch die Wahl des Differenzbetrages kann man vom Zufall profitieren und mit verhältnismäßig wenigen Schritten zu einer guten Genauigkeit kommen.
+Wählt man dagegen die Anzahl der Iterationen, muss man ggf. neu rechnen wenn das Ergebnis noch zu ungenau ist:
+
+\begin{figure}[H]
+  \centering
+  \def\arraystretch{1.25}
+  \begin{tabular}{l|c|c|r}
+    \hline
+    \textbf{Kriterium} & \textbf{Funktion} & \textbf{Genauigkeit} & \textbf{Anzahl Schritte}\\
+    \hline
+    Anzahl Iterationen & f & $1\cdot 10^{-5}$ & 225.000\\
+    \hline
+    Anzahl Iterationen & f & $7\cdot 10^{-6}$ & 225.000\\
+    \hline
+    Anzahl Iterationen & f & $2\cdot 10^{-8}$ & 225.000\\
+    \hline
+    Anzahl Iterationen & g & $2\cdot 10^{-6}$ & 15.000\\
+    \hline
+    Anzahl Iterationen & g & $6\cdot 10^{-7}$ & 15.000\\
+    \hline
+    Anzahl Iterationen & g & $1\cdot 10^{-8}$ & 15.000\\
+    \hline
+  \end{tabular}
+\end{figure}
+
+Der Parameter $\alpha$ bestimmt den Anteil des Zufallsvektors für den Wert von $\hat x$. Kleine Werte von $\alpha$ bedeuten eine höhere Wahrscheinlichkeit,
+dass sich der Funktionswert verbessert (die Verbesserung fällt aber möglicherweise kleiner aus) da sich besonders in der Nähe eines Minimums,
+bei quadratischen oder Funktionen 4. Grades der Funktionswert stark ändern und man leicht über das Ziel hinaus schießen kann wenn man zu große
+Schritte geht (ähnlich wie bei einem Abstiegsverfahren). Falls die Ableitung der Funktion zur Verfügung steht (tut sie hier wahrscheinlich nicht da
+das Projekt \textit{Ableitungsfreie Methoden} heißt), könnte man ein Verfahren zur Schrittweitensteuerung implementieren
+(z.B. Armijo: $\varphi(\alpha) := f(x + \alpha r)$).
 
 \subsubsection{Aufgabe 4}
 Vergleich Rechenaufwand...

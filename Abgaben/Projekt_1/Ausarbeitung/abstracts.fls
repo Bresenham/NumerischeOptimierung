@@ -342,19 +342,19 @@ INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\amsfonts\
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\amsfonts\euler\eurm7.tfm
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\vf\gnome\cantarell\Cantarell-Bold-T1-TLF.vf
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\gnome\cantarell\Cantarell-Bold-T1-TLF--base.tfm
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\gnome\cantarell\Cantarell-Regular-T1-TLF-Slanted.tfm
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\gnome\cantarell\Cantarell-Regular-T1-TLF.tfm
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\gnome\cantarell\Cantarell-Regular-T1-TLF.tfm
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\latex\cantarell\ts1cantarell-tlf.fd
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\latex\cantarell\ts1cantarell-tlf.fd
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\gnome\cantarell\Cantarell-Regular-TS1-TLF.tfm
-INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\vf\gnome\cantarell\Cantarell-Regular-TS1-TLF.vf
-INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\gnome\cantarell\Cantarell-Regular-TS1-TLF--base.tfm
-INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\gnome\cantarell\Cantarell-Regular-T1-TLF-Slanted.tfm
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\vf\gnome\cantarell\Cantarell-Regular-T1-TLF-Slanted.vf
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\gnome\cantarell\Cantarell-Regular-T1-TLF-Slanted--base.tfm
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\vf\gnome\cantarell\Cantarell-Regular-TS1-TLF.vf
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\gnome\cantarell\Cantarell-Regular-TS1-TLF--base.tfm
 INPUT c:\Users\test\Documents\Studium\NumerischeOptimierung\Abgaben\Projekt_1\Ausarbeitung\abstracts.aux
-INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\enc\dvips\cantarell\a_5r5lpu.enc
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\enc\dvips\cantarell\a_tv3tjz.enc
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\enc\dvips\cantarell\a_5r5lpu.enc
 INPUT C:\Users\test\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ectt1200.pk
 INPUT C:\Users\test\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ectt1200.pk
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\gnome\cantarell\Cantarell-Bold.pfb

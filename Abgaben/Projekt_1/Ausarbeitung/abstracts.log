@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7400 64-bit) (preloaded format=pdflatex 2020.4.22)  2 MAY 2020 17:18
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7400 64-bit) (preloaded format=pdflatex 2020.4.22)  2 MAY 2020 18:59
 entering extended mode
 **c:/Users/test/Documents/Studium/NumerischeOptimierung/Abgaben/Projekt_1/Ausarbeitung/abstracts.tex
 (c:/Users/test/Documents/Studium/NumerischeOptimierung/Abgaben/Projekt_1/Ausarbeitung/abstracts.tex
@@ -705,73 +705,78 @@ Underfull \hbox (badness 10000) in paragraph at lines 84--86
  []
 
 Missing character: There is no ; in font nullfont!
-
-Underfull \hbox (badness 10000) in paragraph at lines 134--136
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 138--140
-
- []
-
 [2]
-Underfull \hbox (badness 10000) in paragraph at lines 142--144
-
- []
-
-
-Overfull \hbox (3.12614pt too wide) in paragraph at lines 146--147
-\T1/cantarell-TLF/m/n/12 Berechnet wer-den die ers-ten vier Ite-ra-tio-nen des Nelder-Mead-Algorithmus von 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 154--155
-
- []
-
-LaTeX Font Info:    Font shape `T1/cantarell-TLF/m/n' will be
-(Font)              scaled to size 8.0pt on input line 155.
-LaTeX Font Info:    Font shape `T1/cantarell-TLF/m/n' will be
-(Font)              scaled to size 6.0pt on input line 155.
-LaTeX Font Info:    Trying to load font information for TS1+cantarell-TLF on input line 158.
-("C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex/latex/cantarell\ts1cantarell-tlf.fd"
-File: TS1cantarell-TLF.fd 2019/06/24 Font definitions for TS1/cantarell-TLF.
-)
-LaTeX Font Info:    Font shape `TS1/cantarell-TLF/m/n' will be
-(Font)              scaled to size 12.0pt on input line 158.
-
-Underfull \hbox (badness 10000) in paragraph at lines 166--167
-
- []
-
-[3]
-Underfull \hbox (badness 10000) in paragraph at lines 178--179
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 190--191
+Underfull \hbox (badness 10000) in paragraph at lines 138--141
 
  []
 
 LaTeX Font Info:    Font shape `T1/cantarell-TLF/m/it' in size <12> not available
-(Font)              Font shape `T1/cantarell-TLF/m/sl' tried instead on input line 203.
+(Font)              Font shape `T1/cantarell-TLF/m/sl' tried instead on input line 194.
 LaTeX Font Info:    Font shape `T1/cantarell-TLF/m/sl' will be
-(Font)              scaled to size 12.0pt on input line 203.
-[4] (c:/Users\test\Documents\Studium\NumerischeOptimierung\Abgaben\Projekt_1\Ausarbeitung\abstracts.aux) ) 
+(Font)              scaled to size 12.0pt on input line 194.
+
+Overfull \hbox (3.08292pt too wide) in paragraph at lines 190--196
+\T1/cantarell-TLF/m/n/12 (tut sie hier wahr-schein-lich nicht da das Pro-jekt \T1/cantarell-TLF/m/sl/12 Ab-lei-tungs-freie Me-tho-den \T1/cantarell-TLF/m/n/12 heiÿt),
+ []
+
+[3]
+Underfull \hbox (badness 10000) in paragraph at lines 198--200
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 202--204
+
+ []
+
+
+Overfull \hbox (3.12614pt too wide) in paragraph at lines 206--207
+\T1/cantarell-TLF/m/n/12 Berechnet wer-den die ers-ten vier Ite-ra-tio-nen des Nelder-Mead-Algorithmus von 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 214--215
+
+ []
+
+LaTeX Font Info:    Font shape `T1/cantarell-TLF/m/n' will be
+(Font)              scaled to size 8.0pt on input line 215.
+LaTeX Font Info:    Font shape `T1/cantarell-TLF/m/n' will be
+(Font)              scaled to size 6.0pt on input line 215.
+LaTeX Font Info:    Trying to load font information for TS1+cantarell-TLF on input line 218.
+("C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex/latex/cantarell\ts1cantarell-tlf.fd"
+File: TS1cantarell-TLF.fd 2019/06/24 Font definitions for TS1/cantarell-TLF.
+)
+LaTeX Font Info:    Font shape `TS1/cantarell-TLF/m/n' will be
+(Font)              scaled to size 12.0pt on input line 218.
+
+Underfull \hbox (badness 10000) in paragraph at lines 226--227
+
+ []
+
+[4]
+Underfull \hbox (badness 10000) in paragraph at lines 238--239
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 250--251
+
+ []
+
+[5] [6] (c:/Users\test\Documents\Studium\NumerischeOptimierung\Abgaben\Projekt_1\Ausarbeitung\abstracts.aux) ) 
 Here is how much of TeX's memory you used:
  30572 strings out of 480896
  757948 string characters out of 2898648
- 1193046 words of memory out of 3000000
+ 1194046 words of memory out of 3000000
  45902 multiletter control sequences out of 15000+200000
  542656 words of font info for 54 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  63i,15n,98p,914b,1058s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Users/test/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/cantarell/a_5r5lpu.enc}{C:/Users/test/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/cantarell/a_tv3tjz.enc} <C:\Users\test\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1200.pk><C:/Users/test/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/gnome/cantarell/Cantarell-Bold.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/gnome/cantarell/Cantarell-Bold.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/gnome/cantarell/Cantarell-Regular.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/gnome/cantarell/Cantarell-Regular.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on c:/Users\test\Documents\Studium\NumerischeOptimierung\Abgaben\Projekt_1\Ausarbeitung\abstracts.pdf (4 pages, 157242 bytes).
+{C:/Users/test/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/cantarell/a_tv3tjz.enc}{C:/Users/test/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/cantarell/a_5r5lpu.enc} <C:\Users\test\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1200.pk><C:/Users/test/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/gnome/cantarell/Cantarell-Bold.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/gnome/cantarell/Cantarell-Bold.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/gnome/cantarell/Cantarell-Regular.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/gnome/cantarell/Cantarell-Regular.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
+Output written on c:/Users\test\Documents\Studium\NumerischeOptimierung\Abgaben\Projekt_1\Ausarbeitung\abstracts.pdf (6 pages, 164303 bytes).
 PDF statistics:
- 107 PDF objects out of 1000 (max. 8388607)
+ 113 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  109 words of extra memory for PDF output out of 10000 (max. 10000000)
 
