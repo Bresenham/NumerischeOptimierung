@@ -14,7 +14,7 @@ function [min_val, k] = Mutation(f, start_x)
     
     k = 1;
     k_max = 15000;
-    alpha = 0.25;
+    alpha = 1;
     dim = numel(start_x);
     
     rand_vec = @(dim, from, to) from + (to - from) * rand(1, dim);
@@ -24,8 +24,8 @@ function [min_val, k] = Mutation(f, start_x)
     f_x_val = 1000;
     f_x_old_val = -1000;
 
-    %while norm(f_x_val - f_x_old_val) > 1e-6
-    while k <= k_max
+    while norm(f_x_val - f_x_old_val) > 1e-4
+    % while k <= k_max
     
         x_hat = hat(x);
         
@@ -38,6 +38,8 @@ function [min_val, k] = Mutation(f, start_x)
             x = x_hat;
             % fprintf("\tx = [ %s] mit f(x) = %0.8f\n", sprintf("%0.4f ", x), f(x));
         end
+        
+        alpha = alpha * 0.995;
         
         k = k + 1;
     end

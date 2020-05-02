@@ -31,20 +31,16 @@ g = @(x) 100 * (x(1) - 2).^4 + (x(1) - 2*x(2)).^2;
 f0 = [2,4];
 g0 = [4,2];
 
-largest_min_f = -1000;
-minimum_min_f = 1000;
-for i=1:200
+iterations = 1;
+vals = zeros(iterations, 1);
+for i=1:iterations
     fprintf("Funktion g:\n");
-    [min_f, k] = Mutation(g, g0);
-    fprintf("Minimum x = [ %s] mit g(x) = %0.8f after %d steps.\n", sprintf("%0.4f ", min_f), g(min_f), k);
-    if g(min_f) > largest_min_f
-        largest_min_f = g(min_f);
-    end
-    if g(min_f) < minimum_min_f
-        minimum_min_f = g(min_f);
-    end
+    fnct = f;
+    [min, k] = Mutation(fnct, f0);
+    fprintf("Minimum x = [ %s] mit g(x) = %0.8f after %d steps.\n", sprintf("%0.4f ", min), fnct(min), k);
+    vals(i) = k;
 end
-fprintf("Worst g(x): %0.8f, Best g(x): %0.8f\n", largest_min_f, minimum_min_f);
+fprintf("Average iteration count: %0.2f\n", sum(vals) / iterations);
 
 % Aufgabe 4
 % Siehe Erläuterung in Ausarbeitung

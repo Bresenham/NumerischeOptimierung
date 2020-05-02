@@ -17,6 +17,7 @@
 
 \usepackage{helvet}
 \usepackage[eulergreek]{sansmath}
+\usepackage{amsfonts}
 
 \usepackage{tikz}
 \usetikzlibrary{calc,positioning,shapes,decorations.pathreplacing}
@@ -103,6 +104,7 @@ mit dem Startintervall [0, 1] nach 10 Schritten:\\
     10 & [0.57, 0.57] & f(0.57)=0.7280\\
     \hline
   \end{tabular}
+  \caption{Die ersten 10 Schritte des Bisektionsverfahrens mit Startintervall [0, 1] für $h(x)$}
 \end{figure}
 
 Die Intervallgrenzen und Funktionsauswertungen sind wie folgt verteilt:
@@ -125,6 +127,7 @@ Die Intervallgrenzen und Funktionsauswertungen sind wie folgt verteilt:
       \draw (\x*\scaleFactor, \y*\scaleFactor) node[interval border] {x};
     }
   \end{tikzpicture}
+  \caption{$h(x)$ mit Intervallgrenzen und Auswertungspunkten des Bisektionsverfahrens}
 \end{figure}
 
 \subsubsection{Aufgabe 2}
@@ -148,18 +151,14 @@ $10^{-8}$.\\\par
     \textbf{Kriterium} & \textbf{Funktion} & \textbf{Genauigkeit} & \textbf{Anzahl Schritte}\\
     \hline
     Differenzbetrag & f & $10^{-6}$ & 4.924.700\\
-    \hline
     Differenzbetrag & f & $10^{-6}$ & 282.179\\
-    \hline
     Differenzbetrag & f & $10^{-6}$ & 24.907\\
-    \hline
     Differenzbetrag & g & $10^{-6}$ & 36.655\\
-    \hline
     Differenzbetrag & g & $10^{-6}$ & 9.758\\
-    \hline
     Differenzbetrag & g & $10^{-6}$ & 882\\
     \hline
   \end{tabular}
+  \caption{Einfluss des Zualls auf die Anzahl an Durchläufen für eine Genauigkeit von $10^{-6}$}
 \end{figure}
 
 Durch die Wahl des Differenzbetrages kann man vom Zufall profitieren und mit verhältnismäßig wenigen Schritten zu einer guten Genauigkeit kommen.
@@ -170,21 +169,17 @@ Wählt man dagegen die Anzahl der Iterationen, muss man ggf. neu rechnen wenn da
   \def\arraystretch{1.25}
   \begin{tabular}{l|c|c|r}
     \hline
-    \textbf{Kriterium} & \textbf{Funktion} & \textbf{Genauigkeit} & \textbf{Anzahl Schritte}\\
+    \textbf{Abbruchkriterium} & \textbf{Funktion} & \textbf{Genauigkeit} & \textbf{Anzahl Schritte}\\
     \hline
     Anzahl Iterationen & f & $1\cdot 10^{-5}$ & 225.000\\
-    \hline
     Anzahl Iterationen & f & $7\cdot 10^{-6}$ & 225.000\\
-    \hline
     Anzahl Iterationen & f & $2\cdot 10^{-8}$ & 225.000\\
-    \hline
     Anzahl Iterationen & g & $2\cdot 10^{-6}$ & 15.000\\
-    \hline
     Anzahl Iterationen & g & $6\cdot 10^{-7}$ & 15.000\\
-    \hline
     Anzahl Iterationen & g & $1\cdot 10^{-8}$ & 15.000\\
     \hline
   \end{tabular}
+  \caption{Einfluss des Zufalls auf die Genauigkeit bei einer gegebenen Anzahl an Durchläufen}
 \end{figure}
 
 Der Parameter $\alpha$ bestimmt den Anteil des Zufallsvektors für den Wert von $\hat x$. Kleine Werte von $\alpha$ bedeuten eine höhere Wahrscheinlichkeit,
@@ -192,7 +187,58 @@ dass sich der Funktionswert verbessert (die Verbesserung fällt aber möglicherw
 bei quadratischen oder Funktionen 4. Grades der Funktionswert stark ändern und man leicht über das Ziel hinaus schießen kann wenn man zu große
 Schritte geht (ähnlich wie bei einem Abstiegsverfahren). Falls die Ableitung der Funktion zur Verfügung steht (tut sie hier wahrscheinlich nicht da
 das Projekt \textit{Ableitungsfreie Methoden} heißt), könnte man ein Verfahren zur Schrittweitensteuerung implementieren
-(z.B. Armijo: $\varphi(\alpha) := f(x + \alpha r)$).
+(z.B. nach Armijo $\varphi(\alpha) := f(x + \alpha r)$).\par
+
+\begin{figure}[H]
+  \centering
+  \def\arraystretch{1.25}
+  \begin{tabular}{l|c|c|r|r}
+    \hline
+    \textbf{Abbruchkriterium} & \textbf{Funktion} & \textbf{Genauigkeit} & $\overline{ \text{\textbf{Anzahl Schritte}} }_{200}$ & \textbf{$\alpha$}\\
+    \hline
+    Differenzbetrag & f & $10^{-4} $ & 238.992 & 1\\
+    Differenzbetrag & f & $10^{-4} $ & 190.980 & 0.5\\
+    Differenzbetrag & f & $10^{-4} $ & 19.557 & 0.25\\
+    Differenzbetrag & f & $10^{-4} $ & 9.025 & 0.125\\
+    Differenzbetrag & g & $10^{-4} $ & 41.688 & 1\\
+    Differenzbetrag & g & $10^{-4} $ & 1.878 & 0.5\\
+    Differenzbetrag & g & $10^{-4} $ & 1.101 & 0.25\\
+    Differenzbetrag & g & $10^{-4} $ & 383 & 0.125\\
+    \hline
+  \end{tabular}
+  \caption{Einfluss von $\alpha$ auf den Durchschnitt von 200 Durchläufen für eine Genauigkeit von $10^{-4}$}
+\end{figure}
+
+Zu Beginn von sind die Sprünge der Funktionswerte relativ groß, werden dann aber immer kleiner:
+
+\begin{figure}[H]
+  \centering
+  \def\arraystretch{1.25}
+  \begin{tabular}{l|c|r}
+    \hline
+    \textbf{Funktion} & \textbf{Position} & \textbf{Funktionswert}\\
+    \hline
+    f & [2.10 3.82] & 101.61\\
+    f & [1.85 3.60] & 76.25\\
+    f & [2.11 3.55] & 68.41\\
+    f & [2.29 3.37] & 50.06\\
+    f & [2.02 3.03] & 32.96\\
+    f & [2.39 2.68] & 13.39\\
+    f & [2.41 2.24] & 9.01\\
+    f & [2.42 2.39] & 8.99\\
+    f & [2.71 2.37] & 3.44\\
+    f & [2.81 2.32] & 2.03\\
+    f & [3.20 1.88] & 1.35\\
+    f & [3.09 2.12] & 0.80\\
+    f & [2.98 1.79] & 0.77\\
+    \hline
+  \end{tabular}
+  \caption{Die ersten Schritte von \lstinline[basicstyle=\ttfamily\color{black}]|Mutation| mit $\alpha = 1$}
+\end{figure}
+
+Eine Strategie könnte daher sein, $\alpha$ erst groß zu wählen (z.B. 1) und dann mit jeder erfolgreichen Richtung zu verkleinern.
+Das passiert unter der Annahme, das sich der Algorithmus zuerst eine grobe Richtung zum Minimum sucht und danach feinjustiert
+(wofür kleinere $\alpha$ besser geeignet sind).
 
 \subsubsection{Aufgabe 4}
 Vergleich Rechenaufwand...
