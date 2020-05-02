@@ -9,8 +9,8 @@
 \usepackage{listings}
 \usepackage{float}
 \usepackage[hang,flushmargin]{footmisc} 
-\usepackage{hyperref}
 
+\usepackage{amsmath}% http://ctan.org/pkg/amsmath
 \usepackage[utf8]{inputenc}
 \usepackage[default]{cantarell} %% Use option "defaultsans" to use cantarell as sans serif only
 \usepackage[T1]{fontenc}
@@ -74,27 +74,45 @@
 
 \newpage
 
-\textbf{Aufgabe 1}\\
+\subsubsection{Aufgabe 1}
 Teilintervalle des Bisektionsverfahrens für das Minimum von $h(x) = e^{-x} + 0.5x^2$ mit dem Startintervall $[0, 1]$:
 \\
 
-\textbf{Aufgabe 3}\\
+\subsubsection{Aufgabe 3}
 Abbruchkriterien und Strategie für Wahl von $\alpha$...
 \\
 
-\textbf{Aufgabe 4}\\
+\subsubsection{Aufgabe 4}
 Vergleich Rechenaufwand...
 \\
 
-\textbf{Aufgabe 5}\\
+\subsubsection{Aufgabe 5}
 Beispiel angeben bei dem Abbruchkriterium ungeeignet ist...
 \\
 
-\textbf{Aufgabe 6}\\
-Nelder-Mead-Algorithmus von Hand...
-\\
+\subsubsection{Aufgabe 6}
+Berechnet werden die ersten vier Iterationen des Nelder-Mead-Algorithmus von
+$$g(x_1, x_2) = 100\cdot(x_2-2)^4 + (x_1 - 2x_2)^2$$
+mit den Parametern $n=2$, $\alpha = \frac{1}{2}$, $\beta = 2$ und $\gamma = 1$.
+$$x^{(0,0)} = \begin{bmatrix}4\\2\end{bmatrix}, e_1 = \begin{bmatrix}1\\0\end{bmatrix}, e_2 = \begin{bmatrix}0\\1\end{bmatrix}$$
+Damit erhält man die Punkte $x^{(0,1)} = \begin{bmatrix}5\\2\end{bmatrix}, x^{(0,2)} = \begin{bmatrix}4\\3\end{bmatrix}$ und den
+Startsimplex
+$$S_0 = (\begin{bmatrix}4\\2\end{bmatrix}, \begin{bmatrix}5\\2\end{bmatrix}, \begin{bmatrix}4\\3\end{bmatrix})$$
 
-\textbf{Aufgabe 7}\\
+\textbf{k = 0}\\
+$$\text{max}\{f(x^{(0,0)}) = 1600, f(x^{(0,1)}) = 8101, f(x^{(0,2)}) = 1604\} = f(x^{(0,1)})$$
+$$s_0 = \frac{1}{2}\cdot (\begin{bmatrix}4\\2\end{bmatrix} + \begin{bmatrix}4\\3\end{bmatrix}) = \begin{bmatrix}4\\\frac{5}{2}\end{bmatrix} \text{und } x_0 = x^{(0,1)} = \begin{bmatrix}5\\2\end{bmatrix}$$
+\begin{itemize}
+\item Reflexion: $\hat x_0 = \begin{bmatrix}4\\\frac{5}{2}\end{bmatrix} + 1\cdot(\begin{bmatrix}4\\\frac{5}{2}\end{bmatrix} - \begin{bmatrix}5\\2\end{bmatrix}) = \begin{bmatrix}3\\3\end{bmatrix}$ mit $f(\hat x_0) = 25$
+\item Expansion: $\hat x_0^* = \begin{bmatrix}4\\\frac{5}{2}\end{bmatrix} + 2\cdot (\begin{bmatrix}3\\3\end{bmatrix} - \begin{bmatrix}4\\\frac{5}{2}\end{bmatrix}) = \begin{bmatrix}2\\\frac{7}{2}\end{bmatrix}$ mit $f(\hat x_0^*) = 25$
+\end{itemize}
+
+Nach dem 1. Schritt erhält man den Simplex
+
+$$S_1 = (\begin{bmatrix}4\\2\end{bmatrix}, \begin{bmatrix}2\\\frac{7}{2}\end{bmatrix}, \begin{bmatrix}4\\3\end{bmatrix})$$
+
+\textbf{k = 1}\\
+  \subsubsection{Aufgabe 7}
 Diskussion: Zuverlässigkeit und Rechenaufwand von \textit{Mutation-Selektion} und \textit{Nelder-Mead}
 
 

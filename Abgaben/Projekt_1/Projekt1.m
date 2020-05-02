@@ -45,14 +45,14 @@ fprintf("Funktion g:\n");
 fprintf("Aufgabe 4\n");
 
 tic;
-options.TolX=1e-2;
-options.Display='iter';
-min = fminsearch2(f, f0, options);
+options.TolX = 1e-6;
+min = fminsearch(f, f0, options);
 toc;
-disp(min);
 
 % Aufgabe 5
 % Siehe Datei 'fminsearch2.m' und Erläuterung in Ausarbeitung
+options.Display = 'iter';
+fminsearch2(f, f0, options);
 
 % Aufgabe 6
 % Siehe Erläuterung in Ausarbeitung

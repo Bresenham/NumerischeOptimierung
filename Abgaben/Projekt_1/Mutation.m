@@ -24,7 +24,7 @@ function min_val = Mutation(f, start_x)
     f_x_val = 1000;
     f_x_old_val = -1000;
 
-    while norm(f_x_val - f_x_old_val) > 1e-8
+    while norm(f_x_val - f_x_old_val) > 1e-6
     
         x_hat = hat(x);
         
