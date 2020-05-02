@@ -6,9 +6,9 @@
 % Inputs:
 %     Function, Start value
 %
-% Version: MATLAB R2020a
-% Author: Maximilian Gaul
-% Date: 01.05.2020
+% Version:	MATLAB R2020a
+% Author:	Maximilian Gaul
+% Date:     01.05.2020
 %---------------------------------------------------------
 function min_val = Mutation(f, start_x)
     

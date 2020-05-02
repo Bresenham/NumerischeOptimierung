@@ -5,9 +5,9 @@
 % Inputs:
 %     Function, Start interval
 %
-% Version: MATLAB R2020a
-% Author: Maximilian Gaul
-% Date: 01.05.2020
+% Version:	MATLAB R2020a
+% Author:	Maximilian Gaul
+% Date:     01.05.2020
 %---------------------------------------------------------
 function min_val = Bisektion(f, start_intrvl)
 
