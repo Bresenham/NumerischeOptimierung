@@ -269,62 +269,159 @@ wird es nur auf $h$ angewendet.
   \centering
   \pgfplotstableread{
     0 0.024631  0.909518      0.544333
-    1 0.0       1212.082227   1.254401
-    2 0.0       16.337017     3.398372
-  }\dataset
-  \begin{tikzpicture}
-    \begin{axis}[
-        width=15cm,
-        height=8cm,
-        ybar,
-        ymin=0,
-        ylabel={Rechenzeit in ms},
-        ytick=\empty,
-        extra y ticks={0,100,250,500,1000},
-        extra y tick labels={{0},{100},{250},{500},{1000}},
-        xtick=data,
-        xticklabels={
-            h(x),
-            f(x),
-            g(x)
-        },
-        xticklabel style={yshift=-12ex},
-        major x tick style={
-            % (this is a better way than assigning `opacity=0')
-            /pgfplots/major tick length=0pt,
-        },
-        minor x tick num=1,
-        minor tick length=2ex,
-        % ---------------------------------------------------------------------
-        % (adapted solution from <https://tex.stackexchange.com/a/141006/95441>)
-        % we want to provide absolute `at' values ...
-        scatter/position=absolute,
-        node near coords style={
-            % ... to provide axis coordinates at `ymin' for the nodes
-            at={(axis cs:\pgfkeysvalueof{/data point/x},\pgfkeysvalueof{/pgfplots/ymin})},
-            % then also the `anchor' has to be adapted ...
-            anchor=east,
-            % ... because we rotate the labels which would overlap otherwise
-            rotate=90,
-        },
-        % ---------------------------------------------------------------------
-        % (created a cycle list to shorten the below `\addplot' entries)
-        cycle list={
-            {draw=black,fill=black!20},
-            {draw=black,fill=black!40},
-            {draw=black,fill=black!60},
-        },
-        % (moved common option here)
-        table/x index=0,
-    ]
-        \addplot+ [nodes near coords=Bisekt.] table [y index=1] \dataset;
-        \addplot+ [nodes near coords=Mut.-Selekt.] table [y index=2] \dataset;
-        \addplot+ [nodes near coords=fminsearch] table [y index=3] \dataset;
-    \end{axis}
-    \draw[black, thick] (0.56, -2.6) -- (1.72, -2.6); % 1.145
-    \draw[black, thick] (6.15, -2.6) -- (7.31, -2.6);
-    \draw[black, thick] (11.7375, -2.6) -- (12.95, -2.6);
-\end{tikzpicture}
+  }\dataseth
+  \pgfplotstableread{
+    0 0.0       1212.082227   1.254401
+  }\datasetf
+  \pgfplotstableread{
+    0 0.0       16.337017     3.398372
+  }\datasetg
+  \begin{minipage}{.3\textwidth}
+    \begin{tikzpicture}
+        \begin{axis}[
+            width=4cm,
+            height=6.5cm,
+            ybar,
+            ymin=0,
+            ylabel={Rechenzeit in ms},
+            ytick=\empty,
+            extra y ticks={0,0.25,0.5,0.75,1.0,1.25},
+            extra y tick labels={{0},{0.25},{0.5},{0.75},{1.0},{1.25}},
+            xtick=data,
+            xticklabels={
+                h(x)
+            },
+            xticklabel style={yshift=-12ex},
+            major x tick style={
+                % (this is a better way than assigning `opacity=0')
+                /pgfplots/major tick length=0pt,
+            },
+            minor x tick num=1,
+            minor tick length=2ex,
+            % ---------------------------------------------------------------------
+            % (adapted solution from <https://tex.stackexchange.com/a/141006/95441>)
+            % we want to provide absolute `at' values ...
+            scatter/position=absolute,
+            node near coords style={
+                % ... to provide axis coordinates at `ymin' for the nodes
+                at={(axis cs:\pgfkeysvalueof{/data point/x},\pgfkeysvalueof{/pgfplots/ymin})},
+                % then also the `anchor' has to be adapted ...
+                anchor=east,
+                % ... because we rotate the labels which would overlap otherwise
+                rotate=90,
+            },
+            % ---------------------------------------------------------------------
+            % (created a cycle list to shorten the below `\addplot' entries)
+            cycle list={
+                {draw=black,fill=black!20},
+                {draw=black,fill=black!40},
+                {draw=black,fill=black!60},
+            },
+            % (moved common option here)
+            table/x index=0,
+        ]
+            \addplot+ [nodes near coords=Bisekt.] table [y index=1] \dataseth;
+            \addplot+ [nodes near coords=Mut.-Selekt.] table [y index=2] \dataseth;
+            \addplot+ [nodes near coords=fminsearch] table [y index=3] \dataseth;
+        \end{axis}
+    \end{tikzpicture}
+  \end{minipage}
+  \begin{minipage}{.3\textwidth}
+    \begin{tikzpicture}
+        \begin{axis}[
+            width=4cm,
+            height=6.5cm,
+            ybar,
+            ymin=0,
+            ytick=\empty,
+            extra y ticks={0,250,500,750,1000,1250},
+            extra y tick labels={{0},{250},{500},{750},{1000},{1250}},
+            xtick=data,
+            xticklabels={
+                f(x)
+            },
+            xticklabel style={yshift=-12ex},
+            major x tick style={
+                % (this is a better way than assigning `opacity=0')
+                /pgfplots/major tick length=0pt,
+            },
+            minor x tick num=1,
+            minor tick length=2ex,
+            % ---------------------------------------------------------------------
+            % (adapted solution from <https://tex.stackexchange.com/a/141006/95441>)
+            % we want to provide absolute `at' values ...
+            scatter/position=absolute,
+            node near coords style={
+                % ... to provide axis coordinates at `ymin' for the nodes
+                at={(axis cs:\pgfkeysvalueof{/data point/x},\pgfkeysvalueof{/pgfplots/ymin})},
+                % then also the `anchor' has to be adapted ...
+                anchor=east,
+                % ... because we rotate the labels which would overlap otherwise
+                rotate=90,
+            },
+            % ---------------------------------------------------------------------
+            % (created a cycle list to shorten the below `\addplot' entries)
+            cycle list={
+                {draw=black,fill=black!40},
+                {draw=black,fill=black!60},
+            },
+            % (moved common option here)
+            table/x index=0,
+        ]
+            \addplot+ [nodes near coords=Mut.-Selekt.] table [y index=2] \datasetf;
+            \addplot+ [nodes near coords=fminsearch] table [y index=3] \datasetf;
+        \end{axis}
+        \node[black, rotate=90] (impl) at (1.4,0.8) {1.25};
+        \draw[-{Latex}, thick, black] (impl.west) -- ([yshift=-0.2cm]impl.west);
+    \end{tikzpicture}
+  \end{minipage}
+  \begin{minipage}{.3\textwidth}
+    \begin{tikzpicture}
+        \begin{axis}[
+            width=4cm,
+            height=6.5cm,
+            ybar,
+            ymin=0,
+            ytick=\empty,
+            extra y ticks={0,5,10,15,20,25},
+            extra y tick labels={{0},{5},{10},{15},{20},{25}},
+            xtick=data,
+            xticklabels={
+                g(x)
+            },
+            xticklabel style={yshift=-12ex},
+            major x tick style={
+                % (this is a better way than assigning `opacity=0')
+                /pgfplots/major tick length=0pt,
+            },
+            minor x tick num=1,
+            minor tick length=2ex,
+            % ---------------------------------------------------------------------
+            % (adapted solution from <https://tex.stackexchange.com/a/141006/95441>)
+            % we want to provide absolute `at' values ...
+            scatter/position=absolute,
+            node near coords style={
+                % ... to provide axis coordinates at `ymin' for the nodes
+                at={(axis cs:\pgfkeysvalueof{/data point/x},\pgfkeysvalueof{/pgfplots/ymin})},
+                % then also the `anchor' has to be adapted ...
+                anchor=east,
+                % ... because we rotate the labels which would overlap otherwise
+                rotate=90,
+            },
+            % ---------------------------------------------------------------------
+            % (created a cycle list to shorten the below `\addplot' entries)
+            cycle list={
+                {draw=black,fill=black!40},
+                {draw=black,fill=black!60},
+            },
+            % (moved common option here)
+            table/x index=0,
+        ]
+            \addplot+ [nodes near coords=Mut.-Selekt.] table [y index=2] \datasetg;
+            \addplot+ [nodes near coords=fminsearch] table [y index=3] \datasetg;
+        \end{axis}
+    \end{tikzpicture}
+  \end{minipage}
   \caption{Vergleich der Rechenzeit für eine Genauigkeit von $10^{-6}$ (Durchschnitt aus 1000 Durchläufen)}
 \end{figure}
 
