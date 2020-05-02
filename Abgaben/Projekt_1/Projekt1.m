@@ -31,11 +31,11 @@ g = @(x) 100 * (x(1) - 2).^4 + (x(1) - 2*x(2)).^2;
 f0 = [2,4];
 g0 = [4,2];
 
-iterations = 1;
+iterations = 400;
 vals = zeros(iterations, 1);
 for i=1:iterations
     fprintf("Funktion g:\n");
-    fnct = f;
+    fnct = g;
     [min, k] = Mutation(fnct, f0);
     fprintf("Minimum x = [ %s] mit g(x) = %0.8f after %d steps.\n", sprintf("%0.4f ", min), fnct(min), k);
     vals(i) = k;

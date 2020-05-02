@@ -14,7 +14,7 @@ function [min_val, k] = Mutation(f, start_x)
     
     k = 1;
     k_max = 15000;
-    alpha = 1;
+    alpha = 0.125;
     dim = numel(start_x);
     
     rand_vec = @(dim, from, to) from + (to - from) * rand(1, dim);
@@ -24,6 +24,7 @@ function [min_val, k] = Mutation(f, start_x)
     f_x_val = 1000;
     f_x_old_val = -1000;
 
+    % Abbruchkriterien: Differenzbetrag oder Anzahl Iterationen
     while norm(f_x_val - f_x_old_val) > 1e-4
     % while k <= k_max
     
@@ -39,7 +40,9 @@ function [min_val, k] = Mutation(f, start_x)
             % fprintf("\tx = [ %s] mit f(x) = %0.8f\n", sprintf("%0.4f ", x), f(x));
         end
         
-        alpha = alpha * 0.995;
+        % Verstärkungsfaktor wird bis zu einer gewissen Grenze auf alpha
+        % multipliziert
+        % alpha = min([alpha * 1.0125, 0.5]);
         
         k = k + 1;
     end

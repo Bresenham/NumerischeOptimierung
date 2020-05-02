@@ -236,9 +236,29 @@ Zu Beginn von sind die Sprünge der Funktionswerte relativ groß, werden dann ab
   \caption{Die ersten Schritte von \lstinline[basicstyle=\ttfamily\color{black}]|Mutation| mit $\alpha = 1$}
 \end{figure}
 
-Eine Strategie könnte daher sein, $\alpha$ erst groß zu wählen (z.B. 1) und dann mit jeder erfolgreichen Richtung zu verkleinern.
-Das passiert unter der Annahme, das sich der Algorithmus zuerst eine grobe Richtung zum Minimum sucht und danach feinjustiert
-(wofür kleinere $\alpha$ besser geeignet sind).
+Eine Strategie könnte daher sein, $\alpha$ erst klein zu wählen (z.B. 0.125) und dann mit jeder Iteration zu vergrößern dabei aber
+nicht über eine obere Schranke zu kommen (z.B. 0.5). Dies geschieht unter der Annahme, das der Algorithmus zuerst die richtige
+Richtung finden muss, durch zu große Sprünge verpasst er es im ungünstigen Fall.
+
+\begin{figure}[H]
+  \centering
+  \def\arraystretch{1.25}
+  \begin{tabular}{l|c|r|r|r}
+    \hline
+    \textbf{Funktion} & \textbf{Genauigkeit} & $\overline{ \text{\textbf{Anzahl Schritte}} }_{600}$ & \textbf{$\alpha$} & \textbf{Verstärkungsfaktor}\\
+    \hline
+    f & $10^{-4}$ & 5.062 & 0.1250 & 1.1000\\
+    f & $10^{-4}$ & 3.660 & 0.1250 & 1.0500\\
+    f & $10^{-4}$ & 3.850 & 0.1250 & 1.0250\\
+    f & $10^{-4}$ & 6.639 & 0.1250 & 1.0125\\
+    g & $10^{-4}$ & 438 & 0.1250 & 1.1000\\
+    g & $10^{-4}$ & 386 & 0.1250 & 1.0500\\
+    g & $10^{-4}$ & 368 & 0.1250 & 1.0250\\
+    g & $10^{-4}$ & 771 & 0.1250 & 1.0125\\
+    \hline
+  \end{tabular}
+  \caption{Einfluss von $\alpha$ und einem Verstärkungsfaktor auf den Durchschnitt an Iterationen für eine Genauigkeit von $10^{-4}$}
+\end{figure}
 
 \subsubsection{Aufgabe 4}
 Vergleich Rechenaufwand...
