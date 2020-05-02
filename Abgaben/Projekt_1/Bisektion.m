@@ -21,10 +21,10 @@ function min_val = Bisektion(f, start_intrvl)
     l_eval = @(a, b) ( a + x_eval(a, b) ) / 2.0;
     r_eval = @(a, b) ( x_eval(a, b) + b ) / 2.0;
     
-    while k < max_k
+    while k <= max_k
         
         x = x_eval(a, b);
-        fprintf("\tInterval [%0.4f, %0.4f] mit f(Mitte) = %0.4f\n", a, b, f(x));
+        fprintf("\tInterval [%0.4f, %0.4f] mit f(%0.4f) = %0.4f\n", a, b, x, f(x));
         
         if f( l_eval(a, b) ) < f( r_eval(a, b) )
             a = a;

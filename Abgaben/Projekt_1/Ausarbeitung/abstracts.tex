@@ -9,7 +9,7 @@
 \usepackage{listings}
 \usepackage{float}
 \usepackage[hang,flushmargin]{footmisc} 
-
+\usepackage{makecell}
 \usepackage{amsmath}% http://ctan.org/pkg/amsmath
 \usepackage[utf8]{inputenc}
 \usepackage[default]{cantarell} %% Use option "defaultsans" to use cantarell as sans serif only
@@ -19,8 +19,12 @@
 \usepackage[eulergreek]{sansmath}
 
 \usepackage{tikz}
-\usetikzlibrary{shapes.arrows}
-\usetikzlibrary{positioning, shapes}
+\usetikzlibrary{calc,positioning,shapes,decorations.pathreplacing}
+\usetikzlibrary{fit,fadings,shadows,patterns,math}
+\usetikzlibrary{shapes.arrows,shapes.geometric}
+\usetikzlibrary{arrows,arrows.meta,decorations.markings}
+\usetikzlibrary{decorations.pathmorphing}
+
 \usepackage{pgfplots}
 
 \graphicspath{ {./images/} }
@@ -75,8 +79,56 @@
 \newpage
 
 \subsubsection{Aufgabe 1}
-Teilintervalle des Bisektionsverfahrens für das Minimum von $h(x) = e^{-x} + 0.5x^2$ mit dem Startintervall $[0, 1]$:
-\\
+Teilintervalle und Funktionswerte des Bisektionsverfahrens aus \lstinline[basicstyle=\ttfamily\color{black}]|Bisektion.m|
+für das Minimum von
+$$h(x) = e^{-x} + 0.5x^2$$
+mit dem Startintervall [0, 1] nach 10 Schritten:\\
+
+\begin{figure}[H]
+  \centering
+  \def\arraystretch{1.25}
+  \begin{tabular}{l|c|r}
+    \hline
+    \textbf{Schritt} & \textbf{Intervall} & \makecell{\textbf{Funktionswert}}\\
+    \hline
+    1 & [0.00, 1.00] & f(0.50)=0.7315\\
+    2 & [0.50, 1.00] & f(0.75)=0.7536\\
+    3 & [0.50, 0.75] & f(0.63)=0.7306\\
+    4 & [0.50, 0.63] & f(0.56)=0.7280\\
+    5 & [0.56, 0.63] & f(0.59)=0.7285\\
+    6 & [0.56, 0.59] & f(0.58)=0.7281\\
+    7 & [0.56, 0.58] & f(0.57)=0.7280\\
+    8 & [0.56, 0.57] & f(0.57)=0.7280\\
+    9 & [0.57, 0.57] & f(0.57)=0.7280\\
+    10 & [0.57, 0.57] & f(0.57)=0.7280\\
+    \hline
+  \end{tabular}
+\end{figure}
+
+Die Intervallgrenzen und Funktionsauswertungen sind wie folgt verteilt:
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \newcommand*{\scaleFactor}{4}
+    \tikzstyle{interval border}=[thin, red];
+
+    \draw[-{Latex}] (-0.5,0) -- (1.25*\scaleFactor,0) node[right] {$x$};
+    \draw[-{Latex}] (0,-0.5) -- (0,1.25*\scaleFactor) node[above] {$h(x)$};
+    \draw[scale=\scaleFactor, thick, black, domain=-0.25:1.25, smooth, variable=\x] plot ({\x},{exp(-\x) + 0.5*\x^2});
+
+    \foreach \i in {0, 0.50, 0.75, 0.625, 0.5625, 0.5664, 0.5938, 0.5781, 0.5703, 0.5684, 1} {
+      \draw[interval border] (\i*\scaleFactor, 0) -- (\i*\scaleFactor, 1.25*\scaleFactor);
+    }
+
+    \foreach \x / \y / \i in {0.5/0.7315/1, 0.75/0.7536/2, 0.625/0.7306/3, 0.5625/0.7280/4, 0.5938/0.7285/5, 0.5781/0.7281} {
+      \draw (\x*\scaleFactor, \y*\scaleFactor) node[interval border] {x};
+    }
+  \end{tikzpicture}
+\end{figure}
+
+\subsubsection{Aufgabe 2}
+Siehe \lstinline[basicstyle=\ttfamily\color{black}]|Mutation.m|.
 
 \subsubsection{Aufgabe 3}
 Abbruchkriterien und Strategie für Wahl von $\alpha$...
