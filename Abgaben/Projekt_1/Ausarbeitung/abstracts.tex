@@ -158,7 +158,7 @@ $10^{-8}$.\\\par
     Differenzbetrag & g & $10^{-6}$ & 882\\
     \hline
   \end{tabular}
-  \caption{Einfluss des Zualls auf die Anzahl an Durchläufen für eine Genauigkeit von $10^{-6}$}
+  \caption{Einfluss des Zualls auf die Anzahl an Durchläufen für eine Genauigkeit von $10^{-6}$ bei festem $\alpha$}
 \end{figure}
 
 Durch die Wahl des Differenzbetrages kann man vom Zufall profitieren und mit verhältnismäßig wenigen Schritten zu einer guten Genauigkeit kommen.
@@ -179,7 +179,7 @@ Wählt man dagegen die Anzahl der Iterationen, muss man ggf. neu rechnen wenn da
     Anzahl Iterationen & g & $1\cdot 10^{-8}$ & 15.000\\
     \hline
   \end{tabular}
-  \caption{Einfluss des Zufalls auf die Genauigkeit bei einer gegebenen Anzahl an Durchläufen}
+  \caption{Einfluss des Zufalls auf die Genauigkeit bei einer gegebenen Anzahl an Durchläufen bei festem $\alpha$}
 \end{figure}
 
 Der Parameter $\alpha$ bestimmt den Anteil des Zufallsvektors für den Wert von $\hat x$. Kleine Werte von $\alpha$ bedeuten eine höhere Wahrscheinlichkeit,
@@ -216,7 +216,7 @@ Zu Beginn von sind die Sprünge der Funktionswerte relativ groß, werden dann ab
   \def\arraystretch{1.25}
   \begin{tabular}{l|c|r}
     \hline
-    \textbf{Funktion} & \textbf{Position} & \textbf{Funktionswert}\\
+    \textbf{Funktion} & \textbf{x} & \textbf{Funktionswert}\\
     \hline
     f & [2.10 3.82] & 101.61\\
     f & [1.85 3.60] & 76.25\\
@@ -261,8 +261,71 @@ Richtung finden muss, durch zu große Sprünge verpasst er es im ungünstigen Fa
 \end{figure}
 
 \subsubsection{Aufgabe 4}
-Vergleich Rechenaufwand...
-\\
+Vergleich der Rechenzeit in Sekunden für die Funktionen $f, g, h$ mit dem Bisektions- und Mutation-Selektion-Verfahren sowie
+\lstinline[basicstyle=\ttfamily\color{black}]|fminsearch|. Da das Bisektionsverfahren nur im eindimensionalen Fall funktioniert
+wird es nur auf $h$ angewendet.
+
+\begin{figure}[H]
+  \centering
+  \pgfplotstableread{
+    0 35569 8842    134984
+    1 30428 4689    34077
+    2 32920 6207    73787
+  }\dataset
+  \begin{tikzpicture}
+    \begin{axis}[
+        width=15cm,
+        height=8cm,
+        ymin=0,
+        ymax=150000,
+        ybar,
+        ylabel={Rechenzeit in s},
+        xtick=data,
+        xticklabels={
+            h(x),
+            f(x),
+            g(x)
+        },
+        xticklabel style={yshift=-12ex},
+        major x tick style={
+            % (this is a better way than assigning `opacity=0')
+            /pgfplots/major tick length=0pt,
+        },
+        minor x tick num=1,
+        minor tick length=2ex,
+        % ---------------------------------------------------------------------
+        % (adapted solution from <https://tex.stackexchange.com/a/141006/95441>)
+        % we want to provide absolute `at' values ...
+        scatter/position=absolute,
+        node near coords style={
+            % ... to provide axis coordinates at `ymin' for the nodes
+            at={(axis cs:\pgfkeysvalueof{/data point/x},\pgfkeysvalueof{/pgfplots/ymin})},
+            % then also the `anchor' has to be adapted ...
+            anchor=east,
+            % ... because we rotate the labels which would overlap otherwise
+            rotate=90,
+        },
+        % ---------------------------------------------------------------------
+        % (created a cycle list to shorten the below `\addplot' entries)
+        cycle list={
+            {draw=black,fill=black!20},
+            {draw=black,fill=black!40},
+            {draw=black,fill=black!60},
+        },
+        % (moved common option here)
+        table/x index=0,
+    ]
+        \addplot+ [nodes near coords=Bisekt.] table [y index=1] \dataset;
+        \addplot+ [nodes near coords=Mut.-Selekt.] table [y index=2] \dataset;
+        \addplot+ [nodes near coords=fminsearch] table [y index=3] \dataset;
+    \end{axis}
+    \draw[black, thick] (0.5625, -2.6) -- (1.71, -2.6); % 1.145
+    \draw[black, thick] (6.15, -2.6) -- (7.3, -2.6);
+    \draw[black, thick] (11.7375, -2.6) -- (12.89, -2.6);
+\end{tikzpicture}
+  \caption{Vergleich der Rechenzeit}
+\end{figure}
+
 
 \subsubsection{Aufgabe 5}
 Beispiel angeben bei dem Abbruchkriterium ungeeignet ist...
