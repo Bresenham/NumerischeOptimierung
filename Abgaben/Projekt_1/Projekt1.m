@@ -45,8 +45,11 @@ fprintf("Funktion g:\n");
 fprintf("Aufgabe 4\n");
 
 tic;
-fminsearch2(f, f0);
+options.TolX=1e-2;
+options.Display='iter';
+min = fminsearch2(f, f0, options);
 toc;
+disp(min);
 
 % Aufgabe 5
 % Siehe Datei 'fminsearch2.m' und Erläuterung in Ausarbeitung

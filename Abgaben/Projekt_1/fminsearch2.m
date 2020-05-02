@@ -10,6 +10,7 @@
 % Author:   Maximilian Gaul
 % Date:     02.05.2020
 %---------------------------------------------------------
+
 function [x,fval,exitflag,output] = fminsearch2(funfcn,x,options,varargin)
 %FMINSEARCH Multidimensional unconstrained nonlinear minimization (Nelder-Mead).
 %   X = FMINSEARCH(FUN,X0) starts at X0 and attempts to find a local minimizer 
@@ -74,6 +75,7 @@ function [x,fval,exitflag,output] = fminsearch2(funfcn,x,options,varargin)
 
 %   Copyright 1984-2018 The MathWorks, Inc.
 
+print_simplex_edges = @(v) sprintf("\t[ %s]", sprintf("%0.2f ", v));
 
 defaultopt = struct('Display','notify','MaxIter','200*numberOfVariables',...
     'MaxFunEvals','200*numberOfVariables','TolX',1e-4,'TolFun',1e-4, ...
@@ -179,7 +181,7 @@ else
     plotfcns = createCellArrayOfFunctions(plotfcns,'PlotFcns');
 end
 
-header = ' Iteration   Func-count     min f(x)         Procedure';
+header = ' Iteration   Func-count     min f(x)                       Simplex Edges                  Procedure ';
 
 % Convert to function handle as needed.
 funfcn = fcnchk(funfcn,length(varargin));
@@ -203,6 +205,7 @@ rho = 1; chi = 2; psi = 0.5; sigma = 0.5;
 onesn = ones(1,n);
 two2np1 = 2:n+1;
 one2n = 1:n;
+one2nplus1 = 1:(n+1);
 
 % Set up a simplex near the initial guess.
 xin = x(:); % Force xin to be a column vector
@@ -232,7 +235,7 @@ end
 if prnt == 3
     disp(' ')
     disp(header)
-    fprintf(' %5.0f        %5.0f     %12.6g         %s\n', itercount, func_evals, fv(1), how);
+    fprintf(' %5.0f        %5.0f     %12.6g         %s%s\n', itercount, func_evals, fv(1), print_simplex_edges(v), how);
 elseif prnt == 4
     formatsave.format = get(0,'format');
     formatsave.formatspacing = get(0,'formatspacing');
@@ -287,7 +290,7 @@ how = 'initial simplex';
 itercount = itercount + 1;
 func_evals = n+1;
 if prnt == 3
-    fprintf(' %5.0f        %5.0f     %12.6g         %s\n', itercount, func_evals, fv(1), how)
+    fprintf(' %5.0f        %5.0f     %12.6g         %s         %s\n', itercount, func_evals, fv(1), print_simplex_edges(v), how)
 elseif prnt == 4
     disp(' ')
     disp(how)
@@ -323,9 +326,23 @@ exitflag = 1;
 % The iteration stops if the maximum number of iterations or function evaluations 
 % are exceeded
 while func_evals < maxfun && itercount < maxiter
-    if max(abs(fv(1)-fv(two2np1))) <= max(tolf,10*eps(fv(1))) && ...
-            max(max(abs(v(:,two2np1)-v(:,onesn)))) <= max(tolx,10*eps(max(v(:,1))))
-        break
+    
+    % Standard deviation criteria from Nelder & Mead
+    fun_vals = zeros(n + 1);
+    for i = 1:n+1
+        fun_vals(i) = funfcn(v(:,i), varargin{:});
+    end
+
+    fxbar = sum(fun_vals) / (n + 1);
+    
+    deviation_sum = 0;
+    for i = 1:n+1
+        deviation_sum = deviation_sum + ( fun_vals(i) - fxbar ).^2;
+    end
+    deviation_sum = deviation_sum / (n + 1);
+    
+    if sqrt(deviation_sum) < tolx
+        break;
     end
     
     % Compute the reflection point
@@ -399,7 +416,7 @@ while func_evals < maxfun && itercount < maxiter
     v = v(:,j);
     itercount = itercount + 1;
     if prnt == 3
-        fprintf(' %5.0f        %5.0f     %12.6g         %s\n', itercount, func_evals, fv(1), how)
+        fprintf(' %5.0f        %5.0f     %12.6g         %s         %s\n', itercount, func_evals, fv(1), print_simplex_edges(v), how)
     elseif prnt == 4
         disp(' ')
         disp(how)
