@@ -103,8 +103,8 @@ $$S_0 = (\begin{bmatrix}4\\2\end{bmatrix}, \begin{bmatrix}5\\2\end{bmatrix}, \be
 $$\text{max}\{f(x^{(0,0)}) = 1600, f(x^{(0,1)}) = 8101, f(x^{(0,2)}) = 1604\} = f(x^{(0,1)})$$
 $$s_0 = \frac{1}{2}\cdot (\begin{bmatrix}4\\2\end{bmatrix} + \begin{bmatrix}4\\3\end{bmatrix}) = \begin{bmatrix}4\\\frac{5}{2}\end{bmatrix} \text{und } x_0 = x^{(0,1)} = \begin{bmatrix}5\\2\end{bmatrix}$$
 \begin{itemize}
-  \item Reflexion: $\hat x_0 = \begin{bmatrix}4\\\frac{5}{2}\end{bmatrix} + 1\cdot(\begin{bmatrix}4\\\frac{5}{2}\end{bmatrix} - \begin{bmatrix}5\\2\end{bmatrix}) = \begin{bmatrix}3\\3\end{bmatrix}$ mit $f(\hat x_0) = 25$
-  \item Expansion: $\hat x_0^* = \begin{bmatrix}4\\\frac{5}{2}\end{bmatrix} + 2\cdot (\begin{bmatrix}3\\3\end{bmatrix} - \begin{bmatrix}4\\\frac{5}{2}\end{bmatrix}) = \begin{bmatrix}2\\\frac{7}{2}\end{bmatrix}$ mit $f(\hat x_0^*) = 25$
+\item Reflexion: $\hat x_0 = \begin{bmatrix}4\\\frac{5}{2}\end{bmatrix} + 1\cdot(\begin{bmatrix}4\\\frac{5}{2}\end{bmatrix} - \begin{bmatrix}5\\2\end{bmatrix}) = \begin{bmatrix}3\\3\end{bmatrix}$ mit $f(\hat x_0) = 25$
+\item Expansion: $\hat x_0^* = \begin{bmatrix}4\\\frac{5}{2}\end{bmatrix} + 2\cdot (\begin{bmatrix}3\\3\end{bmatrix} - \begin{bmatrix}4\\\frac{5}{2}\end{bmatrix}) = \begin{bmatrix}2\\\frac{7}{2}\end{bmatrix}$ mit $f(\hat x_0^*) = 25$
 \end{itemize}
 
 Nach dem 1. Schritt erhält man den Simplex
@@ -128,16 +128,24 @@ $$\text{max}\{f(x^{(2,0)}) = 1600, f(x^{(2,1)}) = 25, f(x^{(2,2)}) = 9\} = f(x^{
 $$s_2 = \frac{1}{2}\cdot(\begin{bmatrix}2\\\frac{7}{2}\end{bmatrix} + \begin{bmatrix}2\\\frac{5}{2}\end{bmatrix}) = \begin{bmatrix}2\\3\end{bmatrix} \text{und } x_2 = x^{(2,0)} = \begin{bmatrix}4\\2\end{bmatrix}$$
 \begin{itemize}
 \item Reflexion: $\hat x_2 = \begin{bmatrix}2\\3\end{bmatrix} + 1\cdot(\begin{bmatrix}2\\3\end{bmatrix} - \begin{bmatrix}4\\2\end{bmatrix}) = \begin{bmatrix}0\\4\end{bmatrix}$ mit $f(\hat x_2) = 1664$
-\item Innere Kontraktion: $\hat x_2 = \begin{bmatrix}2\\3\end{bmatrix} + \frac{1}{2}\cdot(\begin{bmatrix}4\\2\end{bmatrix} - \begin{bmatrix}2\\3\end{bmatrix}) = \begin{bmatrix}3\\\frac{5}{2}\end{bmatrix}$ mit $f(\hat x_2) = 104$
+\item Innere Kontraktion: $\hat x_2^* = \begin{bmatrix}2\\3\end{bmatrix} + \frac{1}{2}\cdot(\begin{bmatrix}4\\2\end{bmatrix} - \begin{bmatrix}2\\3\end{bmatrix}) = \begin{bmatrix}3\\\frac{5}{2}\end{bmatrix}$ mit $f(\hat x_2^*) = 104$
 \end{itemize}
 
 Nach dem 3. Schritt erhält man den Simplex
 
 $$S_3 = (\begin{bmatrix}3\\\frac{5}{2}\end{bmatrix}, \begin{bmatrix}2\\\frac{7}{2}\end{bmatrix}, \begin{bmatrix}2\\\frac{5}{2}\end{bmatrix})$$
 
+\textbf{k = 3}\\
+$$\text{max}\{f(x^{(3,0)}) = 104, f(x^{(3,1)}) = 25, f(x^{(3,2)}) = 9\} = f(x^{(3,0)})$$
+$$s_3 = \frac{1}{2}(\begin{bmatrix}2\\\frac{7}{2}\end{bmatrix} + \begin{bmatrix}2\\\frac{5}{2}\end{bmatrix}) = \begin{bmatrix}2\\3\end{bmatrix} \text{und } x_3 = x^{(3,0)} = \begin{bmatrix}3\\\frac{5}{2}\end{bmatrix}$$
+\begin{itemize}
+\item Reflexion: $\hat x_3 = \begin{bmatrix}2\\3\end{bmatrix} + 1\cdot(\begin{bmatrix}2\\3\end{bmatrix} - \begin{bmatrix}3\\\frac{5}{2}\end{bmatrix}) = \begin{bmatrix}1\\\frac{7}{2}\end{bmatrix}$ mit $f(\hat x_3) = 136$
+\item Innere Kontraktion: $\hat x_3^* = \begin{bmatrix}2\\3\end{bmatrix} + \frac{1}{2}\cdot(\begin{bmatrix}3\\\frac{5}{2}\end{bmatrix} - \begin{bmatrix}2\\3\end{bmatrix}) = \begin{bmatrix}\frac{5}{2}\\\frac{11}{4}\end{bmatrix}$ mit $f(\hat x_3^*) = 15.25$
+\end{itemize}
 
+Nach dem 4. Schritt erhält man den Simplex
 
-
+$$S_4 = (\begin{bmatrix}\frac{5}{2}\\\frac{11}{4}\end{bmatrix}, \begin{bmatrix}2\\\frac{7}{2}\end{bmatrix}, \begin{bmatrix}2\\\frac{5}{2}\end{bmatrix})$$
 
 \subsubsection{Aufgabe 7}
 Diskussion: Zuverlässigkeit und Rechenaufwand von \textit{Mutation-Selektion} und \textit{Nelder-Mead}
