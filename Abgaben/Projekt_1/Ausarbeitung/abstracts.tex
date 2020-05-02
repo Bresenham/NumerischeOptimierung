@@ -261,25 +261,27 @@ Richtung finden muss, durch zu große Sprünge verpasst er es im ungünstigen Fa
 \end{figure}
 
 \subsubsection{Aufgabe 4}
-Vergleich der Rechenzeit in Sekunden für die Funktionen $f, g, h$ mit dem Bisektions- und Mutation-Selektion-Verfahren sowie
+Vergleich der Rechenzeit für die Funktionen $f, g, h$ mit dem Bisektions- und Mutation-Selektion-Verfahren sowie
 \lstinline[basicstyle=\ttfamily\color{black}]|fminsearch|. Da das Bisektionsverfahren nur im eindimensionalen Fall funktioniert
 wird es nur auf $h$ angewendet.
 
 \begin{figure}[H]
   \centering
   \pgfplotstableread{
-    0 35569 8842    134984
-    1 30428 4689    34077
-    2 32920 6207    73787
+    0 0.024631  0.909518      0.544333
+    1 0.0       1212.082227   1.254401
+    2 0.0       16.337017     3.398372
   }\dataset
   \begin{tikzpicture}
     \begin{axis}[
         width=15cm,
         height=8cm,
-        ymin=0,
-        ymax=150000,
         ybar,
-        ylabel={Rechenzeit in s},
+        ymin=0,
+        ylabel={Rechenzeit in ms},
+        ytick=\empty,
+        extra y ticks={0,100,250,500,1000},
+        extra y tick labels={{0},{100},{250},{500},{1000}},
         xtick=data,
         xticklabels={
             h(x),
@@ -319,11 +321,11 @@ wird es nur auf $h$ angewendet.
         \addplot+ [nodes near coords=Mut.-Selekt.] table [y index=2] \dataset;
         \addplot+ [nodes near coords=fminsearch] table [y index=3] \dataset;
     \end{axis}
-    \draw[black, thick] (0.5625, -2.6) -- (1.71, -2.6); % 1.145
-    \draw[black, thick] (6.15, -2.6) -- (7.3, -2.6);
-    \draw[black, thick] (11.7375, -2.6) -- (12.89, -2.6);
+    \draw[black, thick] (0.56, -2.6) -- (1.72, -2.6); % 1.145
+    \draw[black, thick] (6.15, -2.6) -- (7.31, -2.6);
+    \draw[black, thick] (11.7375, -2.6) -- (12.95, -2.6);
 \end{tikzpicture}
-  \caption{Vergleich der Rechenzeit}
+  \caption{Vergleich der Rechenzeit für eine Genauigkeit von $10^{-6}$ (Durchschnitt aus 1000 Durchläufen)}
 \end{figure}
 
 

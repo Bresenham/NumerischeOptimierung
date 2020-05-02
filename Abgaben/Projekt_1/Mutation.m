@@ -25,7 +25,7 @@ function [min_val, k] = Mutation(f, start_x)
     f_x_old_val = -1000;
 
     % Abbruchkriterien: Differenzbetrag oder Anzahl Iterationen
-    while norm(f_x_val - f_x_old_val) > 1e-4
+    while norm(f_x_val - f_x_old_val) > 1e-6
     % while k <= k_max
     
         x_hat = hat(x);
@@ -42,7 +42,7 @@ function [min_val, k] = Mutation(f, start_x)
         
         % Verstärkungsfaktor wird bis zu einer gewissen Grenze auf alpha
         % multipliziert
-        % alpha = min([alpha * 1.0125, 0.5]);
+        alpha = min([alpha * 1.05, 0.5]);
         
         k = k + 1;
     end
