@@ -71,7 +71,7 @@ sums = zeros(1000, 1);
 options.TolX = 1e-6;
 options.MaxFunEvals = 10000;
 options.MaxIter = 10000;
-for i=1:1000
+for i=1:1
     tic;
     min = fminsearch2(u, u0, options);
     %min = Bisektion(h, h0);

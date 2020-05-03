@@ -212,7 +212,8 @@ das Projekt \textit{Ableitungsfreie Methoden} heißt), könnte man ein Verfahren
   \caption{Einfluss von $\alpha$ auf den Durchschnitt von 200 Durchläufen für eine Genauigkeit von $10^{-4}$}
 \end{figure}
 
-Zu Beginn von sind die Sprünge der Funktionswerte relativ groß, werden dann aber immer kleiner:
+Zu Beginn von \lstinline[basicstyle=\ttfamily\color{black}]|Mutation-Selektion| sind die Sprünge der Funktionswerte relativ groß, werden dann aber
+immer kleiner:
 
 \begin{figure}[H]
   \centering
@@ -236,7 +237,7 @@ Zu Beginn von sind die Sprünge der Funktionswerte relativ groß, werden dann ab
     f & [2.98 1.79] & 0.77\\
     \hline
   \end{tabular}
-  \caption{Die ersten Schritte von \lstinline[basicstyle=\ttfamily\color{black}]|Mutation| mit $\alpha = 1$}
+  \caption{Die ersten Schritte eines Aufrufes von \lstinline[basicstyle=\ttfamily\color{black}]|Mutation-Selektion| mit $\alpha = 1$}
 \end{figure}
 
 Eine Strategie könnte daher sein, $\alpha$ erst klein zu wählen (z.B. 0.125) und dann mit jeder Iteration zu vergrößern dabei aber
@@ -438,7 +439,7 @@ erhalten. Direkt danach wird nun aber die Standardabweichung der Funktionswerte 
 \lstinline[basicstyle=\ttfamily\color{black}]|options.TolX| verglichen (siehe
 \lstinline[basicstyle=\ttfamily\color{black}]|fminsearch2.m| Zeile 328ff). Dieses Abbruchkriterium ist ungeeignet für Fuktionen,
 die über einen größeren Wertebereich sehr ähnliche Funktionswerte haben (d.h. sehr flach sind). Daraus folgt, dass der Mittelwert
-$\bar f$ sehr ähnlich zu den einzelnen Funktionswerten ist, die Standardabweichung ist also niedrig obwohl die Eckpunkte des Simlex
+$\bar f$ sehr ähnlich zu den einzelnen Funktionswerten ist, die Standardabweichung ist also niedrig obwohl die Eckpunkte des Simplex
 weit auseinander liegen können.
 \begin{figure}[H]
   \centering
