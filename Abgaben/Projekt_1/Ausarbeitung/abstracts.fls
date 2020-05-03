@@ -92,12 +92,66 @@ INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\fontenc.sty
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\latex\cantarell\t1cantarell-tlf.fd
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\latex\cantarell\t1cantarell-tlf.fd
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\gnome\cantarell\Cantarell-Regular-T1-TLF.tfm
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\latex\hyperref\hyperref.sty
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\latex\hyperref\hyperref.sty
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\generic\ltxcmds\ltxcmds.sty
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\generic\ltxcmds\ltxcmds.sty
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pdftexcmds\pdftexcmds.sty
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pdftexcmds\pdftexcmds.sty
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\generic\infwarerr\infwarerr.sty
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\generic\infwarerr\infwarerr.sty
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\generic\kvsetkeys\kvsetkeys.sty
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\generic\kvsetkeys\kvsetkeys.sty
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\generic\kvdefinekeys\kvdefinekeys.sty
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\generic\kvdefinekeys\kvdefinekeys.sty
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pdfescape\pdfescape.sty
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pdfescape\pdfescape.sty
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\latex\hycolor\hycolor.sty
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\latex\hycolor\hycolor.sty
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\latex\letltxmacro\letltxmacro.sty
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\latex\letltxmacro\letltxmacro.sty
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\latex\auxhook\auxhook.sty
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\latex\auxhook\auxhook.sty
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\latex\kvoptions\kvoptions.sty
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\latex\kvoptions\kvoptions.sty
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\latex\hyperref\pd1enc.def
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\latex\hyperref\pd1enc.def
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\generic\intcalc\intcalc.sty
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\generic\intcalc\intcalc.sty
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\generic\etexcmds\etexcmds.sty
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\generic\etexcmds\etexcmds.sty
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\latex\url\url.sty
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\latex\url\url.sty
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\generic\bitset\bitset.sty
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\generic\bitset\bitset.sty
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\generic\bigintcalc\bigintcalc.sty
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\generic\bigintcalc\bigintcalc.sty
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\generic\atbegshi\atbegshi.sty
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\generic\atbegshi\atbegshi.sty
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\latex\hyperref\hpdftex.def
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\latex\hyperref\hpdftex.def
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\latex\atveryend\atveryend.sty
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\latex\atveryend\atveryend.sty
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\latex\rerunfilecheck\rerunfilecheck.sty
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\latex\rerunfilecheck\rerunfilecheck.sty
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\generic\uniquecounter\uniquecounter.sty
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\generic\uniquecounter\uniquecounter.sty
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\latex\psnfss\helvet.sty
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\latex\psnfss\helvet.sty
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\latex\sansmath\sansmath.sty
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\latex\sansmath\sansmath.sty
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\amsfonts.sty
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\amsfonts.sty
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\latex\movie15\movie15.sty
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\latex\movie15\movie15.sty
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\ifthen.sty
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\ifthen.sty
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\generic\iftex\ifpdf.sty
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\generic\iftex\ifpdf.sty
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\ifdraft.sty
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\ifdraft.sty
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\latex\ms\everyshi.sty
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\latex\ms\everyshi.sty
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pgf\frontendlayer\tikz.sty
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pgf\frontendlayer\tikz.sty
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pgf\basiclayer\pgf.sty
@@ -107,8 +161,6 @@ INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pgf\utilities\pg
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\utilities\pgfutil-common.tex
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\utilities\pgfutil-common-lists.tex
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\utilities\pgfutil-latex.def
-INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\latex\ms\everyshi.sty
-INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\latex\ms\everyshi.sty
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\utilities\pgfrcs.code.tex
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\utilities\pgfrcs.code.tex
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\pgf.revision.tex
@@ -313,6 +365,19 @@ INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\context\base\mkii\supp
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\context\base\mkii\supp-pdf.mkii
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\latex\epstopdf-pkg\epstopdf-base.sty
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\latex\epstopdf-pkg\epstopdf-base.sty
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\latex\hyperref\nameref.sty
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\latex\hyperref\nameref.sty
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\latex\refcount\refcount.sty
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\latex\refcount\refcount.sty
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\generic\gettitlestring\gettitlestring.sty
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\generic\gettitlestring\gettitlestring.sty
+INPUT c:\Users\test\Documents\Studium\NumerischeOptimierung\Abgaben\Projekt_1\Ausarbeitung\abstracts.out
+INPUT c:\Users\test\Documents\Studium\NumerischeOptimierung\Abgaben\Projekt_1\Ausarbeitung\abstracts.out
+INPUT c:\Users\test\Documents\Studium\NumerischeOptimierung\Abgaben\Projekt_1\Ausarbeitung\abstracts.out
+INPUT c:\Users\test\Documents\Studium\NumerischeOptimierung\Abgaben\Projekt_1\Ausarbeitung\abstracts.out
+INPUT c:\Users\test\Documents\Studium\NumerischeOptimierung\Abgaben\Projekt_1\Ausarbeitung\abstracts.out
+INPUT c:\Users\test\Documents\Studium\NumerischeOptimierung\Abgaben\Projekt_1\Ausarbeitung\abstracts.out
+OUTPUT c:\Users\test\Documents\Studium\NumerischeOptimierung\Abgaben\Projekt_1\Ausarbeitung\abstracts.out
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\gnome\cantarell\Cantarell-Bold-T1-TLF.tfm
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\gnome\cantarell\Cantarell-Bold-T1-TLF-Slanted.tfm
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\gnome\cantarell\Cantarell-Regular-T1-TLF.tfm
@@ -366,7 +431,14 @@ INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\latex\cantarell\ts1can
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\gnome\cantarell\Cantarell-Regular-TS1-TLF.tfm
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\vf\gnome\cantarell\Cantarell-Regular-TS1-TLF.vf
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\gnome\cantarell\Cantarell-Regular-TS1-TLF--base.tfm
+INPUT images\Subrandom_2D.png
+INPUT .\images\Subrandom_2D.png
+INPUT .\images\Subrandom_2D.png
+INPUT .\images\Subrandom_2D.png
+INPUT .\images\Subrandom_2D.png
 INPUT c:\Users\test\Documents\Studium\NumerischeOptimierung\Abgaben\Projekt_1\Ausarbeitung\abstracts.aux
+INPUT c:\Users\test\Documents\Studium\NumerischeOptimierung\Abgaben\Projekt_1\Ausarbeitung\abstracts.out
+INPUT c:\Users\test\Documents\Studium\NumerischeOptimierung\Abgaben\Projekt_1\Ausarbeitung\abstracts.out
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\enc\dvips\cantarell\a_tv3tjz.enc
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\enc\dvips\cantarell\a_5r5lpu.enc
 INPUT C:\Users\test\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ectt1200.pk

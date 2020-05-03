@@ -14,10 +14,12 @@
 \usepackage[utf8]{inputenc}
 \usepackage[default]{cantarell} %% Use option "defaultsans" to use cantarell as sans serif only
 \usepackage[T1]{fontenc}
-
+\usepackage{hyperref}
 \usepackage{helvet}
 \usepackage[eulergreek]{sansmath}
 \usepackage{amsfonts}
+\usepackage{movie15}
+\usepackage{url}
 
 \usepackage{tikz}
 \usetikzlibrary{calc,positioning,shapes,decorations.pathreplacing}
@@ -158,7 +160,8 @@ $10^{-8}$.\\\par
     Differenzbetrag & g & $10^{-6}$ & 882\\
     \hline
   \end{tabular}
-  \caption{Einfluss des Zualls auf die Anzahl an Durchläufen für eine Genauigkeit von $10^{-6}$ bei festem $\alpha$}
+  \caption{Einfluss des Zufalls auf die Anzahl an Durchläufen für eine Genauigkeit von $10^{-6}$ bei festem $\alpha$}
+  \label{fig:mutSelTbl}
 \end{figure}
 
 Durch die Wahl des Differenzbetrages kann man vom Zufall profitieren und mit verhältnismäßig wenigen Schritten zu einer guten Genauigkeit kommen.
@@ -425,6 +428,7 @@ wird es nur auf $h$ angewendet.
     \end{tikzpicture}
   \end{minipage}
   \caption{Vergleich der Rechenzeit für eine Genauigkeit von $10^{-6}$ (Durchschnitt aus 1000 Durchläufen)}
+  \label{fig:performanceTbl}
 \end{figure}
 
 
@@ -454,7 +458,7 @@ weit auseinander liegen können.
       \addplot3[surf, fill opacity=.5, domain=0.01:30, y domain=0.01:20] { (sqrt(x) + sqrt(y)) + 15*exp( -sqrt( ln(x+y)^2 ) ) };
     \end{axis}
   \end{tikzpicture}
-  \caption{Beispiel für eine Funktion, bei der das Standardabweichungs-Kriterium problematisch sein könnte: $f(x,y) = (\sqrt{x} + \sqrt{y}) + 15\cdot e^{-\sqrt{\ln(x+y)^2}}$}
+  \caption{Beispiel für eine Funktion, bei der das Standardabweichungs-Kriterium problematisch ist: $f(x,y) = (\sqrt{x} + \sqrt{y}) + 15\cdot e^{-\sqrt{\ln(x+y)^2}}$}
 \end{figure}
 
 Die Parameter des Nelder-Mead-Verfahrens sind auf $\rho = 1$, $\chi = 2$, $\psi = 0.5$ und $\sigma = 0.5$ in Zeile 204 initialisiert.
@@ -509,9 +513,11 @@ Die Parameter des Nelder-Mead-Verfahrens sind auf $\rho = 1$, $\chi = 2$, $\psi 
   \caption{Einfluss der Parameter auf die Rechenzeit (Durchschnitt aus 1000 Durchläufen, Genauigkeit $10^{-6}$)}
 \end{figure}
 
-Die Parameter scheinen bereits sehr gut gewählt worden zu sein. Eine Änderung einzelner Parameter scheint unterschiedliche Auswirkungen
+Die Parameter sind bereits sehr gut gewählt. Eine Änderung einzelner Parameter scheint unterschiedliche Auswirkungen
 auf die Laufzeit zu haben. Eine Erhöhung von $\psi$ verdoppelte die Rechenzeit gegenüber den ursprünglichen Werten. Besonders
-schlecht schnitt auch eine Verringerung von $\chi$ ab. Die Änderung anderer Parameter hatte keinen besonders großen Einfluss.
+schlecht schnitt auch eine Verringerung von $\chi$ ab. Die Änderung anderer Parameter hatte keinen besonders großen Einfluss.\par
+Wenn \lstinline[basicstyle=\ttfamily\color{black}]|options.Display='iter'| gesetzt ist, gibt
+\lstinline[basicstyle=\ttfamily\color{black}]|fminsearch2| nun auch die Eckpunkte des Simplex aus.
 
 \subsubsection{Aufgabe 6}
 Berechnet werden die ersten vier Iterationen des Nelder-Mead-Algorithmus von
@@ -571,7 +577,24 @@ Nach dem 4. Schritt erhält man den Simplex
 $$S_4 = (\begin{bmatrix}\frac{5}{2}\\\frac{11}{4}\end{bmatrix}, \begin{bmatrix}2\\\frac{7}{2}\end{bmatrix}, \begin{bmatrix}2\\\frac{5}{2}\end{bmatrix})$$
 
 \subsubsection{Aufgabe 7}
-Diskussion: Zuverlässigkeit und Rechenaufwand von \textit{Mutation-Selektion} und \textit{Nelder-Mead}
-
+Wie aus \autoref{fig:mutSelTbl} und \autoref{fig:performanceTbl} hervorgeht, ist \lstinline[basicstyle=\ttfamily\color{black}]|Mutation-Selektion|
+durchschnittlich wesentlich langsamer als \lstinline[basicstyle=\ttfamily\color{black}]|fminsearch| und auch sehr unzuverlässig was die Anzahl der
+Iterationen angeht, die es zum Finden einer passablen Lösung benötigt. Schuld daran ist natürlich der Zufall, der mit jedem Durchlauf unterschiedliche
+Richtungsvektoren ausgibt. Wenn man ganz großes Pech hat, erhält man nie eine Abstiegsrichtung und der Algorithmus konvergiert nicht. Deswegen sollte
+\lstinline[basicstyle=\ttfamily\color{black}]|Mutation-Selektion| mit einer oberen Schranke an möglichen Iterationen versehen werden.\par
+Durch einen anderen Zufallsalgorithmus könnte das Verfahren aber zuverlässiger gemacht werden. In der Computergrafik z.B. werden zum Erstellen von
+realistischen Bildern Strahlen berechnet die eine zufällige Startrichtung erhalten und in der virtuellen Szene an Objekten abprallen und so
+die Beleuchtung simulieren (Monte-Carlo Integration). Es konnte gezeigt werden, das durch sog. \textit{Quasirandom number generators}
+die Bildqualität gesteigert wird da die generierten Zahlen die verfügbare Fläche $[0, 1]^2$ gleichmäßiger ausfüllen und man somit verhindert, dass
+Zufallszahlen doppelt generiert werden.\par
+Auf \lstinline[basicstyle=\ttfamily\color{black}]|Mutation-Selektion| übertragen bedeutet das, dass die Menge an verfügbaren Richtungen gleichmäßiger
+abgetastet wird.
+\begin{figure}[H]
+  \centering
+  \includegraphics[height=6cm]{Subrandom_2D.png}
+  \caption{Links: \textit{additive recurrent sequence}, Rechts: Zufallszahlen. Aus: \protect\url{https://en.wikipedia.org/wiki/Low-discrepancy_sequence}}
+\end{figure}
+Wie in der Vorlesung besprochen gibt es keinen generellen Konvergenzbeweis für das Nelder-Mead-Verfahren aber es ist wesentlich zuverlässiger
+in der Vorgehensweise und der Rechenaufwand ist deutlich geringer als im Vergleich zu \lstinline[basicstyle=\ttfamily\color{black}]|Mutation-Selektion|.
 
 \end{document}

@@ -34,11 +34,11 @@ g0 = [4,2];
 iterations = 1;
 vals = zeros(iterations, 1);
 for i=1:iterations
-    fprintf("Funktion g:\n");
-    fnct = f;
-    % [min, k] = Mutation(fnct, f0);
-    fprintf("Minimum x = [ %s] mit g(x) = %0.8f after %d steps.\n", sprintf("%0.4f ", min), fnct(min), k);
-    vals(i) = k;
+%     fprintf("Funktion g:\n");
+%     fnct = f;
+%     [min, k] = Mutation(fnct, f0);
+%     fprintf("Minimum x = [ %s] mit g(x) = %0.8f after %d steps.\n", sprintf("%0.4f ", min), fnct(min), k);
+%     vals(i) = k;
 end
 fprintf("Average iteration count: %0.2f\n", sum(vals) / iterations);
 
@@ -64,15 +64,21 @@ fprintf("Aufgabe 4\n");
 % Aufgabe 5
 % Siehe Datei 'fminsearch2.m' und Erläuterung in Ausarbeitung
 
+u = @(x) ( sqrt(x(1)) + sqrt(x(2)) ) + 15 * exp( -sqrt( log(x(1)+x(2)).^2 ) );
+u0 = [5,5];
+
 sums = zeros(1000, 1);
 options.TolX = 1e-6;
+options.MaxFunEvals = 10000;
+options.MaxIter = 10000;
 for i=1:1000
     tic;
-    min = fminsearch2(f, f0, options);
+    min = fminsearch2(u, u0, options);
     %min = Bisektion(h, h0);
     %min = Mutation(g, g0);
     elapsed = toc;
     sums(i) = elapsed;
+    disp(min);
 end
 fprintf("\n");
 fprintf("SUM: %0.6fms\n", sum(sums) * 1000 / 1000);
