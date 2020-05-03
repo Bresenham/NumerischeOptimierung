@@ -448,13 +448,65 @@ weit auseinander liegen können.
         extra y ticks={0,10,20,25},
         extra y tick labels={{0},{10},{20}},
         ztick=\empty,
-        extra z ticks={0, 5,10,15},
+        extra z ticks={0,5,10,15},
         extra z tick labels={{0},{5},{10},{15}}
       ]
       \addplot3[surf, fill opacity=.5, domain=0.01:30, y domain=0.01:20] { (sqrt(x) + sqrt(y)) + 15*exp( -sqrt( ln(x+y)^2 ) ) };
     \end{axis}
   \end{tikzpicture}
   \caption{Beispiel für eine Funktion, bei der das Standardabweichungs-Kriterium problematisch sein könnte: $f(x,y) = (\sqrt{x} + \sqrt{y}) + 15\cdot e^{-\sqrt{\ln(x+y)^2}}$}
+\end{figure}
+
+Die Parameter des Nelder-Mead-Verfahrens sind auf $\rho = 1$, $\chi = 2$, $\psi = 0.5$ und $\sigma = 0.5$ in Zeile 204 initialisiert.
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[
+        xbar,
+        xmin=0,
+        ymin=0,
+        width=\textwidth,
+        height=6cm,
+        bar width={10pt},
+        nodes near coords,
+        nodes near coords align=horizontal,
+        nodes near coords style={
+            anchor=west,
+        },
+        ytick={0},
+        yticklabels={f(x)},
+        xlabel={Rechenzeit in ms},
+        xtick={0, 0.25, 0.5, 0.75, 1.0, 1.25, 1.5, 2.0, 2.5},
+        xticklabels={0, 0.25, 0.5, 0.75, 1.0, 1.25, 1.5, 2.0, 2.5},
+        point meta=explicit symbolic,
+    ]
+        \addplot [draw=black,fill=black!80] coordinates {
+          (1.088870,0) [$\rho=1$,$\chi=2$,$\psi=0.5$,$\sigma=0.5$]
+        };
+        \addplot [draw=black,fill=black!60] coordinates {
+          (1.282939,0) [$\rho=0.8$,$\chi=2$,$\psi=0.5$,$\sigma=0.5$]
+        };
+        \addplot [draw=black,fill=black!40] coordinates {
+          (1.515926,0) [$\rho=1$,$\chi=1.5$,$\psi=0.5$,$\sigma=0.5$]
+        };
+        \addplot [draw=black,fill=black!20] coordinates {
+          (1.113048,0) [$\rho=1$,$\chi=2$,$\psi=0.3$,$\sigma=0.5$]
+        };
+        \addplot [draw=black,fill=black!10] coordinates {
+          (1.123629,0) [$\rho=1$,$\chi=2$,$\psi=0.5$,$\sigma=0.3$]
+        };
+        \addplot [draw=black,fill=black!5] coordinates {
+          (1.091666,0) [$\rho=1$,$\chi=2$,$\psi=0.5$,$\sigma=0.7$]
+        };
+        \addplot [draw=black,fill=black!2] coordinates {
+          (2.115479,0) [$\rho=1$,$\chi=2$,$\psi=0.7$,$\sigma=0.5$]
+        };
+        \addplot [draw=black,fill=black!1] coordinates {
+          (1.104184,0) [$\rho=1$,$\chi=2.5$,$\psi=0.5$,$\sigma=0.5$]
+        };
+    \end{axis}
+  \end{tikzpicture}
+  \caption{Einfluss der Parameter auf die Rechenzeit (Durchschnitt aus 1000 Durchläufen, Genauigkeit $10^{-6}$)}
 \end{figure}
 
 \subsubsection{Aufgabe 6}
