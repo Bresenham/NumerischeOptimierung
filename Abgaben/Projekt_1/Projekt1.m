@@ -61,10 +61,6 @@ end
 fprintf("\n");
 fprintf("SUM: %0.6fms\n", sum(sums) * 1000 / 1000);
 
-% tic;
-% min = Bisektion(h, h0);
-% toc;
-
 % Aufgabe 5
 % Siehe Datei 'fminsearch2.m' und Erläuterung in Ausarbeitung
 % options.Display = 'iter';

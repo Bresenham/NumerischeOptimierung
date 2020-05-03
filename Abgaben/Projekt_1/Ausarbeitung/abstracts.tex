@@ -324,6 +324,8 @@ wird es nur auf $h$ angewendet.
             \addplot+ [nodes near coords=Mut.-Selekt.] table [y index=2] \dataseth;
             \addplot+ [nodes near coords=fminsearch] table [y index=3] \dataseth;
         \end{axis}
+        \node[black, rotate=90] (impl) at (0.79,1.025) {0.025};
+        \draw[-{Latex}, thick, black] (impl.west) -- ([yshift=-0.2cm]impl.west);
     \end{tikzpicture}
   \end{minipage}
   \begin{minipage}{.3\textwidth}
@@ -371,7 +373,7 @@ wird es nur auf $h$ angewendet.
             \addplot+ [nodes near coords=Mut.-Selekt.] table [y index=2] \datasetf;
             \addplot+ [nodes near coords=fminsearch] table [y index=3] \datasetf;
         \end{axis}
-        \node[black, rotate=90] (impl) at (1.4,0.8) {1.25};
+        \node[black, rotate=90] (impl) at (1.425,0.8) {1.25};
         \draw[-{Latex}, thick, black] (impl.west) -- ([yshift=-0.2cm]impl.west);
     \end{tikzpicture}
   \end{minipage}
@@ -427,8 +429,33 @@ wird es nur auf $h$ angewendet.
 
 
 \subsubsection{Aufgabe 5}
-Beispiel angeben bei dem Abbruchkriterium ungeeignet ist...
-\\
+Die Bedingung der \lstinline[basicstyle=\ttfamily\color{black}]|while|-Schleife bezüglich der Anzahl an Iterationen bleibt
+erhalten. Direkt danach wird nun aber die Standardabweichung der Funktionswerte an den Ecken berechnet und mit der Toleranz
+\lstinline[basicstyle=\ttfamily\color{black}]|options.TolX| verglichen (siehe
+\lstinline[basicstyle=\ttfamily\color{black}]|fminsearch2.m| Zeile 328ff). Dieses Abbruchkriterium ist ungeeignet für Fuktionen,
+die über einen größeren Wertebereich sehr ähnliche Funktionswerte haben (d.h. sehr flach sind). Daraus folgt, dass der Mittelwert
+$\bar f$ sehr ähnlich zu den einzelnen Funktionswerten ist, die Standardabweichung ist also niedrig obwohl die Eckpunkte des Simlex
+weit auseinander liegen können.
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[
+        view={60}{30}, ylabel={y}, xlabel={x}, zlabel={f(x,y)}, width=6cm, height=6cm, samples=42,
+        xtick=\empty,
+        extra x ticks={10,20,3},
+        extra x tick labels={{10},{20},{30}},
+        ytick=\empty,
+        extra y ticks={0,10,20,25},
+        extra y tick labels={{0},{10},{20}},
+        ztick=\empty,
+        extra z ticks={0, 5,10,15},
+        extra z tick labels={{0},{5},{10},{15}}
+      ]
+      \addplot3[surf, fill opacity=.5, domain=0.01:30, y domain=0.01:20] { (sqrt(x) + sqrt(y)) + 15*exp( -sqrt( ln(x+y)^2 ) ) };
+    \end{axis}
+  \end{tikzpicture}
+  \caption{Beispiel für eine Funktion, bei der das Standardabweichungs-Kriterium problematisch sein könnte: $f(x,y) = (\sqrt{x} + \sqrt{y}) + 15\cdot e^{-\sqrt{\ln(x+y)^2}}$}
+\end{figure}
 
 \subsubsection{Aufgabe 6}
 Berechnet werden die ersten vier Iterationen des Nelder-Mead-Algorithmus von
