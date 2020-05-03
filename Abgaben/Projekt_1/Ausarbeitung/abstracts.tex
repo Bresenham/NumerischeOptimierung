@@ -467,7 +467,7 @@ Die Parameter des Nelder-Mead-Verfahrens sind auf $\rho = 1$, $\chi = 2$, $\psi 
         ymin=0,
         width=\textwidth,
         height=6cm,
-        bar width={10pt},
+        bar width={12pt},
         nodes near coords,
         nodes near coords align=horizontal,
         nodes near coords style={
@@ -486,7 +486,7 @@ Die Parameter des Nelder-Mead-Verfahrens sind auf $\rho = 1$, $\chi = 2$, $\psi 
         \addplot [draw=black,fill=black!60] coordinates {
           (1.282939,0) [$\rho=0.8$,$\chi=2$,$\psi=0.5$,$\sigma=0.5$]
         };
-        \addplot [draw=black,fill=black!40] coordinates {
+        \addplot [draw=black,fill=black!40, every node near coord/.append style={xshift=-5.55cm}] coordinates {
           (1.515926,0) [$\rho=1$,$\chi=1.5$,$\psi=0.5$,$\sigma=0.5$]
         };
         \addplot [draw=black,fill=black!20] coordinates {
@@ -498,7 +498,7 @@ Die Parameter des Nelder-Mead-Verfahrens sind auf $\rho = 1$, $\chi = 2$, $\psi 
         \addplot [draw=black,fill=black!5] coordinates {
           (1.091666,0) [$\rho=1$,$\chi=2$,$\psi=0.5$,$\sigma=0.7$]
         };
-        \addplot [draw=black,fill=black!2] coordinates {
+        \addplot [draw=black,fill=black!2, every node near coord/.append style={xshift=-5.225cm}] coordinates {
           (2.115479,0) [$\rho=1$,$\chi=2$,$\psi=0.7$,$\sigma=0.5$]
         };
         \addplot [draw=black,fill=black!1] coordinates {
@@ -508,6 +508,10 @@ Die Parameter des Nelder-Mead-Verfahrens sind auf $\rho = 1$, $\chi = 2$, $\psi 
   \end{tikzpicture}
   \caption{Einfluss der Parameter auf die Rechenzeit (Durchschnitt aus 1000 Durchläufen, Genauigkeit $10^{-6}$)}
 \end{figure}
+
+Die Parameter scheinen bereits sehr gut gewählt worden zu sein. Eine Änderung einzelner Parameter scheint unterschiedliche Auswirkungen
+auf die Laufzeit zu haben. Eine Erhöhung von $\psi$ verdoppelte die Rechenzeit gegenüber den ursprünglichen Werten. Besonders
+schlecht schnitt auch eine Verringerung von $\chi$ ab. Die Änderung anderer Parameter hatte keinen besonders großen Einfluss.
 
 \subsubsection{Aufgabe 6}
 Berechnet werden die ersten vier Iterationen des Nelder-Mead-Algorithmus von
