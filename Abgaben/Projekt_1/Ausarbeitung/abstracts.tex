@@ -242,7 +242,7 @@ immer kleiner:
 
 Eine Strategie könnte daher sein, $\alpha$ erst klein zu wählen (z.B. 0.125) und dann mit jeder Iteration zu vergrößern dabei aber
 nicht über eine obere Schranke zu kommen (z.B. 0.5). Dies geschieht unter der Annahme, das der Algorithmus zuerst die richtige
-Richtung finden muss, durch zu große Sprünge verpasst er es im ungünstigen Fall.
+Richtung finden muss, durch zu große Sprünge werden diese im ungünstigen Fall verpasst d.h. man geht zu weit in eine Richtung.
 
 \begin{figure}[H]
   \centering
@@ -263,6 +263,9 @@ Richtung finden muss, durch zu große Sprünge verpasst er es im ungünstigen Fa
   \end{tabular}
   \caption{Einfluss von $\alpha$ und einem Verstärkungsfaktor auf den Durchschnitt an Iterationen für eine Genauigkeit von $10^{-4}$}
 \end{figure}
+
+Man sieht, dass durch einen Verstärkungsfaktor zwischen in [1.025, 1.05] die Anzahl an Iterationen reduziert werden konnte. Wird der
+Faktor zu klein gewählt (d.h. $\alpha$ bleibt über einen großen Teil des Durchlaufs relativ klein) verlängert sich die Rechenzeit wieder.
 
 \subsubsection{Aufgabe 4}
 Vergleich der Rechenzeit für die Funktionen $f, g, h$ mit dem Bisektions- und Mutation-Selektion-Verfahren sowie
