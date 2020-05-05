@@ -14,7 +14,7 @@ function [min_val, k] = Mutation(f, start_x)
     
     k = 1;
     k_max = 15000;
-    alpha = 0.125;
+    alpha = 0.25;
     dim = numel(start_x);
     
     rand_vec = @(dim, from, to) from + (to - from) * rand(1, dim);
@@ -37,12 +37,13 @@ function [min_val, k] = Mutation(f, start_x)
             f_x_old_val = f_x;
             f_x_val = f_x_hat;
             x = x_hat;
-            % fprintf("\tx = [ %s] mit f(x) = %0.8f\n", sprintf("%0.4f ", x), f(x));
+            fprintf("%0.4f,\t%0.4f,\t%0.4f\n", x(1), x(2), f(x));
+            %fprintf("\tx = [ %s] mit f(x) = %0.8f\n", sprintf("%0.4f ", x), f(x));
         end
         
         % Verstärkungsfaktor wird bis zu einer gewissen Grenze auf alpha
         % multipliziert
-        alpha = min([alpha * 1.05, 0.5]);
+        % alpha = min([alpha * 1.05, 0.5]);
         
         k = k + 1;
     end

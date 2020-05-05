@@ -34,11 +34,11 @@ g0 = [4,2];
 iterations = 1;
 vals = zeros(iterations, 1);
 for i=1:iterations
-%     fprintf("Funktion g:\n");
-%     fnct = f;
-%     [min, k] = Mutation(fnct, f0);
-%     fprintf("Minimum x = [ %s] mit g(x) = %0.8f after %d steps.\n", sprintf("%0.4f ", min), fnct(min), k);
-%     vals(i) = k;
+     fprintf("Funktion f:\n");
+     fnct = f;
+     [min, k] = Mutation(fnct, f0);
+     fprintf("Minimum x = [ %s] mit f(x) = %0.8f after %d steps.\n", sprintf("%0.4f ", min), fnct(min), k);
+     vals(i) = k;
 end
 fprintf("Average iteration count: %0.2f\n", sum(vals) / iterations);
 
@@ -73,7 +73,7 @@ options.MaxFunEvals = 10000;
 options.MaxIter = 10000;
 for i=1:1
     tic;
-    min = fminsearch2(u, u0, options);
+    %min = fminsearch2(u, u0, options);
     %min = Bisektion(h, h0);
     %min = Mutation(g, g0);
     elapsed = toc;
