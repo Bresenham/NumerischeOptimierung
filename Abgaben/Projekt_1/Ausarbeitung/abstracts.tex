@@ -269,15 +269,26 @@ Faktor zu klein gewählt (d.h. $\alpha$ bleibt über einen großen Teil des Durc
 
 \begin{figure}[H]
   \centering
-  \begin{minipage}[t]{.32\textwidth}
-    \begin{tikzpicture}[scale=0.625]
+  \begin{minipage}[t]{.3625\textwidth}
+    \begin{tikzpicture}[scale=0.6125]
       \begin{axis}[
-        view={60}{30}
+        view={60}{30},
+        xtick=\empty,
+        extra x ticks={2,4},
+        extra x tick labels={{2},{4}},
+        ytick=\empty,
+        extra y ticks={1,2,3,4,5},
+        extra y tick labels={{1},{2},{3},{4},{5}},
+        ztick=\empty,
+        extra z ticks={0,250,500},
+        extra z tick labels={{0},{250},{500}},
+        clip=false,
+        ylabel={y}, xlabel={x}, zlabel={f(x,y)}
       ]
       \addplot3[
-        surf, fill opacity=.5, domain=1:5, ylabel={y}, xlabel={x}, zlabel={f(x,y)}, width=3cm, height=3cm, samples=32] { (x^2 + y - 11)^2 + (x + y^2 - 7)^2 };
+        surf, fill opacity=.5, domain=1:5, width=3cm, height=3cm, samples=32] { (x^2 + y - 11)^2 + (x + y^2 - 7)^2 };
       \addplot3[
-        only marks, mark size=2pt, mark=*, mark options={fill=red, draw=black}, width=3cm, height=3cm
+        only marks, mark size=1.5pt, mark=*, mark options={fill=red, draw=black}, width=3cm, height=3cm
       ] table [x=X, y=Y, z=Z, col sep=comma] {
               X,        Y,      Z
               1.9962,	3.9797,	126.5975
@@ -357,15 +368,23 @@ Faktor zu klein gewählt (d.h. $\alpha$ bleibt über einen großen Teil des Durc
     \end{tikzpicture}
     \caption{$\alpha = 0.125$ mit Verstärkungsfaktor 1.05}
   \end{minipage}
-  \begin{minipage}[t]{.32\textwidth}
-    \begin{tikzpicture}[scale=0.625]
+  \begin{minipage}[t]{.29\textwidth}
+    \begin{tikzpicture}[scale=0.6125]
       \begin{axis}[
-        view={60}{30}
+        view={60}{30},
+        xtick=\empty,
+        extra x ticks={2,4},
+        extra x tick labels={{2},{4}},
+        ytick=\empty,
+        extra y ticks={1,2,3,4,5},
+        extra y tick labels={{1},{2},{3},{4},{5}},
+        ztick=\empty,
+        ylabel={y}, xlabel={x}
       ]
       \addplot3[
-        surf, fill opacity=.5, domain=1:5, ylabel={y}, xlabel={x}, zlabel={f(x,y)}, width=3cm, height=3cm, samples=32] { (x^2 + y - 11)^2 + (x + y^2 - 7)^2 };
+        surf, fill opacity=.5, domain=1:5, width=3cm, height=3cm, samples=32] { (x^2 + y - 11)^2 + (x + y^2 - 7)^2 };
       \addplot3[
-        only marks, mark size=2pt, mark=*, mark options={fill=red, draw=black}, width=3cm, height=3cm
+        only marks, mark size=1.5pt, mark=*, mark options={fill=red, draw=black}, width=3cm, height=3cm
       ] table [x=X, y=Y, z=Z, col sep=comma] {
               X,        Y,      Z
               1.9476,	3.9652,	124.3630
@@ -451,15 +470,23 @@ Faktor zu klein gewählt (d.h. $\alpha$ bleibt über einen großen Teil des Durc
     \end{tikzpicture}
     \caption{$\alpha = 0.125$}
   \end{minipage}
-  \begin{minipage}[t]{.32\textwidth}
-    \begin{tikzpicture}[scale=0.625]
+  \begin{minipage}[t]{.29\textwidth}
+    \begin{tikzpicture}[scale=0.6125]
       \begin{axis}[
-        view={60}{30}
+        view={60}{30},
+        xtick=\empty,
+        extra x ticks={2,4},
+        extra x tick labels={{2},{4}},
+        ytick=\empty,
+        extra y ticks={1,2,3,4,5},
+        extra y tick labels={{1},{2},{3},{4},{5}},
+        ztick=\empty,
+        ylabel={y}, xlabel={x}
       ]
       \addplot3[
-        surf, fill opacity=.5, domain=1:5, ylabel={y}, xlabel={x}, zlabel={f(x,y)}, width=3cm, height=3cm, samples=32] { (x^2 + y - 11)^2 + (x + y^2 - 7)^2 };
+        surf, fill opacity=.5, domain=1:5, width=3cm, height=3cm, samples=32] { (x^2 + y - 11)^2 + (x + y^2 - 7)^2 };
       \addplot3[
-        only marks, mark size=2pt, mark=*, mark options={fill=red, draw=black}, width=3cm, height=3cm
+        only marks, mark size=1.5pt, mark=*, mark options={fill=red, draw=black}, width=3cm, height=3cm
       ] table [x=X, y=Y, z=Z, col sep=comma] {
               X,        Y,      Z
               2.0223,	3.8754,	110.0305

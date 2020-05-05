@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7400 64-bit) (preloaded format=pdflatex 2020.4.22)  5 MAY 2020 22:27
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7400 64-bit) (preloaded format=pdflatex 2020.4.22)  5 MAY 2020 22:49
 entering extended mode
 **c:/Users/test/Documents/Studium/NumerischeOptimierung/Abgaben/Projekt_1/Ausarbeitung/abstracts.tex
 (c:/Users/test/Documents/Studium/NumerischeOptimierung/Abgaben/Projekt_1/Ausarbeitung/abstracts.tex
@@ -880,80 +880,75 @@ Overfull \hbox (4.1941pt too wide) in paragraph at lines 188--193
  []
 
 [4]
-Overfull \hbox (12.01909pt too wide) in paragraph at lines 357--358
+Overfull \hbox (6.55612pt too wide) in paragraph at lines 368--369
 [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 358--358
-\T1/cantarell-TLF/m/n/12 mit Ver-stär-kungs-fak-tor
- []
-
-
-Overfull \hbox (12.01909pt too wide) in paragraph at lines 451--452
+Overfull \hbox (6.39836pt too wide) in paragraph at lines 470--471
 [][] 
  []
 
 
-Overfull \hbox (12.01909pt too wide) in paragraph at lines 507--508
+Overfull \hbox (6.39836pt too wide) in paragraph at lines 534--535
 [][] 
  []
 
 [5]
-Overfull \hbox (29.06055pt too wide) in paragraph at lines 513--516
+Overfull \hbox (29.06055pt too wide) in paragraph at lines 540--543
 \T1/cantarell-TLF/m/n/12 Vergleich der Re-chen-zeit für die Funk-tio-nen $\OML/cmm/m/it/12 f\OT1/cmr/m/n/12 , \OML/cmm/m/it/12 g\OT1/cmr/m/n/12 , \OML/cmm/m/it/12 h$ \T1/cantarell-TLF/m/n/12 mit dem Bisektions- und Mutation-
  []
 
 
-Package pgfplots Warning: Axis range for axis x is approximately empty; enlarging it (it is [0.0:0.0]) on input line 575.
+Package pgfplots Warning: Axis range for axis x is approximately empty; enlarging it (it is [0.0:0.0]) on input line 602.
 
  [warning /pgfplots/warning/approx empty range enlarged]
 
-Package pgfplots Warning: Axis range for axis x is approximately empty; enlarging it (it is [0.0:0.0]) on input line 624.
+Package pgfplots Warning: Axis range for axis x is approximately empty; enlarging it (it is [0.0:0.0]) on input line 651.
 
  [warning /pgfplots/warning/approx empty range enlarged]
 
-Package pgfplots Warning: Axis range for axis x is approximately empty; enlarging it (it is [0.0:0.0]) on input line 673.
+Package pgfplots Warning: Axis range for axis x is approximately empty; enlarging it (it is [0.0:0.0]) on input line 700.
 
  [warning /pgfplots/warning/approx empty range enlarged]
 [6]
 
-Package pgfplots Warning: Axis range for axis y is approximately empty; enlarging it (it is [0.0:0.0]) on input line 757.
+Package pgfplots Warning: Axis range for axis y is approximately empty; enlarging it (it is [0.0:0.0]) on input line 784.
 
  [warning /pgfplots/warning/approx empty range enlarged]
 
-Overfull \hbox (3.12614pt too wide) in paragraph at lines 769--770
+Overfull \hbox (3.12614pt too wide) in paragraph at lines 796--797
 \T1/cantarell-TLF/m/n/12 Berechnet wer-den die ers-ten vier Ite-ra-tio-nen des Nelder-Mead-Algorithmus von 
  []
 
 [7]
-Underfull \hbox (badness 10000) in paragraph at lines 777--778
+Underfull \hbox (badness 10000) in paragraph at lines 804--805
 
  []
 
-LaTeX Font Info:    Trying to load font information for TS1+cantarell-TLF on input line 781.
+LaTeX Font Info:    Trying to load font information for TS1+cantarell-TLF on input line 808.
 ("C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex/latex/cantarell\ts1cantarell-tlf.fd"
 File: TS1cantarell-TLF.fd 2019/06/24 Font definitions for TS1/cantarell-TLF.
 )
 LaTeX Font Info:    Font shape `TS1/cantarell-TLF/m/n' will be
-(Font)              scaled to size 12.0pt on input line 781.
+(Font)              scaled to size 12.0pt on input line 808.
 
-Underfull \hbox (badness 10000) in paragraph at lines 789--790
+Underfull \hbox (badness 10000) in paragraph at lines 816--817
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 801--802
+Underfull \hbox (badness 10000) in paragraph at lines 828--829
 
  []
 
 [8]
-Underfull \hbox (badness 10000) in paragraph at lines 813--814
+Underfull \hbox (badness 10000) in paragraph at lines 840--841
 
  []
 
 
-Overfull \hbox (14.7027pt too wide) in paragraph at lines 826--830
+Overfull \hbox (14.7027pt too wide) in paragraph at lines 853--857
 \T1/cantarell-TLF/m/n/12 Wie aus []Ab-bil-dung 3[][] und []Ab-bil-dung 11[][] her-vor-geht, ist [][][][][][][] durch-
  []
 
@@ -961,7 +956,7 @@ Overfull \hbox (14.7027pt too wide) in paragraph at lines 826--830
 <./images/Subrandom_2D.png, id=104, 593.21625pt x 1194.4625pt>
 File: ./images/Subrandom_2D.png Graphic file (type png)
 <use ./images/Subrandom_2D.png>
-Package pdftex.def Info: ./images/Subrandom_2D.png  used on input line 840.
+Package pdftex.def Info: ./images/Subrandom_2D.png  used on input line 867.
 (pdftex.def)             Requested size: 84.77858pt x 170.71652pt.
 
 
@@ -971,24 +966,24 @@ Package movie15 Warning: @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 (movie15)                @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@.
 
 [10 <./images/Subrandom_2D.png>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 846.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 846.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 873.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 873.
  (c:/Users\test\Documents\Studium\NumerischeOptimierung\Abgaben\Projekt_1\Ausarbeitung\abstracts.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 846.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 846.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 873.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 873.
 Package rerunfilecheck Info: File `abstracts.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 35668 strings out of 480896
- 847991 string characters out of 2898648
- 2968432 words of memory out of 3000000
- 50836 multiletter control sequences out of 15000+200000
+ 35667 strings out of 480896
+ 847967 string characters out of 2898648
+ 2970938 words of memory out of 3000000
+ 50835 multiletter control sequences out of 15000+200000
  544745 words of font info for 62 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  67i,16n,107p,914b,2393s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Users/test/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/cantarell/a_tv3tjz.enc}{C:/Users/test/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/cantarell/a_5r5lpu.enc} <C:\Users\test\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1200.pk><C:/Users/test/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/gnome/cantarell/Cantarell-Bold.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/gnome/cantarell/Cantarell-Bold.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/gnome/cantarell/Cantarell-Regular.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/gnome/cantarell/Cantarell-Regular.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on c:/Users\test\Documents\Studium\NumerischeOptimierung\Abgaben\Projekt_1\Ausarbeitung\abstracts.pdf (10 pages, 526937 bytes).
+Output written on c:/Users\test\Documents\Studium\NumerischeOptimierung\Abgaben\Projekt_1\Ausarbeitung\abstracts.pdf (10 pages, 526858 bytes).
 PDF statistics:
  201 PDF objects out of 1000 (max. 8388607)
  32 named destinations out of 1000 (max. 500000)
