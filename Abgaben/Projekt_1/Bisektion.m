@@ -4,40 +4,41 @@
 %
 % Inputs:
 %     Function, Start interval
+% Outputs:
+%   Minimum x
 %
 % Version:	MATLAB R2020a
 % Author:	Maximilian Gaul
-% Date:     01.05.2020
+% Date:     08.05.2020
 %---------------------------------------------------------
 function min_val = Bisektion(f, start_intrvl)
 
     k = 1;
-    max_k = 10;
+    max_k = 100;
 
     a = start_intrvl(1);
     b = start_intrvl(2);
     
-    x_eval = @(a, b) (a + b) / 2.0;
-    l_eval = @(a, b) ( a + x_eval(a, b) ) / 2.0;
-    r_eval = @(a, b) ( x_eval(a, b) + b ) / 2.0;
+    % Grenze des neuen Intervalls
+    x_mid = @(a, b) (a + b) / 2.0;
     
+    % Abbruchkriterium: Anzahl an Iterationen
     while k <= max_k
         
-        x = x_eval(a, b);
-        % fprintf("\tInterval [%0.4f, %0.4f] mit f(%0.4f) = %0.4f\n", a, b, x, f(x));
-        if abs( f(x) - 0.56714) <= 1e-6
-            break;
-        end
-        if f( l_eval(a, b) ) < f( r_eval(a, b) )
-            a = a;
-            b = x;
-        else
+        x = x_mid(a, b);
+        fprintf("\tInterval [%0.4f, %0.4f] mit f(%0.4f) = %0.4f\n", a, b, x, f(x));
+
+        if f(a) > f(b)
+            % Neues Intervall [(a+b)/2, b]
             a = x;
-            b = b;
+        else
+            % Neues Intervall [a, (a+b)/2]
+            b = x;
         end
         
         k = k + 1;
     end
     
-    min_val = x_eval(a, b);
+    % Ergebnis
+    min_val = x_mid(a, b);
 end

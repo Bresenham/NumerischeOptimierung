@@ -75,6 +75,7 @@ function [x,fval,exitflag,output] = fminsearch2(funfcn,x,options,varargin)
 
 %   Copyright 1984-2018 The MathWorks, Inc.
 
+% Funktion zur vereinfachten Ausgabe der Simplex-Ecken bei Aufgabe 5
 print_simplex_edges = @(v) sprintf("\t[ %s]", sprintf("%0.2f ", v));
 
 defaultopt = struct('Display','notify','MaxIter','200*numberOfVariables',...
@@ -201,6 +202,7 @@ end
 n = numel(x);
 
 % Initialize parameters
+% Variablen die bei Aufgabe 5 geändert wurden
 rho = 1; chi = 2; psi = 0.5; sigma = 0.5;
 onesn = ones(1,n);
 two2np1 = 2:n+1;
@@ -327,20 +329,26 @@ exitflag = 1;
 % are exceeded
 while func_evals < maxfun && itercount < maxiter
     
-    % Standard deviation criteria from Nelder & Mead
+    % Kriterium der Standardabweichung von Nelder&Mead
+    
+    % Es gibt n + 1 Ecken deren Funktionswerte aufsummiert werden
     fun_vals = zeros(n + 1);
     for i = 1:n+1
         fun_vals(i) = funfcn(v(:,i), varargin{:});
     end
 
+    % Durchschnitt der Funktionswerte der Simplex-Ecken
     fxbar = sum(fun_vals) / (n + 1);
     
+    % Berechnung der Summe der Standardabweichung
     deviation_sum = 0;
     for i = 1:n+1
         deviation_sum = deviation_sum + ( fun_vals(i) - fxbar ).^2;
     end
     deviation_sum = deviation_sum / (n + 1);
     
+    % Wenn Standardabweichung unter einem bestimmten Wert wird die Schleife
+    % verlassen
     if sqrt(deviation_sum) < tolx
         break;
     end

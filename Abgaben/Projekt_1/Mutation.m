@@ -4,7 +4,9 @@
 % minimum
 %
 % Inputs:
-%     Function, Start value
+%   Function, Start value
+% Outputs:
+%   Minimum x, Iterations
 %
 % Version:	MATLAB R2020a
 % Author:	Maximilian Gaul
@@ -13,14 +15,27 @@
 function [min_val, k] = Mutation(f, start_x)
     
     k = 1;
+    
+    % Anzahl an Iterationen nachdem der Algorithmus automatisch abbricht
     k_max = 15000;
+    
+    % Schrittweite
     alpha = 0.25;
+    
     dim = numel(start_x);
     
+    % Erzeugt einen Zufallsvektor der Dimension 'dim' mit Werten
+    % von [from, to]
     rand_vec = @(dim, from, to) from + (to - from) * rand(1, dim);
-    hat = @(x) x + alpha * rand_vec(dim, -0.5, 0.5);
+    
+    % Berechnet einen neuen x-Wert auf Basis des aktuellen Wertes
+    % und einer Schrittweite 'alpha' sowie eines Zufallsvektors
+    hat = @(x, alpha) x + alpha * rand_vec(dim, -0.5, 0.5);
     
     x = start_x;
+    
+    % Startwerte für die Berechnung des Differenzbetrags damit die
+    % while-Schleife mindestens 1x ausgeführt wird
     f_x_val = 1000;
     f_x_old_val = -1000;
 
@@ -28,25 +43,33 @@ function [min_val, k] = Mutation(f, start_x)
     while norm(f_x_val - f_x_old_val) > 1e-6
     % while k <= k_max
     
-        x_hat = hat(x);
+        x_hat = hat(x, alpha);
         
         f_x = f(x);
         f_x_hat = f(x_hat);
         
         if f_x_hat < f_x
+            % Es wurde ein besserer x-Wert gefunden
+            %   - Variablen für den Differenzbetrag anpassen
+            %   - x anpassen
             f_x_old_val = f_x;
             f_x_val = f_x_hat;
             x = x_hat;
-            fprintf("%0.4f,\t%0.4f,\t%0.4f\n", x(1), x(2), f(x));
-            %fprintf("\tx = [ %s] mit f(x) = %0.8f\n", sprintf("%0.4f ", x), f(x));
+            
+            % Es kann sinnvoller sein, die Ausgabe nur bei einem besseren
+            % x-Wert zu tätigen
+            fprintf("\tx = [ %s] mit f(x) = %0.8f\n", sprintf("%0.4f ", x), f(x));
         end
         
-        % Verstärkungsfaktor wird bis zu einer gewissen Grenze auf alpha
-        % multipliziert
+        % fprintf("\tx = [ %s] mit f(x) = %0.8f\n", sprintf("%0.4f ", x), f(x));
+        
+        % Verstärkungsfaktor wie in der Ausarbeitung beschrieben,
+        % wird bis zu einer gewissen Grenze auf alpha multipliziert
         % alpha = min([alpha * 1.05, 0.5]);
         
         k = k + 1;
     end
     
+    % Rückgabewert Minimum
     min_val = x;
 end
