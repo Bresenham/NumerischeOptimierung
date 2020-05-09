@@ -57,8 +57,8 @@ options.TolX = 1e-6;
 h_startwert = 0.8;
 for i=1:count
     tic;
-    %min = fminsearch(h, h_startwert, options);
-    %min = Bisektion(h, h0);
+    % min = fminsearch(h, h_startwert, options);
+    % min = Bisektion(h, h0);
     min = Mutation(h, h_startwert);
     elapsed = toc;
     sums(i) = elapsed;
@@ -72,6 +72,7 @@ fprintf("Aufgabe 5\n");
 
 % Berechnen der Durchschnittlichen Laufzeit über 'count' Durchläufe
 options.TolX = 1e-6;
+options.Display = 'iter';
 for i=1:count
     tic;
     min = fminsearch2(f, f0, options);

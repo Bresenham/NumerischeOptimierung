@@ -349,7 +349,7 @@ while func_evals < maxfun && itercount < maxiter
     
     % Wenn Standardabweichung unter einem bestimmten Wert wird die Schleife
     % verlassen
-    if sqrt(deviation_sum) < tolx
+    if sqrt(deviation_sum) <= tolx
         break;
     end
     

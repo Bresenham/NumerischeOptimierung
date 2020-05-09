@@ -28,8 +28,8 @@ function [min_val, k] = Mutation(f, start_x)
     % von [from, to]
     rand_vec = @(dim, from, to) from + (to - from) * rand(1, dim);
     
-    % Berechnet einen neuen x-Wert auf Basis des aktuellen Wertes
-    % und einer Schrittweite 'alpha' sowie eines Zufallsvektors
+    % Berechnet einen neuen x-Wert auf Basis des aktuellen Wertes,
+    % einer Schrittweite 'alpha' sowie eines Zufallsvektors
     hat = @(x, alpha) x + alpha * rand_vec(dim, -0.5, 0.5);
     
     x = start_x;
@@ -57,11 +57,11 @@ function [min_val, k] = Mutation(f, start_x)
             x = x_hat;
             
             % Es kann sinnvoller sein, die Ausgabe nur bei einem besseren
-            % x-Wert zu tätigen
-            fprintf("\tx = [ %s] mit f(x) = %0.8f\n", sprintf("%0.4f ", x), f(x));
+            % x-Wert zu tätigen da sich sonst lange nichts ändert
+            % fprintf("\tx = [ %s] mit f(x) = %0.8f\n", sprintf("%0.4f ", x), f(x));
         end
         
-        % fprintf("\tx = [ %s] mit f(x) = %0.8f\n", sprintf("%0.4f ", x), f(x));
+        fprintf("\tx = [ %s] mit f(x) = %0.8f\n", sprintf("%0.4f ", x), f(x));
         
         % Verstärkungsfaktor wie in der Ausarbeitung beschrieben,
         % wird bis zu einer gewissen Grenze auf alpha multipliziert
