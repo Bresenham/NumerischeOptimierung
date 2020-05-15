@@ -1,5 +1,4 @@
-% Aufgabe 1
-
+% Funktions-Definitionen
 % f(x) = 2x1^2 - 4x1x2 + 4x2^2
 f = @(x) 2*x(1).^2 - 4*x(1)*x(2) + 4*x(2).^2;
 grad_f = @(x) [ 4*x(1) - 4*x(2); -4*x(1) + 8*x(2) ];
@@ -15,6 +14,12 @@ grad_g = @(x) [ 2*x(1) - 4; 40*x(2) - 2 ];
 Q2 = [2, 0; 0, 40];
 q2 = [-4; -2];
 
+% Rosenbrock
+f_rosen = @(x) 100*(x(2) - x(1).^2).^2 + (1 - x(1)).^2;
+f_rosen_grad = @(x) [ 400*x(1).^3 - 400*x(1)*x(2)+2*x(1)-2; 200*(x(2) - x(1).^2) ];
+f_rosen_hessian = @(x) [ 800 * x(1)^2 - 400 * ( x(2)-x(1)^2 ) + 2, -400 * x(1); -400*x(1), 200 ];
+
+% Aufgabe 1
 ret = ConjugateGradient(Q1, q1, x0);
 fprintf("ConjugateGradient returned x=[%0.6f, %0.6f] with f(x) = %0.4f\n\n", ret(1), ret(2), 0.5 * ret' * Q1 * ret + q1' * ret);
 
@@ -34,6 +39,14 @@ fprintf("ConjugateGradientWolfe returned x=[%0.6f, %0.6f] with f(x) = %0.4f\n\n"
 
 ret = ConjugateGradientWolfe(g, grad_g, x0);
 fprintf("ConjugateGradientWolfe returned x=[%0.6f, %0.6f] with g(x) = %0.4f\n\n", ret(1), ret(2), g(ret));
+
+ret = ConjugateGradientWolfe(f_rosen, f_rosen_grad, x0);
+fprintf("ConjugateGradientWolfe returned x=[%0.6f, %0.6f] with f_rosen(x) = %0.4f\n\n", ret(1), ret(2), f_rosen(ret));
+
+% Aufgabe 3
+x0 = [2; 1];
+ret = Newton(f_rosen, f_rosen_grad, f_rosen_hessian, x0);
+fprintf("Newton returned x=[%0.6f, %0.6f] with f_rosen(x) = %0.4f\n\n", ret(1), ret(2), f_rosen(ret));
 
 % Funktion Aufgabe 1
 function ret = ConjugateGradient(Q, q, x0)
@@ -56,6 +69,52 @@ function ret = ConjugateGradient(Q, q, x0)
     end
     
     fprintf("ConjugateGradient took %d steps.\n", k);
+    ret = x;
+end
+
+% Funktion Aufgabe 2
+function ret = ConjugateGradientWolfe(f, grad, x0)
+    
+    k = 0;
+    x = x0;
+    d = -grad(x0);
+    
+    phi = @(a) f(x + a * d);
+    phi_grad = @(a) grad(x + a * d)' * d;
+    
+    while norm( grad(x) ) > 1e-6 && k < 1000
+
+        alpha = WolfePowell(phi, phi_grad);
+        
+        x_new = x + alpha * d;
+        beta = norm( grad(x_new) )^2 / norm( grad(x) )^2;
+        d = -grad(x_new) + beta * d;
+        
+        x = x_new;
+        
+        k = k + 1;
+    end
+    
+    fprintf("ConjugateGradientWolfe took %d steps.\n", k);
+    ret = x;
+end
+
+%Funktion Aufgabe 3
+function ret = Newton(f, f_grad, f_hessian, x0)
+    
+    k = 0;
+    x = x0;
+    
+    while norm( f_grad(x) ) > 1e-8 && k < 1000
+        
+        d = f_hessian(x) \ ( -f_grad(x) );
+        
+        x = x + d;
+        
+        k = k + 1;
+    end
+    
+    fprintf("Newton took %d steps.\n", k);
     ret = x;
 end
 
@@ -99,31 +158,4 @@ function ret = WolfePowell(phi, phi_grad)
         end
     end
     
-end
-
-% Funktion Aufgabe 2
-function ret = ConjugateGradientWolfe(f, grad, x0)
-    
-    k = 0;
-    x = x0;
-    d = -grad(x0);
-    
-    phi = @(a) f(x + a * d);
-    phi_grad = @(a) grad(x + a * d)' * d;
-    
-    while norm( grad(x) ) > 1e-8 && k < 100
-
-        alpha = WolfePowell(phi, phi_grad);
-        
-        x_new = x + alpha * d;
-        beta = norm( grad(x_new) )^2 / norm( grad(x) )^2;
-        d = -grad(x_new) + beta * d;
-        
-        x = x_new;
-        
-        k = k + 1;
-    end
-    
-    fprintf("ConjugateGradientWolfe took %d steps.\n", k);
-    ret = x;
 end
