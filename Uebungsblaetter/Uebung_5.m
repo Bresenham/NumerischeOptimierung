@@ -45,8 +45,25 @@ fprintf("ConjugateGradientWolfe returned x=[%0.6f, %0.6f] with f_rosen(x) = %0.4
 
 % Aufgabe 3
 x0 = [2; 1];
-ret = Newton(f_rosen, f_rosen_grad, f_rosen_hessian, x0);
+ret = Newton(f_rosen_grad, f_rosen_hessian, x0);
 fprintf("Newton returned x=[%0.6f, %0.6f] with f_rosen(x) = %0.4f\n\n", ret(1), ret(2), f_rosen(ret));
+
+% Die Funktion von Luenberger ist symmetrisch und quadratisch, damit lässt
+% sich der Gradient und die Hesse-Matrix einfach aus der Matrix A und dem
+% Vektor b bestimmen (nach Aufgabenblatt 2)
+A = [0.78 -0.02 -0.12 -0.14; -0.02 0.86 -0.04 0.06; -0.12 -0.04 0.72 -0.08; -0.14 0.06 -0.08 0.74];
+b = [-0.76; -0.08; -1.12; -0.68];
+f_luen = @(x) 0.5 * x' * A * x + b' * x;
+f_luen_grad = @(x) 0.5 * (2 * A * x) + b;
+f_luen_hessian = @(x) A;
+
+x0 = [1; 1; 1; 1];
+ret = Newton(f_luen_grad, f_luen_hessian, x0);
+fprintf("Newton returned x=[%0.6f, %0.6f, %0.6f, %0.6f] with f_luen(x) = %0.4f\n\n", ret(1), ret(2), ret(3), ret(4), f_luen(ret));
+
+% Wenn Netwon() ohne Hesse-Matrix auskommen und diese stattdessen numerisch
+% angenähert werden soll müssen n^2 Differenzenquotienten berechnet werden,
+% wobei n die Dimension der Funktion ist.
 
 % Funktion Aufgabe 1
 function ret = ConjugateGradient(Q, q, x0)
@@ -100,7 +117,7 @@ function ret = ConjugateGradientWolfe(f, grad, x0)
 end
 
 %Funktion Aufgabe 3
-function ret = Newton(f, f_grad, f_hessian, x0)
+function ret = Newton(f_grad, f_hessian, x0)
     
     k = 0;
     x = x0;
@@ -119,7 +136,7 @@ function ret = Newton(f, f_grad, f_hessian, x0)
 end
 
 % phi = f(x + td)
-% phi_grad = ∇f(x + td)^T * d
+% phi_grad = ∇f(x + td)' * d
 function ret = WolfePowell(phi, phi_grad)
 
     rho = 0.3;
