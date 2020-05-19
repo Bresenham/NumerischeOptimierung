@@ -1,0 +1,86 @@
+\documentclass[a4paper, 12pt]{report}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage{geometry}
+\usepackage{csquotes}
+\usepackage[toc,page]{appendix}
+\usepackage{titlesec}
+\usepackage{listings}
+\usepackage{float}
+\usepackage[hang,flushmargin]{footmisc} 
+\usepackage{makecell}
+\usepackage{amsmath}% http://ctan.org/pkg/amsmath
+\usepackage[utf8]{inputenc}
+\usepackage[default]{cantarell} %% Use option "defaultsans" to use cantarell as sans serif only
+\usepackage[T1]{fontenc}
+\usepackage{hyperref}
+\usepackage{helvet}
+\usepackage[eulergreek]{sansmath}
+\usepackage{amsfonts}
+\usepackage{movie15}
+\usepackage{url}
+
+\usepackage{tikz}
+\usetikzlibrary{calc,positioning,shapes,decorations.pathreplacing}
+\usetikzlibrary{fit,fadings,shadows,patterns,math}
+\usetikzlibrary{shapes.arrows,shapes.geometric}
+\usetikzlibrary{arrows,arrows.meta,decorations.markings}
+\usetikzlibrary{decorations.pathmorphing}
+
+\usepackage{pgfplots}
+
+\graphicspath{ {./images/} }
+\geometry{margin=1.25in}
+
+\newcommand*{\shifttext}[2]{%
+  \settowidth{\@tempdima}{#2}%
+  \makebox[\@tempdima]{\hspace*{#1}#2}%
+}
+\newcommand{\fakesection}[1]{%
+  \par\refstepcounter{section}% Increase section counter
+  \sectionmark{#1}% Add section mark (header)
+  \addcontentsline{toc}{section}{\protect\numberline{\thesection}#1}% Add section to ToC
+  % Add more content here, if needed.
+}
+\titleformat{\chapter}[display]
+  {\normalfont\bfseries}{}{0pt}{\Large}
+\titleformat*{\section}{\large\bfseries}
+
+\renewcommand{\footnoterule}{%
+  \kern -3pt
+  \hrule width \textwidth height 1pt
+  \kern 2pt
+}
+
+\newcommand\blfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+
+\begin{document}
+
+\begin{center}
+    \vspace*{2em}
+    \normalsize 2. Projekt\\
+    \vspace*{1em}
+    \normalsize \textbf{\textit{Quasi-Newton-Verfahren \& Gauß-Newton-Verfahren}}\\
+    \vspace*{4em}
+    \normalsize im Fach\\
+    \vspace*{1em}
+    \large Numerische Optimierung\\
+    \vspace*{30em}
+    \normalsize Juni 2020\\
+    \vspace*{1em}
+    \normalsize Maximilian Gaul
+\end{center}
+
+\thispagestyle{empty}
+
+\newpage
+
+\subsubsection{Aufgabe 1}
+
+\end{document}
