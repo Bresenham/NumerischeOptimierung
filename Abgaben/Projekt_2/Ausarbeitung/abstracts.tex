@@ -125,7 +125,7 @@ den nächsten Schritt neu bestimmt werden. Hierzu bieten sich verschiedene Mögl
     \item Hoher Rechenaufwand von $\mathcal{O}(n^2)$ für die Hesse-Matrix und nochmal $\mathcal{O}(n^3)$ für das Invertieren
     \item Bisher berechneter Fortschritt geht ebenfalls verloren aber die Approximation der Hesse-Matrix ist sehr genau
   \end{itemize}
-  \item Man könnte, wie in den Vorlesungsfolien beschrieben, die Matrix $\frac{y^Ts}{y^Ty}\cdot I_n$ verwenden
+  \item Man könnte, wie in den Vorlesungsfolien beschrieben,  $\frac{y^Ts}{y^Ty}\cdot I_n$ als positiv-definitve Matrix verwenden
 \end{itemize}
 
 Um herauszufinden, welche dieser Methoden am besten geeignet ist (d.h. die richtig Lösung in der kürzesten Zeit findet),
@@ -194,6 +194,9 @@ wird die Laufzeit des inversen BFGS-Verfahrens bestimmt:
         \end{axis}
         \node[black, rotate=90, align=left] (impl) at (1.2125,1.08) {0.0030};
         \draw[-{Latex}, thick, black] (impl.west) -- ([yshift=-0.2cm]impl.west);
+
+        \node[black, rotate=90, align=left] (impl2) at (1.6255,1.124) {0.0051};
+        \draw[-{Latex}, thick, black] (impl2.west) -- ([yshift=-0.2cm]impl2.west);
     \end{tikzpicture}
   \end{minipage}
   \begin{minipage}{.3\textwidth}
