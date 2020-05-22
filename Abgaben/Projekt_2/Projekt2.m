@@ -41,19 +41,22 @@ f_rosen_mult_grad = @(x) f_rosen_mult_deriv_func(x);
 x0 = [0; -1];
 
 ret = InverseBFGS(f_himmel, f_himmel_grad, x0);
-fprintf("InverseBFGS returned x=%s with f_himmel(x)=%0.6f\n", vec2str(ret), f_himmel(ret));
+fprintf("InverseBFGS returned x=%s with f_himmel(x)=%0.6f\n", vec2str( ret(end).x ), ret(end).f);
 
 ret = InverseBFGS(f_bazaraa, f_bazaraa_grad, x0);
-fprintf("InverseBFGS returned x=%s with f_bazaraa(x)=%0.6f\n", vec2str(ret), f_bazaraa(ret));
+fprintf("InverseBFGS returned x=%s with f_bazaraa(x)=%0.6f\n", vec2str(ret(end).x), ret(end).f);
 
 ret = InverseBFGS(f_rosen, f_rosen_grad, x0);
-fprintf("InverseBFGS returned x=%s with f_rosen(x)=%0.6f\n", vec2str(ret), f_rosen(ret));
+fprintf("InverseBFGS returned x=%s with f_rosen(x)=%0.6f\n", vec2str( ret(end).x ), ret(end).f);
 
 
-x0 = zeros(5, 1);
-
+rosenbrock_dim = 100;
+x0 = zeros(rosenbrock_dim, 1) - ones(rosenbrock_dim, 1);
 ret = InverseBFGS(f_rosen_mult, f_rosen_mult_grad, x0);
-fprintf("InverseBFGS returned x=%s with f_rosen_mult(x)=%0.6f\n", vec2str(ret), f_rosen_mult(ret));
+fprintf("InverseBFGS returned x=%s with f_rosen_mult(x)=%0.6f\n", vec2str( ret(end).x ), ret(end).f);
+
+% Aufgabe 5
+% Siehe Erläuterung im PDF
 
 function ret = f_rosen_mult_deriv_func(x)
 

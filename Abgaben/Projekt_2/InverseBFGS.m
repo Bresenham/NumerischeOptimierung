@@ -5,7 +5,7 @@
 % Inputs:
 %   Function, Gradient, Startvalue x0
 % Outputs:
-%   for every step: x_n, f(x_n), grad(x_n)
+%   a vector of structs [ x_n, f(x_n), grad(x_n) ]
 %
 % WolfePowell is defined in 'WolfePowell.m'
 %
@@ -21,6 +21,7 @@ function ret = InverseBFGS(f, grad, x0)
     x_old = x0;
     dim = numel(x0);
     k_max = 1000000;
+    ret = struct("x", x0, "f", f(x0), "gradient", grad(x0));
 
     % Start mit der Einheitsmatrix als inverse zur Approximation der
     % Hesse-Matrix
@@ -55,9 +56,9 @@ function ret = InverseBFGS(f, grad, x0)
         % nicht, verwende den negativen Gradienten und setze die
         % Approximation der Hesse-Matrix auf die Einheitsmatrix zurück
         % (Aufgabe 4)
-        % if ( grad(x)' * d > - norm(d) )
-        %     d = - grad(x);
-        %     B = eye(dim);
+        % if ( grad(x)' * d <= - norm(d) )
+        %    d = - grad(x);
+        %    B = eye(dim);
         % end
         
         % Definition der Funktionen phi und phi' die für Wolfe-Powell
@@ -70,7 +71,8 @@ function ret = InverseBFGS(f, grad, x0)
         x = x + alpha * d;
         
         k = k + 1;
+        
+        ret = [ ret; struct("x", x, "f", f(x), "gradient", grad(x)) ];
     end
-    
-    ret = x;
+
 end
