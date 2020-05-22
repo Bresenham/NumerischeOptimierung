@@ -16,10 +16,10 @@
 % phi_grad = ∇f(x + td)' * d
 function ret = WolfePowell(phi, phi_grad)
 
-    rho = 0.3;
+    rho = 0.9;
     gamma = 1.5;
     alpha = 1.0;
-    sigma = 1e-2;
+    sigma = 1e-4;
     phi_zero = phi(0);
     phi_grad_zero = phi_grad(0);
 

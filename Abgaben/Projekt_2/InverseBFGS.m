@@ -19,17 +19,18 @@ function ret = InverseBFGS(f, grad, x0)
     k = 0;
     x = x0;
     x_old = x0;
-    dim = numel(x0);
     k_max = 1e+6;
+    
+    dim = numel(x0);
+    
     ret = struct("x", x0, "f", f(x0), "gradient", grad(x0));
 
-    % Start mit der Einheitsmatrix als inverse zur Approximation der
+    % Start mit der Einheitsmatrix als Inverse zur Approximation der
     % Hesse-Matrix
     B = eye(dim);
     
-    % Funktionen phi und phi' zur Berechnung der Schrittweite nach Wolfe
-    % und Powell
-    
+    % Definition der nötigen Funktionen für die Updateformel um die
+    % Approximation der inversen Hesse-Matrix zu aktualisieren
     s = @(x, x_old) x - x_old;
     y = @(x, x_old) grad(x) - grad(x_old);
     
@@ -56,8 +57,10 @@ function ret = InverseBFGS(f, grad, x0)
         % nicht, verwende den negativen Gradienten und setze die
         % Approximation der Hesse-Matrix auf die Einheitsmatrix zurück
         % (Aufgabe 4)
+        % TODO: Der Check stimmt wahrscheinlich nicht
         % if ( grad(x)' * d <= - norm(d) )
         %    d = - grad(x);
+        %    % TODO: Ändern auf ( (y' * s) / (y' * y) ) * I
         %    B = eye(dim);
         % end
         

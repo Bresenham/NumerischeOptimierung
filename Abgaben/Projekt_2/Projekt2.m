@@ -38,6 +38,8 @@ f_rosen_mult_grad = @(x) f_rosen_mult_deriv_func(x);
 % Aufgabe 4
 % Siehe zusätzliche Erläuterung im PDF
 
+fprintf("--------------------AUFGABE 4--------------------\n");
+
 x0 = [0; -1];
 
 ret = InverseBFGS(f_himmel, f_himmel_grad, x0);
