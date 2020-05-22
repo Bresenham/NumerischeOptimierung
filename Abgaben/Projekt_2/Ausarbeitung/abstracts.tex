@@ -341,9 +341,10 @@ Alle drei Funktionen profitieren von $B = \frac{y^Ts}{y^Ty}\cdot I$, daher habe 
     \pgfplotstableread[col sep=comma]{bfgs_ndim_rosen_measurement.csv}\datatable
     \begin{axis}[
         ybar,
+        bar width=0.4pt,
         ymin=0,
-        ymax=2,
-        ytick distance=0.5,
+        ymax=1,
+        ytick distance=0.25,
         ylabel={Rechenzeit in s},
         xmin=0,
         xmax=500,
