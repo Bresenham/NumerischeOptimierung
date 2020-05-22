@@ -144,16 +144,24 @@ wird die Laufzeit des inversen BFGS-Verfahrens bestimmt:
   }\datasetg
   \begin{minipage}{.3\textwidth}
     \begin{tikzpicture}
+        \pgfplotsset{
+          tick label style = {font=\sansmath\sffamily},
+          every axis label = {font=\sansmath\sffamily},
+          legend style = {font=\sansmath\sffamily},
+          label style = {font=\sansmath\sffamily}
+        }
         \begin{axis}[
             width=4cm,
             height=6.5cm,
             ybar,
             ymin=0,
+            ymax=0.25,
             ylabel={Rechenzeit in s},
             ylabel style={xshift=-3ex},
-            ytick=\empty,
-            extra y ticks={0,0.05,0.10,0.15,0.2,0.25},
-            extra y tick labels={{0},{0.05},{0.10},{0.15},{0.2},{0.25}},
+            ytick distance=0.1,
+            % ytick=\empty,
+            % extra y ticks={0,0.05,0.10,0.15,0.2,0.25},
+            % extra y tick labels={{0},{0.05},{0.10},{0.15},{0.2},{0.25}},
             xtick=data,
             xticklabels={
                 $B = I$
@@ -201,14 +209,21 @@ wird die Laufzeit des inversen BFGS-Verfahrens bestimmt:
   \end{minipage}
   \begin{minipage}{.3\textwidth}
     \begin{tikzpicture}
+      \pgfplotsset{
+        tick label style = {font=\sansmath\sffamily},
+        every axis label = {font=\sansmath\sffamily},
+        legend style = {font=\sansmath\sffamily},
+        label style = {font=\sansmath\sffamily}
+      }
         \begin{axis}[
             width=4cm,
             height=6.5cm,
             ybar,
             ymin=0,
-            ytick=\empty,
-            extra y ticks={0,0.05,0.10,0.15,0.2,0.25},
-            extra y tick labels={{0},{0.05},{0.10},{0.15},{0.2},{0.25}},
+            ymax=0.25,
+            % ytick=\empty,
+            % extra y ticks={0,0.05,0.10,0.15,0.2,0.25},
+            % extra y tick labels={{0},{0.05},{0.10},{0.15},{0.2},{0.25}},
             xtick=data,
             xticklabels={
                 $B = \frac{y^Ts}{y^Ty}\cdot I$
@@ -235,8 +250,9 @@ wird die Laufzeit des inversen BFGS-Verfahrens bestimmt:
             % ---------------------------------------------------------------------
             % (created a cycle list to shorten the below `\addplot' entries)
             cycle list={
-                {draw=black,fill=black!40},
-                {draw=black,fill=black!60},
+              {draw=black,fill=black!20},
+              {draw=black,fill=black!40},
+              {draw=black,fill=black!60},
             },
             % (moved common option here)
             table/x index=0,
@@ -245,8 +261,11 @@ wird die Laufzeit des inversen BFGS-Verfahrens bestimmt:
         \addplot+ [nodes near coords=Himmelblau] table [y index=2] \datasetf;
         \addplot+ [nodes near coords=Bazaraa-Shetty] table [y index=3] \datasetf;
         \end{axis}
-        \node[black, rotate=90] (impl) at (1.425,0.8) {1.25};
+        \node[black, rotate=90, align=left] (impl) at (1.2125,1.055) {0.0023};
         \draw[-{Latex}, thick, black] (impl.west) -- ([yshift=-0.2cm]impl.west);
+
+        \node[black, rotate=90, align=left] (impl2) at (1.6255,1.1) {0.0043};
+        \draw[-{Latex}, thick, black] (impl2.west) -- ([yshift=-0.2cm]impl2.west);
     \end{tikzpicture}
   \end{minipage}
   \begin{minipage}{.3\textwidth}

@@ -424,11 +424,35 @@ INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\amsfonts\
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\latex\cantarell\ts1cantarell-tlf.fd
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\latex\cantarell\ts1cantarell-tlf.fd
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\gnome\cantarell\Cantarell-Regular-TS1-TLF.tfm
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\latex\psnfss\t1phv.fd
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\latex\psnfss\t1phv.fd
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\adobe\helvetic\phvr8t.tfm
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\latex\psnfss\ot1phv.fd
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\latex\psnfss\ot1phv.fd
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\adobe\helvetic\phvr7t.tfm
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\adobe\helvetic\phvr7t.tfm
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\adobe\helvetic\phvr7t.tfm
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\adobe\helvetic\phvro7t.tfm
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\adobe\helvetic\phvro7t.tfm
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\adobe\helvetic\phvro7t.tfm
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\adobe\helvetic\phvro7t.tfm
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\adobe\helvetic\phvro7t.tfm
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\adobe\helvetic\phvro7t.tfm
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\vf\gnome\cantarell\Cantarell-Regular-TS1-TLF.vf
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\gnome\cantarell\Cantarell-Regular-TS1-TLF--base.tfm
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\vf\adobe\helvetic\phvro7t.vf
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\adobe\helvetic\phvro8r.tfm
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\vf\adobe\helvetic\phvr7t.vf
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\adobe\helvetic\phvr8r.tfm
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\vf\adobe\helvetic\phvr8t.vf
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\vf\adobe\helvetic\phvro7t.vf
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\adobe\helvetic\phvro8r.tfm
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\vf\adobe\helvetic\phvro7t.vf
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\adobe\helvetic\phvro8r.tfm
 INPUT c:\Users\test\Documents\Studium\NumerischeOptimierung\Abgaben\Projekt_2\Ausarbeitung\abstracts.aux
 INPUT c:\Users\test\Documents\Studium\NumerischeOptimierung\Abgaben\Projekt_2\Ausarbeitung\abstracts.out
 INPUT c:\Users\test\Documents\Studium\NumerischeOptimierung\Abgaben\Projekt_2\Ausarbeitung\abstracts.out
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\enc\dvips\base\8r.enc
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\enc\dvips\cantarell\a_tv3tjz.enc
 INPUT C:\Users\test\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ectt1200.pk
 INPUT C:\Users\test\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ectt1200.pk
@@ -457,3 +481,7 @@ INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfont
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmsy6.pfb
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmsy8.pfb
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmsy8.pfb
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\urw\helvetic\uhvr8a.pfb
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\urw\helvetic\uhvr8a.pfb
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\urw\helvetic\uhvro8a.pfb
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\urw\helvetic\uhvro8a.pfb
