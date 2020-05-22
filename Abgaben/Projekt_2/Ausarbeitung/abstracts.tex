@@ -87,10 +87,13 @@ Siehe Programmcode in \lstinline[basicstyle=\ttfamily\color{black}]|Project2.m|.
 
 \newpage
 
+\newgeometry{margin=0.25in}
 \begin{landscape}
 \subsubsection{Aufgabe 2}
 $$\scriptscriptstyle I - \frac{s(As)^T}{s^TAs} + \frac{A^{-1}yy^T}{y^Ts} + \frac{(s - A^{-1}y)s^TA + s(s - A^{-1}y)^TA}{y^Ts} - \frac{(s - A^{-1}y)s^TAs(As)^T + s(s - A^{-1}y)^TAs(As)^T}{y^Tss^TAs} + \frac{(s - A^{-1}y)s^Tyy^T + s(s - A^{-1}y)^Tyy^T}{(y^Ts)^2} - \frac{(s - A^{-1}y)^Tyss^TA}{(y^Ts)^2} + \frac{(s - A^{-1}y)^Tyss^TAs(As)^T}{(y^Ts)^2s^TAs} - \frac{(s - A^{-1}y)^Tyss^Tyy^T}{(y^Ts)^2y^Ts}$$
-$$\scriptscriptstyle I - \frac{ss^TA}{s^TAs} + \frac{A^{-1}yy^T}{y^Ts} + \frac{ss^TA - A^{-1}ys^TA + s(s^T - (A^{-1}y)^T)A}{y^Ts} - \frac{ss^TAss^TA - A^{-1}ys^TAss^TA + s(s^T - (A^{-1}y)^T)Ass^TA}{y^Tss^TAs} + \frac{ss^Tyy^T - A^{-1}ys^Tyy^T + s(s^T - (A^{-1}y)^T)yy^T}{(y^Ts)^2} -\frac{(s^T - (A^{-1}y)^T)yss^TA}{(y^Ts)^2} $$
+$$\scriptscriptstyle I - \frac{ss^TA}{s^TAs} + \frac{A^{-1}yy^T}{y^Ts} + \frac{ss^TA - A^{-1}ys^TA + s(s^T - (A^{-1}y)^T)A}{y^Ts} - \frac{ss^TAss^TA - A^{-1}ys^TAss^TA + s(s^T - (A^{-1}y)^T)Ass^TA}{y^Tss^TAs} + \frac{ss^Tyy^T - A^{-1}ys^Tyy^T + s(s^T - (A^{-1}y)^T)yy^T}{(y^Ts)^2} -\frac{(s^T - (A^{-1}y)^T)yss^TA}{(y^Ts)^2} + \frac{(s^T - (A^{-1}y)^T)yss^TAss^TA}{(y^Ts)^2s^TAs} - \frac{(s^T - (A^{-1}y)^T)yss^Tyy^T}{(y^Ts)^2y^Ts} $$
+$$\scriptscriptstyle I - \frac{ss^TA}{s^TAs} + \frac{A^{-1}yy^T}{y^Ts} + \frac{2ss^TA - A^{-1}ys^TA - sy^T}{y^Ts} - \frac{2ss^TA - A^{-1}ys^TA - sy^T}{y^Tss^TAs}\cdot ss^TA + \frac{2ss^T - A^{-1}ys^T - sy^T(A^{-1})^T}{(y^Ts)^2}\cdot yy^T -\frac{s^Ty - y^T(A^{-1})^T}{(y^Ts)^2}\cdot ss^TA + \frac{(s^T - y^T(A^{-1})^T)yss^TAss^TA}{(y^Ts)^2s^TAs} - \frac{(s^T - y^T(A^{-1})^T)yss^Tyy^T}{(y^Ts)^2y^Ts} $$
 \end{landscape}
+\restoregeometry
 
 \end{document}
