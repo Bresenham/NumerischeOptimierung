@@ -1,0 +1,7 @@
+inverses BFGS:
+
+Suchrichtung = H-1 * grad
+
+inverse Hessematrix durchziehen statt normale Hessematrix bei normalen BFGS-Verfahren
+
+Ist A die Hessematrix oder die inverse? => wichtig!

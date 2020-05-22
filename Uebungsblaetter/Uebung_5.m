@@ -54,7 +54,7 @@ fprintf("Newton returned x=[%0.6f, %0.6f] with f_rosen(x) = %0.4f\n\n", ret(1), 
 A = [0.78 -0.02 -0.12 -0.14; -0.02 0.86 -0.04 0.06; -0.12 -0.04 0.72 -0.08; -0.14 0.06 -0.08 0.74];
 b = [-0.76; -0.08; -1.12; -0.68];
 f_luen = @(x) 0.5 * x' * A * x + b' * x;
-f_luen_grad = @(x) 0.5 * (2 * A * x) + b;
+f_luen_grad = @(x) A * x + b;
 f_luen_hessian = @(x) A;
 
 x0 = [1; 1; 1; 1];
@@ -116,7 +116,7 @@ function ret = ConjugateGradientWolfe(f, grad, x0)
     ret = x;
 end
 
-%Funktion Aufgabe 3
+% Funktion Aufgabe 3
 function ret = Newton(f_grad, f_hessian, x0)
     
     k = 0;
