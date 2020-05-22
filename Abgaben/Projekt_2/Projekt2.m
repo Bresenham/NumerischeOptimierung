@@ -40,24 +40,26 @@ f_rosen_mult_grad = @(x) f_rosen_mult_deriv_func(x);
 
 x0 = [0; -1];
 
-% ret = InverseBFGS(f_himmel, f_himmel_grad, x0);
-fprintf("InverseBFGS returned x=[%0.4f, %0.4f] with f_himmel(x)=%0.6f\n", ret(1), ret(2), f_himmel(ret));
+ret = InverseBFGS(f_himmel, f_himmel_grad, x0);
+fprintf("InverseBFGS returned x=%s with f_himmel(x)=%0.6f\n", vec2str(ret), f_himmel(ret));
 
 ret = InverseBFGS(f_bazaraa, f_bazaraa_grad, x0);
-fprintf("InverseBFGS returned x=[%0.4f, %0.4f] with f_bazaraa(x)=%0.6f\n", ret(1), ret(2), f_bazaraa(ret));
+fprintf("InverseBFGS returned x=%s with f_bazaraa(x)=%0.6f\n", vec2str(ret), f_bazaraa(ret));
 
-% ret = InverseBFGS(f_rosen, f_rosen_grad, x0);
-fprintf("InverseBFGS returned x=[%0.4f, %0.4f] with 2D f_rosen(x)=%0.6f\n", ret(1), ret(2), f_rosen(ret));
+ret = InverseBFGS(f_rosen, f_rosen_grad, x0);
+fprintf("InverseBFGS returned x=%s with f_rosen(x)=%0.6f\n", vec2str(ret), f_rosen(ret));
 
-x0 = [0; 0; 0];
-% ret = InverseBFGS(f_rosen_mult, f_rosen_mult_deriv, x0);
-% fprintf("InverseBFGS returned x=[%0.4f, %0.4f, %0.4f] with f_rosen_mult(x)=%0.6f\n", ret(1), ret(2), ret(3), f_rosen_mult(ret));
+
+x0 = zeros(5, 1);
+
+ret = InverseBFGS(f_rosen_mult, f_rosen_mult_grad, x0);
+fprintf("InverseBFGS returned x=%s with f_rosen_mult(x)=%0.6f\n", vec2str(ret), f_rosen_mult(ret));
 
 function ret = f_rosen_mult_deriv_func(x)
 
-    start = @(x1, x2) 2 * (1 - x1) * (-1) + 200 * (x2 - x1.^2) * (-2 * x1);
-    middle = @(x0, x1, x2) 2 * (1 - x1) * (-1) + 200 * (x1 - x0.^2) + 200 * (x2 - x1.^2) * (-2 + x1);
-    ending = @(x0, x1) 200 * (x1 - x0.^2);
+    start = @(x1, x2) -2 * (1 - x1) + 200 * (x2 - x1.^2) * (-2 * x1);
+    middle = @(x1, x2, x3) 200 * (x2 - x1.^2) - 2 * (1 - x2) + 200 * (x3 -x2.^2) * (-2 * x2);
+    ending = @(x2, x3) 200 * (x3 - x2.^2);
     
     dim = numel(x);
     
@@ -75,4 +77,19 @@ function ret = f_rosen_mult_deriv_func(x)
     
     ret = sum;
 
+end
+
+function str = vec2str(vec)
+    
+    dim = numel(vec);
+    ret_str = "[";
+    for i = 1:dim
+        if i == dim
+            ret_str = append( ret_str, sprintf("%0.4f]", vec(i)) );
+        else
+            ret_str = append( ret_str, sprintf("%0.4f, ", vec(i)) );
+        end
+    end
+    
+    str = ret_str;
 end

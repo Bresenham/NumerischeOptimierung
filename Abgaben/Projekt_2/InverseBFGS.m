@@ -33,7 +33,7 @@ function ret = InverseBFGS(f, grad, x0)
     y = @(x, x_old) grad(x) - grad(x_old);
     
     update1 = @(B, s, y) ( (s - B*y) * s' + s * (s - B*y)' ) / ( y' * s);
-    update2 = @(B, s, y) ( (s - B*y)' * y * s * (s') ) / ( y' * s).^2;
+    update2 = @(B, s, y) ( (s - B*y)' * y * s * (s') ) / ( ( y' * s).^2 );
 
     update = @(B, s, y) B + update1(B, s, y) - update2(B, s, y);
     
@@ -54,10 +54,11 @@ function ret = InverseBFGS(f, grad, x0)
         % Prüfe ob es sich bei 'd' um eine Abstiegsrichtung handelt, wenn
         % nicht, verwende den negativen Gradienten und setze die
         % Approximation der Hesse-Matrix auf die Einheitsmatrix zurück
-        if ( grad(x)' * d > - norm(d) )
-            d = - grad(x);
-            B = eye(dim);
-        end
+        % (Aufgabe 4)
+        % if ( grad(x)' * d > - norm(d) )
+        %     d = - grad(x);
+        %     B = eye(dim);
+        % end
         
         % Definition der Funktionen phi und phi' die für Wolfe-Powell
         % benötigt werden
