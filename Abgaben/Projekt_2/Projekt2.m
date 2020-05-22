@@ -42,17 +42,6 @@ fprintf("--------------------AUFGABE 4--------------------\n");
 
 x0 = [0; -1];
 
-count = 100;
-sums = zeros(count, 1);
-for i = 1:count
-    tic;
-    ret = InverseBFGS(f_bazaraa, f_bazaraa_grad, x0);
-    elapsed = toc;
-    sums(i) = elapsed;
-end
-avg = sum(sums) / count;
-fprintf("200-D Rosen took %0.4fs\n", avg);
-
 ret = InverseBFGS(f_himmel, f_himmel_grad, x0);
 fprintf("InverseBFGS returned x=%s with f_himmel(x)=%0.6f\n", vec2str( ret(end).x ), ret(end).f); 
 
@@ -62,6 +51,24 @@ fprintf("InverseBFGS returned x=%s with f_bazaraa(x)=%0.6f\n", vec2str(ret(end).
 ret = InverseBFGS(f_rosen, f_rosen_grad, x0);
 fprintf("InverseBFGS returned x=%s with f_rosen(x)=%0.6f\n", vec2str( ret(end).x ), ret(end).f);
 
+
+count = 100;
+max_dim = 500;
+all_avgs = zeros(max_dim, 1);
+
+for dim = 2:max_dim
+    sums = zeros(count, 1);
+    for c = 1:count
+        x0_rosen = zeros(dim, 1) - ones(dim, 1);
+        tic;
+        InverseBFGS(f_rosen_mult, f_rosen_mult_grad, x0_rosen);
+        elapsed = toc;
+        sums(c) = sums(c) + elapsed;
+    end
+    avg = sum(sums) / count;
+    all_avgs(dim) = avg;
+    fprintf("DIM = %d\n", dim);
+end
 
 rosenbrock_dim = 250;
 x0_rosen = zeros(rosenbrock_dim, 1) - ones(rosenbrock_dim, 1);

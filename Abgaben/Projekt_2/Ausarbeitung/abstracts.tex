@@ -129,7 +129,13 @@ den nächsten Schritt neu bestimmt werden. Hierzu bieten sich verschiedene Mögl
 \end{itemize}
 
 Um herauszufinden, welche dieser Methoden am besten geeignet ist (d.h. die richtig Lösung in der kürzesten Zeit findet),
-wird die Laufzeit des inversen BFGS-Verfahrens bestimmt:
+wird die Laufzeit des inversen BFGS-Verfahrens bestimmt. Startwerte:
+
+\begin{itemize}
+  \item N-dim. Rosenbrock-Funktion: $\begin{bmatrix}-1\\\vdots\\-1\end{bmatrix}$
+  \item Himmelblau-Funktion: $\begin{bmatrix}0\\-1\end{bmatrix}$
+  \item Bazaraa-Shetty: $\begin{bmatrix}0\\-1\end{bmatrix}$
+\end{itemize}
 
 \begin{figure}[H]
   \centering
@@ -316,8 +322,41 @@ wird die Laufzeit des inversen BFGS-Verfahrens bestimmt:
         \end{axis}
     \end{tikzpicture}
   \end{minipage}
-  \caption{Vergleich der Rechenzeit für eine Genauigkeit von $10^{-8}$ gemittelt über 100 Durchläufe}
+  \caption{Vergleich der Rechenzeit für eine Genauigkeit von $10^{-8}$ gemittelt über 100 Durchläufe (Intel Core i3-7100U, 8GB RAM, Windows 10 64-Bit)}
 \end{figure}
 
+Alle drei Funktionen profitieren von $B = \frac{y^Ts}{y^Ty}\cdot I$, daher habe ich diesen Weg in meiner Implementierung gewählt.
+
+\subsubsection{Aufgabe 4}
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \pgfplotsset{
+      tick label style = {font=\sansmath\sffamily},
+      every axis label = {font=\sansmath\sffamily},
+      legend style = {font=\sansmath\sffamily},
+      label style = {font=\sansmath\sffamily}
+    }
+    \pgfplotstableread[col sep=comma]{bfgs_ndim_rosen_measurement.csv}\datatable
+    \begin{axis}[
+        ybar,
+        ymin=0,
+        ymax=2,
+        ytick distance=0.5,
+        ylabel={Rechenzeit in s},
+        xmin=0,
+        xmax=500,
+        xtick distance=50,
+        xlabel={Dimension},
+        height=4.5cm,
+        width=\textwidth,
+        tick align=inside
+      ]
+      \addplot[fill=black!40, draw=black] table[x index = {0}, y index = {1}] {\datatable};
+    \end{axis}
+  \end{tikzpicture}
+  \caption{Rechenzeit der N-dimensionalen Rosenbrock-Funktion gemittelt über 100 Durchläufe}
+\end{figure}
 
 \end{document}

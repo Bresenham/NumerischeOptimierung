@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1590184869 "c:/Users/test/Documents/Studium/NumerischeOptimierung/Abgaben/Projekt_2/Ausarbeitung/abstracts.tex" "c:/Users/test/Documents/Studium/NumerischeOptimierung/Abgaben/Projekt_2/Ausarbeitung/abstracts.pdf" "abstracts" 1590184883
+["pdflatex"] 1590187447 "c:/Users/test/Documents/Studium/NumerischeOptimierung/Abgaben/Projekt_2/Ausarbeitung/abstracts.tex" "c:/Users/test/Documents/Studium/NumerischeOptimierung/Abgaben/Projekt_2/Ausarbeitung/abstracts.pdf" "abstracts" 1590187456
   "C:/Users/test/AppData/Local/MiKTeX/2.9/fonts/pk/ljfour/jknappen/ec/dpi600/ectt1200.pk" 1584195600 24152 fab6350886056a038865d2d07a0c4978 ""
   "C:/Users/test/AppData/Local/MiKTeX/2.9/miktex/data/le/pdftex/pdflatex.fmt" 1587591515 10518118 1ccda8b62d01ebdf62f6e8095bde44d4 ""
   "C:/Users/test/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map" 1588509316 125430 1a0ef22092fafe716480e8bc36b884d8 ""
@@ -40,6 +40,7 @@
   "C:/Users/test/AppData/Local/Programs/MiKTeX 2.9/fonts/tfm/public/cm/cmsy8.tfm" 1136768653 1120 8b7d695260f3cff42e636090a8002094 ""
   "C:/Users/test/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/gnome/cantarell/Cantarell-Bold.pfb" 1561405114 169407 5b07598c7adbc4d00b6cd9b624efc50a ""
   "C:/Users/test/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/gnome/cantarell/Cantarell-Regular.pfb" 1561405114 161572 853a63715e1bcf956e4ec80e83b3cc76 ""
+  "C:/Users/test/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb" 1247596667 30251 6afa5cb1d0204815a708a080681d4674 ""
   "C:/Users/test/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb" 1247596667 36741 0ee9e374ec3e30da87cdfb0ea3575226 ""
   "C:/Users/test/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi6.pfb" 1247596666 37166 8ab3487cbe3ab49ebce74c29ea2418db ""
   "C:/Users/test/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb" 1247596666 35469 dcf3a5f2fc1862f5952e3ee5eb1d98c4 ""
@@ -283,15 +284,16 @@
   "C:/Users/test/AppData/Local/Programs/MiKTeX 2.9/tex/latex/url/url.sty" 1388494052 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
   "C:/Users/test/AppData/Local/Programs/MiKTeX 2.9/tex/latex/xcolor/xcolor.sty" 1463135581 57049 34128738f682d033422ca125f82e5d62 ""
   "C:/Users/test/AppData/Local/Programs/MiKTeX 2.9/tex/latex/xkeyval/xkeyval.sty" 1419274338 5114 9c1069474ff71dbc47d5006555e352d3 ""
-  "abstracts.aux" 1590184874 1242 086b6a3f526a0c0cf960b6c58da0af6f "pdflatex"
-  "abstracts.out" 1590184874 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "abstracts.tex" 1590184882 13089 b11626073abc07aa78bb17b15e564c05 ""
-  "c:/Users/test/Documents/Studium/NumerischeOptimierung/Abgaben/Projekt_2/Ausarbeitung/abstracts.aux" 1590184874 1242 086b6a3f526a0c0cf960b6c58da0af6f ""
-  "c:/Users/test/Documents/Studium/NumerischeOptimierung/Abgaben/Projekt_2/Ausarbeitung/abstracts.tex" 1590184882 13089 b11626073abc07aa78bb17b15e564c05 ""
+  "abstracts.aux" 1590187455 1591 403de85a081afbd692383261b73c6915 "pdflatex"
+  "abstracts.out" 1590187454 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "abstracts.tex" 1590187444 14435 4b944ccb97ca595be68674092acedd5e ""
+  "bfgs_ndim_rosen_measurement.csv" 1590186969 75 50874fb27b2d9af767bf051341231539 ""
+  "c:/Users/test/Documents/Studium/NumerischeOptimierung/Abgaben/Projekt_2/Ausarbeitung/abstracts.aux" 1590187455 1591 403de85a081afbd692383261b73c6915 ""
+  "c:/Users/test/Documents/Studium/NumerischeOptimierung/Abgaben/Projekt_2/Ausarbeitung/abstracts.tex" 1590187444 14435 4b944ccb97ca595be68674092acedd5e ""
   (generated)
+  "c:/Users/test/Documents/Studium/NumerischeOptimierung/Abgaben/Projekt_2/Ausarbeitung/abstracts.pdf"
+  "abstracts.log"
   "abstracts.out"
   "abstracts.pdf"
   "c:/Users/test/Documents/Studium/NumerischeOptimierung/Abgaben/Projekt_2/Ausarbeitung/abstracts.log"
   "abstracts.aux"
-  "c:/Users/test/Documents/Studium/NumerischeOptimierung/Abgaben/Projekt_2/Ausarbeitung/abstracts.pdf"
-  "abstracts.log"

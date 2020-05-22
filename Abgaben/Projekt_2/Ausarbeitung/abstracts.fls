@@ -440,6 +440,7 @@ INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\adobe\helvetic\p
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\adobe\helvetic\phvro7t.tfm
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\vf\gnome\cantarell\Cantarell-Regular-TS1-TLF.vf
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\gnome\cantarell\Cantarell-Regular-TS1-TLF--base.tfm
+INPUT c:\Users\test\Documents\Studium\NumerischeOptimierung\Abgaben\Projekt_2\Ausarbeitung\bfgs_ndim_rosen_measurement.csv
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\vf\adobe\helvetic\phvro7t.vf
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\adobe\helvetic\phvro8r.tfm
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\vf\adobe\helvetic\phvr7t.vf
@@ -463,6 +464,8 @@ INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\gnome\cantarel
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\gnome\cantarell\Cantarell-Bold.pfb
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\gnome\cantarell\Cantarell-Regular.pfb
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\gnome\cantarell\Cantarell-Regular.pfb
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmex10.pfb
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmex10.pfb
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmmi12.pfb
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmmi12.pfb
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmmi6.pfb

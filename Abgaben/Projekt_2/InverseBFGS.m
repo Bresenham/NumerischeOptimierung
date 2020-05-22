@@ -80,7 +80,7 @@ function ret = InverseBFGS(f, grad, x0)
     if k >= k_max
         fprintf("InverseBFGS ended because it exceeded MaxIterations!\n");
     else
-        fprintf("InverseBFGS finished after %d iterations!\n", k);
+        % fprintf("InverseBFGS finished after %d iterations!\n", k);
     end
 
 end
