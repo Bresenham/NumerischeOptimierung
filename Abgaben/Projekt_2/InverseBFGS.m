@@ -20,7 +20,7 @@ function ret = InverseBFGS(f, grad, x0)
     x = x0;
     x_old = x0;
     dim = numel(x0);
-    k_max = 1000000;
+    k_max = 1e+6;
     ret = struct("x", x0, "f", f(x0), "gradient", grad(x0));
 
     % Start mit der Einheitsmatrix als inverse zur Approximation der
@@ -73,6 +73,10 @@ function ret = InverseBFGS(f, grad, x0)
         k = k + 1;
         
         ret = [ ret; struct("x", x, "f", f(x), "gradient", grad(x)) ];
+    end
+    
+    if k >= k_max
+        fprintf("InverseBFGS ended because it exceeded MaxIterations!\n");
     end
 
 end

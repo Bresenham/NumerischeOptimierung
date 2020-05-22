@@ -51,9 +51,18 @@ fprintf("InverseBFGS returned x=%s with f_rosen(x)=%0.6f\n", vec2str( ret(end).x
 
 
 rosenbrock_dim = 100;
-x0 = zeros(rosenbrock_dim, 1) - ones(rosenbrock_dim, 1);
-ret = InverseBFGS(f_rosen_mult, f_rosen_mult_grad, x0);
+x0_rosen = zeros(rosenbrock_dim, 1) - ones(rosenbrock_dim, 1);
+ret = InverseBFGS(f_rosen_mult, f_rosen_mult_grad, x0_rosen);
 fprintf("InverseBFGS returned x=%s with f_rosen_mult(x)=%0.6f\n", vec2str( ret(end).x ), ret(end).f);
+
+% Setze die selben Toleranzen und Grenzen wie in 'InverseBFGS'
+options = optimoptions("fminunc", "OptimalityTolerance", 1e-8, "MaxFunctionEvaluations", 1e+6, "MaxIterations", 1e+6);
+
+ret = fminunc(f_rosen_mult, x0_rosen, options);
+fprintf("fminunc returned x=%s with f_rosen_mult(x)=%0.6f\n", vec2str(ret), f_rosen_mult(ret));
+
+ret = fminunc(f_himmel, x0, options);
+fprintf("fminunc returned x=%s with f_himmel(x)=%0.6f\n", vec2str(ret), f_himmel(ret));
 
 % Aufgabe 5
 % Siehe Erläuterung im PDF
