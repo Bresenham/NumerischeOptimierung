@@ -20,6 +20,7 @@
 \usepackage{amsfonts}
 \usepackage{movie15}
 \usepackage{url}
+\usepackage{lscape}
 
 \usepackage{tikz}
 \usetikzlibrary{calc,positioning,shapes,decorations.pathreplacing}
@@ -84,7 +85,12 @@
 \subsubsection{Aufgabe 1}
 Siehe Programmcode in \lstinline[basicstyle=\ttfamily\color{black}]|Project2.m|.
 
-\subsubsection{Aufgabe 2}
+\newpage
 
+\begin{landscape}
+\subsubsection{Aufgabe 2}
+$$\scriptscriptstyle I - \frac{s(As)^T}{s^TAs} + \frac{A^{-1}yy^T}{y^Ts} + \frac{(s - A^{-1}y)s^TA + s(s - A^{-1}y)^TA}{y^Ts} - \frac{(s - A^{-1}y)s^TAs(As)^T + s(s - A^{-1}y)^TAs(As)^T}{y^Tss^TAs} + \frac{(s - A^{-1}y)s^Tyy^T + s(s - A^{-1}y)^Tyy^T}{(y^Ts)^2} - \frac{(s - A^{-1}y)^Tyss^TA}{(y^Ts)^2} + \frac{(s - A^{-1}y)^Tyss^TAs(As)^T}{(y^Ts)^2s^TAs} - \frac{(s - A^{-1}y)^Tyss^Tyy^T}{(y^Ts)^2y^Ts}$$
+$$\scriptscriptstyle I - \frac{ss^TA}{s^TAs} + \frac{A^{-1}yy^T}{y^Ts} + \frac{ss^TA - A^{-1}ys^TA + s(s^T - (A^{-1}y)^T)A}{y^Ts} - \frac{ss^TAss^TA - A^{-1}ys^TAss^TA + s(s^T - (A^{-1}y)^T)Ass^TA}{y^Tss^TAs} + \frac{ss^Tyy^T - A^{-1}ys^Tyy^T + s(s^T - (A^{-1}y)^T)yy^T}{(y^Ts)^2} -\frac{(s^T - (A^{-1}y)^T)yss^TA}{(y^Ts)^2} $$
+\end{landscape}
 
 \end{document}
