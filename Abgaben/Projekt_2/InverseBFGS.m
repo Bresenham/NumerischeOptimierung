@@ -59,8 +59,8 @@ function ret = InverseBFGS(f, grad, x0)
         % (Aufgabe 4)
         if ( grad(x)' * d >= 0 )
            d = - grad(x);
-           % TODO: Ändern auf ( (y' * s) / (y' * y) ) * I
-           B = eye(dim);
+           % B = eye(dim);
+           B = ( (y' * s) / (y' * y) ) * I;
         end
         
         % Definition der Funktionen phi und phi' die für Wolfe-Powell

@@ -112,11 +112,190 @@ negativen Gradienten zu setzen:
 
 $$d = -\nabla f(x)$$
 
-Da nun die Abstiegsrichtung nicht mehr zur approximierten Inversen der Hesse-Matrix $B$ passt, muss diese ebenfalls neu
-bestimmt werden. Hierzu bieten sich verschiedene Möglichkeiten an:
+Da nun die Abstiegsrichtung nicht mehr zur approximierten Inversen der Hesse-Matrix $B$ passt, muss diese ebenfalls für
+den nächsten Schritt neu bestimmt werden. Hierzu bieten sich verschiedene Möglichkeiten an:
 
 \begin{itemize}
-  \item Man könnte wie beim Start des BFGS-Verfahrens $B = I$ setzen
+  \item Wie beim Start des BFGS-Verfahrens $B = I$ setzen
+  \begin{itemize}
+    \item Hierbei geht jeglicher berechnete Fortschritt verloren, es handelt sich um einen recht naiven Ansatz
+  \end{itemize}
+  \item Die Hesse-Matrix einmalig aus Differenzenquotienten des Gradienten bestimmen und anschließend invertieren
+  \begin{itemize}
+    \item Hoher Rechenaufwand von $\mathcal{O}(n^2)$ für die Hesse-Matrix und nochmal $\mathcal{O}(n^3)$ für das Invertieren
+    \item Bisher berechneter Fortschritt geht ebenfalls verloren aber die Approximation der Hesse-Matrix ist sehr genau
+  \end{itemize}
+  \item Man könnte, wie in den Vorlesungsfolien beschrieben, die Matrix $\frac{y^Ts}{y^Ty}\cdot I_n$ verwenden
 \end{itemize}
+
+Um herauszufinden, welche dieser Methoden am besten geeignet ist (d.h. die richtig Lösung in der kürzesten Zeit findet),
+wird die Laufzeit des inversen BFGS-Verfahrens bestimmt:
+
+\begin{figure}[H]
+  \centering
+  \pgfplotstableread{
+    0 0.2240  0.0030  0.0051
+  }\dataseth
+  \pgfplotstableread{
+    0 0.1904  0.0023  0.0043
+  }\datasetf
+  \pgfplotstableread{
+    0 0.0       16.337017     3.398372
+  }\datasetg
+  \begin{minipage}{.3\textwidth}
+    \begin{tikzpicture}
+        \begin{axis}[
+            width=4cm,
+            height=6.5cm,
+            ybar,
+            ymin=0,
+            ylabel={Rechenzeit in s},
+            ylabel style={xshift=-3ex},
+            ytick=\empty,
+            extra y ticks={0,0.05,0.10,0.15,0.2,0.25},
+            extra y tick labels={{0},{0.05},{0.10},{0.15},{0.2},{0.25}},
+            xtick=data,
+            xticklabels={
+                $B = I$
+            },
+            yticklabel style={xshift=0ex},
+            xticklabel style={yshift=-16ex},
+            major x tick style={
+                % (this is a better way than assigning `opacity=0')
+                /pgfplots/major tick length=0pt,
+            },
+            minor x tick num=1,
+            minor tick length=2ex,
+            % ---------------------------------------------------------------------
+            % (adapted solution from <https://tex.stackexchange.com/a/141006/95441>)
+            % we want to provide absolute `at' values ...
+            scatter/position=absolute,
+            node near coords style={
+                % ... to provide axis coordinates at `ymin' for the nodes
+                at={(axis cs:\pgfkeysvalueof{/data point/x},\pgfkeysvalueof{/pgfplots/ymin})},
+                % then also the `anchor' has to be adapted ...
+                anchor=east,
+                % ... because we rotate the labels which would overlap otherwise
+                rotate=90,
+            },
+            % ---------------------------------------------------------------------
+            % (created a cycle list to shorten the below `\addplot' entries)
+            cycle list={
+                {draw=black,fill=black!20},
+                {draw=black,fill=black!40},
+                {draw=black,fill=black!60},
+            },
+            % (moved common option here)
+            table/x index=0,
+        ]
+            \addplot+ [nodes near coords=200-dim. Rosen.] table [y index=1] \dataseth;
+            \addplot+ [nodes near coords=Himmelblau] table [y index=2] \dataseth;
+            \addplot+ [nodes near coords=Bazaraa-Shetty] table [y index=3] \dataseth;
+        \end{axis}
+        \node[black, rotate=90, align=left] (impl) at (1.2125,1.08) {0.0030};
+        \draw[-{Latex}, thick, black] (impl.west) -- ([yshift=-0.2cm]impl.west);
+    \end{tikzpicture}
+  \end{minipage}
+  \begin{minipage}{.3\textwidth}
+    \begin{tikzpicture}
+        \begin{axis}[
+            width=4cm,
+            height=6.5cm,
+            ybar,
+            ymin=0,
+            ytick=\empty,
+            extra y ticks={0,0.05,0.10,0.15,0.2,0.25},
+            extra y tick labels={{0},{0.05},{0.10},{0.15},{0.2},{0.25}},
+            xtick=data,
+            xticklabels={
+                $B = \frac{y^Ts}{y^Ty}\cdot I$
+            },
+            xticklabel style={yshift=-16ex},
+            major x tick style={
+                % (this is a better way than assigning `opacity=0')
+                /pgfplots/major tick length=0pt,
+            },
+            minor x tick num=1,
+            minor tick length=2ex,
+            % ---------------------------------------------------------------------
+            % (adapted solution from <https://tex.stackexchange.com/a/141006/95441>)
+            % we want to provide absolute `at' values ...
+            scatter/position=absolute,
+            node near coords style={
+                % ... to provide axis coordinates at `ymin' for the nodes
+                at={(axis cs:\pgfkeysvalueof{/data point/x},\pgfkeysvalueof{/pgfplots/ymin})},
+                % then also the `anchor' has to be adapted ...
+                anchor=east,
+                % ... because we rotate the labels which would overlap otherwise
+                rotate=90,
+            },
+            % ---------------------------------------------------------------------
+            % (created a cycle list to shorten the below `\addplot' entries)
+            cycle list={
+                {draw=black,fill=black!40},
+                {draw=black,fill=black!60},
+            },
+            % (moved common option here)
+            table/x index=0,
+        ]
+        \addplot+ [nodes near coords=200-dim. Rosen.] table [y index=1] \datasetf;
+        \addplot+ [nodes near coords=Himmelblau] table [y index=2] \datasetf;
+        \addplot+ [nodes near coords=Bazaraa-Shetty] table [y index=3] \datasetf;
+        \end{axis}
+        \node[black, rotate=90] (impl) at (1.425,0.8) {1.25};
+        \draw[-{Latex}, thick, black] (impl.west) -- ([yshift=-0.2cm]impl.west);
+    \end{tikzpicture}
+  \end{minipage}
+  \begin{minipage}{.3\textwidth}
+    \begin{tikzpicture}
+        \begin{axis}[
+            width=4cm,
+            height=6.5cm,
+            ybar,
+            ymin=0,
+            ytick=\empty,
+            extra y ticks={0,5,10,15,20,25},
+            extra y tick labels={{0},{5},{10},{15},{20},{25}},
+            xtick=data,
+            xticklabels={
+                Diff. Quot.
+            },
+            xticklabel style={yshift=-16ex},
+            major x tick style={
+                % (this is a better way than assigning `opacity=0')
+                /pgfplots/major tick length=0pt,
+            },
+            minor x tick num=1,
+            minor tick length=2ex,
+            % ---------------------------------------------------------------------
+            % (adapted solution from <https://tex.stackexchange.com/a/141006/95441>)
+            % we want to provide absolute `at' values ...
+            scatter/position=absolute,
+            node near coords style={
+                % ... to provide axis coordinates at `ymin' for the nodes
+                at={(axis cs:\pgfkeysvalueof{/data point/x},\pgfkeysvalueof{/pgfplots/ymin})},
+                % then also the `anchor' has to be adapted ...
+                anchor=east,
+                % ... because we rotate the labels which would overlap otherwise
+                rotate=90,
+            },
+            % ---------------------------------------------------------------------
+            % (created a cycle list to shorten the below `\addplot' entries)
+            cycle list={
+                {draw=black,fill=black!40},
+                {draw=black,fill=black!60},
+            },
+            % (moved common option here)
+            table/x index=0,
+        ]
+        \addplot+ [nodes near coords=200-dim. Rosen.] table [y index=1] \datasetg;
+        \addplot+ [nodes near coords=Himmelblau] table [y index=2] \datasetg;
+        \addplot+ [nodes near coords=Bazaraa-Shetty] table [y index=3] \datasetg;
+        \end{axis}
+    \end{tikzpicture}
+  \end{minipage}
+  \caption{Vergleich der Rechenzeit für eine Genauigkeit von $10^{-8}$ gemittelt über 100 Durchläufe}
+\end{figure}
+
 
 \end{document}
