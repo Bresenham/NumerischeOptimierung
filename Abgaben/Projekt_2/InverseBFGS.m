@@ -57,12 +57,11 @@ function ret = InverseBFGS(f, grad, x0)
         % nicht, verwende den negativen Gradienten und setze die
         % Approximation der Hesse-Matrix auf die Einheitsmatrix zurück
         % (Aufgabe 4)
-        % TODO: Der Check stimmt wahrscheinlich nicht
-        % if ( grad(x)' * d <= - norm(d) )
-        %    d = - grad(x);
-        %    % TODO: Ändern auf ( (y' * s) / (y' * y) ) * I
-        %    B = eye(dim);
-        % end
+        if ( grad(x)' * d >= 0 )
+           d = - grad(x);
+           % TODO: Ändern auf ( (y' * s) / (y' * y) ) * I
+           B = eye(dim);
+        end
         
         % Definition der Funktionen phi und phi' die für Wolfe-Powell
         % benötigt werden
@@ -80,6 +79,8 @@ function ret = InverseBFGS(f, grad, x0)
     
     if k >= k_max
         fprintf("InverseBFGS ended because it exceeded MaxIterations!\n");
+    else
+        fprintf("InverseBFGS finished after %d iterations!\n", k);
     end
 
 end

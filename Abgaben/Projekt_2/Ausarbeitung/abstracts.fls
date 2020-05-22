@@ -421,9 +421,15 @@ INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\amsfonts\symbols\msbm10.tfm
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\amsfonts\symbols\msbm10.tfm
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\amsfonts\symbols\msbm7.tfm
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\latex\cantarell\ts1cantarell-tlf.fd
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\latex\cantarell\ts1cantarell-tlf.fd
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\gnome\cantarell\Cantarell-Regular-TS1-TLF.tfm
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\vf\gnome\cantarell\Cantarell-Regular-TS1-TLF.vf
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\gnome\cantarell\Cantarell-Regular-TS1-TLF--base.tfm
 INPUT c:\Users\test\Documents\Studium\NumerischeOptimierung\Abgaben\Projekt_2\Ausarbeitung\abstracts.aux
 INPUT c:\Users\test\Documents\Studium\NumerischeOptimierung\Abgaben\Projekt_2\Ausarbeitung\abstracts.out
 INPUT c:\Users\test\Documents\Studium\NumerischeOptimierung\Abgaben\Projekt_2\Ausarbeitung\abstracts.out
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\enc\dvips\cantarell\a_tv3tjz.enc
 INPUT C:\Users\test\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ectt1200.pk
 INPUT C:\Users\test\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ectt1200.pk
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\enc\dvips\cantarell\a_5r5lpu.enc
@@ -433,9 +439,17 @@ INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\gnome\cantarel
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\gnome\cantarell\Cantarell-Bold.pfb
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\gnome\cantarell\Cantarell-Regular.pfb
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\gnome\cantarell\Cantarell-Regular.pfb
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmmi12.pfb
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmmi12.pfb
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmmi6.pfb
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmmi6.pfb
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmmi8.pfb
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmmi8.pfb
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmr12.pfb
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmr12.pfb
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmr6.pfb
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmr6.pfb
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmsy10.pfb
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmsy10.pfb
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmsy6.pfb
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmsy6.pfb

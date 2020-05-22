@@ -96,4 +96,27 @@ $$\scriptscriptstyle I - \frac{ss^TA}{s^TAs} + \frac{A^{-1}yy^T}{y^Ts} + \frac{2
 \end{landscape}
 \restoregeometry
 
+\newpage
+
+\subsubsection{Aufgabe 3}
+Wenn die Suchrichtung des BFGS Verfahrens:
+
+$$d = -B\cdot \nabla f(x) $$
+
+keine Abstiegsrichtung ist, d.h. die Bedingung:
+
+$$\nabla f(x)^T \cdot d < 0 $$
+
+nicht erfüllt ist, muss das Verfahren 'resettet' werden. In diesem Fall bietet es sich an, die Suchrichtung auf den
+negativen Gradienten zu setzen:
+
+$$d = -\nabla f(x)$$
+
+Da nun die Abstiegsrichtung nicht mehr zur approximierten Inversen der Hesse-Matrix $B$ passt, muss diese ebenfalls neu
+bestimmt werden. Hierzu bieten sich verschiedene Möglichkeiten an:
+
+\begin{itemize}
+  \item Man könnte wie beim Start des BFGS-Verfahrens $B = I$ setzen
+\end{itemize}
+
 \end{document}
