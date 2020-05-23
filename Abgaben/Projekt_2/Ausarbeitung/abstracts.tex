@@ -345,21 +345,24 @@ Alle drei Funktionen profitieren von $B = \frac{y^Ts}{y^Ty}\cdot I$, daher habe 
         ybar,
         bar width=0.375pt,
         ymin=0,
-        ymax=1,
-        ytick distance=0.25,
+        ymax=3.2,
+        ytick distance=0.5,
         ylabel={Rechenzeit in s},
         xmin=0,
-        xmax=500,
+        xmax=450,
         xtick distance=50,
         xlabel={Dimension},
         height=4.5cm,
-        width=\textwidth,
+        width=0.95\textwidth,
         tick align=inside
       ]
       \addplot[fill=black!40, draw=black] table[x index = {0}, y index = {1}] {\datatable};
     \end{axis}
   \end{tikzpicture}
-  \caption{Rechenzeit der N-dimensionalen Rosenbrock-Funktion gemittelt über 100 Durchläufe (Intel Core i3-7100U, 8GB RAM, Windows 10 64-Bit)}
+\caption{Rechenzeit der N-dimensionalen Rosenbrock-Funktion mit Startwert $[-1, \ldots, -1]^T$ für
+  eine Genauigkeit von $10^{-8}$ gemittelt über 100 Durchläufe (Intel Core i3-7100U, 8GB RAM, Windows 10 64-Bit)}
 \end{figure}
+
+Man erkennt, das mit höheren Dimensionen die Rechenzeit drastisch zunimmt.
 
 \end{document}
