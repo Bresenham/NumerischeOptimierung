@@ -42,53 +42,99 @@ fprintf("--------------------AUFGABE 4--------------------\n");
 
 x0 = [0; -1];
 
-ret = InverseBFGS(f_himmel, f_himmel_grad, x0);
-fprintf("InverseBFGS returned x=%s with f_himmel(x)=%0.6f\n", vec2str( ret(end).x ), ret(end).f); 
+% ret = InverseBFGS(f_himmel, f_himmel_grad, x0);
+% fprintf("InverseBFGS returned x=%s with f_himmel(x)=%0.6f\n", vec2str( ret(end).x ), ret(end).f); 
 
-ret = InverseBFGS(f_bazaraa, f_bazaraa_grad, x0);
-fprintf("InverseBFGS returned x=%s with f_bazaraa(x)=%0.6f\n", vec2str(ret(end).x), ret(end).f);
+% ret = InverseBFGS(f_bazaraa, f_bazaraa_grad, x0);
+% fprintf("InverseBFGS returned x=%s with f_bazaraa(x)=%0.6f\n", vec2str(ret(end).x), ret(end).f);
 
-ret = InverseBFGS(f_rosen, f_rosen_grad, x0);
-fprintf("InverseBFGS returned x=%s with f_rosen(x)=%0.6f\n", vec2str( ret(end).x ), ret(end).f);
+% ret = InverseBFGS(f_rosen, f_rosen_grad, x0);
+% fprintf("InverseBFGS returned x=%s with f_rosen(x)=%0.6f\n", vec2str( ret(end).x ), ret(end).f);
 
-
-count = 100;
-max_dim = 500;
-all_avgs = zeros(max_dim, 1);
-
-options = optimoptions("fminunc", "OptimalityTolerance", 1e-8, "MaxFunctionEvaluations", 1e+6, "MaxIterations", 1e+6, "HessUpdate", "bfgs", 'Display','off');
-
-for dim = 2:max_dim
-    sums = zeros(count, 1);
-    for c = 1:count
-        x0_rosen = zeros(dim, 1) - ones(dim, 1);
-        tic;
-        fminunc(f_rosen_mult, x0_rosen, options);
-        elapsed = toc;
-        sums(c) = sums(c) + elapsed;
-    end
-    avg = sum(sums) / count;
-    all_avgs(dim) = avg;
-    fprintf("DIM = %d\n", dim);
-end
-
-rosenbrock_dim = 250;
-x0_rosen = zeros(rosenbrock_dim, 1) - ones(rosenbrock_dim, 1);
-ret = InverseBFGS(f_rosen_mult, f_rosen_mult_grad, x0_rosen);
-fprintf("InverseBFGS returned x=%s with f_rosen_mult(x)=%0.6f\n", vec2str( ret(end).x ), ret(end).f);
+% count = 100;
+% max_dim = 500;
+% all_avgs = zeros(max_dim, 1);
+% 
+% options = optimoptions("fminunc", "OptimalityTolerance", 1e-8, "MaxFunctionEvaluations", 1e+6, "MaxIterations", 1e+6, "HessUpdate", "bfgs", 'Display','off');
+% 
+% for dim = 72:max_dim
+%     sums = zeros(count, 1);
+%     for c = 1:count
+%         x0_rosen = zeros(dim, 1) - ones(dim, 1);
+%         tic;
+%         fminunc(f_rosen_mult, x0_rosen, options);
+%         elapsed = toc;
+%         sums(c) = sums(c) + elapsed;
+%     end
+%     avg = sum(sums) / count;
+%     all_avgs(dim) = avg;
+%     fprintf("DIM = %d\n", dim);
+% end
+% 
+% rosenbrock_dim = 250;
+% x0_rosen = zeros(rosenbrock_dim, 1) - ones(rosenbrock_dim, 1);
+% ret = InverseBFGS(f_rosen_mult, f_rosen_mult_grad, x0_rosen);
+% fprintf("InverseBFGS returned x=%s with f_rosen_mult(x)=%0.6f\n", vec2str( ret(end).x ), ret(end).f);
 
 % Setze die selben Toleranzen und Grenzen wie in 'InverseBFGS' und
 % zusätzlich das BFGS-Verfahren zum Updaten der Hesse-Matrix
-options = optimoptions("fminunc", "OptimalityTolerance", 1e-8, "MaxFunctionEvaluations", 1e+6, "MaxIterations", 1e+6, "HessUpdate", "bfgs");
-
-ret = fminunc(f_rosen_mult, x0_rosen, options);
-fprintf("fminunc returned x=%s with f_rosen_mult(x)=%0.6f\n", vec2str(ret), f_rosen_mult(ret));
-
-ret = fminunc(f_himmel, x0, options);
-fprintf("fminunc returned x=%s with f_himmel(x)=%0.6f\n", vec2str(ret), f_himmel(ret));
+% options = optimoptions("fminunc", "OptimalityTolerance", 1e-8, "MaxFunctionEvaluations", 1e+6, "MaxIterations", 1e+6, "HessUpdate", "bfgs");
+% 
+% ret = fminunc(f_rosen_mult, x0_rosen, options);
+% fprintf("fminunc returned x=%s with f_rosen_mult(x)=%0.6f\n", vec2str(ret), f_rosen_mult(ret));
+% 
+% ret = fminunc(f_himmel, x0, options);
+% fprintf("fminunc returned x=%s with f_himmel(x)=%0.6f\n", vec2str(ret), f_himmel(ret));
 
 % Aufgabe 5
 % Siehe Erläuterung im PDF
+
+% Aufgabe 6
+fprintf("--------------------AUFGABE 6--------------------\n");
+
+f = @(t, x) x(1) * exp( x(2) * t );
+f_partial_x1 = @(t, x) exp( x(2) * t);
+f_partial_x2 = @(t, x) t * x(1) * exp( x(2) * t );
+
+x0 = [1; 1];
+xdata = [0;1;2;3];
+ydata = [2.0;0.7;0.3;0.1];
+
+f_resid = @(x0, xdata, ydata) residuum(f, x0, xdata, ydata);
+f_jacobi = @(x0, xdata, ydata) jacobi(f, f_partial_x1, f_partial_x2, x0, xdata, ydata);
+ret = GaussNewton(f, f_resid, f_jacobi, x0, xdata, ydata);
+disp(ret);
+
+function ret = jacobi(f, f_part_x1, f_part_x2, x0, xdata, ydata)
+    
+    ydim = numel(xdata);
+
+    r = zeros(ydim, 2);
+    for d = 1:ydim
+        for i = 1:2
+            if i == 1
+                r(d,i) = f_part_x1(xdata(d), x0);
+            else
+                r(d,i) = f_part_x2(xdata(d), x0);
+            end
+        end
+    end
+    
+    ret = r;
+end
+
+function ret = residuum(f, x0, xdata, ydata)
+
+    xdim = numel(xdata);
+
+    r = zeros(xdim, 1);
+    for i = 1:xdim
+        r(i) = f(xdata(i), x0) - ydata(i);
+    end
+    
+    ret = r;
+
+end
 
 % Berechnet den Gradienten der N-dimensionalen Rosenbrock-Funktion
 % \input: Vector 'x'
@@ -117,6 +163,8 @@ function ret = f_rosen_mult_deriv_func(x)
 
 end
 
+% Formatiert einen Vector für die Ausgabe auf der Kommandozeile
+% \input: 1D Vector
 function str = vec2str(vec)
     
     dim = numel(vec);
