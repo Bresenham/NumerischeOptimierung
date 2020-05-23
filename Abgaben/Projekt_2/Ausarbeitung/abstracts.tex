@@ -405,7 +405,11 @@ mit $c = \frac{1}{u^Ts}$, $u = y - A^ks$ und $v = c\cdot u$.
 
 Diese kann man nun in die Sherman-Morrison-Woodbury-Formel einsetzen und erhält somit den Ansatz:
 
-$$\left(A + \left(y - As\right)\cdot\left( \frac{ y-As }{ (y-As)s } \right)^T\right)^{-1} = A^{-1} - \frac{ A^{-1}(y-As)(\frac{ y-As }{ (y-As)^Ts } )^TA^{-1} }{1 + (\frac{ y-As }{ (y-As)^Ts })^TA^{-1}(y-As)}$$
+$$\left(A + \left(y - As\right)\cdot\left( \frac{ y-As }{ (y-As)s } \right)^T\right)^{-1} = A^{-1} - \frac{ A^{-1}(y-As)\left(\frac{ y-As }{ (y-As)^Ts } \right)^TA^{-1} }{1 + \left(\frac{ y-As }{ (y-As)^Ts }\right)^TA^{-1}(y-As)}$$
+
+bzw. die Iterationsvorschrift (die $k$-Nummerierungen wurden aufgrund Platzmangels weggelassen):
+
+$$(A^{(k+1)})^{-1} = A^{-1} - \frac{ A^{-1}(y-As)\left(\frac{ y-As }{ (y-As)^Ts } \right)^TA^{-1} }{1 + \left(\frac{ y-As }{ (y-As)^Ts }\right)^TA^{-1}(y-As)} - \left(A + \left(y - As\right)\cdot\left( \frac{ y-As }{ (y-As)s } \right)^T\right)^{-1}$$
 
 $$B^{(k+1)} = B^{k} + \frac{(s^k - B^ky^k)(s^k - B^ky^k)^T}{(s^k-B^ky^k)^Ty^k}$$
 
