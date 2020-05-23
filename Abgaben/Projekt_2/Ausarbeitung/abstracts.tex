@@ -492,9 +492,25 @@ Siehe \lstinline[basicstyle=\ttfamily\color{black}]|Projekt2.m|.
     \draw[-{Latex}] (\from,0) -- (\too*\scaleFactor,0) node[right] {$t$};
     \draw[-{Latex}] (0,\from) -- (0,\too*\scaleFactor) node[above] {\rotatebox{0}{$g(t, 3.5355, 0.0546, 0.1539)$}};
 
+    \draw (0, 0) node[xshift=-0.21cm, yshift=-0.25cm, font=\small] {$0$};
+    \foreach \x in {40, 80, 120, 160} {
+      \draw (\x*\scaleFactor, 0) node[yshift=-0.25cm, font=\small] {$\x$};
+      \draw (0,\x*\scaleFactor) node[xshift=-0.425cm, font=\small] {$\x$};
+    }
+
     \draw[scale=\scaleFactor, thick, black, domain=\from:\too, smooth, variable=\x] plot (
       {\x},{ 3.5355 * exp( -(0.0546^2 + 0.1539^2) * \x ) * ( sinh(0.1539^2 * \x) / (0.1539^2) ) }
     );
+
+    \foreach \x / \y / \i in {
+      6/24.19/1, 12/35.34/2, 18/43.43/3, 24/42.63/4, 30/49.92/5, 36/51.53/6, 42/57.39/7, 48/59.56/8, 54/55.60/9, 60/51.91/10,
+      66/58.27/11, 72/62.99/12, 78/52.99/13, 84/53.83/14, 90/59.37/15, 96/62.35/16, 102/61.84/17, 108/61.62/18, 114/49.64/19,
+      120/57.81/20, 126/54.79/21, 132/50.38/22, 138/43.85/23, 144/45.16/24, 150/46.72/25, 156/40.68/26, 162/35.14/27, 168/45.47/28,
+      174/42.40/29, 180/55.21/30
+    } {
+      \draw (\x*\scaleFactor, \y*\scaleFactor) node[interval border] {x};
+    }
+
   \end{tikzpicture}
   \caption{Modellfunktion und Datensatz für\\$g(t, x_1, x_2, x_3) = x_1 \cdot e^{ -(x_2^2 + x_3^2)\cdot t }\cdot \frac{sinh(x_3^2\cdot t)}{x_3^2}$}
 \end{figure}
