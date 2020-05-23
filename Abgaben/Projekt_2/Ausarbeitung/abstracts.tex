@@ -123,6 +123,8 @@ den nächsten Schritt neu bestimmt werden. Hierzu bieten sich verschiedene Mögl
   \item Die Hesse-Matrix einmalig aus Differenzenquotienten des Gradienten bestimmen und anschließend invertieren
   \begin{itemize}
     \item Hoher Rechenaufwand von $\mathcal{O}(n^2)$ für die Hesse-Matrix und nochmal $\mathcal{O}(n^3)$ für das Invertieren
+    \item Problem wenn die Hesse-Matrix nicht invertierbar ist bzw. aufgrund von Auslöschung oder anderen numerischen Fehlern
+    die Inverse schlecht konditioniert ist
     \item Bisher berechneter Fortschritt geht ebenfalls verloren aber die Approximation der Hesse-Matrix ist sehr genau
   \end{itemize}
   \item Man könnte, wie in den Vorlesungsfolien beschrieben,  $\frac{y^Ts}{y^Ty}\cdot I_n$ als positiv-definitve Matrix verwenden
@@ -341,7 +343,7 @@ Alle drei Funktionen profitieren von $B = \frac{y^Ts}{y^Ty}\cdot I$, daher habe 
     \pgfplotstableread[col sep=comma]{bfgs_ndim_rosen_measurement.csv}\datatable
     \begin{axis}[
         ybar,
-        bar width=0.4pt,
+        bar width=0.375pt,
         ymin=0,
         ymax=1,
         ytick distance=0.25,
@@ -357,7 +359,7 @@ Alle drei Funktionen profitieren von $B = \frac{y^Ts}{y^Ty}\cdot I$, daher habe 
       \addplot[fill=black!40, draw=black] table[x index = {0}, y index = {1}] {\datatable};
     \end{axis}
   \end{tikzpicture}
-  \caption{Rechenzeit der N-dimensionalen Rosenbrock-Funktion gemittelt über 100 Durchläufe}
+  \caption{Rechenzeit der N-dimensionalen Rosenbrock-Funktion gemittelt über 100 Durchläufe (Intel Core i3-7100U, 8GB RAM, Windows 10 64-Bit)}
 \end{figure}
 
 \end{document}
