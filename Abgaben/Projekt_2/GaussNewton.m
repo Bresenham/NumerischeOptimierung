@@ -7,7 +7,7 @@
 %   Startvalue: x0,
 %   Data to fit: xdata, ydata
 % Outputs:
-%   a vector of structs [ TODO ]
+%   a vector of structs [ x, residuum(x), jacobi(x) ]
 %
 % WolfePowell is defined in 'WolfePowell.m'
 %
@@ -20,6 +20,9 @@ function ret = GaussNewton(f, f_resid, f_jacobi, x0, xdata, ydata)
     k = 0;
     x = x0;
     kmax = 1e+6;
+    
+    ret = struct( "x", x, "residuum", f_resid(x, xdata, ydata), "jacobi", f_jacobi(x, xdata, ydata) );
+    
     gradient = @(x) 2 * f_jacobi(x, xdata, ydata)' * f_resid(x, xdata, ydata);
     
     while norm( gradient(x) ) > 1e-8 && k < kmax
@@ -32,15 +35,16 @@ function ret = GaussNewton(f, f_resid, f_jacobi, x0, xdata, ydata)
         
         d = left_side \ right_side;
         
-        % phi = @(a) f(x + a * d);
-        % phi_grad = @(a) gradient(x + a * d)' * d;
-        % alpha = WolfePowell(phi, phi_grad);
+        phi = @(a) f_resid(x + a * d, xdata, ydata)' * f_resid(x + a * d, xdata, ydata);
+        phi_grad = @(a) gradient(x + a * d)' * d;
+        alpha = WolfePowell(phi, phi_grad);
         
-        x = x - 1 * d;
+        x = x - alpha * d;
         fprintf("NORM: %0.4f\n", norm( gradient(x) ) );
         
         k = k + 1;
+        
+        ret = [ ret; struct( "x", x, "residuum", resid, "jacobi", jacobi ) ];
     end
     
-    ret = x;
 end
