@@ -113,7 +113,8 @@ negativen Gradienten zu setzen:
 $$d = -\nabla f(x)$$
 
 Da nun die Abstiegsrichtung nicht mehr zur approximierten Inversen der Hesse-Matrix $B$ passt, muss diese ebenfalls für
-den nächsten Schritt neu bestimmt werden. Hierzu bieten sich verschiedene Möglichkeiten an:
+den nächsten Schritt neu bestimmt werden (bzw. das nächste Update erfolgt dann mit dieser Matrix).\par
+Hierzu bieten sich verschiedene Möglichkeiten an:
 
 \begin{itemize}
   \item Wie beim Start des BFGS-Verfahrens $B = I$ setzen
@@ -331,6 +332,31 @@ Alle drei Funktionen profitieren von $B = \frac{y^Ts}{y^Ty}\cdot I$, daher habe 
 
 \subsubsection{Aufgabe 4}
 
+Die Ableitung der N-dimensionalen Rosenbrock-Funktion habe ich beispielhaft für $N=3$ bestimmt:
+
+  $$\sum_{i=1}^2 (1 - x_i)^2 + 100\cdot(x_{i+1} - x_i^2)^2$$
+  $$=$$
+  $$(1 - x_1)^2 + 100\cdot (x_2 - x_1^2)^2 + (1 - x_2)^2 + 100\cdot(x_3 - x_2^2)^2$$
+  $$\nabla f_3 = \begin{bmatrix}-2\cdot(1 - x_1) + 200\cdot(x_2 - x_1^2)\cdot(-2x_1)\\
+    200\cdot(x_2 - x_1^2) - 2\cdot(1 - x_2) + 200\cdot(x_3 - x_2^2)\cdot(-2x_2)\\
+    200\cdot(x_3 - x_2^2)\end{bmatrix}$$
+
+Man erkennt eine Regel: Der Gradient besteht aus drei Teilen. Der erste Eintrag im Gradienten ist:
+
+$$-2\cdot(1 - x_1) + 200\cdot(x_2 - x_1^2)\cdot(-2x_1)$$
+
+Alle weiteren Einträge (bis auf den letzten an Position $N-1$) sind:
+
+$$200\cdot(x_i - x_{i-1}^2) - 2\cdot(1 - x_i) + 200\cdot(x_{i+1} - x_i^2)\cdot(-2x_i)$$
+
+Der letzte Eintrag ist:
+
+$$200\cdot(x_N - x_{N-1}^2)$$
+
+Die Ableitung ist in \lstinline[basicstyle=\ttfamily\color{black}]|Projekt2.m| in der Funktion
+\lstinline[basicstyle=\ttfamily\color{black}]|f_rosen_mult_deriv_func| definiert.
+Rechenzeit des in \lstinline[basicstyle=\ttfamily\color{black}]|InverseBFGS.m| implementierten Verfahrens:
+
 \begin{figure}[H]
   \centering
   \begin{tikzpicture}
@@ -363,6 +389,53 @@ Alle drei Funktionen profitieren von $B = \frac{y^Ts}{y^Ty}\cdot I$, daher habe 
   eine Genauigkeit von $10^{-8}$ gemittelt über 100 Durchläufe (Intel Core i3-7100U, 8GB RAM, Windows 10 64-Bit)}
 \end{figure}
 
-Man erkennt, das mit höheren Dimensionen die Rechenzeit drastisch zunimmt.
+Rechenzeit von \lstinline[basicstyle=\ttfamily\color{black}]|fminunc| mit Option
+\lstinline[basicstyle=\ttfamily\color{black}]|"HessUpdate" = "bfgs"|:
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \pgfplotsset{
+      tick label style = {font=\sansmath\sffamily},
+      every axis label = {font=\sansmath\sffamily},
+      legend style = {font=\sansmath\sffamily},
+      label style = {font=\sansmath\sffamily}
+    }
+    \pgfplotstableread[col sep=comma]{fminunc_ndim_rosen_measurement.csv}\datatable
+    \begin{axis}[
+        ybar,
+        bar width=0.375pt,
+        ymin=0,
+        ymax=3.2,
+        ytick distance=0.5,
+        ylabel={Rechenzeit in s},
+        xmin=0,
+        xmax=450,
+        xtick distance=50,
+        xlabel={Dimension},
+        height=4.5cm,
+        width=0.95\textwidth,
+        tick align=inside
+      ]
+      \addplot[fill=black!40, draw=black] table[x index = {0}, y index = {1}] {\datatable};
+    \end{axis}
+  \end{tikzpicture}
+\caption{Rechenzeit der N-dimensionalen Rosenbrock-Funktion mit Startwert $[-1, \ldots, -1]^T$ für
+  eine Genauigkeit von $10^{-8}$ gemittelt über 100 Durchläufe (Intel Core i3-7100U, 8GB RAM, Windows 10 64-Bit)}
+\end{figure}
+
+Man erkennt, das mit höheren Dimensionen die Rechenzeit für beide Verfahren drastisch zunimmt.
+
+Möglichkeiten um ein höheres $N$ zu erreichen:
+\begin{itemize}
+  \item Nach den Regeln der Analysis lässt sich eine Summe aufteilen in zwei Summen:
+  $$\sum_{i=1}^{N-1}(1 - x_i)^2 + 100\cdot(x_{i+1}-x_i^2)^2$$
+  $$=$$
+  $$\sum_{i=1}^{a}(1 - x_i)^2 + 100\cdot(x_{i+1}-x_i^2)^2 + \sum_{i=a+1}^{N-1}(1 - x_i)^2 + 100\cdot(x_{i+1}-x_i^2)^2$$
+  Die Berechnung des Minimums dieser zwei Summen kann auf z.B. zwei Threads aufgeteilt und am Ende wieder zusammengefügt werden.
+  Bei ungeradem $N$ muss man sich entscheiden wie die Summe aufgeteilt wird, ein Thread bearbeitet dann eine Dimension mehr als der andere.
+  Bei besonders großem $N$ können auch diese beiden Summen wiederum aufgeteilt und somit auf noch mehr Threads verteilt werden.
+\end{itemize}
+
 
 \end{document}

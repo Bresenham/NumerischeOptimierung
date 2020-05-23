@@ -440,7 +440,6 @@ INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\adobe\helvetic\p
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\adobe\helvetic\phvro7t.tfm
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\vf\gnome\cantarell\Cantarell-Regular-TS1-TLF.vf
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\gnome\cantarell\Cantarell-Regular-TS1-TLF--base.tfm
-INPUT c:\Users\test\Documents\Studium\NumerischeOptimierung\Abgaben\Projekt_2\Ausarbeitung\bfgs_ndim_rosen_measurement.csv
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\vf\adobe\helvetic\phvro7t.vf
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\adobe\helvetic\phvro8r.tfm
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\vf\adobe\helvetic\phvr7t.vf
@@ -450,6 +449,8 @@ INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\vf\adobe\helvetic\ph
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\adobe\helvetic\phvro8r.tfm
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\vf\adobe\helvetic\phvro7t.vf
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\adobe\helvetic\phvro8r.tfm
+INPUT c:\Users\test\Documents\Studium\NumerischeOptimierung\Abgaben\Projekt_2\Ausarbeitung\bfgs_ndim_rosen_measurement.csv
+INPUT c:\Users\test\Documents\Studium\NumerischeOptimierung\Abgaben\Projekt_2\Ausarbeitung\fminunc_ndim_rosen_measurement.csv
 INPUT c:\Users\test\Documents\Studium\NumerischeOptimierung\Abgaben\Projekt_2\Ausarbeitung\abstracts.aux
 INPUT c:\Users\test\Documents\Studium\NumerischeOptimierung\Abgaben\Projekt_2\Ausarbeitung\abstracts.out
 INPUT c:\Users\test\Documents\Studium\NumerischeOptimierung\Abgaben\Projekt_2\Ausarbeitung\abstracts.out
