@@ -424,7 +424,7 @@ Rechenzeit von \lstinline[basicstyle=\ttfamily\color{black}]|fminunc| mit Option
   eine Genauigkeit von $10^{-8}$ gemittelt über 100 Durchläufe (Intel Core i3-7100U, 8GB RAM, Windows 10 64-Bit)}
 \end{figure}
 
-Man erkennt, das mit höheren Dimensionen die Rechenzeit für beide Verfahren drastisch zunimmt.
+Man erkennt, das mit höheren Dimensionen die Rechenzeit für beide Verfahren drastisch zunimmt.\par
 
 Möglichkeiten um ein höheres $N$ zu erreichen:
 \begin{itemize}
@@ -435,7 +435,15 @@ Möglichkeiten um ein höheres $N$ zu erreichen:
   Die Berechnung des Minimums dieser zwei Summen kann auf z.B. zwei Threads aufgeteilt und am Ende wieder zusammengefügt werden.
   Bei ungeradem $N$ muss man sich entscheiden wie die Summe aufgeteilt wird, ein Thread bearbeitet dann eine Dimension mehr als der andere.
   Bei besonders großem $N$ können auch diese beiden Summen wiederum aufgeteilt und somit auf noch mehr Threads verteilt werden.
+  \item Verwenden von sparse-Matritzen und Vektoren durch die sich die Rechenzeit unter Umständen reduzieren kann. Sparse-Datenstrukturen
+  verwenden eine spezielle Repräsentation der Werte in denen Einträge mit $0$ effizienter gespeichert werden. Aufgrundessen beschleunigt
+  sich die Berechnung von Matrix-Vektor-Produkten (die beim BFGS-Verfahren sehr oft verwendet werden)
+  \item Gegebenfalls genauere Untersuchungen über Kondition und Stabilität der Operationen bzw. wie diese verbessert werden können.
+  Durch Auslöschung in der Update-Formel könnte es unter Umständen zu fehlerhaften Richtungsvektoren kommen die sich bei besonders
+  großen Problemen potenzieren und somit die Konvergenz verlangsamen.
 \end{itemize}
+
+\subsubsection{Aufgabe 5}
 
 
 \end{document}

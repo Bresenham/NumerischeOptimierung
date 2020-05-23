@@ -90,6 +90,9 @@ fprintf("fminunc returned x=%s with f_himmel(x)=%0.6f\n", vec2str(ret), f_himmel
 % Aufgabe 5
 % Siehe Erläuterung im PDF
 
+% Berechnet den Gradienten der N-dimensionalen Rosenbrock-Funktion
+% \input: Vector 'x'
+% \output: Gradient an der Stelle 'x'
 function ret = f_rosen_mult_deriv_func(x)
 
     start = @(x1, x2) -2 * (1 - x1) + 200 * (x2 - x1.^2) * (-2 * x1);
