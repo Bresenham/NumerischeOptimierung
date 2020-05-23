@@ -102,7 +102,7 @@ f_ydata = [2.0;0.7;0.3;0.1];
 
 f_resid = @(x, xdata, ydata) residuum(f, x, xdata, ydata);
 f_jacobi = @(x, xdata, ydata) jacobi(f, {f_partial_x1, f_partial_x2}, x, xdata, ydata);
-% ret = GaussNewton(f, f_resid, f_jacobi, f_x0, xdata, ydata);
+ret = GaussNewton(f, f_resid, f_jacobi, f_x0, xdata, ydata);
 
 g = @(t, x) x(1) * exp( -(x(2).^2 + x(3).^2)*t ) * ( sinh( x(3).^2 * t ) / ( x(3).^2 ) );
 g_partial_x1 = @(t, x) ( exp( -t * (x(2).^2 + x(3).^2) ) * sinh( x(3).^2 * t) ) / ( x(3).^2 );

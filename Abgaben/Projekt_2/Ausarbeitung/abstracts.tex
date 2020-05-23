@@ -448,9 +448,38 @@ Möglichkeiten um ein höheres $N$ zu erreichen:
 
 \subsubsection{Aufgabe 6}
 
-Siehe \lstinline[basicstyle=\ttfamily\color{black}]|Projekt2.m|.
+Siehe \lstinline[basicstyle=\ttfamily\color{black}]|GaussNewton.m|.
 
 \subsubsection{Aufgabe 7}
 
+Siehe \lstinline[basicstyle=\ttfamily\color{black}]|Projekt2.m|.
+
+\subsubsection{Aufgabe 8}
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \newcommand*{\from}{-0.5}
+    \newcommand*{\too}{3.5}
+    \newcommand*{\scaleFactor}{1.5}
+    \tikzstyle{interval border}=[thin, red];
+
+    \draw[-{Latex}] (\from,0) -- (\too*\scaleFactor,0) node[right] {$t$};
+    \draw[-{Latex}] (0,\from) -- (0,\too*\scaleFactor) node[above] {\rotatebox{0}{$f(t, 1.995, -1.0095)$}}; 
+    \draw[scale=\scaleFactor, thick, black, domain=\from:\too, smooth, variable=\x] plot ({\x},{1.995 * exp(-1.0095 * \x)});
+
+    \draw (0, 0) node[xshift=-0.21cm, yshift=-0.25cm, font=\small] {$0$};
+
+    \foreach \x in {1, 2, 3} {
+      \draw (\x*\scaleFactor, 0) node[yshift=-0.25cm, font=\small] {$\x$};
+      \draw (0,\x*\scaleFactor) node[xshift=-0.25cm, font=\small] {$\x$};
+    }
+
+    \foreach \x / \y / \i in {0/2.0/1, 1/0.7/2, 2/0.3/3, 3/0.1/4} {
+      \draw (\x*\scaleFactor, \y*\scaleFactor) node[interval border] {x};
+    }
+  \end{tikzpicture}
+  \caption{Modellfunktion und Datensatz für $f(t, x_1, x_2) = x_1\cdot e^{x_2\cdot t}$}
+\end{figure}
 
 \end{document}
