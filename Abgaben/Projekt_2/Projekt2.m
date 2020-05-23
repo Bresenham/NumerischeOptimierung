@@ -96,36 +96,35 @@ f = @(t, x) x(1) * exp( x(2) * t );
 f_partial_x1 = @(t, x) exp( x(2) * t);
 f_partial_x2 = @(t, x) t * x(1) * exp( x(2) * t );
 
+f_x0 = [1; 1];
+f_xdata = [0;1;2;3];
+f_ydata = [2.0;0.7;0.3;0.1];
+
+f_resid = @(x, xdata, ydata) residuum(f, x, xdata, ydata);
+f_jacobi = @(x, xdata, ydata) jacobi(f, {f_partial_x1, f_partial_x2}, x, xdata, ydata);
+% ret = GaussNewton(f, f_resid, f_jacobi, f_x0, xdata, ydata);
+
 g = @(t, x) x(1) * exp( -(x(2).^2 + x(3).^2)*t ) * ( sinh( x(3).^2 * t ) / ( x(3).^2 ) );
 g_partial_x1 = @(t, x) ( exp( -t * (x(2).^2 + x(3).^2) ) * sinh( x(3).^2 * t) ) / ( x(3).^2 );
 g_partial_x2 = @(t, x) - ( 2 * t * x(1) * x(2) * exp( -t * (x(2).^2 + x(3).^2) ) * sinh( x(3).^2 * t ) ) / ( x(3).^2 );
 g_partial_x3 = @(t, x) ( 2 * x(1) * exp( -t * (x(2).^2 + x(3).^2) ) * ( t * x(3).^2 * cosh(t * x(3).^2) - (t * x(3).^2 + 1) * sinh(t * x(3).^2) ) ) / ( x(3).^2 );
 
-f_x0 = [1; 1];
-f_xdata = [0;1;2;3];
-f_ydata = [2.0;0.7;0.3;0.1];
-
-f_resid = @(x, xdata, ydata) residuum(f, f_x, f_xdata, ydata);
-f_jacobi = @(x, xdata, ydata) jacobi(f, f_partial_x1, f_partial_x2, x, xdata, ydata);
-% ret = GaussNewton(f, f_resid, f_jacobi, f_x0, xdata, ydata);
-
 g_x0 = [10; 0.05; 0.1];
 g_xdata = [6;12;18;24;30;36;42;48;54;60;66;72;78;84;90;96;102;108;114;120;126;132;138;144;150;156;162;168;174;180];
 g_ydata = [24.19;35.34;43.43;42.63;49.92;51.53;57.39;59.56;55.60;51.91;58.27;62.99;52.99;53.83;59.37;62.35;61.84;61.62;49.64;57.81;54.79;50.38;43.85;45.16;46.72;40.68;35.14;45.47;42.40;55.21];
-g_resid = @(x, xdata, ydata) residuum(g, x, g_xdata, g_ydata);
+g_resid = @(x, xdata, ydata) residuum(g, x, xdata, ydata);
+g_jacobi = @(x, xdata, ydata) jacobi(g, {g_partial_x1, g_partial_x2, g_partial_x3}, x, xdata, ydata);
+ret = GaussNewton(g, g_resid, g_jacobi, g_x0, g_xdata, g_ydata);
 
-function ret = jacobi(f, f_part_x1, f_part_x2, x0, xdata, ydata)
+function ret = jacobi(f, f_partials, x0, xdata, ydata)
     
     ydim = numel(xdata);
+    xdim = numel(f_partials);
 
     r = zeros(ydim, 2);
     for d = 1:ydim
-        for i = 1:2
-            if i == 1
-                r(d,i) = f_part_x1(xdata(d), x0);
-            else
-                r(d,i) = f_part_x2(xdata(d), x0);
-            end
+        for i = 1:xdim
+            r(d,i) = f_partials{i}(xdata(d), x0);
         end
     end
     
