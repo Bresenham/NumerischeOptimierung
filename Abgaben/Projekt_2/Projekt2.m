@@ -115,7 +115,7 @@ g_ydata = [24.19;35.34;43.43;42.63;49.92;51.53;57.39;59.56;55.60;51.91;58.27;62.
 g_resid = @(x, xdata, ydata) residuum(g, x, xdata, ydata);
 g_jacobi = @(x, xdata, ydata) jacobi(g, {g_partial_x1, g_partial_x2, g_partial_x3}, x, xdata, ydata);
 ret = GaussNewton(g, g_resid, g_jacobi, g_x0, g_xdata, g_ydata);
-
+disp(ret);
 function ret = jacobi(f, f_partials, x0, xdata, ydata)
     
     ydim = numel(xdata);

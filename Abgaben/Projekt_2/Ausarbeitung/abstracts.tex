@@ -482,4 +482,21 @@ Siehe \lstinline[basicstyle=\ttfamily\color{black}]|Projekt2.m|.
   \caption{Modellfunktion und Datensatz für $f(t, x_1, x_2) = x_1\cdot e^{x_2\cdot t}$}
 \end{figure}
 
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \newcommand*{\from}{0}
+    \newcommand*{\too}{190}
+    \newcommand*{\scaleFactor}{0.03075}
+    \tikzstyle{interval border}=[thin, red];
+    \draw[-{Latex}] (\from,0) -- (\too*\scaleFactor,0) node[right] {$t$};
+    \draw[-{Latex}] (0,\from) -- (0,\too*\scaleFactor) node[above] {\rotatebox{0}{$g(t, 3.5355, 0.0546, 0.1539)$}};
+
+    \draw[scale=\scaleFactor, thick, black, domain=\from:\too, smooth, variable=\x] plot (
+      {\x},{ 3.5355 * exp( -(0.0546^2 + 0.1539^2) * \x ) * ( sinh(0.1539^2 * \x) / (0.1539^2) ) }
+    );
+  \end{tikzpicture}
+  \caption{Modellfunktion und Datensatz für\\$g(t, x_1, x_2, x_3) = x_1 \cdot e^{ -(x_2^2 + x_3^2)\cdot t }\cdot \frac{sinh(x_3^2\cdot t)}{x_3^2}$}
+\end{figure}
+
 \end{document}
