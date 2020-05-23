@@ -397,6 +397,17 @@ Möglichkeiten um ein höheres $N$ zu erreichen:
 
 \subsubsection{Aufgabe 5}
 
+Die gegebene symmetrische Rang-1 Formel erhält man durch eine Rang-1 Modifikation
+
+$$A^{k + 1} = A^k + c\cdot u\cdot v^T$$
+
+mit $c = \frac{1}{u^Ts}$, $u = y - A^ks$ und $v = c\cdot u$.
+
+Diese kann man nun in die Sherman-Morrison-Woodbury-Formel einsetzen und erhält somit den Ansatz:
+
+$$\left(A + \left(y - As\right)\cdot\left( \frac{ y-As }{ (y-As)s } \right)^T\right)^{-1} = A^{-1} - \frac{ A^{-1}(y-As)(\frac{ y-As }{ (y-As)^Ts } )^TA^{-1} }{1 + (\frac{ y-As }{ (y-As)^Ts })^TA^{-1}(y-As)}$$
+
+$$B^{(k+1)} = B^{k} + \frac{(s^k - B^ky^k)(s^k - B^ky^k)^T}{(s^k-B^ky^k)^Ty^k}$$
 
 \subsubsection{Aufgabe 6}
 

@@ -133,29 +133,15 @@ g_jacobi = @(x, xdata, ydata) jacobi(g, {g_partial_x1, g_partial_x2, g_partial_x
 % Aufgabe 9
 fprintf("--------------------AUFGABE 9--------------------\n");
 
-lq_grad = @(x) least_squares_gradient(f_resid, f_jacobi, x, f_xdata, f_ydata);
-ret = InverseBFGS(f_lq_sum, lq_grad, [1; 1]);
+f_lq_sum = @(x) sum( f_resid(x, f_xdata, f_ydata).^2 );
+f_lq_grad = @(x) 2 * f_jacobi(x, f_xdata, f_ydata)' * f_resid(x, f_xdata, f_ydata);
+ret = InverseBFGS(f_lq_sum, f_lq_grad, [0.5; 1]);
 disp(ret);
 
-function ret = least_squares_gradient(residuum, jacobi, x, xdata, ydata)
-    
-    resid = residuum(x, xdata, ydata);
-    jacob = jacobi(x, xdata, ydata);
-    
-    ret = 2 * jacob' * resid;
-end
-
-function ret = least_squares_sum(residuum, x, xdata, ydata)
-
-    sum = 0;
-    dim = numel(xdata);
-    resid = residuum(x, xdata, ydata);
-    for i = 1:dim
-        sum = sum + (resid(i)).^2;
-    end
-    
-    ret = sum;
-end
+g_lq_sum = @(x) sum( g_resid(x, g_xdata, g_ydata).^2 );
+g_lq_grad = @(x) 2 * g_jacobi(x, g_xdata, g_ydata)' * g_resid(x, g_xdata, g_ydata);
+% ret = InverseBFGS(g_lq_sum, g_lq_grad, g_x0);
+% disp(ret);
 
 % Berechnet die Jacobi-Matrix von f für den gegebenen Datensatz
 % \input: Funktion, partielle Ableitungen, Wert an dem die Funktion
