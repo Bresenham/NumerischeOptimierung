@@ -12,8 +12,8 @@
 % Date:     22.05.2020
 %---------------------------------------------------------
 
-% phi = f(x + td)
-% phi_grad = ∇f(x + td)' * d
+% phi = f(x + ad)
+% phi_grad = ∇f(x + ad)' * d
 function ret = WolfePowell(phi, phi_grad)
 
     rho = 0.9;
@@ -35,7 +35,7 @@ function ret = WolfePowell(phi, phi_grad)
             return
         elseif( A(alpha) && ~W(alpha) )
             alpha = gamma * alpha;
-        else
+        elseif( ~A(alpha) )
             break;
         end
     end
@@ -50,7 +50,7 @@ function ret = WolfePowell(phi, phi_grad)
             return
         elseif( A(alpha) && ~W(alpha) )
             a = alpha;
-        else
+        elseif( ~A(alpha) )
             b = alpha;
         end
     end

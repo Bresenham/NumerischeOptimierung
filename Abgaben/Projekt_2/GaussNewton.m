@@ -35,11 +35,11 @@ function ret = GaussNewton(f, f_resid, f_jacobi, x0, xdata, ydata)
         
         d = left_side \ right_side;
         
-        % phi = @(a) f_resid(x + a * d, xdata, ydata)' * f_resid(x + a * d, xdata, ydata);
-        % phi_grad = @(a) gradient(x + a * d)' * d;
-        % alpha = WolfePowell(phi, phi_grad);
+        phi = @(a) f(x + a * d);
+        phi_grad = @(a) gradient(x + a * d)' * d;
+        alpha = WolfePowell(phi, phi_grad);
         
-        x = x - 0.05 * d;
+        x = x - alpha * d;
         
         k = k + 1;
         

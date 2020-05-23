@@ -60,20 +60,21 @@ function ret = InverseBFGS(f, grad, x0)
         if ( grad(x)' * d >= 0 )
            d = - grad(x);
            % B = eye(dim);
-           B = ( (y' * s) / (y' * y) ) * I;
+           B = ( (y(x, x_old)' * s(x, x_old)) / (y(x, x_old)' * y(x, x_old)) ) * eye(dim);
         end
         
         % Definition der Funktionen phi und phi' die für Wolfe-Powell
         % benötigt werden
         phi = @(a) f(x + a * d);
         phi_grad = @(a) grad(x + a * d)' * d;
-        alpha = WolfePowell(phi, phi_grad);
-        
+        % alpha = WolfePowell(phi, phi_grad);
+        alpha = 0.05;
+
         x_old = x;
         x = x + alpha * d;
         
         k = k + 1;
-        
+
         ret = [ ret; struct("x", x, "f", f(x), "gradient", grad(x)) ];
     end
     

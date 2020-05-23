@@ -99,15 +99,16 @@ f = @(t, x) x(1) * exp( x(2) * t );
 f_partial_x1 = @(t, x) exp( x(2) * t);
 f_partial_x2 = @(t, x) t * x(1) * exp( x(2) * t );
 
-f_x0 = [1; 1];
+f_x0 = [0.5; 1];
 f_xdata = [0;1;2;3];
 f_ydata = [2.0;0.7;0.3;0.1];
 
 f_resid = @(x, xdata, ydata) residuum(f, x, xdata, ydata);
 f_jacobi = @(x, xdata, ydata) jacobi(f, {f_partial_x1, f_partial_x2}, x, xdata, ydata);
+f_lq_sum = @(x) least_squares_sum(f_resid, x, xdata, ydata);
 
-ret = GaussNewton(f, f_resid, f_jacobi, f_x0, xdata, ydata);
-fprintf("GaussNewton returned x=%s for function f after %d steps\n", vec2str(ret(end).x), length(ret));
+% ret = GaussNewton(f_lq_sum, f_resid, f_jacobi, f_x0, xdata, ydata);
+% fprintf("GaussNewton returned x=%s for function f after %d steps\n", vec2str(ret(end).x), length(ret));
 
 g = @(t, x) x(1) * exp( -(x(2).^2 + x(3).^2)*t ) * ( sinh( x(3).^2 * t ) / ( x(3).^2 ) );
 g_partial_x1 = @(t, x) ( exp( -t * (x(2).^2 + x(3).^2) ) * sinh( x(3).^2 * t) ) / ( x(3).^2 );
@@ -123,8 +124,8 @@ g_ydata = [24.19;35.34;43.43;42.63;49.92;51.53;57.39;59.56;55.60;51.91;58.27;62.
 g_resid = @(x, xdata, ydata) residuum(g, x, xdata, ydata);
 g_jacobi = @(x, xdata, ydata) jacobi(g, {g_partial_x1, g_partial_x2, g_partial_x3}, x, xdata, ydata);
 
-ret = GaussNewton(g, g_resid, g_jacobi, g_x0_2, g_xdata, g_ydata);
-fprintf("GaussNewton returned x=%s for function g after %d steps\n", vec2str(ret(end).x), length(ret));
+% ret = GaussNewton(g, g_resid, g_jacobi, g_x0_2, g_xdata, g_ydata);
+% fprintf("GaussNewton returned x=%s for function g after %d steps\n", vec2str(ret(end).x), length(ret));
 
 % Aufgabe 8
 % Siehe Erläuterung im PDF
@@ -132,11 +133,35 @@ fprintf("GaussNewton returned x=%s for function g after %d steps\n", vec2str(ret
 % Aufgabe 9
 fprintf("--------------------AUFGABE 9--------------------\n");
 
+lq_grad = @(x) least_squares_gradient(f_resid, f_jacobi, x, f_xdata, f_ydata);
+ret = InverseBFGS(f_lq_sum, lq_grad, [1; 1]);
+disp(ret);
+
+function ret = least_squares_gradient(residuum, jacobi, x, xdata, ydata)
+    
+    resid = residuum(x, xdata, ydata);
+    jacob = jacobi(x, xdata, ydata);
+    
+    ret = 2 * jacob' * resid;
+end
+
+function ret = least_squares_sum(residuum, x, xdata, ydata)
+
+    sum = 0;
+    dim = numel(xdata);
+    resid = residuum(x, xdata, ydata);
+    for i = 1:dim
+        sum = sum + (resid(i)).^2;
+    end
+    
+    ret = sum;
+end
+
 % Berechnet die Jacobi-Matrix von f für den gegebenen Datensatz
 % \input: Funktion, partielle Ableitungen, Wert an dem die Funktion
 % ausgewertet werden soll, Datensatz
 % \output: Jacobi-Matrix
-function ret = jacobi(f, f_partials, x0, xdata, ydata)
+function ret = jacobi(f, f_partials, x, xdata, ydata)
     
     ydim = numel(xdata);
     xdim = numel(f_partials);
@@ -144,7 +169,7 @@ function ret = jacobi(f, f_partials, x0, xdata, ydata)
     r = zeros(ydim, xdim);
     for d = 1:ydim
         for i = 1:xdim
-            r(d,i) = f_partials{i}(xdata(d), x0);
+            r(d,i) = f_partials{i}(xdata(d), x);
         end
     end
     
@@ -155,13 +180,13 @@ end
 % \input: Funktion, Wert an dem die Funktion ausgewertet werden soll,
 % Datensatz
 % \output: Residuum
-function ret = residuum(f, x0, xdata, ydata)
+function ret = residuum(f, x, xdata, ydata)
 
     xdim = numel(xdata);
 
     r = zeros(xdim, 1);
     for i = 1:xdim
-        r(i) = f(xdata(i), x0) - ydata(i);
+        r(i) = f(xdata(i), x) - ydata(i);
     end
     
     ret = r;
