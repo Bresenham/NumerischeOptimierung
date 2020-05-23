@@ -39,8 +39,7 @@ function ret = GaussNewton(f, f_resid, f_jacobi, x0, xdata, ydata)
         % phi_grad = @(a) gradient(x + a * d)' * d;
         % alpha = WolfePowell(phi, phi_grad);
         
-        x = x - 0.125 * d;
-        fprintf("NORM: %0.4f\n", norm( gradient(x) ) );
+        x = x - 0.05 * d;
         
         k = k + 1;
         
