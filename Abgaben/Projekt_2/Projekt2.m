@@ -51,26 +51,26 @@ x0 = [0; -1];
 % ret = InverseBFGS(f_rosen, f_rosen_grad, x0);
 % fprintf("InverseBFGS returned x=%s with f_rosen(x)=%0.6f\n", vec2str( ret(end).x ), ret(end).f);
 
-count = 100;
-max_dim = 500;
-all_avgs = zeros(max_dim, 1);
-
-options = optimoptions("fminunc", "OptimalityTolerance", 1e-8, "MaxFunctionEvaluations", 1e+6, "MaxIterations", 1e+6, "HessUpdate", "bfgs", 'Display','off');
-
-for dim = 72:max_dim
-    sums = zeros(count, 1);
-    for c = 1:count
-        x0_rosen = zeros(dim, 1) - ones(dim, 1);
-        tic;
-        fminunc(f_rosen_mult, x0_rosen, options);
-        elapsed = toc;
-        sums(c) = sums(c) + elapsed;
-    end
-    avg = sum(sums) / count;
-    all_avgs(dim) = avg;
-    fprintf("DIM = %d\n", dim);
-    disp(all_avgs(72:dim));
-end
+%--------Messung von fminunc und InverseBFGS für N-dim. Rosenbrock--------
+% count = 100;
+% max_dim = 500;
+% all_avgs = zeros(max_dim, 1);
+% options = optimoptions("fminunc", "OptimalityTolerance", 1e-8, "MaxFunctionEvaluations", 1e+6, "MaxIterations", 1e+6, "HessUpdate", "bfgs", 'Display','off');
+% for dim = 72:max_dim
+%     sums = zeros(count, 1);
+%     for c = 1:count
+%         x0_rosen = zeros(dim, 1) - ones(dim, 1);
+%         tic;
+%         fminunc(f_rosen_mult, x0_rosen, options);
+%         InverseBFGS(f_rosen_mult, f_rosen_mult_grad, x0_rosen);
+%        elapsed = toc;
+%        sums(c) = sums(c) + elapsed;
+%    end
+%    avg = sum(sums) / count;
+%    all_avgs(dim) = avg;
+%    fprintf("DIM = %d\n", dim);
+%    disp(all_avgs(72:dim));
+% end
 
 rosenbrock_dim = 250;
 % x0_rosen = zeros(rosenbrock_dim, 1) - ones(rosenbrock_dim, 1);
