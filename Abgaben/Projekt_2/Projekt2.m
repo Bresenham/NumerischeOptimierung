@@ -142,8 +142,8 @@ disp(ret);
 
 g_lq_sum = @(x) sum( g_resid(x, g_xdata, g_ydata).^2 );
 g_lq_grad = @(x) 2 * g_jacobi(x, g_xdata, g_ydata)' * g_resid(x, g_xdata, g_ydata);
-% ret = InverseBFGS(g_lq_sum, g_lq_grad, g_x0);
-% disp(ret);
+ret = InverseBFGS(g_lq_sum, g_lq_grad, g_x0);
+disp(ret);
 
 % Berechnet die Jacobi-Matrix von f für den gegebenen Datensatz
 % \input: Funktion, partielle Ableitungen, Wert an dem die Funktion
