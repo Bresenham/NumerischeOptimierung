@@ -478,7 +478,19 @@ $$\left( -33 \right)^T = -33$$
 
 D.h. man darf den Doppelbruch kürzen, dann erhält man:
 
+$$ A^{-1} - \frac{ (A^{-1}y - s)(y^TA^{-1} - s^T) }{ y^T(A^{-1}y - s) } $$
 
+Um den Ausdruck noch schöner zu machen, kann man jeweils ein Minus aus den zwei Termen im Zähler herausziehen:
+
+$$ A^{-1} - \frac{ (-A^{-1}y + s)(-y^TA^{-1} + s^T) }{ y^T(A^{-1}y - s) } $$
+
+und Summanden vertauschen:
+
+$$ A^{-1} - \frac{ (s - A^{-1}y )(s^T - y^TA^{-1}) }{ y^T(A^{-1}y - s) } $$
+
+Aus dem rechten Term kann man aufgrund der Symmetrie das Transponieren herausziehen:
+
+$$ A^{-1} - \frac{ (s - A^{-1}y )(s - A^{-1}y)^T }{ y^T(A^{-1}y - s) }$$
 
 $$B^{(k+1)} = B^{k} + \frac{(s^k - B^ky^k)(s^k - B^ky^k)^T}{(s^k-B^ky^k)^Ty^k}$$
 
