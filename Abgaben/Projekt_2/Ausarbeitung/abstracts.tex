@@ -129,6 +129,10 @@ Hierzu bieten sich verschiedene Möglichkeiten an:
     \item Bisher berechneter Fortschritt geht ebenfalls verloren aber die Approximation der Hesse-Matrix ist sehr genau
   \end{itemize}
   \item Man könnte, wie in den Vorlesungsfolien beschrieben,  $\frac{y^Ts}{y^Ty}\cdot I_n$ als positiv-definitve Matrix verwenden
+  \begin{itemize}
+    \item Der Fortschritt geht zwar ähnlich wie bei $B = I$ weitestgehend verloren, allerdings überträgt man noch Informationen
+    von $y$ und $s$ auf den nächsten Schritt, erscheint also sinnvoller als die erste Variante
+  \end{itemize}
 \end{itemize}
 
 Um herauszufinden, welche dieser Methoden am besten geeignet ist (d.h. die richtig Lösung in der kürzesten Zeit findet),
@@ -464,17 +468,17 @@ Wenn man sich die nun gegenüberstehenden Terme ansieht:
 
 $$\left( (y-As)^Ts\right)^T$$
 
-erkennt man, das es sich hierbei um eine Zahl handelt (beispielhaft für ein $2\times 2$-System):
+erkennt man, dass es sich hierbei um eine Zahl handelt (beispielhaft für ein $2\times 2$-System):
 
-$$\left( \left(\begin{bmatrix}1\\1\end{bmatrix} - \begin{bmatrix}2 & 3\\1 & -1\end{bmatrix}\cdot \begin{bmatrix}3\\2\end{bmatrix} \right)^T\cdot \begin{bmatrix}3\\2\end{bmatrix} \right)^T$$
+$$\left( \left(\begin{bmatrix}1\\1\end{bmatrix} - \begin{bmatrix}2 & 3\\3 & -1\end{bmatrix}\cdot \begin{bmatrix}3\\2\end{bmatrix} \right)^T\cdot \begin{bmatrix}3\\2\end{bmatrix} \right)^T$$
 
-$$\left( \left(\begin{bmatrix}1\\1\end{bmatrix} - \begin{bmatrix}12\\1\end{bmatrix} \right)^T \cdot \begin{bmatrix}3\\2\end{bmatrix} \right)^T$$
+$$\left( \left(\begin{bmatrix}1\\1\end{bmatrix} - \begin{bmatrix}12\\7\end{bmatrix} \right)^T \cdot \begin{bmatrix}3\\2\end{bmatrix} \right)^T$$
 
-$$\left( \left(\begin{bmatrix}-11\\0\end{bmatrix} \right)^T \cdot \begin{bmatrix}3\\2\end{bmatrix} \right)^T$$
+$$\left( \left(\begin{bmatrix}-11\\-6\end{bmatrix} \right)^T \cdot \begin{bmatrix}3\\2\end{bmatrix} \right)^T$$
 
-$$\left( \begin{bmatrix}-11 & 0\end{bmatrix} \cdot \begin{bmatrix}3\\2\end{bmatrix} \right)^T$$
+$$\left( \begin{bmatrix}-11 & -6\end{bmatrix} \cdot \begin{bmatrix}3\\2\end{bmatrix} \right)^T$$
 
-$$\left( -33 \right)^T = -33$$
+$$\left( -45 \right)^T = -45$$
 
 D.h. man darf den Doppelbruch kürzen, dann erhält man:
 
@@ -498,7 +502,7 @@ $$ A^{-1} + \frac{ (s - A^{-1}y )(s - A^{-1}y)^T }{ y^T(s - A^{-1}y) } $$
 
 Da es sich beim Nenner ebenfalls um eine Zahl handelt (beispielhaft für ein $2\times 2$-System):
 
-$$\begin{bmatrix}1 & 2\end{bmatrix}(\begin{bmatrix}3\\1\end{bmatrix} - \begin{bmatrix}1 & -2\\-2 & 3\end{bmatrix}\cdot\begin{bmatrix}1\\2\end{bmatrix})$$
+$$\begin{bmatrix}1 & 2\end{bmatrix}\left(\begin{bmatrix}3\\1\end{bmatrix} - \begin{bmatrix}1 & -2\\-2 & 3\end{bmatrix}\cdot\begin{bmatrix}1\\2\end{bmatrix}\right)$$
 
 kann man ihn auch so schreiben:
 
