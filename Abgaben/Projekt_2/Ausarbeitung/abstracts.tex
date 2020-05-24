@@ -423,6 +423,20 @@ Rechenzeit von \lstinline[basicstyle=\ttfamily\color{black}]|fminunc| mit Option
 Man erkennt, das mit höheren Dimensionen die Rechenzeit für beide Verfahren drastisch zunimmt und
 \lstinline[basicstyle=\ttfamily\color{black}]|fminunc| deutlich früher 3s pro Durchlauf benötigt.\par
 
+\begin{figure}[H]
+  \centering
+  \def\arraystretch{1.25}
+  \begin{tabular}{l|c|c|c|r}
+    \hline
+    \textbf{Verfahren} & \textbf{Dimensionen} & \textbf{Dauer} & \textbf{Genauigkeit} & \textbf{Anmerkung}\\
+    \hline
+    \lstinline[basicstyle=\ttfamily\color{black}]|InverseBFGS| & 750 & 14.05s & $10^{-8}$ & \makecell[r]{Zielfunktionswert: 3.98,\\einzelne Werte nicht\\mehr exakt 1.0}\\
+    \lstinline[basicstyle=\ttfamily\color{black}]|InverseBFGS| & 850 & 22.07s & $10^{-8}$ & \makecell[r]{Ok}\\
+    \lstinline[basicstyle=\ttfamily\color{black}]|InverseBFGS| & 925 & 24.66s & $10^{-8}$ & \makecell[r]{Ok}\\
+    \hline
+  \end{tabular}
+\end{figure}
+
 Möglichkeiten um ein höheres $N$ zu erreichen:
 \begin{itemize}
   \item Nach den Regeln der Analysis lässt sich eine Summe aufteilen in zwei Summen:
