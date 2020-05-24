@@ -456,6 +456,29 @@ $$ A^{-1} - \frac{ \frac{ (A^{-1}y-s)(y^TA^{-1}-s^T) }{\left( (y-As)^Ts\right)^T
 
 $$ A^{-1} - \frac{ \frac{ (A^{-1}y-s)(y^TA^{-1}-s^T) }{\left( (y-As)^Ts\right)^T } }{ \frac{ y^T(A^{-1}y - s) }{\left( (y-As)^Ts\right)^T}}$$
 
+Den Doppelbruch auflösen:
+
+$$ A^{-1} - \frac{ (A^{-1}y-s)(y^TA^{-1}-s^T) }{\left( (y-As)^Ts\right)^T } \cdot \frac{ \left( (y-As)^Ts\right)^T }{ y^T(A^{-1}y - s) }$$
+
+Wenn man sich die nun gegenüberstehenden Terme ansieht:
+
+$$\left( (y-As)^Ts\right)^T$$
+
+erkennt man, das es sich hierbei um eine Zahl handelt (beispielhaft für ein $2\times 2$-System):
+
+$$\left( \left(\begin{bmatrix}1\\1\end{bmatrix} - \begin{bmatrix}2 & 3\\1 & -1\end{bmatrix}\cdot \begin{bmatrix}3\\2\end{bmatrix} \right)^T\cdot \begin{bmatrix}3\\2\end{bmatrix} \right)^T$$
+
+$$\left( \left(\begin{bmatrix}1\\1\end{bmatrix} - \begin{bmatrix}12\\1\end{bmatrix} \right)^T \cdot \begin{bmatrix}3\\2\end{bmatrix} \right)^T$$
+
+$$\left( \left(\begin{bmatrix}-11\\0\end{bmatrix} \right)^T \cdot \begin{bmatrix}3\\2\end{bmatrix} \right)^T$$
+
+$$\left( \begin{bmatrix}-11 & 0\end{bmatrix} \cdot \begin{bmatrix}3\\2\end{bmatrix} \right)^T$$
+
+$$\left( -33 \right)^T = -33$$
+
+D.h. man darf den Doppelbruch kürzen, dann erhält man:
+
+
 
 $$B^{(k+1)} = B^{k} + \frac{(s^k - B^ky^k)(s^k - B^ky^k)^T}{(s^k-B^ky^k)^Ty^k}$$
 
