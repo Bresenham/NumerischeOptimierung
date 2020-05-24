@@ -94,6 +94,22 @@ Wenn man das nun in die Formel für die zwei Rang-1-Modifikationen und in die BF
 
 $$\left( I + \frac{ss^T - ys^T + ss^T - sy^T}{y^Ts} - \frac{s^Tyss^T - y^Tyss^T}{(y^T)s^2}\right)\cdot\left(I - \frac{ss^T}{s^Ts} + \frac{yy^T}{y^Ts} \right)$$
 
+Der Übersicht halber teile ich die einzelnen Produkte auf und füge sie nach dem Kürzen am Ende wieder zusammen.
+Es ist zu beachten, dass $y^Ts = s^Ty$. Skalare Werte werden gekürzt.
+
+$$I\cdot I = I$$
+
+$$I \cdot \left(-\frac{ss^T}{s^Ts}\right) = -\frac{ss^T}{s^Ts}$$
+
+$$I\cdot \left(\frac{yy^T}{y^Ts}\right) = \frac{yy^T}{y^Ts}$$
+
+$$\left(\frac{ss^T - ys^T + ss^T - sy^T}{y^Ts}\right) \cdot I = \frac{ss^T}{y^Ts} - \frac{ys^T}{y^Ts} + \frac{ss^T}{y^Ts} - \frac{sy^T}{y^Ts}$$
+
+$$\left(\frac{ss^T - ys^T + ss^T - sy^T}{y^Ts}\right)\cdot\left( - \frac{ss^T}{s^Ts} \right) = -\frac{ss^Tss^T - ys^Tss^T + ss^Tss^T - sy^Tss^T}{y^Tss^Ts}$$
+
+$$= -\frac{s\textcolor{red}{s^Ts}s^T}{y^Ts\textcolor{red}{s^Ts}} + \frac{y\textcolor{red}{s^Ts}s^T}{y^Ts\textcolor{red}{s^Ts}} - \frac{s\textcolor{red}{s^Ts}s^T}{y^Ts\textcolor{red}{s^Ts}} + \frac{s\textcolor{red}{y^Ts}s^T}{\textcolor{red}{y^Ts}s^Ts}$$
+
+
 \subsubsection{Aufgabe 3}
 Wenn die Suchrichtung des BFGS Verfahrens:
 
