@@ -422,6 +422,19 @@ $$ A^{-1} - \frac{ \frac{ (A^{-1}y - s)(y^TA^{-1} - s^TAA^{-1}) }{\left( (y-As)^
 
 $$ A^{-1} - \frac{ \frac{ (A^{-1}y-s)(y^TA^{-1}-s^T) }{\left( (y-As)^Ts\right)^T } }{1 + \frac{(y-As)^TA^{-1}(y-As)}{\left( (y-As)^Ts\right)^T}}$$
 
+Nun ebenfalls den Zähler im Nenner ausmultiplizieren:
+
+$$ A^{-1} - \frac{ \frac{ (A^{-1}y-s)(y^TA^{-1}-s^T) }{\left( (y-As)^Ts\right)^T } }{1 + \frac{ (y^T - (As)^T)A^{-1}(y - As) }{\left( (y-As)^Ts\right)^T}}$$
+
+$$ A^{-1} - \frac{ \frac{ (A^{-1}y-s)(y^TA^{-1}-s^T) }{\left( (y-As)^Ts\right)^T } }{1 + \frac{ (y^T - s^TA)A^{-1}(y-As) }{\left( (y-As)^Ts\right)^T}}$$
+
+$$ A^{-1} - \frac{ \frac{ (A^{-1}y-s)(y^TA^{-1}-s^T) }{\left( (y-As)^Ts\right)^T } }{1 + \frac{ (y^TA^{-1} - s^T)(y - As) }{\left( (y-As)^Ts\right)^T}}$$
+
+$$ A^{-1} - \frac{ \frac{ (A^{-1}y-s)(y^TA^{-1}-s^T) }{\left( (y-As)^Ts\right)^T } }{1 + \frac{ y^TA^{-1}y - y^TA^{-1}As - s^Ty + s^TAs }{\left( (y-As)^Ts\right)^T}}$$
+
+$$ A^{-1} - \frac{ \frac{ (A^{-1}y-s)(y^TA^{-1}-s^T) }{\left( (y-As)^Ts\right)^T } }{1 + \frac{ y^TA^{-1}y - y^Ts - s^Ty + s^TAs }{\left( (y-As)^Ts\right)^T}}$$
+
+$$ A^{-1} - \frac{ \frac{ (A^{-1}y-s)(y^TA^{-1}-s^T) }{\left( (y-As)^Ts\right)^T } }{1 + \frac{ y^T(A^{-1}y - s) - s^T(y - As) }{\left( (y-As)^Ts\right)^T}}$$
 
 $$B^{(k+1)} = B^{k} + \frac{(s^k - B^ky^k)(s^k - B^ky^k)^T}{(s^k-B^ky^k)^Ty^k}$$
 
