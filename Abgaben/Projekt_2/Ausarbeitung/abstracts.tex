@@ -90,7 +90,8 @@ Für $A^0$ wählt man im BFGS-Verfahren üblicherweise die Einheitsmatrix, d.h. 
 
 $$A^0 = I$$
 
-Wenn man das nun in die Formel für die zwei Rang-1-Modifikationen und in die BFGS-Update-Formel einsetzt erhält man den Ansatz:
+Wenn man das nun in die Formel für die zwei Rang-1-Modifikationen und in die BFGS-Update-Formel einsetzt erhält man den Ansatz
+(für $B = A^{-1} = I$):
 
 $$\left( I + \frac{ss^T - ys^T + ss^T - sy^T}{y^Ts} - \frac{s^Tyss^T - y^Tyss^T}{(y^T)s^2}\right)\cdot\left(I - \frac{ss^T}{s^Ts} + \frac{yy^T}{y^Ts} \right)$$
 
@@ -127,6 +128,15 @@ Zusammenfassen:
 
 $$ I \textcolor{red}{-\frac{ss^T}{s^Ts}} \textcolor{blue}{+\frac{yy^T}{y^Ts}} \textcolor{green}{+\frac{ss^T}{y^Ts}} \textcolor{orange}{-\frac{ys^T}{y^Ts}} \textcolor{violet}{+\frac{ss^T}{y^Ts}} \textcolor{magenta}{-\frac{sy^T}{y^Ts}} \textcolor{green}{-\frac{ss^T}{y^Ts}} \textcolor{orange}{+\frac{ys^T}{y^Ts}} \textcolor{violet}{-\frac{ss^T}{y^Ts}} \textcolor{red}{+\frac{ss^T}{s^Ts}} \textcolor{magenta}{+\frac{sy^T}{y^Ts}} \textcolor{blue}{-\frac{yy^T}{y^Ts}} \textcolor{cyan}{+\frac{sy^T}{y^Ts}} $$
 $$ \textcolor{purple}{-\frac{sy^Tyy^T}{(y^Ts)^2}} \textcolor{brown}{-\frac{ss^T}{y^Ts}} + \frac{y^Tyss^T}{(y^Ts)^2} \textcolor{brown}{+\frac{ss^T}{y^Ts}} - \frac{y^Tyss^T}{(y^Ts)^2} \textcolor{cyan}{-\frac{sy^T}{y^Ts}} \textcolor{purple}{+\frac{y^Tysy^T}{(y^Ts)^2}} = I $$
+
+Im Induktionsschritt geht man von $k = 0$ auf allgemeines $k$, dann erhält man folgenden Ansatz (für $B = A^{-1}$):
+
+$$\left(A^{-1} + \frac{(s - A^{-1}y)s^T + s(s - A^{-1}y)^T}{y^Ts} - \frac{(s - A^{-1}y)^Tyss^T}{(y^Ts)^2} \right) \cdot \left(A - \frac{As(As)^T}{s^TAs} + \frac{yy^T}{y^Ts} \right) $$
+
+Die einzeln Produkte werden der Übersicht halber wieder aufgeteilt:
+
+
+
 
 \subsubsection{Aufgabe 3}
 Wenn die Suchrichtung des BFGS Verfahrens:
