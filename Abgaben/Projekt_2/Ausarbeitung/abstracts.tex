@@ -119,6 +119,15 @@ $$ \left(-\frac{s^Tyss^T - y^Tyss^T}{(y^Ts)^2} \right)\cdot \left( - \frac{ss^T}
 
 $$= \frac{\textcolor{red}{s^Ty}s\textcolor{blue}{s^Ts}s^T}{(\textcolor{red}{y^Ts})^2\textcolor{blue}{s^Ts}} - \frac{y^Tys\textcolor{green}{s^Ts}s^T}{(y^Ts)^2\textcolor{green}{s^Ts}} = \frac{ss^T}{y^Ts} - \frac{y^Tyss^T}{(y^Ts)^2}$$
 
+$$ \left(-\frac{s^Tyss^T - y^Tyss^T}{(y^Ts)^2} \right)\cdot \left( \frac{yy^T}{y^Ts} \right) = -\frac{s^Tyss^Tyy^T + y^Tyss^Tyy^T}{(y^Ts)^3} $$
+
+$$= -\frac{\textcolor{red}{s^Ty}s\textcolor{red}{s^Ty}y^T}{(\textcolor{red}{y^Ts})^3} + \frac{y^Tys\textcolor{red}{s^Ty}y^T}{(\textcolor{red}{y^Ts})^3} = -\frac{sy^T}{y^Ts} + \frac{y^Tysy^T}{(y^Ts)^2}$$
+
+Zusammenfassen:
+
+$$ I -\frac{ss^T}{s^Ts} + \frac{yy^T}{y^Ts} + \frac{ss^T}{y^Ts} - \frac{ys^T}{y^Ts} + \frac{ss^T}{y^Ts} - \frac{sy^T}{y^Ts} -\frac{ss^T}{y^Ts} + \frac{ys^T}{y^Ts} - \frac{ss^T}{y^Ts} + \frac{ss^T}{s^Ts} + \frac{sy^T}{y^Ts} - \frac{yy^T}{y^Ts} + \frac{sy^T}{y^Ts} $$
+$$- \frac{sy^Tyy^T}{(y^Ts)^2} -\frac{ss^T}{y^Ts} + \frac{y^Tyss^T}{(y^Ts)^2} + \frac{ss^T}{y^Ts} - \frac{y^Tyss^T}{(y^Ts)^2} -\frac{sy^T}{y^Ts} + \frac{y^Tysy^T}{(y^Ts)^2} $$
+
 \subsubsection{Aufgabe 3}
 Wenn die Suchrichtung des BFGS Verfahrens:
 
