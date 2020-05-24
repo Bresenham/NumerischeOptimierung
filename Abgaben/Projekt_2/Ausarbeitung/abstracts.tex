@@ -490,7 +490,21 @@ $$ A^{-1} - \frac{ (s - A^{-1}y )(s^T - y^TA^{-1}) }{ y^T(A^{-1}y - s) } $$
 
 Aus dem rechten Term kann man aufgrund der Symmetrie das Transponieren herausziehen:
 
-$$ A^{-1} - \frac{ (s - A^{-1}y )(s - A^{-1}y)^T }{ y^T(A^{-1}y - s) }$$
+$$ A^{-1} - \frac{ (s - A^{-1}y )(s - A^{-1}y)^T }{ y^T(A^{-1}y - s) } $$
+
+Weiterhin kann man aus dem Nenner ebenfalls ein Minus entwenden und die Summanden vertauschen:
+
+$$ A^{-1} + \frac{ (s - A^{-1}y )(s - A^{-1}y)^T }{ y^T(s - A^{-1}y) } $$
+
+Da es sich beim Nenner ebenfalls um eine Zahl handelt (beispielhaft für ein $2\times 2$-System):
+
+$$\begin{bmatrix}1 & 2\end{bmatrix}(\begin{bmatrix}3\\1\end{bmatrix} - \begin{bmatrix}1 & -2\\-2 & 3\end{bmatrix}\cdot\begin{bmatrix}1\\2\end{bmatrix})$$
+
+kann man ihn auch so schreiben:
+
+$$ A^{-1} + \frac{ (s - A^{-1}y )(s - A^{-1}y)^T }{ (s - A^{-1}y)^Ty } $$
+
+Damit erhält man nun die Update-Formel für das Inverse-Verfahren:
 
 $$B^{(k+1)} = B^{k} + \frac{(s^k - B^ky^k)(s^k - B^ky^k)^T}{(s^k-B^ky^k)^Ty^k}$$
 
