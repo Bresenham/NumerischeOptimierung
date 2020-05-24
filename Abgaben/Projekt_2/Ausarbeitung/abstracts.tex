@@ -436,6 +436,27 @@ $$ A^{-1} - \frac{ \frac{ (A^{-1}y-s)(y^TA^{-1}-s^T) }{\left( (y-As)^Ts\right)^T
 
 $$ A^{-1} - \frac{ \frac{ (A^{-1}y-s)(y^TA^{-1}-s^T) }{\left( (y-As)^Ts\right)^T } }{1 + \frac{ y^T(A^{-1}y - s) - s^T(y - As) }{\left( (y-As)^Ts\right)^T}}$$
 
+Nun die $1$ im Nenner erweitern:
+
+$$ A^{-1} - \frac{ \frac{ (A^{-1}y-s)(y^TA^{-1}-s^T) }{\left( (y-As)^Ts\right)^T } }{ \frac{\left( (y-As)^Ts\right)^T}{\left( (y-As)^Ts\right)^T} + \frac{ y^T(A^{-1}y - s) - s^T(y - As) }{\left( (y-As)^Ts\right)^T}}$$
+
+mit dem zweiten Term verbinden:
+
+$$ A^{-1} - \frac{ \frac{ (A^{-1}y-s)(y^TA^{-1}-s^T) }{\left( (y-As)^Ts\right)^T } }{ \frac{ \left( (y-As)^Ts\right)^T + y^T(A^{-1}y - s) - s^T(y - As) }{\left( (y-As)^Ts\right)^T}}$$
+
+und ausmultiplizieren:
+
+$$ A^{-1} - \frac{ \frac{ (A^{-1}y-s)(y^TA^{-1}-s^T) }{\left( (y-As)^Ts\right)^T } }{ \frac{ s^T(y - As) + y^TA^{-1}y - y^Ts - s^Ty + s^TAs }{\left( (y-As)^Ts\right)^T}}$$
+
+$$ A^{-1} - \frac{ \frac{ (A^{-1}y-s)(y^TA^{-1}-s^T) }{\left( (y-As)^Ts\right)^T } }{ \frac{ s^Ty - s^TAs + y^TA^{-1}y - y^Ts - s^Ty + s^TAs }{\left( (y-As)^Ts\right)^T}}$$
+
+und kürzen:
+
+$$ A^{-1} - \frac{ \frac{ (A^{-1}y-s)(y^TA^{-1}-s^T) }{\left( (y-As)^Ts\right)^T } }{ \frac{ y^TA^{-1}y - y^Ts }{\left( (y-As)^Ts\right)^T}}$$
+
+$$ A^{-1} - \frac{ \frac{ (A^{-1}y-s)(y^TA^{-1}-s^T) }{\left( (y-As)^Ts\right)^T } }{ \frac{ y^T(A^{-1}y - s) }{\left( (y-As)^Ts\right)^T}}$$
+
+
 $$B^{(k+1)} = B^{k} + \frac{(s^k - B^ky^k)(s^k - B^ky^k)^T}{(s^k-B^ky^k)^Ty^k}$$
 
 \subsubsection{Aufgabe 6}
