@@ -72,7 +72,7 @@ x0 = [0; -1];
 %    disp(all_avgs(72:dim));
 % end
 
-rosenbrock_dim = 250;
+% rosenbrock_dim = 250;
 % x0_rosen = zeros(rosenbrock_dim, 1) - ones(rosenbrock_dim, 1);
 % ret = InverseBFGS(f_rosen_mult, f_rosen_mult_grad, x0_rosen);
 % fprintf("InverseBFGS returned x=%s with f_rosen_mult(x)=%0.6f\n", vec2str( ret(end).x ), ret(end).f);
@@ -106,9 +106,9 @@ f_ydata = [2.0;0.7;0.3;0.1];
 
 f_resid = @(x, xdata, ydata) residuum(f, x, xdata, ydata);
 f_jacobi = @(x, xdata, ydata) jacobi(f, {f_partial_x1, f_partial_x2}, x, xdata, ydata);
-f_lq_sum = @(x) least_squares_sum(f_resid, x, xdata, ydata);
+f_lq_sum = @(x) sum( f_resid(x, f_xdata, f_ydata).^2 );
 
-% ret = GaussNewton(f_lq_sum, f_resid, f_jacobi, f_x0, xdata, ydata);
+% ret = GaussNewton(f_lq_sum, f_resid, f_jacobi, f_x0, f_xdata, f_ydata);
 % fprintf("GaussNewton returned x=%s for function f after %d steps\n", vec2str(ret(end).x), length(ret));
 
 g = @(t, x) x(1) * exp( -(x(2).^2 + x(3).^2)*t ) * ( sinh( x(3).^2 * t ) / ( x(3).^2 ) );
@@ -124,8 +124,9 @@ g_ydata = [24.19;35.34;43.43;42.63;49.92;51.53;57.39;59.56;55.60;51.91;58.27;62.
 
 g_resid = @(x, xdata, ydata) residuum(g, x, xdata, ydata);
 g_jacobi = @(x, xdata, ydata) jacobi(g, {g_partial_x1, g_partial_x2, g_partial_x3}, x, xdata, ydata);
+g_lq_sum = @(x) sum( g_resid(x, g_xdata, g_ydata).^2 );
 
-% ret = GaussNewton(g, g_resid, g_jacobi, g_x0_2, g_xdata, g_ydata);
+% ret = GaussNewton(g_lq_sum, g_resid, g_jacobi, g_x0, g_xdata, g_ydata);
 % fprintf("GaussNewton returned x=%s for function g after %d steps\n", vec2str(ret(end).x), length(ret));
 
 % Aufgabe 8
@@ -136,8 +137,8 @@ fprintf("--------------------AUFGABE 9--------------------\n");
 
 f_lq_sum = @(x) sum( f_resid(x, f_xdata, f_ydata).^2 );
 f_lq_grad = @(x) 2 * f_jacobi(x, f_xdata, f_ydata)' * f_resid(x, f_xdata, f_ydata);
-% ret = InverseBFGS(f_lq_sum, f_lq_grad, [0.5; 1]);
-% disp(ret);
+ret = InverseBFGS(f_lq_sum, f_lq_grad, [0.5; 1]);
+disp(ret);
 
 g_lq_sum = @(x) sum( g_resid(x, g_xdata, g_ydata).^2 );
 g_lq_grad = @(x) 2 * g_jacobi(x, g_xdata, g_ydata)' * g_resid(x, g_xdata, g_ydata);

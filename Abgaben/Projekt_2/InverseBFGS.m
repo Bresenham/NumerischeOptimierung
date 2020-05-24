@@ -51,7 +51,7 @@ function ret = InverseBFGS(f, grad, x0)
         
         % Abstiegsrichtung hier nur ein Matrix-Vektor-Produkt da B der
         % inversen von A (Hesse-Matrix Approximation) entspricht
-        d = ( B * grad(x) );
+        d = -( B * grad(x) );
         
         % Prüfe ob es sich bei 'd' um eine Abstiegsrichtung handelt, wenn
         % nicht, verwende den negativen Gradienten und setze die
@@ -67,14 +67,13 @@ function ret = InverseBFGS(f, grad, x0)
         % benötigt werden
         phi = @(a) f(x + a * d);
         phi_grad = @(a) grad(x + a * d)' * d;
-        % alpha = WolfePowell(phi, phi_grad);
-        alpha = 0.001;
+        alpha = WolfePowell(phi, phi_grad);
 
         x_old = x;
         x = x + alpha * d;
         
         k = k + 1;
-        disp(x);
+
         ret = [ ret; struct("x", x, "f", f(x), "gradient", grad(x)) ];
     end
     

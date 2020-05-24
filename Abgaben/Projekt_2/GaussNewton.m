@@ -30,7 +30,7 @@ function ret = GaussNewton(f, f_resid, f_jacobi, x0, xdata, ydata)
         jacobi = f_jacobi(x, xdata, ydata);
         resid = f_resid(x, xdata, ydata);
         
-        right_side = jacobi' * resid;
+        right_side = -jacobi' * resid;
         left_side = jacobi' * jacobi;
         
         d = left_side \ right_side;
@@ -39,7 +39,7 @@ function ret = GaussNewton(f, f_resid, f_jacobi, x0, xdata, ydata)
         phi_grad = @(a) gradient(x + a * d)' * d;
         alpha = WolfePowell(phi, phi_grad);
         
-        x = x - alpha * d;
+        x = x + alpha * d;
         
         k = k + 1;
         
