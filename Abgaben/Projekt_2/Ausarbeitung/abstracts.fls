@@ -154,6 +154,8 @@ INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\latex\ms\everyshi.sty
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\latex\ms\everyshi.sty
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\lscape.sty
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\lscape.sty
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\latex\changepage\changepage.sty
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\latex\changepage\changepage.sty
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pgf\frontendlayer\tikz.sty
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pgf\frontendlayer\tikz.sty
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pgf\basiclayer\pgf.sty
@@ -424,6 +426,8 @@ INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\gnome\cantarell\
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\latex\cantarell\ts1cantarell-tlf.fd
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\latex\cantarell\ts1cantarell-tlf.fd
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\gnome\cantarell\Cantarell-Regular-TS1-TLF.tfm
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\vf\gnome\cantarell\Cantarell-Regular-TS1-TLF.vf
+INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\gnome\cantarell\Cantarell-Regular-TS1-TLF--base.tfm
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\latex\psnfss\t1phv.fd
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\tex\latex\psnfss\t1phv.fd
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\adobe\helvetic\phvr8t.tfm
@@ -438,8 +442,6 @@ INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\adobe\helvetic\p
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\adobe\helvetic\phvro7t.tfm
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\adobe\helvetic\phvro7t.tfm
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\adobe\helvetic\phvro7t.tfm
-INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\vf\gnome\cantarell\Cantarell-Regular-TS1-TLF.vf
-INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\gnome\cantarell\Cantarell-Regular-TS1-TLF--base.tfm
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\vf\adobe\helvetic\phvro7t.vf
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\adobe\helvetic\phvro8r.tfm
 INPUT C:\Users\test\AppData\Local\Programs\MiKTeX 2.9\fonts\vf\adobe\helvetic\phvr7t.vf

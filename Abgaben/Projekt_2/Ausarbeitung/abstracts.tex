@@ -21,6 +21,7 @@
 \usepackage{movie15}
 \usepackage{url}
 \usepackage{lscape}
+\usepackage{changepage}
 
 \usepackage{tikz}
 \usetikzlibrary{calc,positioning,shapes,decorations.pathreplacing}
@@ -135,8 +136,21 @@ $$\left(A^{-1} + \frac{(s - A^{-1}y)s^T + s(s - A^{-1}y)^T}{y^Ts} - \frac{(s - A
 
 Die einzeln Produkte werden der Übersicht halber wieder aufgeteilt:
 
+$$\left(A^{-1} \right)\cdot \left(A \right) = I$$
 
+$$\left(A^{-1} \right)\cdot \left(- \frac{As(As)^T}{s^TAs} \right) = - \frac{s(As)^T}{s^TAs} = -\frac{ss^TA}{s^TAs}$$
 
+$$\left(A^{-1} \right)\cdot \left( \frac{yy^T}{y^Ts} \right) = \frac{A^{-1}yy^T}{y^Ts}$$
+
+$$\left(\frac{(s - A^{-1}y)s^T + s(s - A^{-1}y)^T}{y^Ts} \right)\cdot \left(A \right) = \frac{ss^TA - A^{-1}ys^TA + ss^TA - sy^TA^{-1}A}{y^Ts} $$
+
+$$= \frac{ss^TA}{y^Ts} - \frac{A^{-1}ys^TA}{y^Ts} + \frac{ss^TA}{y^Ts} - \frac{sy^T}{y^Ts}$$
+
+\begin{adjustwidth}{-65pt}{0pt}
+  $$\left(\frac{(s - A^{-1}y)s^T + s(s - A^{-1}y)^T}{y^Ts} \right)\cdot \left( - \frac{As(As)^T}{s^TAs} \right) = -\frac{ss^TAss^TA - A^{-1}ys^TAss^TA + s(s^T - y^TA^{-1})Ass^TA}{y^Tss^TAs} $$
+\end{adjustwidth}
+
+$$= -\frac{s\textcolor{red}{s^TAs}s^TA}{y^Ts\textcolor{red}{s^TAs}} + \frac{A^{-1}y\textcolor{red}{s^TAs}s^TA}{y^Ts\textcolor{red}{s^TAs}} - \frac{s\textcolor{red}{s^TAs}s^TA}{y^Ts\textcolor{red}{s^TAs}} + \frac{s\textcolor{red}{y^Ts}s^TA}{\textcolor{red}{y^Ts}s^TAs}$$
 
 \subsubsection{Aufgabe 3}
 Wenn die Suchrichtung des BFGS Verfahrens:
