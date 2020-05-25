@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7400 64-bit) (preloaded format=pdflatex 2020.4.22)  25 MAY 2020 11:48
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7400 64-bit) (preloaded format=pdflatex 2020.4.22)  25 MAY 2020 12:23
 entering extended mode
 **c:/Users/test/Documents/Studium/NumerischeOptimierung/Abgaben/Projekt_2/Ausarbeitung/abstracts.tex
 (c:/Users/test/Documents/Studium/NumerischeOptimierung/Abgaben/Projekt_2/Ausarbeitung/abstracts.tex
@@ -911,57 +911,58 @@ Package pgfplots Warning: Axis range for axis x is approximately empty; enlargin
 PGFPlots: reading {bfgs_ndim_rosen_measurement.csv}
 PGFPlots: reading {fminunc_ndim_rosen_measurement.csv}
  [7]
-Overfull \hbox (15.18336pt too wide) in paragraph at lines 477--486
+Overfull \hbox (51.86739pt too wide) in paragraph at lines 477--489
  [][] 
  []
 
 
-Overfull \hbox (1.4545pt too wide) in paragraph at lines 490--491
+Overfull \hbox (1.4545pt too wide) in paragraph at lines 494--495
 []\T1/cantarell-TLF/m/n/12 Nach den Re-geln der Ana-ly-sis lässt sich ei-ne Sum-me auf-tei-len in zwei Sum-
  []
 
-
-Overfull \hbox (6.17128pt too wide) in paragraph at lines 500--503
+[8]
+Overfull \hbox (6.17128pt too wide) in paragraph at lines 504--507
 \T1/cantarell-TLF/m/n/12 Ope-ra-tio-nen bzw. wie die-se ver-bes-sert wer-den kön-nen. Durch Aus-lö-schung
  []
 
-[8] [9] [10] [11] [12]
+[9] [10] [11] [12]
 Missing character: There is no ; in font nullfont!
 LaTeX Font Info:    Font shape `T1/cantarell-TLF/m/n' will be
-(Font)              scaled to size 10.95pt on input line 664.
+(Font)              scaled to size 10.95pt on input line 668.
 Missing character: There is no ; in font nullfont!
  [13]
-Overfull \hbox (0.23613pt too wide) in paragraph at lines 721--722
+Overfull \hbox (0.23613pt too wide) in paragraph at lines 725--726
 []\T1/cantarell-TLF/m/n/12 quadriert und auf-sum-miert. $\OML/cmm/m/it/12 f[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 x\OT1/cmr/m/n/12 )$ \T1/cantarell-TLF/m/n/12 ist so-mit der ers-te Pa-ra-me-ter, den 
  []
 
+[14]
 
 Package movie15 Warning: @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 (movie15)                @@ Package `movie15' is obsolete and @@
 (movie15)                @@ superseded by `media9'.           @@
 (movie15)                @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@.
 
-[14]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 736.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 736.
+[15]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 740.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 740.
  (c:/Users\test\Documents\Studium\NumerischeOptimierung\Abgaben\Projekt_2\Ausarbeitung\abstracts.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 736.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 736.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 740.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 740.
 Package rerunfilecheck Info: File `abstracts.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 35747 strings out of 480896
- 848236 string characters out of 2898648
+ 35749 strings out of 480896
+ 848253 string characters out of 2898648
  1423334 words of memory out of 3000000
  50898 multiletter control sequences out of 15000+200000
  556833 words of font info for 78 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 67i,16n,98p,914b,3842s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 67i,17n,98p,914b,3842s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Users/test/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/base/8r.enc}{C:/Users/test/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/cantarell/a_tv3tjz.enc} <C:\Users\test\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1200.pk>{C:/Users/test/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/cantarell/a_5r5lpu.enc}<C:/Users/test/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/gnome/cantarell/Cantarell-Bold.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/gnome/cantarell/Cantarell-Bold.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/gnome/cantarell/Cantarell-Regular.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/helvetic/uhvr8a.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on c:/Users\test\Documents\Studium\NumerischeOptimierung\Abgaben\Projekt_2\Ausarbeitung\abstracts.pdf (14 pages, 255731 bytes).
+Output written on c:/Users\test\Documents\Studium\NumerischeOptimierung\Abgaben\Projekt_2\Ausarbeitung\abstracts.pdf (15 pages, 257836 bytes).
 PDF statistics:
- 220 PDF objects out of 1000 (max. 8388607)
- 29 named destinations out of 1000 (max. 500000)
+ 226 PDF objects out of 1000 (max. 8388607)
+ 31 named destinations out of 1000 (max. 500000)
  109 words of extra memory for PDF output out of 10000 (max. 10000000)
 

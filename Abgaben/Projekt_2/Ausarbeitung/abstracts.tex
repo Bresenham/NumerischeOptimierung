@@ -478,11 +478,15 @@ Man erkennt, das mit höheren Dimensionen die Rechenzeit für beide Verfahren dr
     \hline
     \textbf{Verfahren} & \textbf{Dimensionen} & \textbf{Dauer} & \textbf{Genauigkeit} & \textbf{Anmerkung}\\
     \hline
-    \lstinline[basicstyle=\ttfamily\color{black}]|InverseBFGS| & 750 & 14.05s & $10^{-8}$ & \makecell[r]{Zielfunktionswert: 3.98,\\einzelne Werte nicht\\mehr exakt 1.0}\\
-    \lstinline[basicstyle=\ttfamily\color{black}]|InverseBFGS| & 850 & 22.07s & $10^{-8}$ & \makecell[r]{Ok}\\
-    \lstinline[basicstyle=\ttfamily\color{black}]|InverseBFGS| & 925 & 24.66s & $10^{-8}$ & \makecell[r]{Ok}\\
+    \lstinline[basicstyle=\ttfamily\color{black}]|InverseBFGS| & 750 & 14.05s & $10^{-8}$ & \makecell[r]{Zielfunktionswert: 3.98,\\die ersten 8 Werte bei 0.9967}\\
+    \lstinline[basicstyle=\ttfamily\color{black}]|InverseBFGS| & 850 & 22.07s & $10^{-8}$ & \makecell[r]{Zielfunktionswert: $1.4 \cdot 10^{-20}$,\\keine Werte $\neq$ 1}\\
+    \lstinline[basicstyle=\ttfamily\color{black}]|InverseBFGS| & 925 & 24.66s & $10^{-8}$ & \makecell[r]{Zielfunktionswert: $5.8 \cdot 10^{-21}$,\\keine Werte $\neq$ 1}\\
+    \lstinline[basicstyle=\ttfamily\color{black}]|fminunc| & 750 & 127.95s & $10^{-8}$ & \makecell[r]{Zielfunktionswert: $1.8\cdot 10^{-10}$,\\keine Werte $\neq$ 1}\\
+    \lstinline[basicstyle=\ttfamily\color{black}]|fminunc| & 850 & 152.15s & $10^{-8}$ & \makecell[r]{Zielfunktionswert: $1.7\cdot 10^{-10}$,\\keine Werte $\neq$ 1}\\
+    \lstinline[basicstyle=\ttfamily\color{black}]|fminunc| & 925 & 212.60s & $10^{-8}$ & \makecell[r]{Zielfunktionswert: $1.9\cdot 10^{-10}$,\\keine Werte $\neq$ 1}\\
     \hline
   \end{tabular}
+  \caption{Unterschiede zwischen beiden Funktionen bei sehr großen Dimensionen}
 \end{figure}
 
 Möglichkeiten um ein höheres $N$ zu erreichen:
