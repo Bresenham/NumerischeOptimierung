@@ -176,11 +176,11 @@ $$= -\frac{\textcolor{red}{s^Ty}s\textcolor{red}{s^Ty}y^T}{(\textcolor{red}{y^Ts
 
 Zusammenfassen
 
-$$ I -\frac{ss^TA}{s^TAs} + \frac{A^{-1}yy^T}{y^Ts} + \frac{ss^TA}{y^Ts} - \frac{A^{-1}ys^TA}{y^Ts} + \frac{ss^TA}{y^Ts} - \frac{sy^T}{y^Ts} -\frac{ss^TA}{y^Ts}  + \frac{A^{-1}ys^TA}{y^Ts} - \frac{ss^TA}{y^Ts} $$
+$$ I \textcolor{red}{-\frac{ss^TA}{s^TAs}} \textcolor{blue}{+\frac{A^{-1}yy^T}{y^Ts}} \textcolor{green}{+\frac{ss^TA}{y^Ts}} \textcolor{purple}{-\frac{A^{-1}ys^TA}{y^Ts}} \textcolor{cyan}{+\frac{ss^TA}{y^Ts}} \textcolor{orange}{-\frac{sy^T}{y^Ts}} \textcolor{green}{-\frac{ss^TA}{y^Ts}}  \textcolor{purple}{+\frac{A^{-1}ys^TA}{y^Ts}} \textcolor{cyan}{-\frac{ss^TA}{y^Ts}} $$
 
-$$ + \frac{ss^TA}{s^TAs} + \frac{sy^T}{y^Ts} - \frac{A^{-1}yy^T}{y^Ts} + \frac{sy^T}{y^Ts} - \frac{sy^TA^{-1}yy^T}{(y^Ts)^2} -\frac{ss^TA}{y^Ts} + \frac{y^TA^{-1}yss^TA}{(y^Ts)^2}  $$
+$$ \textcolor{red}{+\frac{ss^TA}{s^TAs}} \textcolor{orange}{+\frac{sy^T}{y^Ts}} \textcolor{blue}{-\frac{A^{-1}yy^T}{y^Ts}} \textcolor{brown}{+\frac{sy^T}{y^Ts}} \textcolor{magenta}{-\frac{sy^TA^{-1}yy^T}{(y^Ts)^2}} \textcolor{violet}{-\frac{ss^TA}{y^Ts}} + \frac{y^TA^{-1}yss^TA}{(y^Ts)^2}  $$
 
-$$ + \frac{ss^TA}{y^Ts} - \frac{y^TA^{-1}yss^TA}{(y^Ts)^2} -\frac{sy^T}{y^Ts} + \frac{y^TA^{-1}ysy^T}{(y^Ts)^2} $$ 
+$$ \textcolor{violet}{+\frac{ss^TA}{y^Ts}} - \frac{y^TA^{-1}yss^TA}{(y^Ts)^2} \textcolor{brown}{-\frac{sy^T}{y^Ts}} \textcolor{magenta}{+\frac{y^TA^{-1}ysy^T}{(y^Ts)^2}} = I $$ 
 
 \subsubsection{Aufgabe 3}
 Wenn die Suchrichtung des BFGS Verfahrens:
