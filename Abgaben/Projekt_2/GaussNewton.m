@@ -43,7 +43,7 @@ function ret = GaussNewton(f, f_resid, f_jacobi, x0, xdata, ydata)
         
         k = k + 1;
         
-        ret = [ ret; struct( "x", x, "residuum", resid, "jacobi", jacobi ) ];
+        ret = [ ret; struct( "x", x, "residuum", f_resid(x, xdata, ydata), "jacobi", f_jacobi(x, xdata, ydata) ) ];
     end
     
 end

@@ -79,14 +79,12 @@ x0 = [0; -1];
 
 % Setze die selben Toleranzen und Grenzen wie in 'InverseBFGS' und
 % zusätzlich das BFGS-Verfahren zum Updaten der Hesse-Matrix
-options = optimoptions("fminunc", "OptimalityTolerance", 1e-8, "MaxFunctionEvaluations", 1e+8, "MaxIterations", 1e+6, "HessUpdate", "bfgs", "Display", "iter-detailed"); 
+% options = optimoptions("fminunc", "OptimalityTolerance", 1e-8, "MaxFunctionEvaluations", 1e+8, "MaxIterations", 1e+6, "HessUpdate", "bfgs", "Display", "iter-detailed"); 
 % ret = fminunc(f_rosen_mult, x0_rosen, options);
-
-
 % fprintf("fminunc returned x=%s with f_rosen_mult(x)=%0.6f\n", vec2str(ret), f_rosen_mult(ret));
-% 
-ret = fminunc(f_himmel, x0, options);
-fprintf("fminunc returned x=%s with f_himmel(x)=%0.6f\n", vec2str(ret), f_himmel(ret));
+
+% ret = fminunc(f_himmel, x0, options);
+% fprintf("fminunc returned x=%s with f_himmel(x)=%0.6f\n", vec2str(ret), f_himmel(ret));
 
 % Aufgabe 5
 % Siehe Erläuterung im PDF
@@ -109,8 +107,8 @@ f_resid = @(x, xdata, ydata) residuum(f, x, xdata, ydata);
 f_jacobi = @(x, xdata, ydata) jacobi(f, {f_partial_x1, f_partial_x2}, x, xdata, ydata);
 f_lq_sum = @(x) sum( f_resid(x, f_xdata, f_ydata).^2 );
 
-% ret = GaussNewton(f_lq_sum, f_resid, f_jacobi, f_x0, f_xdata, f_ydata);
-% fprintf("GaussNewton returned x=%s for function f after %d steps\n", vec2str(ret(end).x), length(ret));
+ret = GaussNewton(f_lq_sum, f_resid, f_jacobi, f_x0, f_xdata, f_ydata);
+fprintf("GaussNewton returned x=%s for function f after %d steps\n", vec2str(ret(end).x), length(ret));
 
 g = @(t, x) x(1) * exp( -(x(2).^2 + x(3).^2)*t ) * ( sinh( x(3).^2 * t ) / ( x(3).^2 ) );
 g_partial_x1 = @(t, x) ( exp( -t * (x(2).^2 + x(3).^2) ) * sinh( x(3).^2 * t) ) / ( x(3).^2 );
