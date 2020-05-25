@@ -376,13 +376,37 @@ Alle drei Funktionen profitieren von $B = \frac{y^Ts}{y^Ty}\cdot I$, daher habe 
 
 \subsubsection{Aufgabe 4}
 
-Auswertungen beider Funktionen für die Himmelblau-Funktion
+Auswertungen der Himmelblau-Funktion
 
 $$f(x_1, x_2) = (x_1^2 + x_2 - 11)^2 + (x_1 + x_2^2 - 7)^2$$
 
 Mit Gradient:
 
-$$\nabla f(x_1, x_2) = \begin{bmatrix} 1 \\ 1 \end{bmatrix}$$
+\def\arraystretch{1.25}
+$$\nabla f(x_1, x_2) = \begin{bmatrix} 2\cdot(x_1^2 + x_2 - 11)\cdot 2x_1 + 2\cdot(x_1 + x_2^2 - 7) \\ 
+                2\cdot (x_1^2 + x_2 - 11) + 2\cdot(x_1 + x_2^2 - 7)\cdot 2x_2 \end{bmatrix}$$
+
+\begin{figure}[H]
+  \centering
+  \def\arraystretch{1.25}
+  \begin{tabular}{l|c|r}
+    \hline
+    \textbf{Schritt} & \textbf{x} & \textbf{$f(x)$}\\
+    \hline
+    1 & $[0.00, -1.00]^T$ & 180\\
+    2 & $[4.50, -1.00]^T$ & 70.31\\
+    3 & $[2.54, -1.86]^T$ & 41.79\\
+    4 & $[2.68, -2.26]^T$ & 37.84\\
+    5 & $[4.16, -1.94]^T$ & 20.24\\
+    6 & $[3.34, -1.83]^T$ & 02.93\\
+    7 & $[3.53, -1.84]^T$ & 00.14\\
+    8 & $[3.59, -1.85]^T$ & 00.00\\
+    $\vdots$ & $\vdots$ & $\vdots$\\
+    13 & $[3.58, -1.85]^T$ & 0
+  \end{tabular}
+  \caption{Verlauf von \lstinline[basicstyle=\ttfamily\color{black}]|InverseBFGS| für $f$ bei einer Genauigkeit von $10^{-8}$. Man erkennt
+  gut die superlineare Konvergenz.}
+\end{figure}
 
 Die Ableitung der N-dimensionalen Rosenbrock-Funktion
 
@@ -392,6 +416,7 @@ Die Ableitung der N-dimensionalen Rosenbrock-Funktion
 
 habe ich beispielhaft für $N=3$ bestimmt:
 
+\def\arraystretch{1.25}
   $$\nabla g_3 = \begin{bmatrix}-2\cdot(1 - x_1) + 200\cdot(x_2 - x_1^2)\cdot(-2x_1)\\
     200\cdot(x_2 - x_1^2) - 2\cdot(1 - x_2) + 200\cdot(x_3 - x_2^2)\cdot(-2x_2)\\
     200\cdot(x_3 - x_2^2)\end{bmatrix}$$

@@ -42,8 +42,8 @@ fprintf("--------------------AUFGABE 4--------------------\n");
 
 x0 = [0; -1];
 
-% ret = InverseBFGS(f_himmel, f_himmel_grad, x0);
-% fprintf("InverseBFGS returned x=%s with f_himmel(x)=%0.6f\n", vec2str( ret(end).x ), ret(end).f); 
+ret = InverseBFGS(f_himmel, f_himmel_grad, x0);
+fprintf("InverseBFGS returned x=%s with f_himmel(x)=%0.6f\n", vec2str( ret(end).x ), ret(end).f); 
 
 % ret = InverseBFGS(f_bazaraa, f_bazaraa_grad, x0);
 % fprintf("InverseBFGS returned x=%s with f_bazaraa(x)=%0.6f\n", vec2str(ret(end).x), ret(end).f);
