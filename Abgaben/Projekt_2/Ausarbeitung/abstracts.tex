@@ -695,9 +695,14 @@ hat mit dem gegebenen Datensatz folgenden Residuen-Vektor:
 \def\arraystretch{1.25}
 $$r = \begin{bmatrix} f(0, x_1, x_2) - 2 \\ f(1, x_1, x_2) - 0.7 \\ f(2, x_1, x_2) - 0.3 \\ f(3, x_1, x_2) - 0.1\end{bmatrix}$$
 
-und die Jacobi-Matrix:
+und diese Jacobi-Matrix:
 
-
+$$ J = \begin{bmatrix}
+  \frac{df}{dx_1}(0, x_1, x_2) & \frac{df}{dx_2}(0, x_1, x_2)\\
+  \frac{df}{dx_1}(1, x_1, x_2) & \frac{df}{dx_2}(1, x_1, x_2)\\
+  \frac{df}{dx_1}(2, x_1, x_2) & \frac{df}{dx_2}(2, x_1, x_2)\\
+  \frac{df}{dx_1}(3, x_1, x_2) & \frac{df}{dx_2}(3, x_1, x_2)\\
+\end{bmatrix}$$
 
 \begin{figure}[H]
   \centering
@@ -710,7 +715,7 @@ und die Jacobi-Matrix:
     2 & $[0.39, 0.74]^T$ & 16.64\\
     3 & $[0.69, 0.14]^T$ & 2.99\\
     4 & $[1.54, -0.66]^T$ & 0.24\\
-    5 & $[1.98, -0.99]^T$ & $2.5\dot 10^{-3}$\\
+    5 & $[1.98, -0.99]^T$ & $2.5\cdot 10^{-3}$\\
     $\vdots$ & $\vdots$ & $\vdots$\\
     10 & $[2.00, -1.0]^T$ & $2.0\cdot 10^{-3}$\\
     \hline
