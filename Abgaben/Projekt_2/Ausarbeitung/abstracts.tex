@@ -690,6 +690,15 @@ mit partiellen Ableitungen:
 
 $$\frac{df}{dx_1} = e^{x_2\cdot t} , \frac{df}{dx_2} = t\cdot x_1 \cdot e^{x_2\cdot t} $$
 
+hat mit dem gegebenen Datensatz folgenden Residuen-Vektor:
+
+\def\arraystretch{1.25}
+$$r = \begin{bmatrix} f(0, x_1, x_2) - 2 \\ f(1, x_1, x_2) - 0.7 \\ f(2, x_1, x_2) - 0.3 \\ f(3, x_1, x_2) - 0.1\end{bmatrix}$$
+
+und die Jacobi-Matrix:
+
+
+
 \begin{figure}[H]
   \centering
   \def\arraystretch{1.25}
@@ -703,11 +712,11 @@ $$\frac{df}{dx_1} = e^{x_2\cdot t} , \frac{df}{dx_2} = t\cdot x_1 \cdot e^{x_2\c
     4 & $[1.54, -0.66]^T$ & 0.24\\
     5 & $[1.98, -0.99]^T$ & $2.5\dot 10^{-3}$\\
     $\vdots$ & $\vdots$ & $\vdots$\\
-    10 & $[2.0, -1.0]^T$ & $2.0\cdot 10^{-3}$\\
+    10 & $[2.00, -1.0]^T$ & $2.0\cdot 10^{-3}$\\
     \hline
   \end{tabular}
   \caption{Verlauf der aufsummierten quadratischen Residuen mit dem gegebenen Datensatz und
-  \lstinline[basicstyle=\ttfamily\color{black}]|GaussNewton.m| }
+  \lstinline[basicstyle=\ttfamily\color{black}]|GaussNewton.m| bei Abbruchbedingung $||\nabla f|| \leq 10^{-8}$ }
 \end{figure}
 
 Für die erste Funktion $f(t, x_1, x_2) = x_1\cdot e^{x_2\cdot t}$ erhält man mit dem gegebenen Datensatz und dem
