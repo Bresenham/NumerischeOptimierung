@@ -130,11 +130,11 @@ Zusammenfassen:
 $$ I \textcolor{red}{-\frac{ss^T}{s^Ts}} \textcolor{blue}{+\frac{yy^T}{y^Ts}} \textcolor{green}{+\frac{ss^T}{y^Ts}} \textcolor{orange}{-\frac{ys^T}{y^Ts}} \textcolor{violet}{+\frac{ss^T}{y^Ts}} \textcolor{magenta}{-\frac{sy^T}{y^Ts}} \textcolor{green}{-\frac{ss^T}{y^Ts}} \textcolor{orange}{+\frac{ys^T}{y^Ts}} \textcolor{violet}{-\frac{ss^T}{y^Ts}} \textcolor{red}{+\frac{ss^T}{s^Ts}} \textcolor{magenta}{+\frac{sy^T}{y^Ts}} \textcolor{blue}{-\frac{yy^T}{y^Ts}} \textcolor{cyan}{+\frac{sy^T}{y^Ts}} $$
 $$ \textcolor{purple}{-\frac{sy^Tyy^T}{(y^Ts)^2}} \textcolor{brown}{-\frac{ss^T}{y^Ts}} + \frac{y^Tyss^T}{(y^Ts)^2} \textcolor{brown}{+\frac{ss^T}{y^Ts}} - \frac{y^Tyss^T}{(y^Ts)^2} \textcolor{cyan}{-\frac{sy^T}{y^Ts}} \textcolor{purple}{+\frac{y^Tysy^T}{(y^Ts)^2}} = I $$
 
-Im Induktionsschritt geht man von $k = 0$ auf allgemeines $k$, dann erhält man folgenden Ansatz (für $B = A^{-1}$):
+Im Induktionsschritt geht man von $k = 0$ auf allgemeines $k$, dann erhält man folgenden Ansatz (für $B = A^{-1}$, $k$ wurde zur besseren Übersichtlichkeit weggelassen):
 
 $$\left(A^{-1} + \frac{(s - A^{-1}y)s^T + s(s - A^{-1}y)^T}{y^Ts} - \frac{(s - A^{-1}y)^Tyss^T}{(y^Ts)^2} \right) \cdot \left(A - \frac{As(As)^T}{s^TAs} + \frac{yy^T}{y^Ts} \right) $$
 
-Die einzeln Produkte werden der Übersicht halber wieder aufgeteilt:
+Die einzeln Produkte werden wieder aufgeteilt:
 
 $$\left(A^{-1} \right)\cdot \left(A \right) = I$$
 
@@ -178,9 +178,13 @@ Zusammenfassen
 
 $$ I \textcolor{red}{-\frac{ss^TA}{s^TAs}} \textcolor{blue}{+\frac{A^{-1}yy^T}{y^Ts}} \textcolor{green}{+\frac{ss^TA}{y^Ts}} \textcolor{purple}{-\frac{A^{-1}ys^TA}{y^Ts}} \textcolor{cyan}{+\frac{ss^TA}{y^Ts}} \textcolor{orange}{-\frac{sy^T}{y^Ts}} \textcolor{green}{-\frac{ss^TA}{y^Ts}}  \textcolor{purple}{+\frac{A^{-1}ys^TA}{y^Ts}} \textcolor{cyan}{-\frac{ss^TA}{y^Ts}} $$
 
-$$ \textcolor{red}{+\frac{ss^TA}{s^TAs}} \textcolor{orange}{+\frac{sy^T}{y^Ts}} \textcolor{blue}{-\frac{A^{-1}yy^T}{y^Ts}} \textcolor{brown}{+\frac{sy^T}{y^Ts}} \textcolor{magenta}{-\frac{sy^TA^{-1}yy^T}{(y^Ts)^2}} \textcolor{violet}{-\frac{ss^TA}{y^Ts}} + \frac{y^TA^{-1}yss^TA}{(y^Ts)^2}  $$
+$$ \textcolor{red}{+\frac{ss^TA}{s^TAs}} \textcolor{orange}{+\frac{sy^T}{y^Ts}} \textcolor{blue}{-\frac{A^{-1}yy^T}{y^Ts}} \textcolor{brown}{+\frac{sy^T}{y^Ts}} \textcolor{magenta}{-\frac{sy^TA^{-1}yy^T}{(y^Ts)^2}} \textcolor{violet}{-\frac{ss^TA}{y^Ts}} + \frac{y^TA^{-1}yss^TA}{(y^Ts)^2} $$
 
 $$ \textcolor{violet}{+\frac{ss^TA}{y^Ts}} - \frac{y^TA^{-1}yss^TA}{(y^Ts)^2} \textcolor{brown}{-\frac{sy^T}{y^Ts}} \textcolor{magenta}{+\frac{y^TA^{-1}ysy^T}{(y^Ts)^2}} = I $$ 
+
+Da $y^TA^{-1}y$ ein Skalar ist, kann es beliebig verschoben werden, d.h. $sy^TA^{-1}yy^T = y^TA^{-1}ysy^T$.
+
+Für $k + 1$ ändert sich an der oben gezeigten Rechnung nichts. Jeder Vektor bzw. jede Matrix erhält dann einfach nur den Index $k + 1$.
 
 \subsubsection{Aufgabe 3}
 Wenn die Suchrichtung des BFGS Verfahrens:
