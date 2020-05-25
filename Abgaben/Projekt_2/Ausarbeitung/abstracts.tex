@@ -376,12 +376,23 @@ Alle drei Funktionen profitieren von $B = \frac{y^Ts}{y^Ty}\cdot I$, daher habe 
 
 \subsubsection{Aufgabe 4}
 
-Die Ableitung der N-dimensionalen Rosenbrock-Funktion habe ich beispielhaft für $N=3$ bestimmt:
+Auswertungen beider Funktionen für die Himmelblau-Funktion
 
-  $$\sum_{i=1}^2 (1 - x_i)^2 + 100\cdot(x_{i+1} - x_i^2)^2$$
+$$f(x_1, x_2) = (x_1^2 + x_2 - 11)^2 + (x_1 + x_2^2 - 7)^2$$
+
+Mit Gradient:
+
+$$\nabla f(x_1, x_2) = \begin{bmatrix} 1 \\ 1 \end{bmatrix}$$
+
+Die Ableitung der N-dimensionalen Rosenbrock-Funktion
+
+  $$g(x_1, x_2, x_3) = \sum_{i=1}^2 (1 - x_i)^2 + 100\cdot(x_{i+1} - x_i^2)^2$$
   $$=$$
   $$(1 - x_1)^2 + 100\cdot (x_2 - x_1^2)^2 + (1 - x_2)^2 + 100\cdot(x_3 - x_2^2)^2$$
-  $$\nabla f_3 = \begin{bmatrix}-2\cdot(1 - x_1) + 200\cdot(x_2 - x_1^2)\cdot(-2x_1)\\
+
+habe ich beispielhaft für $N=3$ bestimmt:
+
+  $$\nabla g_3 = \begin{bmatrix}-2\cdot(1 - x_1) + 200\cdot(x_2 - x_1^2)\cdot(-2x_1)\\
     200\cdot(x_2 - x_1^2) - 2\cdot(1 - x_2) + 200\cdot(x_3 - x_2^2)\cdot(-2x_2)\\
     200\cdot(x_3 - x_2^2)\end{bmatrix}$$
 
