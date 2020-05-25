@@ -402,19 +402,41 @@ $$\nabla f(x_1, x_2) = \begin{bmatrix} 2\cdot(x_1^2 + x_2 - 11)\cdot 2x_1 + 2\cd
     7 & $[3.53, -1.84]^T$ & 00.14\\
     8 & $[3.59, -1.85]^T$ & 00.00\\
     $\vdots$ & $\vdots$ & $\vdots$\\
-    13 & $[3.58, -1.85]^T$ & 0
+    13 & $[3.58, -1.85]^T$ & $6.37 \cdot 10^{-20}$\\
+    \hline
   \end{tabular}
   \caption{Verlauf von \lstinline[basicstyle=\ttfamily\color{black}]|InverseBFGS| für $f$ bei einer Genauigkeit von $10^{-8}$. Man erkennt
   gut die superlineare Konvergenz.}
 \end{figure}
 
-Die Ableitung der N-dimensionalen Rosenbrock-Funktion
+\begin{figure}[H]
+  \centering
+  \def\arraystretch{1.25}
+  \begin{tabular}{l|c|r}
+    \hline
+    \textbf{Schritt} & \textbf{x} & \textbf{$f(x)$}\\
+    \hline
+    1 & $[0.00, -1.00]^T$ & 180\\
+    2 & keine Info & 06.38\\
+    3 & keine Info & 05.91\\
+    4 & keine Info & 00.26\\
+    5 & keine Info & 0.00\\
+    $\vdots$ & $\vdots$ & $\vdots$\\
+    9 & $[3.58, -1.85]^T$ & $7.05\cdot 10^{-13}$\\
+    \hline
+  \end{tabular}
+  \caption{Verlauf von \lstinline[basicstyle=\ttfamily\color{black}]|fminunc| für $f$ bei einer Genauigkeit von $10^{-8}$ mit Einstellungen
+  \lstinline[basicstyle=\ttfamily\color{black}]|HessUpdate = 'bfgs'| und \lstinline[basicstyle=\ttfamily\color{black}]|Display = 'iter-detailed'|.}
+\end{figure}
+
+Die Rosenbrock-Funktion ist in \lstinline[basicstyle=\ttfamily\color{black}]|Projekt2.m| als 
+\lstinline[basicstyle=\ttfamily\color{black}]|f_rosen_mult| definiert. Beispielhaft für $N = 3$
 
   $$g(x_1, x_2, x_3) = \sum_{i=1}^2 (1 - x_i)^2 + 100\cdot(x_{i+1} - x_i^2)^2$$
   $$=$$
   $$(1 - x_1)^2 + 100\cdot (x_2 - x_1^2)^2 + (1 - x_2)^2 + 100\cdot(x_3 - x_2^2)^2$$
 
-habe ich beispielhaft für $N=3$ bestimmt:
+habe ich den Gradienten bestimmt:
 
 \def\arraystretch{1.25}
   $$\nabla g_3 = \begin{bmatrix}-2\cdot(1 - x_1) + 200\cdot(x_2 - x_1^2)\cdot(-2x_1)\\
@@ -435,7 +457,6 @@ $$200\cdot(x_N - x_{N-1}^2)$$
 
 Die Ableitung ist in \lstinline[basicstyle=\ttfamily\color{black}]|Projekt2.m| in der Funktion
 \lstinline[basicstyle=\ttfamily\color{black}]|f_rosen_mult_deriv_func| definiert.
-Rechenzeit des in \lstinline[basicstyle=\ttfamily\color{black}]|InverseBFGS.m| implementierten Verfahrens:
 
 \begin{figure}[H]
   \centering
@@ -466,11 +487,9 @@ Rechenzeit des in \lstinline[basicstyle=\ttfamily\color{black}]|InverseBFGS.m| i
     \end{axis}
   \end{tikzpicture}
 \caption{Rechenzeit der N-dimensionalen Rosenbrock-Funktion mit Startwert $[-1, \ldots, -1]^T$ für
-  eine Genauigkeit von $10^{-8}$ gemittelt über 100 Durchläufe (Intel Core i3-7100U, 8GB RAM, Windows 10 64-Bit)}
+  eine Genauigkeit von $10^{-8}$ gemittelt über 100 Durchläufe von \lstinline[basicstyle=\ttfamily\color{black}]|InverseBFGS|
+  (Intel Core i3-7100U, 8GB RAM, Windows 10 64-Bit)}
 \end{figure}
-
-Rechenzeit von \lstinline[basicstyle=\ttfamily\color{black}]|fminunc| mit Option
-\lstinline[basicstyle=\ttfamily\color{black}]|"HessUpdate" = "bfgs"|:
 
 \begin{figure}[H]
   \centering
@@ -501,7 +520,8 @@ Rechenzeit von \lstinline[basicstyle=\ttfamily\color{black}]|fminunc| mit Option
     \end{axis}
   \end{tikzpicture}
 \caption{Rechenzeit der N-dimensionalen Rosenbrock-Funktion mit Startwert $[-1, \ldots, -1]^T$ für
-  eine Genauigkeit von $10^{-8}$ gemittelt über 100 Durchläufe (Intel Core i3-7100U, 8GB RAM, Windows 10 64-Bit)}
+  eine Genauigkeit von $10^{-8}$ gemittelt über 100 Durchläufe von \lstinline[basicstyle=\ttfamily\color{black}]|fminunc| mit
+  \lstinline[basicstyle=\ttfamily\color{black}]|HessUpdate = 'bfgs'| (Intel Core i3-7100U, 8GB RAM, Windows 10 64-Bit)}
 \end{figure}
 
 Man erkennt, das mit höheren Dimensionen die Rechenzeit für beide Verfahren drastisch zunimmt und
@@ -510,6 +530,7 @@ Man erkennt, das mit höheren Dimensionen die Rechenzeit für beide Verfahren dr
 \begin{figure}[H]
   \centering
   \def\arraystretch{1.25}
+  \begin{adjustwidth}{-25.5pt}{0pt}
   \begin{tabular}{l|c|c|c|r}
     \hline
     \textbf{Verfahren} & \textbf{Dimensionen} & \textbf{Dauer} & \textbf{Genauigkeit} & \textbf{Anmerkung}\\
@@ -522,7 +543,8 @@ Man erkennt, das mit höheren Dimensionen die Rechenzeit für beide Verfahren dr
     \lstinline[basicstyle=\ttfamily\color{black}]|fminunc| & 925 & 212.60s & $10^{-8}$ & \makecell[r]{Zielfunktionswert: $1.9\cdot 10^{-10}$,\\keine Werte $\neq$ 1}\\
     \hline
   \end{tabular}
-  \caption{Unterschiede zwischen beiden Funktionen bei sehr großen Dimensionen}
+  \caption{Unterschiede zwischen beiden Verfahren bei der Berechnung der N-dimensionalen Rosenbrock-Funktion bei hohen Dimensionen}
+  \end{adjustwidth}
 \end{figure}
 
 Möglichkeiten um ein höheres $N$ zu erreichen:
@@ -554,11 +576,11 @@ Diese kann man nun in die Sherman-Morrison-Woodbury-Formel einsetzen und erhält
 
 $$ A^{-1} - \frac{ A^{-1}(y-As)\left(\frac{ y-As }{ (y-As)^Ts } \right)^TA^{-1} }{1 + \left(\frac{ y-As }{ (y-As)^Ts }\right)^TA^{-1}(y-As)}$$
 
-Das T in den Bruch im Nenner und Zähler einfließen lassen, dann erhält man diesen Doppelbruch:
+Wenn man das T in den Bruch im Nenner und Zähler einfließen lässt, erhält man diesen Doppelbruch:
 
 $$ A^{-1} - \frac{ \frac{A^{-1}(y-As)(y-As)^TA^{-1}}{\left( (y-As)^Ts\right)^T } }{1 + \frac{(y-As)^TA^{-1}(y-As)}{\left( (y-As)^Ts\right)^T}}$$
 
-Wenn man nun den Zähler vom Zähler ausmultipliziert erhält man:
+Nun den Zähler vom Zähler ausmultipliziert:
 
 $$ A^{-1} - \frac{ \frac{ (A^{-1}y - A^{-1}As)(y^T-(As)^T)A^{-1} }{\left( (y-As)^Ts\right)^T } }{1 + \frac{(y-As)^TA^{-1}(y-As)}{\left( (y-As)^Ts\right)^T}}$$
 
@@ -568,7 +590,7 @@ $$ A^{-1} - \frac{ \frac{ (A^{-1}y - s)(y^TA^{-1} - s^TAA^{-1}) }{\left( (y-As)^
 
 $$ A^{-1} - \frac{ \frac{ (A^{-1}y-s)(y^TA^{-1}-s^T) }{\left( (y-As)^Ts\right)^T } }{1 + \frac{(y-As)^TA^{-1}(y-As)}{\left( (y-As)^Ts\right)^T}}$$
 
-Nun ebenfalls den Zähler im Nenner ausmultiplizieren:
+Ebenfalls den Zähler im Nenner ausmultiplizieren:
 
 $$ A^{-1} - \frac{ \frac{ (A^{-1}y-s)(y^TA^{-1}-s^T) }{\left( (y-As)^Ts\right)^T } }{1 + \frac{ (y^T - (As)^T)A^{-1}(y - As) }{\left( (y-As)^Ts\right)^T}}$$
 
@@ -582,7 +604,7 @@ $$ A^{-1} - \frac{ \frac{ (A^{-1}y-s)(y^TA^{-1}-s^T) }{\left( (y-As)^Ts\right)^T
 
 $$ A^{-1} - \frac{ \frac{ (A^{-1}y-s)(y^TA^{-1}-s^T) }{\left( (y-As)^Ts\right)^T } }{1 + \frac{ y^T(A^{-1}y - s) - s^T(y - As) }{\left( (y-As)^Ts\right)^T}}$$
 
-Nun die $1$ im Nenner erweitern:
+Die $1$ im Nenner erweitern:
 
 $$ A^{-1} - \frac{ \frac{ (A^{-1}y-s)(y^TA^{-1}-s^T) }{\left( (y-As)^Ts\right)^T } }{ \frac{\left( (y-As)^Ts\right)^T}{\left( (y-As)^Ts\right)^T} + \frac{ y^T(A^{-1}y - s) - s^T(y - As) }{\left( (y-As)^Ts\right)^T}}$$
 
@@ -590,7 +612,7 @@ mit dem zweiten Term verbinden:
 
 $$ A^{-1} - \frac{ \frac{ (A^{-1}y-s)(y^TA^{-1}-s^T) }{\left( (y-As)^Ts\right)^T } }{ \frac{ \left( (y-As)^Ts\right)^T + y^T(A^{-1}y - s) - s^T(y - As) }{\left( (y-As)^Ts\right)^T}}$$
 
-und ausmultiplizieren:
+ausmultiplizieren:
 
 $$ A^{-1} - \frac{ \frac{ (A^{-1}y-s)(y^TA^{-1}-s^T) }{\left( (y-As)^Ts\right)^T } }{ \frac{ s^T(y - As) + y^TA^{-1}y - y^Ts - s^Ty + s^TAs }{\left( (y-As)^Ts\right)^T}}$$
 
