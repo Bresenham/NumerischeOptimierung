@@ -724,9 +724,20 @@ $$ J = \begin{bmatrix}
   \lstinline[basicstyle=\ttfamily\color{black}]|GaussNewton.m| bei Abbruchbedingung $||\nabla f|| \leq 10^{-8}$ }
 \end{figure}
 
-Für die erste Funktion $f(t, x_1, x_2) = x_1\cdot e^{x_2\cdot t}$ erhält man mit dem gegebenen Datensatz und dem
-Startwert $x_0 = [1, 1]^T$ die Werte $x_1 = 1.9950$, $x_2 = -1.0095$ nach $10$ Iterationen. Abbruchkriterium war
-||$J(x)^T\cdot r(x)$|| $ \leq 10^{-8}$.\par
+Für $f$ erhält man somit die Werte $x_1 = 1.9950$ und $x_2 = -1.0095$ nach $10$ Iterationen.\par
+
+Weiterhin gilt für die zweite Funktion
+
+$$g(t, x_1, x_2, x_3) = x_1\cdot e^{-(x_2^2 + x_3^2)\cdot t}\cdot \frac{\text{sinh}(x_3^2\cdot t)}{x_3^2}$$
+
+mit den partiellen Ableitungen
+
+$$\frac{dg}{dx_1} = e^{ -(x_2^2 + x_3^2)\cdot t } \cdot \frac{\text{sinh}( x_3^2 \cdot t) }{ x_3^2 } $$
+
+$$\frac{dg}{dx_2} = - 2t \cdot x_2 x_1 \cdot e^{ - (x_2^2 + x_3^2)\cdot t } \cdot \frac{\text{sinh}( x_3^2 \cdot t )}{ x_3^2} $$
+
+$$\frac{dg}{dx_3} = \frac{2 \cdot x_1 \cdot e^{ -(x_2^2 + x_3^2)\cdot t} \cdot \left( t \cdot x_3^2 \cdot \text{cosh}(x_3^2\cdot t) - (x_3^2\cdot t + 1) \cdot \text{sinh}(x_3^2 \cdot t) \right) }{x_3^2} $$
+
 Für die zweite Funktion $g(t, x_1, x_2, x_3) = x_1 \cdot e^{ -(x_2^2 + x_3^2)\cdot t }\cdot \frac{sinh(x_3^2\cdot t)}{x_3^2}$
 erhält man mit dem gegebenen Datensatz und den Startwerten:
 \begin{itemize}
