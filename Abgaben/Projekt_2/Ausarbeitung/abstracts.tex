@@ -166,6 +166,14 @@ $$\left( - \frac{(s - A^{-1}y)^Tyss^T}{(y^Ts)^2} \right)\cdot \left(A \right) = 
 
 $$= -\frac{\textcolor{red}{s^Ty}ss^TA}{(\textcolor{red}{y^Ts})^2} + \frac{y^TA^{-1}yss^TA}{(y^Ts)^2} = -\frac{ss^TA}{y^Ts} + \frac{y^TA^{-1}yss^TA}{(y^Ts)^2}$$
 
+$$\left(  - \frac{(s - A^{-1}y)^Tyss^T}{(y^Ts)^2} \right)\cdot \left( - \frac{As(As)^T}{s^TAs} \right) = \frac{s^Tyss^TAss^TA - y^TA^{-1}yss^TAss^TA}{(y^Ts)^2s^TAs}$$
+
+$$= \frac{\textcolor{red}{s^Ty}s\textcolor{blue}{s^TAs}s^TA}{(\textcolor{red}{y^Ts})^2\textcolor{blue}{s^TAs}} - \frac{y^TA^{-1}ys\textcolor{red}{s^TAs}s^TA}{(y^Ts)^2\textcolor{red}{s^TAs}} = \frac{ss^TA}{y^Ts} - \frac{y^TA^{-1}yss^TA}{(y^Ts)^2}$$
+
+$$\left(  - \frac{(s - A^{-1}y)^Tyss^T}{(y^Ts)^2} \right)\cdot \left( \frac{yy^T}{y^Ts} \right) = -\frac{s^Tyss^Tyy^T - y^TA^{-1}yss^Tyy^T}{(y^Ts)^3} $$
+
+$$= -\frac{\textcolor{red}{s^Ty}s\textcolor{red}{s^Ty}y^T}{(\textcolor{red}{y^Ts})^3} + \frac{y^TA^{-1}ys\textcolor{red}{s^Ty}y^T}{(\textcolor{red}{y^Ts})^3} = -\frac{sy^T}{y^Ts} + \frac{y^TA^{-1}ysy^T}{(y^Ts)^2}$$
+
 \subsubsection{Aufgabe 3}
 Wenn die Suchrichtung des BFGS Verfahrens:
 
