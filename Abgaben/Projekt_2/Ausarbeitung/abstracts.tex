@@ -119,7 +119,7 @@ $$ \left(-\frac{s^Tyss^T - y^Tyss^T}{(y^Ts)^2} \right)\cdot I = -\frac{\textcolo
 
 $$ \left(-\frac{s^Tyss^T - y^Tyss^T}{(y^Ts)^2} \right)\cdot \left( - \frac{ss^T}{s^Ts} \right) = \frac{s^Tyss^Tss^T - y^Tyss^Tss^T}{(y^Ts)^2s^Ts}$$
 
-$$= \frac{\textcolor{red}{s^Ty}s\textcolor{blue}{s^Ts}s^T}{(\textcolor{red}{y^Ts})^2\textcolor{blue}{s^Ts}} - \frac{y^Tys\textcolor{green}{s^Ts}s^T}{(y^Ts)^2\textcolor{green}{s^Ts}} = \frac{ss^T}{y^Ts} - \frac{y^Tyss^T}{(y^Ts)^2}$$
+$$= \frac{\textcolor{red}{s^Ty}s\textcolor{blue}{s^Ts}s^T}{(\textcolor{red}{y^Ts})^2\textcolor{blue}{s^Ts}} - \frac{y^Tys\textcolor{blue}{s^Ts}s^T}{(y^Ts)^2\textcolor{blue}{s^Ts}} = \frac{ss^T}{y^Ts} - \frac{y^Tyss^T}{(y^Ts)^2}$$
 
 $$ \left(-\frac{s^Tyss^T - y^Tyss^T}{(y^Ts)^2} \right)\cdot \left( \frac{yy^T}{y^Ts} \right) = -\frac{s^Tyss^Tyy^T + y^Tyss^Tyy^T}{(y^Ts)^3} $$
 
@@ -151,6 +151,14 @@ $$= \frac{ss^TA}{y^Ts} - \frac{A^{-1}ys^TA}{y^Ts} + \frac{ss^TA}{y^Ts} - \frac{s
 \end{adjustwidth}
 
 $$= -\frac{s\textcolor{red}{s^TAs}s^TA}{y^Ts\textcolor{red}{s^TAs}} + \frac{A^{-1}y\textcolor{red}{s^TAs}s^TA}{y^Ts\textcolor{red}{s^TAs}} - \frac{s\textcolor{red}{s^TAs}s^TA}{y^Ts\textcolor{red}{s^TAs}} + \frac{s\textcolor{red}{y^Ts}s^TA}{\textcolor{red}{y^Ts}s^TAs}$$
+
+$$=  -\frac{ss^TA}{y^Ts}  + \frac{A^{-1}ys^TA}{y^Ts} - \frac{ss^TA}{y^Ts} + \frac{ss^TA}{s^TAs}$$
+
+\begin{adjustwidth}{-25pt}{0pt}
+  $$\left(\frac{(s - A^{-1}y)s^T + s(s - A^{-1}y)^T}{y^Ts} \right)\cdot \left( \frac{yy^T}{y^Ts} \right) = \frac{ss^Tyy^T - A^{-1}ys^Tyy^T + ss^Tyy^T - sy^TA^{-1}yy^T}{(y^Ts)^2}$$
+\end{adjustwidth}
+
+
 
 \subsubsection{Aufgabe 3}
 Wenn die Suchrichtung des BFGS Verfahrens:
