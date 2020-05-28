@@ -46,7 +46,7 @@ function ret = WolfePowell(phi, phi_grad)
     while(1)
         alpha = (a + b) / 2.0;
         % Sicherheitscheck damit man nicht in eine Endlosschleife endet
-        if( abs(a - b) <= 1e-10 || alpha <= 1e-12 )
+        if( abs(a - b) <= 1e-6 || alpha <= 1e-8 )
             ret = alpha;
             return;
         end

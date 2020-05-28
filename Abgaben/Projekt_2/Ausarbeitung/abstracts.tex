@@ -226,8 +226,14 @@ Hierzu bieten sich verschiedene Möglichkeiten an:
   \end{itemize}
 \end{itemize}
 
-Um herauszufinden, welche dieser Methoden am besten geeignet ist (d.h. die richtig Lösung in der kürzesten Zeit findet),
-wird die Laufzeit des inversen BFGS-Verfahrens bestimmt. Startwerte:
+Um herauszufinden, ob Methode (1) oder (3) am besten geeignet ist (d.h. die richtig Lösung in der kürzesten Zeit findet),
+wird die Laufzeit des inversen BFGS-Verfahrens bestimmt. Da weder bei der Bazaara-Shetty oder Himmelblau Funktion noch
+200-dimensionalen Rosenbrock-Funktion das BFGS-Verfahren öfter als ein oder zwei mal in der Reset-Bedingung gelandet ist,
+verwende ich für eine bessere Vergleichbarkeit die Funktion aus Aufgabe 7 in leicht abgewandelter Form:
+
+$$ h(1, x_1, x_2, x_3) = x_1\cdot e^{ -(x_2^2 + x_3^2)} \cdot \frac{\text{sinh}(x_3^2)}{x_3^2}$$
+
+mit Startwert $x_0 = [10, 0.05, 1]^T$.
 
 \begin{itemize}
   \item N-dim. Rosenbrock-Funktion: $\begin{bmatrix}-1\\\vdots\\-1\end{bmatrix}$
@@ -571,17 +577,17 @@ Man erkennt, das mit höheren Dimensionen die Rechenzeit für beide Verfahren dr
 \begin{figure}[H]
   \centering
   \def\arraystretch{1.25}
-  \begin{adjustwidth}{-25.5pt}{0pt}
+  \begin{adjustwidth}{-32pt}{0pt}
   \begin{tabular}{l|c|c|c|r}
     \hline
-    \textbf{Verfahren} & \textbf{Dimensionen} & \textbf{Dauer} & \textbf{Genauigkeit} & \textbf{Anmerkung}\\
+    \textbf{Verfahren} & \textbf{Dimensionen} & \textbf{Iterationen} & \textbf{Genauigkeit} & \textbf{Anmerkung}\\
     \hline
-    \lstinline[basicstyle=\ttfamily\color{black}]|InverseBFGS| & 750 & 14.05s & $10^{-8}$ & \makecell[r]{Zielfunktionswert: 3.98,\\die ersten 8 Werte bei 0.9967}\\
-    \lstinline[basicstyle=\ttfamily\color{black}]|InverseBFGS| & 850 & 22.07s & $10^{-8}$ & \makecell[r]{Zielfunktionswert: $1.4 \cdot 10^{-20}$,\\keine Werte $\neq$ 1}\\
-    \lstinline[basicstyle=\ttfamily\color{black}]|InverseBFGS| & 925 & 24.66s & $10^{-8}$ & \makecell[r]{Zielfunktionswert: $5.8 \cdot 10^{-21}$,\\keine Werte $\neq$ 1}\\
-    \lstinline[basicstyle=\ttfamily\color{black}]|fminunc| & 750 & 127.95s & $10^{-8}$ & \makecell[r]{Zielfunktionswert: $1.8\cdot 10^{-10}$,\\keine Werte $\neq$ 1}\\
-    \lstinline[basicstyle=\ttfamily\color{black}]|fminunc| & 850 & 152.15s & $10^{-8}$ & \makecell[r]{Zielfunktionswert: $1.7\cdot 10^{-10}$,\\keine Werte $\neq$ 1}\\
-    \lstinline[basicstyle=\ttfamily\color{black}]|fminunc| & 925 & 212.60s & $10^{-8}$ & \makecell[r]{Zielfunktionswert: $1.9\cdot 10^{-10}$,\\keine Werte $\neq$ 1}\\
+    \lstinline[basicstyle=\ttfamily\color{black}]|InverseBFGS| & 750 & 941 & $10^{-8}$ & \makecell[r]{Zielfunktionswert: 3.98,\\die ersten 8 Werte bei 0.9967}\\
+    \lstinline[basicstyle=\ttfamily\color{black}]|InverseBFGS| & 850 & 1095 & $10^{-8}$ & \makecell[r]{Zielfunktionswert: $1.4 \cdot 10^{-20}$,\\keine Werte $\neq$ 1}\\
+    \lstinline[basicstyle=\ttfamily\color{black}]|InverseBFGS| & 925 & 1079 & $10^{-8}$ & \makecell[r]{Zielfunktionswert: $5.8 \cdot 10^{-21}$,\\keine Werte $\neq$ 1}\\
+    \lstinline[basicstyle=\ttfamily\color{black}]|fminunc| & 750 & 3936 & $10^{-8}$ & \makecell[r]{Zielfunktionswert: $1.8\cdot 10^{-10}$,\\keine Werte $\neq$ 1}\\
+    \lstinline[basicstyle=\ttfamily\color{black}]|fminunc| & 850 & 4455 & $10^{-8}$ & \makecell[r]{Zielfunktionswert: $1.7\cdot 10^{-10}$,\\keine Werte $\neq$ 1}\\
+    \lstinline[basicstyle=\ttfamily\color{black}]|fminunc| & 925 & 4852 & $10^{-8}$ & \makecell[r]{Zielfunktionswert: $1.9\cdot 10^{-10}$,\\keine Werte $\neq$ 1}\\
     \hline
   \end{tabular}
   \caption{Unterschiede zwischen beiden Verfahren bei der Berechnung der N-dimensionalen Rosenbrock-Funktion bei hohen Dimensionen}

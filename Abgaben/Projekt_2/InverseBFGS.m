@@ -17,13 +17,15 @@
 function ret = InverseBFGS(f, grad, x0)
 
     k = 0;
-    p = 3;
-    rho = 0.1;
+    p = 2.1;
+    rho = 1e-8;
     
     x = x0;
     x_old = x0;
 
     k_max = 1e+6;
+    
+    reset_amount = 0;
     
     dim = numel(x0);
     
@@ -65,6 +67,7 @@ function ret = InverseBFGS(f, grad, x0)
            d = - grad(x);
            % B = eye(dim);
            B = ( (y(x, x_old)' * s(x, x_old)) / (y(x, x_old)' * y(x, x_old)) ) * eye(dim);
+           reset_amount = reset_amount + 1;
         end
         
         % Definition der Funktionen phi und phi' die für Wolfe-Powell
@@ -77,7 +80,7 @@ function ret = InverseBFGS(f, grad, x0)
         x = x + alpha * d;
         
         k = k + 1;
-
+        
         ret = [ ret; struct("x", x, "f", f(x), "gradient", grad(x)) ];
     end
     
@@ -87,4 +90,6 @@ function ret = InverseBFGS(f, grad, x0)
         % fprintf("InverseBFGS finished after %d iterations!\n", k);
     end
 
+    fprintf("RESET AMOUNT: %d\n", reset_amount);
+    
 end

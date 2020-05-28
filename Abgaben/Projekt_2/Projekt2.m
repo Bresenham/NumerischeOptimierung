@@ -72,16 +72,16 @@ x0 = [0; -1];
 %    disp(all_avgs(72:dim));
 % end
 
-rosenbrock_dim = 10;
+rosenbrock_dim = 925;
 x0_rosen = zeros(rosenbrock_dim, 1) - ones(rosenbrock_dim, 1);
-ret = InverseBFGS(f_rosen_mult, f_rosen_mult_grad, x0_rosen);
-fprintf("InverseBFGS returned x=%s with f_rosen_mult(x)=%0.6f\n", vec2str( ret(end).x ), ret(end).f);
+% ret = InverseBFGS(f_rosen_mult, f_rosen_mult_grad, x0_rosen);
+% fprintf("InverseBFGS returned x=%s with f_rosen_mult(x)=%0.6f\n", vec2str( ret(end).x ), ret(end).f);
 
 % Setze die selben Toleranzen und Grenzen wie in 'InverseBFGS' und
 % zusätzlich das BFGS-Verfahren zum Updaten der Hesse-Matrix
-% options = optimoptions("fminunc", "OptimalityTolerance", 1e-8, "MaxFunctionEvaluations", 1e+8, "MaxIterations", 1e+6, "HessUpdate", "bfgs", "Display", "iter-detailed"); 
-% ret = fminunc(f_rosen_mult, x0_rosen, options);
-% fprintf("fminunc returned x=%s with f_rosen_mult(x)=%0.6f\n", vec2str(ret), f_rosen_mult(ret));
+options = optimoptions("fminunc", "OptimalityTolerance", 1e-8, "MaxFunctionEvaluations", 1e+8, "MaxIterations", 1e+6, "HessUpdate", "bfgs", "Display", "iter-detailed"); 
+ret = fminunc(f_rosen_mult, x0_rosen, options);
+fprintf("fminunc returned x=%s with f_rosen_mult(x)=%0.6f\n", vec2str(ret), f_rosen_mult(ret));
 
 % ret = fminunc(f_himmel, x0, options);
 % fprintf("fminunc returned x=%s with f_himmel(x)=%0.6f\n", vec2str(ret), f_himmel(ret));
@@ -130,6 +130,15 @@ g_lq_sum = @(x) sum( g_resid(x, g_xdata, g_ydata).^2 );
 
 % Aufgabe 8
 % Siehe Erläuterung im PDF
+
+% h = @(x) 20 + x(1).^2 + x(2).^2 - 10 * ( cos(2 * pi * x(1)) + cos(2 * pi * x(2)) );
+% h_grad = @(x) [ 2 * x(1) + 2 * 10 * pi * sin(2 * pi * x(1)); 2 * x(2) + 2 * 10 * pi * sin(2 * pi * x(2)) ] ;
+m = @(x) sin(3 * pi * x(1)).^2 + (x(1) - 1).^2 * (1 + sin(3 * pi * x(2)).^2) + (x(2) - 1).^2 * (1 + sin(2 * pi * x(2)).^2);
+m_grad = @(x) [ 2 * (x(1) - 1) * (sin(3 * pi * x(2)).^2 + 1) + 6 * pi * sin(3 * pi * x(1)) * cos(3 * pi * x(1));
+                6 * pi * ( (x(1) - 1).^2 ) * sin(3 * pi * x(2)) * cos(3 * pi * x(2)) + 2 * (x(2) - 1) * (sin(2 * pi * x(2)).^2 + 1) + 4 * pi * ( (x(2) - 1).^2 ) * sin(2 * pi * x(2)) * cos(2 * pi * x(2))
+                ];
+% ret = InverseBFGS(m, m_grad, [-1.025; 1.5]);
+% fprintf("RET");
 
 % Aufgabe 9
 fprintf("--------------------AUFGABE 9--------------------\n");
