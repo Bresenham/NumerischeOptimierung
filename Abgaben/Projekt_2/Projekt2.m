@@ -79,7 +79,7 @@ x0_rosen = zeros(rosenbrock_dim, 1) - ones(rosenbrock_dim, 1);
 
 % Setze die selben Toleranzen und Grenzen wie in 'InverseBFGS' und
 % zusätzlich das BFGS-Verfahren zum Updaten der Hesse-Matrix
-options = optimoptions("fminunc", "OptimalityTolerance", 1e-8, "MaxFunctionEvaluations", 1e+8, "MaxIterations", 1e+6, "HessUpdate", "bfgs", "Display", "iter-detailed"); 
+options = optimoptions("fminunc", "OptimalityTolerance", 1e-8, "MaxFunctionEvaluations", 1e+8, "MaxIterations", 1e+6, "Algorithm", "quasi-newton", "HessUpdate", "bfgs", "Display", "iter-detailed"); 
 ret = fminunc(f_rosen_mult, x0_rosen, options);
 fprintf("fminunc returned x=%s with f_rosen_mult(x)=%0.6f\n", vec2str(ret), f_rosen_mult(ret));
 

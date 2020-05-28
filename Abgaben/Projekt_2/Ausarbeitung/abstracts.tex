@@ -432,7 +432,8 @@ $$\nabla f(x_1, x_2) = \begin{bmatrix} 2\cdot(x_1^2 + x_2 - 11)\cdot 2x_1 + 2\cd
     \hline
   \end{tabular}
   \caption{Verlauf von \lstinline[basicstyle=\ttfamily\color{black}]|fminunc| für $f$ bei einer Genauigkeit von $10^{-8}$ mit Einstellungen
-  \lstinline[basicstyle=\ttfamily\color{black}]|HessUpdate = 'bfgs'| und \lstinline[basicstyle=\ttfamily\color{black}]|Display = 'iter-detailed'|.}
+      \lstinline[basicstyle=\ttfamily\color{black}]|Algorithm = 'quasi-newton'|, \lstinline[basicstyle=\ttfamily\color{black}]|HessUpdate = 'bfgs'|
+      und \lstinline[basicstyle=\ttfamily\color{black}]|Display = 'iter-detailed'|.}
 \end{figure}
 
 Die Rosenbrock-Funktion ist in \lstinline[basicstyle=\ttfamily\color{black}]|Projekt2.m| als 
@@ -534,7 +535,8 @@ Die Ableitung ist in \lstinline[basicstyle=\ttfamily\color{black}]|Projekt2.m| i
     \hline
   \end{tabular}
   \caption{Verlauf von \lstinline[basicstyle=\ttfamily\color{black}]|fminunc| für die 10-dim. Rosenbrock-Funktion bei einer Genauigkeit von
-          $10^{-8}$ mit Einstellungen \lstinline[basicstyle=\ttfamily\color{black}]|HessUpdate = 'bfgs'| und
+          $10^{-8}$ mit Einstellungen \lstinline[basicstyle=\ttfamily\color{black}]|Algorithm = 'quasi-newton'|,
+          \lstinline[basicstyle=\ttfamily\color{black}]|HessUpdate = 'bfgs'| und
           \lstinline[basicstyle=\ttfamily\color{black}]|Display = 'iter-detailed'|.}
 \end{figure}
 
@@ -568,6 +570,7 @@ Die Ableitung ist in \lstinline[basicstyle=\ttfamily\color{black}]|Projekt2.m| i
   \end{tikzpicture}
 \caption{Rechenzeit der N-dimensionalen Rosenbrock-Funktion mit Startwert $[-1, \ldots, -1]^T$ für
   eine Genauigkeit von $10^{-8}$ gemittelt über 100 Durchläufe von \lstinline[basicstyle=\ttfamily\color{black}]|fminunc| mit
+  \lstinline[basicstyle=\ttfamily\color{black}]|Algorithm = 'quasi-newton'|,
   \lstinline[basicstyle=\ttfamily\color{black}]|HessUpdate = 'bfgs'| (Intel Core i3-7100U, 8GB RAM, Windows 10 64-Bit)}
 \end{figure}
 
