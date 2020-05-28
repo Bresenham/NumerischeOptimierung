@@ -801,6 +801,12 @@ $$ J = \begin{bmatrix}
     1 & $[10.0, 0.05, 0.10]^T$ & $1.81\cdot 10^{6}$\\
     2 & $[9.12, 0.05, 0.12]^T$ & $8.58\cdot 10^{5}$\\
     3 & $[8.34, 0.05, 0.13]^T$ & $4.82\cdot 10^{5}$\\
+    4 & $[7.74, 0.05, 0.13]^T$ & $2.91\cdot 10^{5}$\\
+    5 & $[7.19, 0.05, 0.14]^T$ & $1.84\cdot 10^{5}$\\
+    $\vdots$ & $\vdots$ & $\vdots$\\
+    25 & $[3.78, 0.05, 0.15]^T$ & $1.24\cdot 10^{3}$\\
+    $\vdots$ & $\vdots$ & $\vdots$\\
+    250 & $[3.54, 0.05, 0.15]^T$ & $776.75$\\
     \hline
   \end{tabular}
   \caption{Verlauf der aufsummierten quadratischen Residuen mit dem gegebenen Datensatz und
@@ -808,22 +814,21 @@ $$ J = \begin{bmatrix}
         und konstanter Schrittweite $\alpha = 0.125$ }
 \end{figure}
 
-Für die zweite Funktion $g(t, x_1, x_2, x_3) = x_1 \cdot e^{ -(x_2^2 + x_3^2)\cdot t }\cdot \frac{sinh(x_3^2\cdot t)}{x_3^2}$
-erhält man mit dem gegebenen Datensatz und den Startwerten:
+Für $g$ erhält man mit dem gegebenen Datensatz und den Startwerten:
 \begin{itemize}
   \item $x_0 = [10, 0.05, 0.1]^T$
   \item $x_0 = [7, 0.125, 0.25]^T$
   \item $x_0 = [3, 0.1, 0.05]^T$
 \end{itemize}
-die Werte
+somit den Wert
 \begin{itemize}
   \item $x_1 = 3.5355$, $x_2 = 0.0546$, $x_3 = 0.1539$
 \end{itemize}
-nach $117$, $247$ bzw. $609$ Iterationen. Abbruchkriterium war ||$J(x)^T\cdot r(x)$|| $ \leq 10^{-8}$. Die Wolfe-Powell
-Schrittweitensteuerung hat bei dieser Funktion nicht zum Erfolg geführt da nach etwa 10 Durchläufen eine sehr kleine
-Schrittweite (im Bereich $\alpha = 10^{-8}$) angenommen wurde und das Verfahren daher nicht konvergiert ist. Wählt
-man dagegen händisch eine kleine Schrittweite (z.B. $\alpha = 0.1$ oder je nach Startwert $\alpha = 0.05$) konvergiert das
-Verfahren wieder.\par
+
+nach $250$, $247$ bzw. $609$ Iterationen. Die Wolfe-Powell Schrittweitensteuerung hat bei dieser Funktion nicht zum Erfolg geführt
+da nach etwa 10 Durchläufen eine sehr kleine Schrittweite (im Bereich $\alpha = 10^{-8}$) angenommen wurde und das Verfahren daher
+nicht konvergiert ist. Wählt man dagegen händisch eine kleine Schrittweite (z.B. $\alpha = 0.1$ oder je nach Startwert $\alpha = 0.05$)
+konvergiert das Verfahren wieder.\par
 Allgemein reagiert die Funktion $g$ sehr empfindlich auf kleine Änderungen in den Startwerten. Das liegt vermutlich an den
 stark unterschiedlichen Werten der einzelnen Faktoren ($x_1\cdot e^-{ (x_2^2 + x_3^2)\cdot t}$ ist sehr klein während
 $\frac{sinh(x_3^2\cdot t)}{x_3^2}$ sehr groß wird) aufgrundessen es zu numerischer Instabilität kommt (z.B. zeigt Matlab
