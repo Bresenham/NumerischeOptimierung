@@ -72,10 +72,10 @@ x0 = [0; -1];
 %    disp(all_avgs(72:dim));
 % end
 
-rosenbrock_dim = 500;
-x0_rosen = zeros(rosenbrock_dim, 1) - ones(rosenbrock_dim, 1);
-ret = InverseBFGS(f_rosen_mult, f_rosen_mult_grad, x0_rosen);
-fprintf("InverseBFGS returned x=%s with f_rosen_mult(x)=%0.6f\n", vec2str( ret(end).x ), ret(end).f);
+% rosenbrock_dim = 500;
+% x0_rosen = zeros(rosenbrock_dim, 1) - ones(rosenbrock_dim, 1);
+% ret = InverseBFGS(f_rosen_mult, f_rosen_mult_grad, x0_rosen);
+% fprintf("InverseBFGS returned x=%s with f_rosen_mult(x)=%0.6f\n", vec2str( ret(end).x ), ret(end).f);
 
 % Setze die selben Toleranzen und Grenzen wie in 'InverseBFGS' und
 % zusätzlich das BFGS-Verfahren zum Updaten der Hesse-Matrix
@@ -145,7 +145,7 @@ fprintf("--------------------AUFGABE 9--------------------\n");
 
 f_lq_sum = @(x) sum( f_resid(x, f_xdata, f_ydata).^2 );
 f_lq_grad = @(x) 2 * f_jacobi(x, f_xdata, f_ydata)' * f_resid(x, f_xdata, f_ydata);
-% ret = InverseBFGS(f_lq_sum, f_lq_grad, [0.5; 1]);
+ret = InverseBFGS(f_lq_sum, f_lq_grad, [0.5; 1]);
 
 g_lq_sum = @(x) sum( g_resid(x, g_xdata, g_ydata).^2 );
 g_lq_grad = @(x) 2 * g_jacobi(x, g_xdata, g_ydata)' * g_resid(x, g_xdata, g_ydata);

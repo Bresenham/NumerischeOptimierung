@@ -666,7 +666,7 @@ $$ J = \begin{bmatrix}
     \hline
   \end{tabular}
   \caption{Verlauf der aufsummierten quadratischen Residuen mit dem gegebenen Datensatz und
-        \lstinline[basicstyle=\ttfamily\color{black}]|GaussNewton.m| bei Abbruchbedingung $||\nabla f|| \leq 10^{-8}$
+        \lstinline[basicstyle=\ttfamily\color{black}]|GaussNewton| bei Abbruchbedingung $||\nabla f|| \leq 10^{-8}$
         und konstanter Schrittweite $\alpha = 0.125$ }
 \end{figure}
 
@@ -685,6 +685,21 @@ nach $250$, $247$ bzw. $609$ Iterationen. Die Wolfe-Powell Schrittweitensteuerun
 da nach etwa 10 Durchläufen eine sehr kleine Schrittweite (im Bereich $\alpha = 10^{-8}$) angenommen wurde und das Verfahren daher
 nicht konvergiert ist. Wählt man dagegen händisch eine kleine Schrittweite (z.B. $\alpha = 0.1$ oder je nach Startwert $\alpha = 0.05$)
 konvergiert das Verfahren wieder.\par
+
+\begin{figure}[H]
+  \centering
+  \def\arraystretch{1.25}
+  \begin{tabular}{l|c|r}
+    \hline
+    \textbf{Schritt} & \textbf{d} & \textbf{$\alpha$}\\
+    \hline
+    1 & $[0.1, 0.1, 0.1]^T$ & $0.1$\\
+    \hline
+  \end{tabular}
+  \caption{Verlauf der Schrittweite $\alpha$ nach Wolfe\&Powell bei
+  \lstinline[basicstyle=\ttfamily\color{black}]|GaussNewton| für Funktion $g$}
+\end{figure}
+
 Allgemein reagiert die Funktion $g$ sehr empfindlich auf kleine Änderungen in den Startwerten. Das liegt vermutlich an den
 stark unterschiedlichen Werten der einzelnen Faktoren ($x_1\cdot e^-{ (x_2^2 + x_3^2)\cdot t}$ ist sehr klein während
 $\frac{sinh(x_3^2\cdot t)}{x_3^2}$ sehr groß wird) aufgrundessen es zu numerischer Instabilität kommt (z.B. zeigt Matlab
@@ -765,15 +780,33 @@ $$r(x) = \begin{bmatrix}f(t_1, x_1, ..., x_n) - y_1\\f(t_2, x_1, ..., x_n) - y_2
 
 quadriert und aufsummiert. $f_{LeastSquares}(x)$ ist somit der erste Parameter, den\\
 \lstinline[basicstyle=\ttfamily\color{black}]|InverseBFGS| erhält.\par
-Weiterhin ist die Jacobi-Matrix definiert als:
+Die BFGS-Funktion erhält ebenfalls den Gradienten als Parameter, der als: $\nabla f(x) = 2\cdot J(x)^T\cdot r(x)$ definiert ist (mit $J$ aus Aufgabe 7).
 
-$$J = \begin{bmatrix}\frac{df}{x_1}(t_1, x_1, ..., x_n) && \frac{df}{x_2}(t_1, x_1, ..., x_n) && \ldots\\
-            \frac{df}{x_1}(t_2, x_1, ..., x_n) && \frac{df}{x_2}(t_2, x_1, ..., x_n) && \ldots\\
-            \vdots && \vdots && \vdots\end{bmatrix}$$
+\begin{figure}[H]
+  \centering
+  \def\arraystretch{1.25}
+  \begin{tabular}{l|c|r}
+    \hline
+    \textbf{Schritt} & \textbf{x} & \textbf{$f(x)$}\\
+    \hline
+    1 & $[0.50, 1.00]^T$ & 113.07\\
+    2 & $[-6.53, -9.17]^T$ & 73.42\\
+    3 & $[4.82, -17.14]^T$ & 8.55\\
+    4 & $[2.00, -15.16]^T$ & 0.59\\
+    5 & $[2.00, -15.16]^T$ & 0.59\\
+    $\vdots$ & $\vdots$ & $\vdots$\\
+    19 & $[1.9950, -1.0095]^T$ & $2.0\cdot 2.0^{-3}$\\
+    \hline
+  \end{tabular}
+  \caption{Verlauf von \lstinline[basicstyle=\ttfamily\color{black}]|InverseBFGS| für die Funktion $f$ aus Aufgabe 7 bei einer Genauigkeit von
+          $10^{-8}$}
+\end{figure}
 
-Nach Foliensatz ist der Gradient definiert als: $\nabla f(x) = 2\cdot J(x)^T\cdot r(x)$. Dies ist der zweite Parameter, den
-das BFGS-Verfahren erhält, zusammen mit einem Startwert.\par
-Für die erste Funktion $f(t, x_1, x_2) = x_1\cdot e^{x_2\cdot t}$ liefert das BFGS-Verfahren den korrekten Wert. Für die
+Für die erste Funktion $f(t, x_1, x_2) = x_1\cdot e^{x_2\cdot t}$ liefert das BFGS-Verfahren den selben Wert wie GaussNewton, allerdings
+benötigt es etwas mehr Iterationen.
+
+
+
 zweite Funktion liefert es jedoch z.B.\\
 $[9.8962, 11.4152, 1.5202]^T$ da beim ersten Durchlauf der Wert des negativen Gradienten
 verwendet wird (da $B = I$) und dadurch die Norm des Gradienten auf 0 sinkt (Abbruchbedingung).
