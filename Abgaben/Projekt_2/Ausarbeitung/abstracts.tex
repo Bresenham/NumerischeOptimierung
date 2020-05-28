@@ -467,26 +467,17 @@ Die Ableitung ist in \lstinline[basicstyle=\ttfamily\color{black}]|Projekt2.m| i
     \hline
     \textbf{Schritt} & \textbf{x} & \textbf{$f(x)$}\\
     \hline
-    1 & $[0.00, -1.00]^T$ & 180\\
+    1 & $[-1.0, -1.0, \ldots, -1.0]^T$ & 3636.00\\
+    2 & $[0.57, 1.35, \ldots, -0.22]^T$ & 682.94\\
+    3 & $[0.94, 1.25, \ldots, 0.20]^T$ & 508.69\\
+    4 & $[1.33, 1.29, \ldots, 0.52]^T$ & 419.10\\
+    5 & $[1.45, 1.40, \ldots, 1.43]^T$ & 379.44\\
+    $\vdots$ & $\vdots$ & $\vdots$\\
+    49 & $[1.00, 1.00, \ldots, 1.00]^T$ & $2.2\cdot 10^{-21}$\\
     \hline
   \end{tabular}
-  \caption{Verlauf von \lstinline[basicstyle=\ttfamily\color{black}]|InverseBFGS| für die 200-dim. Rosenbrock-Funktion bei einer Genauigkeit von
+  \caption{Verlauf von \lstinline[basicstyle=\ttfamily\color{black}]|InverseBFGS| für die 10-dim. Rosenbrock-Funktion bei einer Genauigkeit von
           $10^{-8}$.}
-\end{figure}
-
-\begin{figure}[H]
-  \centering
-  \def\arraystretch{1.25}
-  \begin{tabular}{l|c|r}
-    \hline
-    \textbf{Schritt} & \textbf{x} & \textbf{$f(x)$}\\
-    \hline
-    1 & $[0.00, -1.00]^T$ & 180\\
-    \hline
-  \end{tabular}
-  \caption{Verlauf von \lstinline[basicstyle=\ttfamily\color{black}]|fminunc| für die 200-dim. Rosenbrock-Funktion bei einer Genauigkeit von
-          $10^{-8}$ mit Einstellungen \lstinline[basicstyle=\ttfamily\color{black}]|HessUpdate = 'bfgs'| und
-          \lstinline[basicstyle=\ttfamily\color{black}]|Display = 'iter-detailed'|.}
 \end{figure}
 
 \begin{figure}[H]
@@ -520,6 +511,27 @@ Die Ableitung ist in \lstinline[basicstyle=\ttfamily\color{black}]|Projekt2.m| i
 \caption{Rechenzeit der N-dimensionalen Rosenbrock-Funktion mit Startwert $[-1, \ldots, -1]^T$ für
   eine Genauigkeit von $10^{-8}$ gemittelt über 100 Durchläufe von \lstinline[basicstyle=\ttfamily\color{black}]|InverseBFGS|
   (Intel Core i3-7100U, 8GB RAM, Windows 10 64-Bit)}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \def\arraystretch{1.25}
+  \begin{tabular}{l|c|r}
+    \hline
+    \textbf{Schritt} & \textbf{x} & \textbf{$f(x)$}\\
+    \hline
+    1 & $[-1.0, -1.0, \ldots, -1.0]^T$ & 3636.00\\
+    2 & $[0.57, 1.35, \ldots, -0.22]^T$ & 682.94\\
+    3 & $[0.94, 1.25, \ldots, 0.20]^T$ & 508.69\\
+    4 & $[1.33, 1.29, \ldots, 0.52]^T$ & 419.10\\
+    5 & $[1.45, 1.40, \ldots, 1.43]^T$ & 379.44\\
+    $\vdots$ & $\vdots$ & $\vdots$\\
+    49 & $[1.00, 1.00, \ldots, 1.00]^T$ & $2.2\cdot 10^{-21}$\\
+    \hline
+  \end{tabular}
+  \caption{Verlauf von \lstinline[basicstyle=\ttfamily\color{black}]|fminunc| für die 10-dim. Rosenbrock-Funktion bei einer Genauigkeit von
+          $10^{-8}$ mit Einstellungen \lstinline[basicstyle=\ttfamily\color{black}]|HessUpdate = 'bfgs'| und
+          \lstinline[basicstyle=\ttfamily\color{black}]|Display = 'iter-detailed'|.}
 \end{figure}
 
 \begin{figure}[H]
