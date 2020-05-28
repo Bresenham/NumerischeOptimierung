@@ -735,7 +735,7 @@ hat mit dem gegebenen Datensatz folgenden Residuen-Vektor:
 \def\arraystretch{1.25}
 $$r = \begin{bmatrix} f(0, x_1, x_2) - 2 \\ f(1, x_1, x_2) - 0.7 \\ f(2, x_1, x_2) - 0.3 \\ f(3, x_1, x_2) - 0.1\end{bmatrix}$$
 
-und diese Jacobi-Matrix:
+und diese Jacobi-Matrix ($r'$):
 
 $$ J = \begin{bmatrix}
   \frac{df}{dx_1}(0, x_1, x_2) & \frac{df}{dx_2}(0, x_1, x_2)\\
@@ -777,6 +777,36 @@ $$\frac{dg}{dx_1} = e^{ -(x_2^2 + x_3^2)\cdot t } \cdot \frac{\text{sinh}( x_3^2
 $$\frac{dg}{dx_2} = - 2t \cdot x_2 x_1 \cdot e^{ - (x_2^2 + x_3^2)\cdot t } \cdot \frac{\text{sinh}( x_3^2 \cdot t )}{ x_3^2} $$
 
 $$\frac{dg}{dx_3} = \frac{2 \cdot x_1 \cdot e^{ -(x_2^2 + x_3^2)\cdot t} \cdot \left( t \cdot x_3^2 \cdot \text{cosh}(x_3^2\cdot t) - (x_3^2\cdot t + 1) \cdot \text{sinh}(x_3^2 \cdot t) \right) }{x_3^2} $$
+
+und dem gegebenen Datensatz folgender Residuen-Vektor:
+
+$$r = \begin{bmatrix} g(6, x_1, x_2, x_3) - 24.19\\ g(12, x_1, x_2, x_3) - 35.34\\ \vdots \\ g(180, x_1, x_2, x_3) - 55.21 \end{bmatrix}$$
+
+und diese Jakobi-Matrix ($r'$):
+
+$$ J = \begin{bmatrix}
+  \frac{dg}{dx_1}(6, x_1, x_2, x_3) & \frac{dg}{dx_2}(6, x_1, x_2, x_3) & \frac{dg}{dx_3}(6, x_1, x_2, x_3)\\
+  \frac{dg}{dx_1}(12, x_1, x_2, x_3) & \frac{dg}{dx_2}(12, x_1, x_2, x_3) & \frac{dg}{dx_3}(12, x_1, x_2, x_3)\\
+  \vdots & \vdots & \vdots\\
+  \frac{dg}{dx_1}(180, x_1, x_2, x_3) & \frac{dg}{dx_2}(180, x_1, x_2, x_3) & \frac{dg}{dx_3}(180, x_1, x_2, x_3)
+\end{bmatrix}$$
+
+\begin{figure}[H]
+  \centering
+  \def\arraystretch{1.25}
+  \begin{tabular}{l|c|r}
+    \hline
+    \textbf{Schritt} & \textbf{x} & \textbf{$\sum_{i=1}^M (r_i)^2$}\\
+    \hline
+    1 & $[10.0, 0.05, 0.10]^T$ & $1.81\cdot 10^{6}$\\
+    2 & $[9.12, 0.05, 0.12]^T$ & $8.58\cdot 10^{5}$\\
+    3 & $[8.34, 0.05, 0.13]^T$ & $4.82\cdot 10^{5}$\\
+    \hline
+  \end{tabular}
+  \caption{Verlauf der aufsummierten quadratischen Residuen mit dem gegebenen Datensatz und
+        \lstinline[basicstyle=\ttfamily\color{black}]|GaussNewton.m| bei Abbruchbedingung $||\nabla f|| \leq 10^{-8}$
+        und konstanter Schrittweite $\alpha = 0.125$ }
+\end{figure}
 
 Für die zweite Funktion $g(t, x_1, x_2, x_3) = x_1 \cdot e^{ -(x_2^2 + x_3^2)\cdot t }\cdot \frac{sinh(x_3^2\cdot t)}{x_3^2}$
 erhält man mit dem gegebenen Datensatz und den Startwerten:

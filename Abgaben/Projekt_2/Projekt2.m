@@ -72,16 +72,16 @@ x0 = [0; -1];
 %    disp(all_avgs(72:dim));
 % end
 
-rosenbrock_dim = 10;
-x0_rosen = zeros(rosenbrock_dim, 1) - ones(rosenbrock_dim, 1);
-ret = InverseBFGS(f_rosen_mult, f_rosen_mult_grad, x0_rosen);
-fprintf("InverseBFGS returned x=%s with f_rosen_mult(x)=%0.6f\n", vec2str( ret(end).x ), ret(end).f);
+% rosenbrock_dim = 10;
+% x0_rosen = zeros(rosenbrock_dim, 1) - ones(rosenbrock_dim, 1);
+% ret = InverseBFGS(f_rosen_mult, f_rosen_mult_grad, x0_rosen);
+% fprintf("InverseBFGS returned x=%s with f_rosen_mult(x)=%0.6f\n", vec2str( ret(end).x ), ret(end).f);
 
 % Setze die selben Toleranzen und Grenzen wie in 'InverseBFGS' und
 % zusätzlich das BFGS-Verfahren zum Updaten der Hesse-Matrix
-options = optimoptions("fminunc", "OptimalityTolerance", 1e-8, "MaxFunctionEvaluations", 1e+8, "MaxIterations", 1e+6, "HessUpdate", "bfgs", "Display", "iter-detailed"); 
-ret = fminunc(f_rosen_mult, x0_rosen, options);
-fprintf("fminunc returned x=%s with f_rosen_mult(x)=%0.6f\n", vec2str(ret), f_rosen_mult(ret));
+% options = optimoptions("fminunc", "OptimalityTolerance", 1e-8, "MaxFunctionEvaluations", 1e+8, "MaxIterations", 1e+6, "HessUpdate", "bfgs", "Display", "iter-detailed"); 
+% ret = fminunc(f_rosen_mult, x0_rosen, options);
+% fprintf("fminunc returned x=%s with f_rosen_mult(x)=%0.6f\n", vec2str(ret), f_rosen_mult(ret));
 
 % ret = fminunc(f_himmel, x0, options);
 % fprintf("fminunc returned x=%s with f_himmel(x)=%0.6f\n", vec2str(ret), f_himmel(ret));
@@ -125,8 +125,8 @@ g_resid = @(x, xdata, ydata) residuum(g, x, xdata, ydata);
 g_jacobi = @(x, xdata, ydata) jacobi(g, {g_partial_x1, g_partial_x2, g_partial_x3}, x, xdata, ydata);
 g_lq_sum = @(x) sum( g_resid(x, g_xdata, g_ydata).^2 );
 
-% ret = GaussNewton(g_lq_sum, g_resid, g_jacobi, g_x0, g_xdata, g_ydata);
-% fprintf("GaussNewton returned x=%s for function g after %d steps\n", vec2str(ret(end).x), length(ret));
+ret = GaussNewton(g_lq_sum, g_resid, g_jacobi, g_x0, g_xdata, g_ydata);
+fprintf("GaussNewton returned x=%s for function g after %d steps\n", vec2str(ret(end).x), length(ret));
 
 % Aufgabe 8
 % Siehe Erläuterung im PDF
