@@ -17,8 +17,12 @@
 function ret = InverseBFGS(f, grad, x0)
 
     k = 0;
+    p = 3;
+    rho = 0.1;
+    
     x = x0;
     x_old = x0;
+
     k_max = 1e+6;
     
     dim = numel(x0);
@@ -57,7 +61,7 @@ function ret = InverseBFGS(f, grad, x0)
         % nicht, verwende den negativen Gradienten und setze die
         % Approximation der Hesse-Matrix auf die Einheitsmatrix zurück
         % (Aufgabe 4)
-        if ( grad(x)' * d >= 0 )
+        if ( k >= 1 && grad(x)' * d > -rho * ( norm( d ).^p ) )
            d = - grad(x);
            % B = eye(dim);
            B = ( (y(x, x_old)' * s(x, x_old)) / (y(x, x_old)' * y(x, x_old)) ) * eye(dim);
