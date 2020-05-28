@@ -187,6 +187,8 @@ Da $y^TA^{-1}y$ ein Skalar ist, kann es beliebig verschoben werden, d.h. $sy^TA^
 Für $k + 1$ ändert sich an der oben gezeigten Rechnung nichts. Jeder Vektor bzw. jede Matrix erhält dann einfach nur den Index $k + 1$.
 
 \subsubsection{Aufgabe 3}
+
+% TODO: Warum könnte die Suchrichtung beim BFGS-Verfahren keine Abstiegsrichtung sein?
 Wenn die Suchrichtung des BFGS Verfahrens:
 
 $$d = -B\cdot \nabla f(x) $$
@@ -457,6 +459,35 @@ $$200\cdot(x_N - x_{N-1}^2)$$
 
 Die Ableitung ist in \lstinline[basicstyle=\ttfamily\color{black}]|Projekt2.m| in der Funktion
 \lstinline[basicstyle=\ttfamily\color{black}]|f_rosen_mult_deriv_func| definiert.
+
+\begin{figure}[H]
+  \centering
+  \def\arraystretch{1.25}
+  \begin{tabular}{l|c|r}
+    \hline
+    \textbf{Schritt} & \textbf{x} & \textbf{$f(x)$}\\
+    \hline
+    1 & $[0.00, -1.00]^T$ & 180\\
+    \hline
+  \end{tabular}
+  \caption{Verlauf von \lstinline[basicstyle=\ttfamily\color{black}]|InverseBFGS| für die 200-dim. Rosenbrock-Funktion bei einer Genauigkeit von
+          $10^{-8}$.}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \def\arraystretch{1.25}
+  \begin{tabular}{l|c|r}
+    \hline
+    \textbf{Schritt} & \textbf{x} & \textbf{$f(x)$}\\
+    \hline
+    1 & $[0.00, -1.00]^T$ & 180\\
+    \hline
+  \end{tabular}
+  \caption{Verlauf von \lstinline[basicstyle=\ttfamily\color{black}]|fminunc| für die 200-dim. Rosenbrock-Funktion bei einer Genauigkeit von
+          $10^{-8}$ mit Einstellungen \lstinline[basicstyle=\ttfamily\color{black}]|HessUpdate = 'bfgs'| und
+          \lstinline[basicstyle=\ttfamily\color{black}]|Display = 'iter-detailed'|.}
+\end{figure}
 
 \begin{figure}[H]
   \centering
