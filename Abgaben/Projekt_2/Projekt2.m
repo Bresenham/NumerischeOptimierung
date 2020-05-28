@@ -72,16 +72,16 @@ x0 = [0; -1];
 %    disp(all_avgs(72:dim));
 % end
 
-rosenbrock_dim = 925;
+rosenbrock_dim = 500;
 x0_rosen = zeros(rosenbrock_dim, 1) - ones(rosenbrock_dim, 1);
-% ret = InverseBFGS(f_rosen_mult, f_rosen_mult_grad, x0_rosen);
-% fprintf("InverseBFGS returned x=%s with f_rosen_mult(x)=%0.6f\n", vec2str( ret(end).x ), ret(end).f);
+ret = InverseBFGS(f_rosen_mult, f_rosen_mult_grad, x0_rosen);
+fprintf("InverseBFGS returned x=%s with f_rosen_mult(x)=%0.6f\n", vec2str( ret(end).x ), ret(end).f);
 
 % Setze die selben Toleranzen und Grenzen wie in 'InverseBFGS' und
 % zusätzlich das BFGS-Verfahren zum Updaten der Hesse-Matrix
-options = optimoptions("fminunc", "OptimalityTolerance", 1e-8, "MaxFunctionEvaluations", 1e+8, "MaxIterations", 1e+6, "Algorithm", "quasi-newton", "HessUpdate", "bfgs", "Display", "iter-detailed"); 
-ret = fminunc(f_rosen_mult, x0_rosen, options);
-fprintf("fminunc returned x=%s with f_rosen_mult(x)=%0.6f\n", vec2str(ret), f_rosen_mult(ret));
+% options = optimoptions("fminunc", "OptimalityTolerance", 1e-8, "MaxFunctionEvaluations", 1e+8, "MaxIterations", 1e+6, "Algorithm", "quasi-newton", "HessUpdate", "bfgs", "Display", "iter-detailed"); 
+% ret = fminunc(f_rosen_mult, x0_rosen, options);
+% fprintf("fminunc returned x=%s with f_rosen_mult(x)=%0.6f\n", vec2str(ret), f_rosen_mult(ret));
 
 % ret = fminunc(f_himmel, x0, options);
 % fprintf("fminunc returned x=%s with f_himmel(x)=%0.6f\n", vec2str(ret), f_himmel(ret));

@@ -196,8 +196,8 @@ keine Abstiegsrichtung ist, d.h. die Bedingung:
 
 $$ \nabla f(x^k)^T \cdot d^k \leq -\rho \cdot ||d^k||^p $$
 
-nicht erfüllt ist, muss das Verfahren 'resettet' werden. Das Newton-Verfahren (damit auch Quasi-Newton-Verfahren) minimieren eine Funktion
-(hier der Gradient). Da der Gradient aber nicht nur in einem Minimum sondern auch in einem Maximum oder Sattelpunkt gleich Null sein kann,
+nicht erfüllt ist, muss das Verfahren 'resettet' werden. Das Newton-Verfahren sucht nach einem stationären Punkt (d.h. Gradient = 0).
+Da der Gradient aber nicht nur in einem Minimum sondern auch in einem Maximum oder Sattelpunkt gleich Null sein kann,
 gibt das BFGS-Verfahren unter Umständen keine Abstiegsrichtungen aus. In diesem Fall bietet es sich an, die Suchrichtung auf den
 negativen Gradienten zu setzen:
 
@@ -207,7 +207,7 @@ Da nun die Abstiegsrichtung nicht mehr zur approximierten Inversen der Hesse-Mat
 den nächsten Schritt neu bestimmt werden (bzw. das nächste Update erfolgt dann mit dieser Matrix).\par
 Hierzu bieten sich verschiedene Möglichkeiten an:
 
-\begin{itemize}
+\begin{enumerate}
   \item Wie beim Start des BFGS-Verfahrens $B = I$ setzen
   \begin{itemize}
     \item Hierbei geht jeglicher berechnete Fortschritt verloren, es handelt sich um einen recht naiven Ansatz
@@ -219,169 +219,15 @@ Hierzu bieten sich verschiedene Möglichkeiten an:
     die Inverse schlecht konditioniert ist
     \item Bisher berechneter Fortschritt geht ebenfalls verloren aber die Approximation der Hesse-Matrix ist sehr genau
   \end{itemize}
-  \item Man könnte, wie in den Vorlesungsfolien beschrieben,  $\frac{y^Ts}{y^Ty}\cdot I_n$ als positiv-definitve Matrix verwenden
+  \item Man könnte, wie in den Vorlesungsfolien beschrieben, $\frac{y^Ts}{y^Ty}\cdot I_n$ als positiv-definitve Matrix verwenden
   \begin{itemize}
     \item Der Fortschritt geht zwar ähnlich wie bei $B = I$ weitestgehend verloren, allerdings überträgt man noch Informationen
     von $y$ und $s$ auf den nächsten Schritt, erscheint also sinnvoller als die erste Variante
   \end{itemize}
-\end{itemize}
+\end{enumerate}
 
-Um herauszufinden, ob Methode (1) oder (3) am besten geeignet ist (d.h. die richtig Lösung in der kürzesten Zeit findet),
-wird die Laufzeit des inversen BFGS-Verfahrens bestimmt. Da weder bei der Bazaara-Shetty oder Himmelblau Funktion noch
-200-dimensionalen Rosenbrock-Funktion das BFGS-Verfahren öfter als ein oder zwei mal in der Reset-Bedingung gelandet ist,
-verwende ich für eine bessere Vergleichbarkeit die Funktion aus Aufgabe 7 in leicht abgewandelter Form:
-
-$$ h(1, x_1, x_2, x_3) = x_1\cdot e^{ -(x_2^2 + x_3^2)} \cdot \frac{\text{sinh}(x_3^2)}{x_3^2}$$
-
-mit Startwert $x_0 = [10, 0.05, 1]^T$.
-
-\begin{itemize}
-  \item N-dim. Rosenbrock-Funktion: $\begin{bmatrix}-1\\\vdots\\-1\end{bmatrix}$
-  \item Himmelblau-Funktion: $\begin{bmatrix}0\\-1\end{bmatrix}$
-  \item Bazaraa-Shetty: $\begin{bmatrix}0\\-1\end{bmatrix}$
-\end{itemize}
-
-\begin{figure}[H]
-  \centering
-  \pgfplotstableread{
-    0 0.2240  0.0030  0.0051
-  }\dataseth
-  \pgfplotstableread{
-    0 0.2089  0.0023  0.0043
-  }\datasetf
-  \pgfplotstableread{
-    0 0.0       16.337017     3.398372
-  }\datasetg
-  \begin{minipage}{.3\textwidth}
-    \begin{tikzpicture}
-        \pgfplotsset{
-          tick label style = {font=\sansmath\sffamily},
-          every axis label = {font=\sansmath\sffamily},
-          legend style = {font=\sansmath\sffamily},
-          label style = {font=\sansmath\sffamily}
-        }
-        \begin{axis}[
-            width=4cm,
-            height=6.5cm,
-            ybar,
-            ymin=0,
-            ymax=0.25,
-            ylabel={Rechenzeit in s},
-            ylabel style={xshift=-3ex},
-            ytick distance=0.1,
-            % ytick=\empty,
-            % extra y ticks={0,0.05,0.10,0.15,0.2,0.25},
-            % extra y tick labels={{0},{0.05},{0.10},{0.15},{0.2},{0.25}},
-            xtick=data,
-            xticklabels={
-                $B = I$
-            },
-            yticklabel style={xshift=0ex},
-            xticklabel style={yshift=-16ex},
-            major x tick style={
-                % (this is a better way than assigning `opacity=0')
-                /pgfplots/major tick length=0pt,
-            },
-            minor x tick num=1,
-            minor tick length=2ex,
-            % ---------------------------------------------------------------------
-            % (adapted solution from <https://tex.stackexchange.com/a/141006/95441>)
-            % we want to provide absolute `at' values ...
-            scatter/position=absolute,
-            node near coords style={
-                % ... to provide axis coordinates at `ymin' for the nodes
-                at={(axis cs:\pgfkeysvalueof{/data point/x},\pgfkeysvalueof{/pgfplots/ymin})},
-                % then also the `anchor' has to be adapted ...
-                anchor=east,
-                % ... because we rotate the labels which would overlap otherwise
-                rotate=90,
-            },
-            % ---------------------------------------------------------------------
-            % (created a cycle list to shorten the below `\addplot' entries)
-            cycle list={
-                {draw=black,fill=black!20},
-                {draw=black,fill=black!40},
-                {draw=black,fill=black!60},
-            },
-            % (moved common option here)
-            table/x index=0,
-        ]
-            \addplot+ [nodes near coords=200-dim. Rosen.] table [y index=1] \dataseth;
-            \addplot+ [nodes near coords=Himmelblau] table [y index=2] \dataseth;
-            \addplot+ [nodes near coords=Bazaraa-Shetty] table [y index=3] \dataseth;
-        \end{axis}
-        \node[black, rotate=90, align=left] (impl) at (1.2125,1.08) {0.0030};
-        \draw[-{Latex}, thick, black] (impl.west) -- ([yshift=-0.2cm]impl.west);
-
-        \node[black, rotate=90, align=left] (impl2) at (1.6255,1.124) {0.0051};
-        \draw[-{Latex}, thick, black] (impl2.west) -- ([yshift=-0.2cm]impl2.west);
-    \end{tikzpicture}
-  \end{minipage}
-  \begin{minipage}{.3\textwidth}
-    \begin{tikzpicture}
-      \pgfplotsset{
-        tick label style = {font=\sansmath\sffamily},
-        every axis label = {font=\sansmath\sffamily},
-        legend style = {font=\sansmath\sffamily},
-        label style = {font=\sansmath\sffamily}
-      }
-        \begin{axis}[
-            width=4cm,
-            height=6.5cm,
-            ybar,
-            ymin=0,
-            ymax=0.25,
-            % ytick=\empty,
-            % extra y ticks={0,0.05,0.10,0.15,0.2,0.25},
-            % extra y tick labels={{0},{0.05},{0.10},{0.15},{0.2},{0.25}},
-            xtick=data,
-            xticklabels={
-                $B = \frac{y^Ts}{y^Ty}\cdot I$
-            },
-            xticklabel style={yshift=-16ex},
-            major x tick style={
-                % (this is a better way than assigning `opacity=0')
-                /pgfplots/major tick length=0pt,
-            },
-            minor x tick num=1,
-            minor tick length=2ex,
-            % ---------------------------------------------------------------------
-            % (adapted solution from <https://tex.stackexchange.com/a/141006/95441>)
-            % we want to provide absolute `at' values ...
-            scatter/position=absolute,
-            node near coords style={
-                % ... to provide axis coordinates at `ymin' for the nodes
-                at={(axis cs:\pgfkeysvalueof{/data point/x},\pgfkeysvalueof{/pgfplots/ymin})},
-                % then also the `anchor' has to be adapted ...
-                anchor=east,
-                % ... because we rotate the labels which would overlap otherwise
-                rotate=90,
-            },
-            % ---------------------------------------------------------------------
-            % (created a cycle list to shorten the below `\addplot' entries)
-            cycle list={
-              {draw=black,fill=black!20},
-              {draw=black,fill=black!40},
-              {draw=black,fill=black!60},
-            },
-            % (moved common option here)
-            table/x index=0,
-        ]
-        \addplot+ [nodes near coords=200-dim. Rosen.] table [y index=1] \datasetf;
-        \addplot+ [nodes near coords=Himmelblau] table [y index=2] \datasetf;
-        \addplot+ [nodes near coords=Bazaraa-Shetty] table [y index=3] \datasetf;
-        \end{axis}
-        \node[black, rotate=90, align=left] (impl) at (1.2125,1.055) {0.0023};
-        \draw[-{Latex}, thick, black] (impl.west) -- ([yshift=-0.2cm]impl.west);
-
-        \node[black, rotate=90, align=left] (impl2) at (1.6255,1.1) {0.0043};
-        \draw[-{Latex}, thick, black] (impl2.west) -- ([yshift=-0.2cm]impl2.west);
-    \end{tikzpicture}
-  \end{minipage}
-  \caption{Vergleich der Rechenzeit für eine Genauigkeit von $10^{-8}$ gemittelt über 100 Durchläufe (Intel Core i3-7100U, 8GB RAM, Windows 10 64-Bit)}
-\end{figure}
-
-Alle drei Funktionen profitieren von $B = \frac{y^Ts}{y^Ty}\cdot I$, daher habe ich diesen Weg in meiner Implementierung gewählt.
+Da (2) gerade durch das BFGS-Verfahren vermieden werden soll da zu aufwändig und (1) keine Informationen über den vorherigen Verlauf
+des Algorithmus enthält, ist (3) die beste Wahl für die ich mich auch in meiner Implementierung entschieden habe.
 
 \subsubsection{Aufgabe 4}
 
