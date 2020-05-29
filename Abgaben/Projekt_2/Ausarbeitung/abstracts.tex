@@ -744,7 +744,7 @@ $\frac{sinh(x_3^2\cdot t)}{x_3^2}$ sehr groß wird) aufgrundessen es zu numerisc
     }
 
     \draw[scale=\scaleFactor, thick, black, domain=\from:\too, smooth, variable=\x] plot (
-      {\x},{ 3.5355 * exp( -(0.0546^2 + 0.1539^2) * \x ) * ( sinh(0.1539^2 * \x) / (0.1539^2) ) }
+      {\x},{ 3.5355 * exp( -((0.0546)^2 + (0.1539)^2) * \x ) * ( sinh(0.1539^2 * \x) / (0.1539^2) ) }
     );
 
     \foreach \x / \y / \i in {

@@ -46,7 +46,7 @@ function ret = WolfePowell(phi, phi_grad)
     while(1)
         alpha = (a + b) / 2.0;
         % Wert von alpha nach unten beschränken
-        if( abs(a - b) <= 1e-4 || alpha <= 1e-3 )
+        if( abs(a - b) <= 1e-10 || alpha <= 1e-12 )
             ret = alpha;
             return;
         end

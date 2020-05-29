@@ -25,8 +25,6 @@ function ret = InverseBFGS(f, grad, x0)
 
     k_max = 1e+6;
     
-    reset_amount = 0;
-    
     dim = numel(x0);
     
     ret = struct("x", x0, "f", f(x0), "gradient", grad(x0));
@@ -40,8 +38,8 @@ function ret = InverseBFGS(f, grad, x0)
     s = @(x, x_old) x - x_old;
     y = @(x, x_old) grad(x) - grad(x_old);
     
-    update1 = @(B, s, y) ( (s - B*y) * s' + s * (s - B*y)' ) / ( y' * s);
-    update2 = @(B, s, y) ( (s - B*y)' * y * s * s' ) / ( ( y' * s).^2 );
+    update1 = @(B, s, y) ( (s - B*y) * (s') + s * (s - B*y)' ) / ( (y') * s);
+    update2 = @(B, s, y) ( (s - B*y)' * y * s * s' ) / ( ( (y') * s).^2 );
 
     update = @(B, s, y) B + update1(B, s, y) - update2(B, s, y);
     
@@ -62,12 +60,11 @@ function ret = InverseBFGS(f, grad, x0)
         % Prüfe ob es sich bei 'd' um eine Abstiegsrichtung handelt, wenn
         % nicht, verwende den negativen Gradienten und setze die
         % Approximation der Hesse-Matrix auf die Einheitsmatrix zurück
-        % (Aufgabe 4)
-        if ( k >= 1 && grad(x)' * d > -rho * ( norm( d ).^p ) )
+        %
+        % Prüfe weiterhin ob Elemente des Vektors NaN sind
+        if ( k >= 1 && grad(x)' * d > -rho * ( norm( d ).^p ) ) || ( sum( isnan(d) ) > 0 )
            d = - grad(x);
-           % B = eye(dim);
            B = ( (y(x, x_old)' * s(x, x_old)) / (y(x, x_old)' * y(x, x_old)) ) * eye(dim);
-           reset_amount = reset_amount + 1;
         end
         
         % Definition der Funktionen phi und phi' die für Wolfe-Powell
@@ -75,7 +72,7 @@ function ret = InverseBFGS(f, grad, x0)
         phi = @(a) f(x + a * d);
         phi_grad = @(a) grad(x + a * d)' * d;
         alpha = WolfePowell(phi, phi_grad);
-
+        
         x_old = x;
         x = x + alpha * d;
         
@@ -86,10 +83,6 @@ function ret = InverseBFGS(f, grad, x0)
     
     if k >= k_max
         fprintf("InverseBFGS ended because it exceeded MaxIterations!\n");
-    else
-        % fprintf("InverseBFGS finished after %d iterations!\n", k);
     end
-
-    fprintf("RESET AMOUNT: %d\n", reset_amount);
     
 end
