@@ -84,7 +84,7 @@
 \newpage
 
 \subsubsection{Aufgabe 1}
-Siehe Programmcode in \lstinline[basicstyle=\ttfamily\color{black}]|Project2.m|.
+Siehe Programmcode in \lstinline[basicstyle=\ttfamily\color{black}]|Project2.m| und \lstinline[basicstyle=\ttfamily\color{black}]|InverseBFGS.m|.
 
 \subsubsection{Aufgabe 2}
 Für $A^0$ wählt man im BFGS-Verfahren üblicherweise die Einheitsmatrix, d.h. für den Induktionsanfang gilt:
@@ -97,7 +97,7 @@ Wenn man das nun in die Formel für die zwei Rang-1-Modifikationen und in die BF
 $$\left( I + \frac{ss^T - ys^T + ss^T - sy^T}{y^Ts} - \frac{s^Tyss^T - y^Tyss^T}{(y^T)s^2}\right)\cdot\left(I - \frac{ss^T}{s^Ts} + \frac{yy^T}{y^Ts} \right)$$
 
 Der Übersicht halber teile ich die einzelnen Produkte auf und füge sie nach dem Kürzen am Ende wieder zusammen.
-Es ist zu beachten, dass $y^Ts = s^Ty$. Skalare Werte werden gekürzt.
+Es ist zu beachten, dass $y^Ts = s^Ty$. Andere skalare Werte werden gekürzt.
 
 $$I\cdot I = I$$
 
@@ -464,12 +464,20 @@ Möglichkeiten um ein höheres $N$ zu erreichen:
 
 Die gegebene symmetrische Rang-1 Formel erhält man durch eine Rang-1 Modifikation
 
-$$A^{k + 1} = A^k + c\cdot u\cdot v^T$$
+$$A^{k + 1} = A^k + c\cdot u\cdot u^T$$
 
-mit $c = \frac{1}{u^Ts}$, $u = y - A^ks$ und $v = c\cdot u$.
+mit $c = \frac{1}{u^Ts^k}$ und $u = y^k - A^ks^k$
 
-% TODO: c, u, v einsetzen und nochmal hinschreiben 
-Diese kann man nun in die Sherman-Morrison-Woodbury-Formel einsetzen und erhält somit den Ansatz:
+$$A^{k+1} = A^k + \frac{1}{u^Ts^k}\cdot u \cdot u^T = A^k + \frac{(y^k - A^ks^k)(y^k - A^ks^k)^T}{(y^k - A^ks^k)^Ts^k}$$
+ 
+Die Sherman-Morrison-Woodbury-Formel hat auf der linken Seite allerdings stehen $(A + uv^T)^{-1}$. Mit einem zusätzlichen $v = c\cdot u$
+bekommt den selben Ausdruck (Achtung: $u^Ts = s^Tu$)
+
+\begin{adjustwidth}{-19pt}{0pt}
+$$A^k + uv^T = A^k + u \cdot (c \cdot u)^T = A^k + u \cdot (\frac{u}{u^Ts^k})^T = A^k + \frac{u\cdot u^T}{(s^k)^Tu} = A^k + \frac{(y^k - A^ks^k)(y^k - A^ks^k)^T}{(y^k - A^ks^k)^Ts^k}$$
+\end{adjustwidth}
+
+Nach dem die Werte für $u, v, c$ gefunden wurden, kann man diese nun in die Sherman-Morrison-Woodbury-Formel einsetzen und erhält somit den Ansatz:
 
 $$ A^{-1} - \frac{ A^{-1}(y-As)\left(\frac{ y-As }{ (y-As)^Ts } \right)^TA^{-1} }{1 + \left(\frac{ y-As }{ (y-As)^Ts }\right)^TA^{-1}(y-As)}$$
 
