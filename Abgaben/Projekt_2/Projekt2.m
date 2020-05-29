@@ -112,12 +112,12 @@ g_partial_x2 = @(t, x) - ( 2 * t * x(1) * x(2) * exp( -t * (x(2).^2 + x(3).^2) )
 g_partial_x3 = @(t, x) ( 2 * x(1) * exp( -t * (x(2).^2 + x(3).^2) ) * ( t * x(3).^2 * cosh(t * x(3).^2) - (t * x(3).^2 + 1) * sinh(t * x(3).^2) ) ) / ( x(3).^2 );
 
 g_x0 = [10; 0.05; 0.1];
-g_x0_2 = [7; 0.125; 0.25];
+g_x0_2 = [5; 0.145; 0.125];
 g_x0_3 = [3; 0.1; 0.05];
 g_xdata = [6;12;18;24;30;36;42;48;54;60;66;72;78;84;90;96;102;108;114;120;126;132;138;144;150;156;162;168;174;180];
 g_ydata = [24.19;35.34;43.43;42.63;49.92;51.53;57.39;59.56;55.60;51.91;58.27;62.99;52.99;53.83;59.37;62.35;61.84;61.62;49.64;57.81;54.79;50.38;43.85;45.16;46.72;40.68;35.14;45.47;42.40;55.21];
 
-ret = GaussNewton(g, {g_partial_x1, g_partial_x2, g_partial_x3}, g_x0, g_xdata, g_ydata);
+ret = GaussNewton(g, {g_partial_x1, g_partial_x2, g_partial_x3}, g_x0_2, g_xdata, g_ydata);
 fprintf("GaussNewton returned x=%s for function g after %d steps\n", vec2str(ret(end).x), length(ret));
 
 % Aufgabe 8

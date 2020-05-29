@@ -43,7 +43,14 @@ function ret = GaussNewton(f, f_partials, x0, xdata, ydata)
         phi_grad = @(a) gradient(x + a * d)' * d;
         alpha = WolfePowell(phi, phi_grad);
         
-        x = x + 0.125 * d;
+        % Verhindert, dass g(t, x_1, x_2, x_3) nicht konvergiert da
+        % entweder Schrittweite zu klein oder Kombination aus Schrittweite
+        % und Richtung sehr klein
+        if alpha <= 1e-3 || norm( d ) < 1e-8
+            alpha = 1e-1;
+        end
+        
+        x = x + alpha * d;
         
         k = k + 1;
         
