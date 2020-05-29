@@ -468,6 +468,7 @@ $$A^{k + 1} = A^k + c\cdot u\cdot v^T$$
 
 mit $c = \frac{1}{u^Ts}$, $u = y - A^ks$ und $v = c\cdot u$.
 
+% TODO: c, u, v einsetzen und nochmal hinschreiben 
 Diese kann man nun in die Sherman-Morrison-Woodbury-Formel einsetzen und erhält somit den Ansatz:
 
 $$ A^{-1} - \frac{ A^{-1}(y-As)\left(\frac{ y-As }{ (y-As)^Ts } \right)^TA^{-1} }{1 + \left(\frac{ y-As }{ (y-As)^Ts }\right)^TA^{-1}(y-As)}$$
@@ -805,7 +806,7 @@ Die BFGS-Funktion erhält ebenfalls den Gradienten als Parameter, der als: $\nab
 Für die erste Funktion $f(t, x_1, x_2) = x_1\cdot e^{x_2\cdot t}$ liefert das BFGS-Verfahren den selben Wert wie GaussNewton, allerdings
 benötigt es etwas mehr Iterationen.
 
-
+% TODO: Nach unten beschränkte Wolfe&Powell-Methode
 
 zweite Funktion liefert es jedoch z.B.\\
 $[9.8962, 11.4152, 1.5202]^T$ da beim ersten Durchlauf der Wert des negativen Gradienten
