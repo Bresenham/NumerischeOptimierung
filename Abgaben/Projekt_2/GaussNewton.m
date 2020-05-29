@@ -3,7 +3,7 @@
 % Description: GaussNewton-Method for least-squares calcuation
 %
 % Inputs:
-%   function: The function for which the distance should be minimized
+%   function: The function and its partial derivatives for which the distance should be minimized
 %   Startvalue: x0,
 %   Data to fit: xdata, ydata
 % Outputs:
