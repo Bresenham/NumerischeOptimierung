@@ -103,8 +103,8 @@ f_x0 = [0.5; 1];
 f_xdata = [0;1;2;3];
 f_ydata = [2.0;0.7;0.3;0.1];
 
-ret = GaussNewton(f, {f_partial_x1, f_partial_x2}, f_x0, f_xdata, f_ydata);
-fprintf("GaussNewton returned x=%s for function f after %d steps\n", vec2str(ret(end).x), length(ret));
+% ret = GaussNewton(f, {f_partial_x1, f_partial_x2}, f_x0, f_xdata, f_ydata);
+% fprintf("GaussNewton returned x=%s for function f after %d steps\n", vec2str(ret(end).x), length(ret));
 
 g = @(t, x) x(1) * exp( -(x(2).^2 + x(3).^2)*t ) * ( sinh( x(3).^2 * t ) / ( x(3).^2 ) );
 g_partial_x1 = @(t, x) ( exp( -t * (x(2).^2 + x(3).^2) ) * sinh( x(3).^2 * t) ) / ( x(3).^2 );
@@ -117,8 +117,8 @@ g_x0_3 = [3; 0.1; 0.05];
 g_xdata = [6;12;18;24;30;36;42;48;54;60;66;72;78;84;90;96;102;108;114;120;126;132;138;144;150;156;162;168;174;180];
 g_ydata = [24.19;35.34;43.43;42.63;49.92;51.53;57.39;59.56;55.60;51.91;58.27;62.99;52.99;53.83;59.37;62.35;61.84;61.62;49.64;57.81;54.79;50.38;43.85;45.16;46.72;40.68;35.14;45.47;42.40;55.21];
 
-ret = GaussNewton(g, {g_partial_x1, g_partial_x2, g_partial_x3}, g_x0_2, g_xdata, g_ydata);
-fprintf("GaussNewton returned x=%s for function g after %d steps\n", vec2str(ret(end).x), length(ret));
+% ret = GaussNewton(g, {g_partial_x1, g_partial_x2, g_partial_x3}, g_x0_3, g_xdata, g_ydata);
+% fprintf("GaussNewton returned x=%s for function g after %d steps\n", vec2str(ret(end).x), length(ret));
 
 % Aufgabe 8
 % Siehe Erläuterung im PDF
@@ -135,14 +135,14 @@ m_grad = @(x) [ 2 * (x(1) - 1) * (sin(3 * pi * x(2)).^2 + 1) + 6 * pi * sin(3 * 
 % Aufgabe 9
 fprintf("--------------------AUFGABE 9--------------------\n");
 
-f_lq_sum = @(x) sum( f_resid(x, f_xdata, f_ydata).^2 );
-f_lq_grad = @(x) 2 * f_jacobi(x, f_xdata, f_ydata)' * f_resid(x, f_xdata, f_ydata);
+f_lq_sum = @(x) sum( residuum(f, x, f_xdata, f_ydata).^2 );
+f_lq_grad = @(x) 2 * jacobi({f_partial_x1, f_partial_x2}, x, f_xdata)' * residuum(f, x, f_xdata, f_ydata);
 ret = InverseBFGS(f_lq_sum, f_lq_grad, [0.5; 1]);
 
-g_lq_sum = @(x) sum( g_resid(x, g_xdata, g_ydata).^2 );
-g_lq_grad = @(x) 2 * g_jacobi(x, g_xdata, g_ydata)' * g_resid(x, g_xdata, g_ydata);
-% ret = InverseBFGS(g_lq_sum, g_lq_grad, g_x0);
-% disp(ret);
+g_lq_sum = @(x) sum( residuum(g, x, g_xdata, g_ydata).^2 );
+g_lq_grad = @(x) 2 * jacobi({g_partial_x1, g_partial_x2, g_partial_x3}, x, g_xdata)' * residuum(g, x, g_xdata, g_ydata);
+ret = InverseBFGS(g_lq_sum, g_lq_grad, g_x0);
+disp(ret);
 
 % Berechnet den Gradienten der N-dimensionalen Rosenbrock-Funktion
 % \input: Vector 'x'
@@ -168,6 +168,42 @@ function ret = f_rosen_mult_deriv_func(x)
     end
     
     ret = sum;
+
+end
+
+% Berechnet die Jacobi-Matrix von f für den gegebenen Datensatz
+% \input: Funktion, partielle Ableitungen, Wert an dem die Funktion
+% ausgewertet werden soll, Datensatz
+% \output: Jacobi-Matrix
+function ret = jacobi(f_partials, x, xdata)
+    
+    ydim = numel(xdata);
+    xdim = numel(f_partials);
+
+    r = zeros(ydim, xdim);
+    for d = 1:ydim
+        for i = 1:xdim
+            r(d,i) = f_partials{i}(xdata(d), x);
+        end
+    end
+    
+    ret = r;
+end
+
+% Berechnet das Residuum von f für den gegebenen Datensatz
+% \input: Funktion, Wert an dem die Funktion ausgewertet werden soll,
+% Datensatz
+% \output: Residuum
+function ret = residuum(f, x, xdata, ydata)
+
+    xdim = numel(xdata);
+
+    r = zeros(xdim, 1);
+    for i = 1:xdim
+        r(i) = f(xdata(i), x) - ydata(i);
+    end
+    
+    ret = r;
 
 end
 
