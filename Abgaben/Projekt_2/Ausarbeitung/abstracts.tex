@@ -680,16 +680,16 @@ $$ J = \begin{bmatrix}
 
 Für $g$ erhält man mit dem gegebenen Datensatz und den Startwerten:
 \begin{itemize}
-  \item $x_0 = [10, 0.05, 0.1]^T$
-  \item $x_0 = [7, 0.125, 0.25]^T$
-  \item $x_0 = [3, 0.1, 0.05]^T$
+  \item $x_0^{(1)} = [10, 0.05, 0.1]^T$
+  \item $x_0^{(2)} = [5, 0.145, 0.125]^T$
+  \item $x_0^{(3)} = [3, 0.1, 0.05]^T$
 \end{itemize}
 somit den Wert
 \begin{itemize}
   \item $x_1 = 3.5355$, $x_2 = 0.0546$, $x_3 = 0.1539$
 \end{itemize}
 
-nach $157$, $154$ bzw. $155$ Iterationen. Die Wolfe-Powell Schrittweitensteuerung musste aufgrund der Funktion $g$ nach unten hin
+nach $157^{(1)}$, $154^{(2)}$ bzw. $155^{(3)}$ Iterationen. Die Wolfe-Powell Schrittweitensteuerung musste aufgrund der Funktion $g$ nach unten hin
 begrenzt werden da die Kombination aus sehr kleiner Schrittweite und sehr kleiner Richtung $d$ sonst zu keiner Konvergenz geführt
 hätte.\par
 
@@ -795,23 +795,45 @@ Die BFGS-Funktion erhält ebenfalls den Gradienten als Parameter, der als: $\nab
 \end{figure}
 
 Für die erste Funktion $f(t, x_1, x_2) = x_1\cdot e^{x_2\cdot t}$ liefert das BFGS-Verfahren den selben Wert wie GaussNewton, allerdings
-benötigt es etwas mehr Iterationen.
+benötigt es etwas mehr Iterationen.\par
+
+Bei der zweiten Funktion bin ich mit der Definition $\nabla f(x) = 2\cdot J(x)^T\cdot r(x)$ nicht zum Ziel gekommen. Der Grund waren
+zu große Werte des Gradienten vor allem in der ersten Iteration von \lstinline[basicstyle=\ttfamily\color{black}]|InverseBFGS| die
+entweder zu \lstinline[basicstyle=\ttfamily\color{black}]|NaN| oder $x$-Werten geführt haben bei denen die Funktion über den Bereich
+$[6 - 180]$ gleich Null war.\par
+Ich habe den Gradienten daher durch numerische Differentiation ersetzt:
+
+$$\nabla g = \begin{bmatrix}
+  g_{LeastSquares}(x_1 + 10^{-10}, x_2, x_3) - g_{LeastSquares}(x_1, x_2, x_3) \\ 
+  g_{LeastSquares}(x_1, x_2 + 10^{-10}, x_3) - g_{LeastSquares}(x_1, x_2, x_3) \\
+  g_{LeastSquares}(x_1, x_2, x_3 + 10^{-10}) - g_{LeastSquares}(x_1, x_2, x_3)
+\end{bmatrix} \cdot \begin{bmatrix} 10^{10} \\ 10^{10} \\ 10^{10} \end{bmatrix}$$
 
 \begin{figure}[H]
   \centering
   \def\arraystretch{1.25}
   \begin{tabular}{l|c|r}
     \hline
-    \textbf{Schritt} & \textbf{x} & \textbf{$f(x)$}\\
+    \textbf{Schritt} & \textbf{x} & \textbf{$g_{LeastSquares}(x)$}\\
     \hline
+    1 & $[5.00, 0.15, 0.13]^T$ & $2.98 \cdot 10^4$\\
+    2 & $[5.00, -0.18, -0.02]^T$ & $2.83 \cdot 10^4$\\
+    3 & $[5.00, -0.16, -0.08]^T$ & $2.73 \cdot 10^4$\\
+    4 & $[7.06, -0.16, -0.08]^T$ & $2.45 \cdot 10^4$\\
+    5 & $[3.21, -0.11, -0.06]^T$ & $8.28 \cdot 10^3$\\
+    $\vdots$ & $\vdots$ & $\vdots$\\
+    15 & $[2.93, -0.06, -0.13]^T$ & $923.52$\\
+    $\vdots$ & $\vdots$ & $\vdots$\\
+    189 & $[3.54, -0.05, -0.15]^T$ & $776.75$\\
     \hline
   \end{tabular}
   \caption{Verlauf von \lstinline[basicstyle=\ttfamily\color{black}]|InverseBFGS| für die Funktion $g$ aus Aufgabe 7 bei einer Genauigkeit von
-          $10^{-8}$}
+          $10^{-8}$ und Startwert $x_0^{(2)}$}
 \end{figure}
 
-zweite Funktion liefert es jedoch z.B.\\
-$[9.8962, 11.4152, 1.5202]^T$ da beim ersten Durchlauf der Wert des negativen Gradienten
-verwendet wird (da $B = I$) und dadurch die Norm des Gradienten auf 0 sinkt (Abbruchbedingung).
+Das Verfahren liefert mit $x = [3.5356, -0.0546, -0.1539]^T$ also nicht den selben Wert wie
+\lstinline[basicstyle=\ttfamily\color{black}]|GaussNewton|, da $x_2$ und $x_3$ in $g$ aber nur im Quadrat vorkommen ergibt sich die
+selbe Funktion (das Residuum am Ende ist daher gleich groß). \lstinline[basicstyle=\ttfamily\color{black}]|InverseBFGS| benötigt ca.
+30 Schritte mehr.
 
 \end{document}
