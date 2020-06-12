@@ -1,0 +1,35 @@
+% Fach: Numerische Optimierung
+% Projekt 3 - Penalty-Verfahren & SQP-Verfahren
+%
+% Autor: Maximilian Gaul
+% Date: 12.06.2020
+%---------------------------------------------------------------
+
+f = @(x) 1000 - x(1).^2 - 2 + x(2).^2 - x(3).^2 - x(1) * x(2) - x(1) * x(3);
+grad_f = @(x) [-2 * x(1) - x(2) - x(3); -4 * x(2) - x(1); -2 * x(3) - x(1)]
+h1 = @(x) x(1).^2 + x(2).^2 + x(3).^2 - 25;
+h2 = @(x) 8 * x(1) + 14 * x(2) + 7 * x(3) - 56;
+
+pen_f = @(x, r) f(x) + (0.5 * r) * ( h1(x).^2 + h2(x).^2 );
+
+
+x0 = [1; 1; 1];
+res = BFGS_Pen(min_f, 5, x0);
+fprintf("RES: %s\n", vec2str(res));
+
+% Formatiert einen Vector für die Ausgabe auf der Kommandozeile
+% \input: 1D Vector
+function str = vec2str(vec)
+    
+    dim = numel(vec);
+    ret_str = "[";
+    for i = 1:dim
+        if i == dim
+            ret_str = append( ret_str, sprintf("%0.4f]", vec(i)) );
+        else
+            ret_str = append( ret_str, sprintf("%0.4f, ", vec(i)) );
+        end
+    end
+    
+    str = ret_str;
+end
