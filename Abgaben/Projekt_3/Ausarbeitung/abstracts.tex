@@ -88,7 +88,7 @@ Implementierung siehe \lstinline[basicstyle=\ttfamily\color{black}]|BFGS_Pen.m| 
 \lstinline[basicstyle=\ttfamily\color{black}]|ArmijoPen.m|.
 
 \subsubsection{Aufgabe 3}
-Tests siehe \lstinline[basicstyle=\ttfamily\color{black}]|Project_3.m|.
+Tests siehe \lstinline[basicstyle=\ttfamily\color{black}]|Projekt_3.m|.
 
 \subsubsection{Aufgabe 4}
 
@@ -185,6 +185,119 @@ Dann erhält man
 
 $$\lambda_1 = -\frac{1}{2\cdot \sqrt{2 - \gamma^2}}$$
 
-Dieser Pfad funktioniert also nicht, da $\lambda_1 \geq 0$ sein muss.
+Dieser Pfad funktioniert also nicht, da $\lambda_1 \geq 0$ sein muss.\par
+
+Für $x_1 = \gamma + \frac{1}{2}\left( \gamma - \sqrt{2 - \gamma^2} \right)$ und $x_2 = -\frac{1}{2}\left( \gamma - \sqrt{2 - \gamma^2} \right)$ erhält man:
+
+$$\begin{bmatrix}1\\0\end{bmatrix} + \lambda_1 \cdot \begin{bmatrix}2\left( \gamma + \frac{1}{2}\left( \gamma - \sqrt{2 - \gamma^2} \right) \right)\\ -\left( \gamma - \sqrt{2 - \gamma^2} \right) \end{bmatrix} + \lambda_2\cdot \begin{bmatrix}1\\1\end{bmatrix} = \begin{bmatrix}0\\0\end{bmatrix}$$
+
+Umformen:
+
+$$\lambda_2 = \lambda_1 \left( \gamma - \sqrt{2 - \gamma^2} \right)$$
+
+und einsetzen
+
+$$1 + 2\lambda_1 \left( \gamma + \frac{1}{2}\left( \gamma - \sqrt{2 - \gamma^2} \right) \right) + \lambda_1 \left( \gamma - \sqrt{2 - \gamma^2} \right) = 0$$
+
+Dann erhält man
+
+$$\lambda_1 = \frac{\sqrt{2 - \gamma^2} + 2\gamma}{4 - 10\gamma^2} \text{ bzw. } \lambda_2 = \left(\frac{\sqrt{2 - \gamma^2} + 2\gamma}{4 - 10\gamma^2}\right)\cdot \left( \gamma - \sqrt{2 - \gamma^2} \right)$$
+
+Die KKT-Punkte in Abhängigkeit von $\gamma$ sind also: $x_1 = \gamma + \frac{1}{2}\left( \gamma - \sqrt{2 - \gamma^2} \right)$ und $x_2 = -\frac{1}{2}\left( \gamma - \sqrt{2 - \gamma^2} \right)$
+
+\subsubsection{Aufgabe 5}
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \newcommand*{\from}{-3}
+    \newcommand*{\too}{3}
+    \newcommand*{\drawFrom}{-1}
+    \newcommand*{\drawTo}{1}
+    \newcommand*{\scaleFactor}{1}
+
+    \tikzstyle{interval border}=[thin, red];
+    \draw[-{Latex}] (\from*\scaleFactor,0) -- (\too*\scaleFactor,0) node[right] {$x_1$};
+    \draw[-{Latex}] (0,\from*\scaleFactor) -- (0,\too*\scaleFactor) node[above] {$x_2$};
+
+    \draw (0, 0) node[xshift=-0.21cm, yshift=-0.25cm, font=\small] {$0$};
+
+    \foreach \x in {-3, -2, -1, 1, 2, 3} {
+      \draw (\x*\scaleFactor, 0) node[yshift=-0.25cm, font=\small] {$\x$};
+      \draw (0,\x*\scaleFactor) node[xshift=-0.425cm, font=\small] {$\x$};
+    }
+
+    \draw[red, thick] (0,0) circle (1 cm);
+
+    \draw[blue, thick] (1.6, -3.014) -- (-1.6, 0.18579);
+    \draw[blue, thick] (-1.6, 3.014) -- (1.6, -0.18579);
+    \draw[blue, thick] (-1.6, 1.6) -- (1.6, -1.6);
+
+    \node[xshift=-2cm, yshift=0.5cm, font=\tiny, draw, thin, rectangle] (ppre) at (-1.6, 0.18579) {$x_1 + x_2 = -\sqrt{2}$};
+    \draw[-{Latex}] (ppre.east) -- +(+5pt,0pt) -- (-1.6, 0.18579);
+
+    \node[xshift=-2cm, yshift=0.5cm, font=\tiny, draw, thin, rectangle] (ppre) at (-1.6, 1.6) {$x_1 + x_2 = 0$};
+    \draw[-{Latex}] (ppre.east) -- +(+5pt,0pt) -- (-1.6, 1.6);
+
+    \node[xshift=-2cm, yshift=0.5cm, font=\tiny, draw, thin, rectangle] (ppre) at (-1.6, 3.014) {$x_1 + x_2 = \sqrt{2}$};
+    \draw[-{Latex}] (ppre.east) -- +(+5pt,0pt) -- (-1.6, 3.014);
+
+    \node[xshift=2cm, yshift=1.5cm, font=\tiny, draw, thin, rectangle] (ppre) at (0.9, 0.4359) {$x_1^2 + x_2^2 = 1$};
+    \draw[-{Latex}] (ppre.west) -- +(-5pt,0pt) -- (0.9, 0.4359);
+
+    \draw[black, fill=black, thick] (0,0) circle (0.025cm);
+    \draw[-{Latex}] (0, 0) -- node[font=\tiny, above=-0.1cm] {$\nabla f$} (1,0);
+
+  \end{tikzpicture}
+  \caption{Graphische Darstellung der Zielfunktion und Nebenbedingungen, gültige Punkte liegen auf der Schnittmenge zwischen Kreis und blauen Linien}
+\end{figure}
+
+Anhand der Lagrange-Funktion:
+
+$$L(x,\mu) = x_1 + \mu_1\left( x_1^2 + x_2^2 - 1 \right) + \mu_2\left( x_1 + x_2 - \gamma \right)$$
+
+und den Ableitungen
+
+$$\nabla f(x) = \begin{bmatrix}1 \\ 0\end{bmatrix} \text{, } \nabla h_1(x) = \begin{bmatrix}2x_1\\2x_2\end{bmatrix} \text{, } h_2(x) = \begin{bmatrix}1\\1\end{bmatrix}$$
+
+kann man die KKT-Bedingungen aufstellen:
+
+$$\begin{bmatrix}1 \\ 0\end{bmatrix} + \mu_1 \cdot \begin{bmatrix}2x_1\\2x_2\end{bmatrix} + \mu_2 \cdot \begin{bmatrix}1\\1\end{bmatrix} = \begin{bmatrix}0\\0\end{bmatrix} \text{ (Stationarität)}$$
+
+sowie
+
+$$h_1(x) = 0 \text{, } h_2(x) = 0 \text{ (Zulässigkeit)}$$
+
+Mit
+
+$$x_1 = \frac{-\mu_2 - 1}{2\mu_1} \text{ und } x_2 = \frac{-\mu_2}{2\mu_1}$$
+
+kann man in die 2. Nebenbedingung einsetzen
+
+$$ \frac{-\mu_2 - 1}{2\mu_1} + \frac{-\mu_2}{2\mu_1} = \gamma$$
+
+und erhält
+
+$$\mu_2 = -\gamma\mu_1 - \frac{1}{2}$$
+
+Was man wiederum in die 1. Nebenbedingung einsetzen kann
+
+$$ \left( \frac{-\left(-\gamma\mu_1 - \frac{1}{2}\right) - 1}{2\mu_1} \right)^2 + \left( \frac{-\left(-\gamma\mu_1 - \frac{1}{2}\right)}{2\mu_1} \right)^2 = 1$$
+
+Dann erhält man
+
+$$\mu_1 = \pm \frac{1}{2\cdot \sqrt{2 - \gamma^2}} \text{, } \mu_2 = \mp \frac{\gamma}{2\cdot \sqrt{2 - \gamma^2}} - \frac{1}{2}$$
+
+Insgesamt erhält man also die KKT-Punkte:
+
+$$x_1 = \sqrt{2 - \gamma^2} \cdot \left( \frac{\gamma}{2\cdot\sqrt{2 - \gamma^2}} - \frac{1}{2} \right) \text{ , } x_2 = \sqrt{2 - \gamma^2} \cdot \left( \frac{\gamma}{2\cdot\sqrt{2 - \gamma^2}} + \frac{1}{2} \right)$$
+
+und
+
+$$x_1 = -\sqrt{2 - \gamma^2}\cdot \left(-\frac{\gamma}{2\cdot \sqrt{2 - \gamma^2}} - \frac{1}{2}\right) \text{ , } x_2 = -\sqrt{2 - \gamma^2} \cdot \left( \frac{1}{2} - \frac{\gamma}{2\cdot\sqrt{2 - \gamma^2}} \right)$$
+
+\subsubsection{Aufgabe 6}
+
+Implementierung siehe \lstinline[basicstyle=\ttfamily\color{black}]|Projekt_3.m|.
 
 \end{document}

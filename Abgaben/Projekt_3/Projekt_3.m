@@ -21,39 +21,72 @@ max_iters = 1e5;
 f = @(x) 1000 - x(1).^2 - 2 * x(2).^2 - x(3).^2 - x(1) * x(2) - x(1) * x(3);
 grad_f = @(x) [ -2 * x(1) - x(2) - x(3), -4 * x(2) - x(1), -2 * x(3) - x(1) ];
 
-h1 = @(x) x(1).^2 + x(2).^2 + x(3).^2 - 25;
+f1 = @(x) x(1).^2 + x(2).^2 + x(3).^2 - 25;
 grad_h1 = @(x) [ 2 * x(1), 2 * x(2), 2 * x(3) ];
 
-h2 = @(x) 8 * x(1) + 14 * x(2) + 7 * x(3) - 56;
+f2 = @(x) 8 * x(1) + 14 * x(2) + 7 * x(3) - 56;
 grad_h2 = @(x) [8, 14, 7];
 
-pen_f = @(x, r) f(x) + (0.5 * r) * ( h1(x).^2 + h2(x).^2 );
-grad_pen_f = @(x, r) grad_f(x) + r * ( h1(x) * grad_h1(x) + h2(x) * grad_h2(x) );
+pen_f = @(x, r) f(x) + (0.5 * r) * ( f1(x).^2 + f2(x).^2 );
+grad_pen_f = @(x, r) grad_f(x) + r * ( f1(x) * grad_h1(x) + f2(x) * grad_h2(x) );
 
 m_pf = @(x, r) min_pen_f(pen_f, grad_pen_f, x, r);
 
 x0 = [25; 35; 45];
 ret = BFGS_Pen(m_pf, r, x0, max_iters);
 res = ret.x(end,:);
-fprintf("BFGS_PEN returned x=%s with f(x)=%0.4f and h1(x)=%0.4f, h2(x)=%0.4f\n", vec2str(res), f(res'), h1(res'), h2(res'));
+fprintf("BFGS_PEN returned x=%s with f(x)=%0.4f and f1(x)=%0.4f, f2(x)=%0.4f\n", vec2str(res), f(res'), f1(res'), f2(res'));
 
 % Lösung mit fmincon
-confun = @(x) confuneq(h1, h2, x);
-ret = fmincon(f,x0,[],[],[],[],[],[],confun);
-fprintf("fmincon returned x=%s with f(x)=%0.4f and h1(x)=%0.4f, h2(x)=%0.4f\n", vec2str(ret), f(ret'), h1(ret'), h2(ret'));
+confunF = @(x) confuneqF(f1, f2, x);
+ret = fmincon(f,x0,[],[],[],[],[],[],confunF);
+fprintf("fmincon returned x=%s with f(x)=%0.4f and f1(x)=%0.4f, f2(x)=%0.4f\n", vec2str(ret), f(ret'), f1(ret'), f2(ret'));
 
 % Lösung mit fminunc bei festem r
 options = optimoptions("fminunc", "OptimalityTolerance", 1e-6, "MaxFunctionEvaluations", 1e+8, "MaxIterations", max_iters);
 pen_f_f = @(x) pen_f(x, r);
 ret = fminunc(pen_f_f, x0, options);
-fprintf("fminunc returned x=%s with f(x)=%0.4f and h1(x)=%0.4f, h2(x)=%0.4f\n", vec2str(ret), f(ret'), h1(ret'), h2(ret'));
+fprintf("fminunc returned x=%s with f(x)=%0.4f and f1(x)=%0.4f, f2(x)=%0.4f\n", vec2str(ret), f(ret'), f1(ret'), f2(ret'));
 
-% Gleichheitsbedingungen für fmincon
-function [c,ceq] = confuneq(h1, h2, x)
+% Aufgabe 3
+fprintf("--------------------AUFGABE 6--------------------\n");
+
+g = @(x) x(1);
+
+g1 = @(x) x(1).^2 + x(2).^2 - 1;
+g2 = @(x) x(1) + x(2) - 1;
+
+x0 = [12; 12];
+conNeqG = @(x) confunNeqG(g1, g2, x);
+ret = fmincon(g, x0, [], [], [], [], [], [], conNeqG);
+fprintf("fmincon returned x=%s with g(x)=%0.4f and g1(x)=%0.4f, g2(x)=%0.4f\n", vec2str(ret), g(ret'), g1(ret'), g2(ret'));
+
+confunG = @(x) confuneqG(g1, g2, x);
+ret = fmincon(g, x0, [], [], [], [], [], [], confunG);
+fprintf("fmincon returned x=%s with g(x)=%0.4f and g1(x)=%0.4f, g2(x)=%0.4f\n", vec2str(ret), g(ret'), g1(ret'), g2(ret'));
+
+% Ungleichheitsbedingungen aus Aufgabe 4 für fmincon
+function [c,ceq] = confunNeqG(g1, g2, x)
+    % Nonlinear inequality constraints
+    c = [g1(x), g2(x)];
+    % Nonlinear equality constraints
+    ceq = [];
+end
+
+% Gleichheitsbedingungen aus Aufgabe 5 für fmincon
+function [c,ceq] = confuneqG(g1, g2, x)
     % Nonlinear inequality constraints
     c = [];
     % Nonlinear equality constraints
-    ceq = [h1(x), h2(x)];
+    ceq = [g1(x), g2(x)];
+end
+
+% Gleichheitsbedingungen aus Aufgabe 2 für fmincon
+function [c,ceq] = confuneqF(f1, f2, x)
+    % Nonlinear inequality constraints
+    c = [];
+    % Nonlinear equality constraints
+    ceq = [f1(x), f2(x)];
 end
 
 % Minimierungsfunktion für BFGS_Pen
