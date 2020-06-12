@@ -1,0 +1,128 @@
+\documentclass[a4paper, 12pt]{report}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage{geometry}
+\usepackage{csquotes}
+\usepackage[toc,page]{appendix}
+\usepackage{titlesec}
+\usepackage{listings}
+\usepackage{float}
+\usepackage[hang,flushmargin]{footmisc} 
+\usepackage{makecell}
+\usepackage{amsmath}% http://ctan.org/pkg/amsmath
+\usepackage[utf8]{inputenc}
+\usepackage[default]{cantarell} %% Use option "defaultsans" to use cantarell as sans serif only
+\usepackage[T1]{fontenc}
+\usepackage{hyperref}
+\usepackage{helvet}
+\usepackage[eulergreek]{sansmath}
+\usepackage{amsfonts}
+\usepackage{movie15}
+\usepackage{url}
+\usepackage{lscape}
+\usepackage{changepage}
+
+\usepackage{tikz}
+\usetikzlibrary{calc,positioning,shapes,decorations.pathreplacing}
+\usetikzlibrary{fit,fadings,shadows,patterns,math}
+\usetikzlibrary{shapes.arrows,shapes.geometric}
+\usetikzlibrary{arrows,arrows.meta,decorations.markings}
+\usetikzlibrary{decorations.pathmorphing}
+
+\graphicspath{ {./images/} }
+\geometry{margin=1.25in}
+
+\newcommand*{\shifttext}[2]{%
+  \settowidth{\@tempdima}{#2}%
+  \makebox[\@tempdima]{\hspace*{#1}#2}%
+}
+\newcommand{\fakesection}[1]{%
+  \par\refstepcounter{section}% Increase section counter
+  \sectionmark{#1}% Add section mark (header)
+  \addcontentsline{toc}{section}{\protect\numberline{\thesection}#1}% Add section to ToC
+  % Add more content here, if needed.
+}
+\titleformat{\chapter}[display]
+  {\normalfont\bfseries}{}{0pt}{\Large}
+\titleformat*{\section}{\large\bfseries}
+
+\renewcommand{\footnoterule}{%
+  \kern -3pt
+  \hrule width \textwidth height 1pt
+  \kern 2pt
+}
+
+\newcommand\blfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+
+\begin{document}
+
+\begin{center}
+    \vspace*{2em}
+    \normalsize 3. Projekt\\
+    \vspace*{1em}
+    \normalsize \textbf{\textit{Penalty-Verfahren \& SQP-Verfahren}}\\
+    \vspace*{4em}
+    \normalsize im Fach\\
+    \vspace*{1em}
+    \large Numerische Optimierung\\
+    \vspace*{30em}
+    \normalsize Juni 2020\\
+    \vspace*{1em}
+    \normalsize Maximilian Gaul
+\end{center}
+
+\thispagestyle{empty}
+
+\newpage
+
+\subsubsection{Aufgabe 1}
+
+\subsubsection{Aufgabe 2}
+Implementierung siehe \lstinline[basicstyle=\ttfamily\color{black}]|BFGS_Pen.m| und
+\lstinline[basicstyle=\ttfamily\color{black}]|ArmijoPen.m|.
+
+\subsubsection{Aufgabe 3}
+Tests siehe \lstinline[basicstyle=\ttfamily\color{black}]|Project_3.m|.
+
+\subsubsection{Aufgabe 4}
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \newcommand*{\from}{-3}
+    \newcommand*{\too}{3}
+    \newcommand*{\drawFrom}{-1}
+    \newcommand*{\drawTo}{1}
+    \newcommand*{\scaleFactor}{1}
+
+    \tikzstyle{interval border}=[thin, red];
+    \draw[-{Latex}] (\from*\scaleFactor,0) -- (\too*\scaleFactor,0) node[right] {$x_1$};
+    \draw[-{Latex}] (0,\from*\scaleFactor) -- (0,\too*\scaleFactor) node[above] {$x_2$};
+
+    \draw (0, 0) node[xshift=-0.21cm, yshift=-0.25cm, font=\small] {$0$};
+
+    \foreach \x in {-3, -2, -1, 1, 2, 3} {
+      \draw (\x*\scaleFactor, 0) node[yshift=-0.25cm, font=\small] {$\x$};
+      \draw (0,\x*\scaleFactor) node[xshift=-0.425cm, font=\small] {$\x$};
+    }
+
+    \draw[red, fill=orange, opacity=0.5, thick] (0,0) circle (1 cm);
+
+    \draw[blue, thick] (1.6, -3.014) -- (-1.6, 0.18579);
+    \draw[blue, thick] (-1.6, 3.014) -- (1.6, -0.18579);
+
+    \node[xshift=-2cm, font=\tiny] (ppre) at (-1.6, 0.18579) {$x_1 + x_2 \leq -\sqrt{2}$};
+    \draw (ppre.north) -- +(+5pt,0pt) -- (-1.6, 0.18579);
+
+    \fill[opacity=0.125, blue] (1.6, -3.014) -- (-1.6, 0.18579) -- (-1.6, 3.014) -- (1.6, -0.18579) -- cycle;
+
+  \end{tikzpicture}
+\end{figure}
+
+\end{document}
