@@ -117,8 +117,14 @@ Tests siehe \lstinline[basicstyle=\ttfamily\color{black}]|Project_3.m|.
     \draw[blue, thick] (1.6, -3.014) -- (-1.6, 0.18579);
     \draw[blue, thick] (-1.6, 3.014) -- (1.6, -0.18579);
 
-    \node[xshift=-2cm, font=\tiny] (ppre) at (-1.6, 0.18579) {$x_1 + x_2 \leq -\sqrt{2}$};
-    \draw (ppre.north) -- +(+5pt,0pt) -- (-1.6, 0.18579);
+    \node[xshift=-2cm, yshift=0.5cm, font=\tiny, draw, thin, rectangle] (ppre) at (-1.6, 0.18579) {$x_1 + x_2 \leq -\sqrt{2}$};
+    \draw[-{Latex}] (ppre.east) -- +(+5pt,0pt) -- (-1.6, 0.18579);
+
+    \node[xshift=-2cm, yshift=0.5cm, font=\tiny, draw, thin, rectangle] (ppre) at (-1.6, 3.014) {$x_1 + x_2 \leq \sqrt{2}$};
+    \draw[-{Latex}] (ppre.east) -- +(+5pt,0pt) -- (-1.6, 3.014);
+
+    \node[xshift=2cm, yshift=1.5cm, font=\tiny, draw, thin, rectangle] (ppre) at (0.9, 0.4359) {$x_1^2 + x_2^2 \geq 1$};
+    \draw[-{Latex}] (ppre.west) -- +(-5pt,0pt) -- (0.9, 0.4359);
 
     \fill[opacity=0.125, blue] (1.6, -3.014) -- (-1.6, 0.18579) -- (-1.6, 3.014) -- (1.6, -0.18579) -- cycle;
 
