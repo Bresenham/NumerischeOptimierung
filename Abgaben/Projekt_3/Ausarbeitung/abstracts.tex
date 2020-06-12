@@ -160,8 +160,17 @@ $$\nabla_x L(x, \lambda) = \nabla f(x) + \lambda_1\nabla g_1(x) + \lambda_2\nabl
 
 $$ \Leftrightarrow \begin{bmatrix}1\\0\end{bmatrix} + \lambda_1\cdot \begin{bmatrix}2x_1\\2x_2\end{bmatrix} + \lambda_2\cdot \begin{bmatrix}1\\1\end{bmatrix} = \begin{bmatrix}0\\0\end{bmatrix}$$
 
-$$\lambda_1\text{, } \lambda_2 \geq 0\text{, } g_1(x) \leq 0\text{, }g_2(x) \leq 0$$
-$$\lambda_1\cdot (x_1^2 + x_2^2 - 1) = 0$$
-$$\lambda_2\cdot (x_1 + x_2 - \gamma) = 0$$
+$$\lambda_1\text{, } \lambda_2 \geq 0\text{, } \lambda_1\cdot (x_1^2 + x_2^2 - 1) = 0 \text{, } \lambda_2\cdot (x_1 + x_2 - \gamma) = 0 \text{ (Komplementarität)}$$
+$$g_1(x) \leq 0 \text{, } g_2(x) \leq 0 \text{ (Zulässigkeit)}$$
+
+Um die Komplementarität zu erfüllen kann man einen der beiden Faktoren gleich Null setzen, für $\lambda_1 \neq 0$ und $\lambda_2 \neq 0$ erhält man
+
+$$x_1 + x_2 - \gamma = 0 \Leftrightarrow x_1 = \gamma - x_2 \Leftrightarrow x_1 = \gamma \mp \frac{1}{2}\left(\gamma - \sqrt{2 - \gamma^2} \right)$$
+
+$$x_1^2 + x_2^2 - 1 = 0 \Leftrightarrow (\gamma - x_2)^2 + x_2^2 - 1 = 0 \Leftrightarrow x_2 \pm \frac{1}{2}\left(\gamma - \sqrt{2 - \gamma^2} \right)$$
+
+Für $x_1 = \gamma - \frac{1}{2}\left(\gamma - \sqrt{2 - \gamma^2} \right)$ und $x_2 = \frac{1}{2}\left( \gamma - \sqrt{2 - \gamma^2} \right)$ erhält man:
+
+$$\begin{bmatrix}1\\ 0\end{bmatrix} + \lambda_1 \cdot \begin{bmatrix}2\cdot \left(\gamma - \frac{1}{2}\left(\gamma - \sqrt{2 - \gamma^2} \right) \right) \\ \gamma - \sqrt{2 - \gamma^2}\end{bmatrix} + \lambda_2\cdot \begin{bmatrix}1\\1\end{bmatrix} = \begin{bmatrix}0\\0\end{bmatrix}$$
 
 \end{document}
