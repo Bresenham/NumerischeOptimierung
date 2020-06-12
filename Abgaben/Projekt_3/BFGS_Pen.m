@@ -20,7 +20,7 @@ function res = BFGS_Pen(fun,r,x0,maxit)
     B=eye(length(x));
     [f,g]=fun(x(k,:)',r);
     grad(k,:)=g';
-    while (k<maxit && (k==1||norm(g)>1e-6))
+    while k < maxit && ( k==1 || norm(g) > 1e-6 )
         d = B*g';  % Suchrichtung
         % Falls Abstiegsrichtung die Winkelbedingung nicht erfuellt, verwende
         % negativen Gradienten als Abstiegsrichtung.

@@ -15,6 +15,9 @@
 
 fprintf("--------------------AUFGABE 3--------------------\n");
 
+r = 5000;
+max_iters = 1e5;
+
 f = @(x) 1000 - x(1).^2 - 2 * x(2).^2 - x(3).^2 - x(1) * x(2) - x(1) * x(3);
 grad_f = @(x) [ -2 * x(1) - x(2) - x(3), -4 * x(2) - x(1), -2 * x(3) - x(1) ];
 
@@ -25,13 +28,12 @@ h2 = @(x) 8 * x(1) + 14 * x(2) + 7 * x(3) - 56;
 grad_h2 = @(x) [8, 14, 7];
 
 pen_f = @(x, r) f(x) + (0.5 * r) * ( h1(x).^2 + h2(x).^2 );
-grad_pen_f = @(x, r) grad_f(x) + r * ( grad_h1(x) + grad_h2(x) );
+grad_pen_f = @(x, r) grad_f(x) + r * ( h1(x) * grad_h1(x) + h2(x) * grad_h2(x) );
 
 m_pf = @(x, r) min_pen_f(pen_f, grad_pen_f, x, r);
 
 x0 = [25; 35; 45];
-ret = BFGS_Pen(m_pf, 5000, x0, 10000);
-disp(ret.x);
+ret = BFGS_Pen(m_pf, r, x0, max_iters);
 res = ret.x(end,:);
 fprintf("BFGS_PEN returned x=%s with f(x)=%0.4f and h1(x)=%0.4f, h2(x)=%0.4f\n", vec2str(res), f(res'), h1(res'), h2(res'));
 
@@ -41,8 +43,9 @@ ret = fmincon(f,x0,[],[],[],[],[],[],confun);
 fprintf("fmincon returned x=%s with f(x)=%0.4f and h1(x)=%0.4f, h2(x)=%0.4f\n", vec2str(ret), f(ret'), h1(ret'), h2(ret'));
 
 % Lösung mit fminunc bei festem r
-pen_f_f = @(x) pen_f(x, 5000);
-ret = fminunc(pen_f_f, x0);
+options = optimoptions("fminunc", "OptimalityTolerance", 1e-6, "MaxFunctionEvaluations", 1e+8, "MaxIterations", max_iters);
+pen_f_f = @(x) pen_f(x, r);
+ret = fminunc(pen_f_f, x0, options);
 fprintf("fminunc returned x=%s with f(x)=%0.4f and h1(x)=%0.4f, h2(x)=%0.4f\n", vec2str(ret), f(ret'), h1(ret'), h2(ret'));
 
 % Gleichheitsbedingungen für fmincon
