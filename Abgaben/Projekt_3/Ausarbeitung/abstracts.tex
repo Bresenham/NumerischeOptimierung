@@ -92,6 +92,17 @@ Tests siehe \lstinline[basicstyle=\ttfamily\color{black}]|Project_3.m|.
 
 \subsubsection{Aufgabe 4}
 
+Das Problem
+
+$$f(x) = \text{min } x_1$$
+
+unter den Nebenbedingungen
+
+$$g_1(x) = x_1^2 + x_2^2 - 1 \leq 0$$
+$$g_2(x) = x_1 + x_2 - \gamma \leq 0 \text{, } \gamma \geq -\sqrt{2}$$
+
+lässt sich so graphisch darstellen:
+
 \begin{figure}[H]
   \centering
   \begin{tikzpicture}
@@ -123,12 +134,34 @@ Tests siehe \lstinline[basicstyle=\ttfamily\color{black}]|Project_3.m|.
     \node[xshift=-2cm, yshift=0.5cm, font=\tiny, draw, thin, rectangle] (ppre) at (-1.6, 3.014) {$x_1 + x_2 \leq \sqrt{2}$};
     \draw[-{Latex}] (ppre.east) -- +(+5pt,0pt) -- (-1.6, 3.014);
 
-    \node[xshift=2cm, yshift=1.5cm, font=\tiny, draw, thin, rectangle] (ppre) at (0.9, 0.4359) {$x_1^2 + x_2^2 \geq 1$};
+    \node[xshift=2cm, yshift=1.5cm, font=\tiny, draw, thin, rectangle] (ppre) at (0.9, 0.4359) {$x_1^2 + x_2^2 \leq 1$};
     \draw[-{Latex}] (ppre.west) -- +(-5pt,0pt) -- (0.9, 0.4359);
+
+    \draw[black, fill=black, thick] (0,0) circle (0.025cm);
+    \draw[-{Latex}] (0, 0) -- node[font=\tiny, above=-0.1cm] {$\nabla f$} (1,0);
 
     \fill[opacity=0.125, blue] (1.6, -3.014) -- (-1.6, 0.18579) -- (-1.6, 3.014) -- (1.6, -0.18579) -- cycle;
 
   \end{tikzpicture}
+  \caption{Graphische Darstellung der Zielfunktion und Nebenbedingungen, gültige Punkte müssen in der Schnittmenge aus Blau und Orange liegen}
 \end{figure}
+
+Anhand der Lagrange-Funktion:
+
+$$L(x, \lambda) = x_1 + \lambda_1(x_1^2 + x_2^2 - 1) + \lambda_2(x_1 + x_2 - \gamma)$$
+
+und den Ableitungen:
+
+$$\nabla f(x) = \begin{bmatrix}1 \\ 0\end{bmatrix} \text{, } \nabla g_1(x) = \begin{bmatrix}2x_1\\2x_2\end{bmatrix} \text{, } \nabla g_2(x) = \begin{bmatrix}1\\1\end{bmatrix}$$
+
+kann man die KKT-Bedingungen aufstellen:
+
+$$\nabla_x L(x, \lambda) = \nabla f(x) + \lambda_1\nabla g_1(x) + \lambda_2\nabla g_2(x) = 0 \text{ (Stationarität)}$$
+
+$$ \Leftrightarrow \begin{bmatrix}1\\0\end{bmatrix} + \lambda_1\cdot \begin{bmatrix}2x_1\\2x_2\end{bmatrix} + \lambda_2\cdot \begin{bmatrix}1\\1\end{bmatrix} = \begin{bmatrix}0\\0\end{bmatrix}$$
+
+$$\lambda_1\text{, } \lambda_2 \geq 0\text{, } g_1(x) \leq 0\text{, }g_2(x) \leq 0$$
+$$\lambda_1\cdot (x_1^2 + x_2^2 - 1) = 0$$
+$$\lambda_2\cdot (x_1 + x_2 - \gamma) = 0$$
 
 \end{document}
