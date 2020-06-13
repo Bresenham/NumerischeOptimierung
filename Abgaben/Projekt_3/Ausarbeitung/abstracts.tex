@@ -318,4 +318,41 @@ $$x_1 = -\sqrt{2 - \gamma^2}\cdot \left(-\frac{\gamma}{2\cdot \sqrt{2 - \gamma^2
 
 Implementierung siehe \lstinline[basicstyle=\ttfamily\color{black}]|Projekt_3.m|.
 
+\subsubsection{Aufgabe 7}
+
+Man bringt die Nebenbedingungen zuerst in die Form:
+
+$$g_1(x) = -1 + x_1 + x_2 \leq 0$$
+$$g_2(x) = -1 + x_1 - x_2 \leq 0$$
+$$g_3(x) = -1 - x_1 + x_2 \leq 0$$
+$$g_4(x) = -1 - x_1 - x_2 \leq 0$$
+
+Die Stationaritätsgleichung lässt sich dann wie folgt aufstellen:
+
+$$\nabla  f(x) + \lambda_1\nabla g_1(x) + \lambda_2\nabla g_2(x) + \lambda_3\nabla g_3(x) + \lambda_4\nabla g_4(x) = 0$$
+
+$$\Leftrightarrow$$
+
+$$\begin{bmatrix}2(x_1 - 1.5)\\4(x_2 - t)^3\end{bmatrix} + \lambda_1 \begin{bmatrix}1\\1\end{bmatrix} + \lambda_2 \begin{bmatrix}1\\-1\end{bmatrix} + \lambda_3 \begin{bmatrix}-1\\1\end{bmatrix} + \lambda_4 \begin{bmatrix}-1\\-1\end{bmatrix} = \begin{bmatrix}0\\0\end{bmatrix}$$
+
+Ebenso die Komplementaritätsbedingungen:
+
+$$\lambda_1\cdot g_1(x) = 0$$
+$$\lambda_2\cdot g_2(x) = 0$$
+$$\lambda_3\cdot g_3(x) = 0$$
+$$\lambda_4\cdot g_4(x) = 0$$
+$$\lambda_1 \text{ , } \lambda_2 \text{ , } \lambda_3 \text{ , } \lambda_4 \geq 0$$
+
+Wenn man den Punkt $\hat{x}$ in die Nebenbedingungen einsetzt sieht man, welche aktiv sind:
+
+$$g_1(\hat{x}) = 0$$
+$$g_2(\hat{x}) = 0$$
+$$g_3(\hat{x}) = -2$$
+$$g_4(\hat{x}) = -2$$
+
+Um die Komplementaritätsbedingungen zu erfüllen, muss nun gelten:\\
+$\lambda_3 = \lambda_4 = 0$. Die Stationaritätsgleichung verkürzt sich daher zu
+
+$$\begin{bmatrix}-1\\-4t^3\end{bmatrix} + \lambda_1 \begin{bmatrix}1\\1\end{bmatrix} + \lambda_2\begin{bmatrix}-1\\1\end{bmatrix} = \begin{bmatrix}0\\0\end{bmatrix}$$
+
 \end{document}
