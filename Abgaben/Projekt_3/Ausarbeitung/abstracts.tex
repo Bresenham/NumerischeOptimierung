@@ -212,6 +212,17 @@ $$\lambda_1 = \frac{1}{2\sqrt{\gamma^2 + 2(1 - \gamma^2)}} \text{ , } \lambda_2 
 Für $\gamma \neq \pm \sqrt{2}$ ist $\lambda_1$ immer positiv. Für $-\sqrt{2} < \gamma \leq -1$ ist $\lambda_2$ ebenfalls positiv.
 D.h. $x_1 = \frac{1}{2}\gamma - \frac{1}{2}\sqrt{\gamma^2 + 2(1 - \gamma^2)}$ und $x_2 = \frac{1}{2}\sqrt{\gamma^2 - 2(1 - \gamma^2)} + \frac{1}{2}\gamma$ ist ein KKT-Punkt.
 
+Weiterhin erhält man für $x_1 = \gamma - \left(-\frac{1}{2}\sqrt{\gamma^2 + 2(1 - \gamma^2)} + \frac{1}{2}\gamma\right)$\\
+$\Leftrightarrow x_1 = \frac{1}{2}\gamma + \frac{1}{2}\sqrt{\gamma^2 + 2(1 - \gamma^2)}$ und $x_2 = - \frac{1}{2}\sqrt{\gamma^2 + 2(1 - \gamma^2)} + \frac{1}{2}\gamma$
+
+$$\begin{bmatrix}1\\0\end{bmatrix} + \lambda_1 \cdot \begin{bmatrix}2\cdot \left(\frac{1}{2}\gamma + \frac{1}{2}\sqrt{\gamma^2 + 2(1 - \gamma^2)}\right)\\2\cdot \left(-\frac{1}{2}\sqrt{\gamma^2 + 2(1-\gamma^2)} + \frac{1}{2}\gamma\right)\end{bmatrix} + \lambda_2 \cdot \begin{bmatrix}1\\1\end{bmatrix} =\begin{bmatrix}0\\0\end{bmatrix}$$
+
+Und
+
+$$\lambda_1 = - \frac{1}{2\sqrt{\gamma^2 + 2(1 - \gamma^2)}} \text{ , } \lambda_2 = \frac{-\sqrt{\gamma^2 + 2(1 - \gamma^2)} + \gamma}{2\sqrt{\gamma^2 + 2(1 - \gamma^2)}}$$
+
+Da $\lambda_1$ für $\gamma \neq \pm \sqrt{2}$ immer negativ ist, ist dies kein KKT-Punkt.
+
 \subsubsection{Aufgabe 5}
 
 \begin{figure}[H]
