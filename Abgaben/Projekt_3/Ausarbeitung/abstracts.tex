@@ -353,6 +353,24 @@ $$g_4(\hat{x}) = -2$$
 Um die Komplementaritätsbedingungen zu erfüllen, muss nun gelten:\\
 $\lambda_3 = \lambda_4 = 0$. Die Stationaritätsgleichung verkürzt sich daher zu
 
-$$\begin{bmatrix}-1\\-4t^3\end{bmatrix} + \lambda_1 \begin{bmatrix}1\\1\end{bmatrix} + \lambda_2\begin{bmatrix}-1\\1\end{bmatrix} = \begin{bmatrix}0\\0\end{bmatrix}$$
+$$\begin{bmatrix}-1\\-4t^3\end{bmatrix} + \lambda_1 \begin{bmatrix}1\\1\end{bmatrix} + \lambda_2\begin{bmatrix}1\\-1\end{bmatrix} = \begin{bmatrix}0\\0\end{bmatrix}$$
+
+Man erhält dann
+
+$$\lambda_1 = -\lambda_2 + 1$$
+
+und
+
+$$-4t^3 + \lambda_1 - \lambda_2 = 0 \Leftrightarrow \lambda_2 = - \frac{4t^3 - 1}{2}$$
+
+Daher
+
+$$\lambda_1 = \frac{4t^3 - 1}{2} + 1$$
+
+Um die Komplementaritätsbedingungen zu erfüllen muss gelten
+
+$$\frac{4t^3 - 1}{2} + 1 \geq 0 \land - \frac{4t^3 - 1}{2} \geq 0$$
+
+Für $t \leq \frac{1}{\sqrt[3]{2^2}}$ und $t \geq -\frac{1}{\sqrt[3]{2^2}}$ (ungefähr $t \in [-0.63, 0.63]$) ist $\hat{x}$ ein KKT-Punkt.
 
 \end{document}
