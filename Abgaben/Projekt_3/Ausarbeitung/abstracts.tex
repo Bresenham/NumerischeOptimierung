@@ -423,7 +423,7 @@ $$ \text{(1) und (2)}$$
 $$ \text{(2) und (4)}$$
 $$ \text{(3) und (4)}$$
 
-aktiv sind (bzw. nur diese Kombinationen haben linear unabhängige Gradienten nach \textit{LICQ}).
+oder nur eine NB gleichzeitig aktiv sind / ist (bzw. nur diese Kombinationen haben linear unabhängige Gradienten nach \textit{LICQ}).
 
 Ausgehend von der Stationaritätsgleichung:
 
@@ -447,7 +447,20 @@ probiert man nun diese Möglichkeiten durch.
   $$\begin{bmatrix}-3\\-32\end{bmatrix} + \lambda_2 \begin{bmatrix}1\\-1\end{bmatrix} + \lambda_4 \begin{bmatrix}-1\\-1\end{bmatrix} = \begin{bmatrix}0\\0\end{bmatrix}$$
 
   Daraus dann: $\lambda_2 = -14.5 \text{ , } \lambda_4 = -17.5$, auch keine gültige Lösung.
+
+  \item $\lambda_2 = \lambda_4 = 0, \lambda_1 \neq 0, \lambda_3 \neq 0$\\
+  Aus den NB (1) und (3): $x_1 = 0, x_2 = 1$ und
+
+  $$\begin{bmatrix}-3\\0\end{bmatrix} + \lambda_1 \begin{bmatrix}1\\1\end{bmatrix} + \lambda_3 \begin{bmatrix}-1\\1\end{bmatrix} = \begin{bmatrix}0\\0\end{bmatrix}$$
+  dann: $\lambda_1 = \frac{3}{2}, \lambda_2 = -\frac{3}{2}$, auch keine gültige Lösung.
+
+  \item $\lambda_3 = \lambda_4 = 0, \lambda_1 \neq 0, \lambda_2 \neq 0$\\
+  Aus NB (1) und (2) erhält man $x_1 = 1, x_2 = 0$ und nach Einsetzen:
+  $$\begin{bmatrix}-1\\-4\end{bmatrix} + \lambda_1 \begin{bmatrix}1\\1\end{bmatrix} + \lambda_1 \begin{bmatrix}1\\-1\end{bmatrix} = \begin{bmatrix}0\\0\end{bmatrix}$$
+  auch $\lambda_1 = \frac{5}{2}, \lambda_2 = -\frac{3}{2}$, also auch keine gültige Lösung.
 \end{itemize}
+
+bisher wurde kein KKT-Punkt gefunden. Nun werden noch alle Nebenbedingungen einzeln getestet:
 
 
 \end{document}
