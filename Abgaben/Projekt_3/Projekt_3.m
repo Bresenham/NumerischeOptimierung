@@ -48,7 +48,14 @@ pen_f_f = @(x) pen_f(x, r);
 ret = fminunc(pen_f_f, x0, options);
 fprintf("fminunc returned x=%s with f(x)=%0.4f and f1(x)=%0.4f, f2(x)=%0.4f\n", vec2str(ret), f(ret'), f1(ret'), f2(ret'));
 
-% Aufgabe 3
+% Aufgabe 4
+% Siehe PDF
+
+% Aufgabe 5
+% Siehe PDF
+
+% Aufgabe 6
+
 fprintf("--------------------AUFGABE 6--------------------\n");
 
 g = @(x) x(1);
@@ -64,6 +71,42 @@ fprintf("fmincon returned x=%s with g(x)=%0.4f and g1(x)=%0.4f, g2(x)=%0.4f\n", 
 confunG = @(x) confuneqG(g1, g2, x);
 ret = fmincon(g, x0, [], [], [], [], [], [], confunG);
 fprintf("fmincon returned x=%s with g(x)=%0.4f and g1(x)=%0.4f, g2(x)=%0.4f\n", vec2str(ret), g(ret'), g1(ret'), g2(ret'));
+
+% Aufgabe 7
+% Siehe PDF
+
+% Aufgabe 8
+% Siehe PDF
+
+t = 1;
+m = @(x) ( x(1) - 1.5 ).^2 + ( x(2) - t ).^4;
+m1 = @(x) -1 + x(1) + x(2);
+m2 = @(x) -1 + x(1) - x(2);
+m3 = @(x) -1 - x(1) + x(2);
+m4 = @(x) -1 - x(1) - x(2);
+
+conNeqM = @(x) confunNeqM(m1, m2, m3, m4, x);
+fmincon(m, [2; 3], [], [], [], [], [], [], conNeqM);
+
+% Aufgabe 9
+% Siehe PDF
+
+% Aufgabe 10
+
+t = 0.75;
+m = @(x) ( x(1) - 1.5 ).^2 + ( x(2) - t ).^4;
+
+options = optimoptions("fmincon", "Algorithm", "sqp");
+ret = fmincon(m, [2; 3], [], [], [], [], [], [], conNeqM, options);
+fprintf("fmincon returned x=%s with m(x)=%0.4f and m1(x)=%0.4f, m2(x)=%0.4f, m3=%0.4f, m4=%0.4f\n", vec2str(ret), m(ret'), m1(ret'), m2(ret'), m3(ret'), m4(ret'));
+
+% Ungleichheitsbedingungen aus Aufgabe 8 für fmincon
+function [c,ceq] = confunNeqM(m1, m2, m3, m4, x)
+    % Nonlinear inequality constraints
+    c = [m1(x), m2(x), m3(x), m4(x)];
+    % Nonlinear equality constraints
+    ceq = [];
+end
 
 % Ungleichheitsbedingungen aus Aufgabe 4 für fmincon
 function [c,ceq] = confunNeqG(g1, g2, x)
