@@ -407,8 +407,47 @@ Wenn man die Nebenbedingungen in ein Koordinatensystem zeichnet:
     \draw[thick, purple] (-2, 1) node[below=0.0cm, font=\tiny] {(4)} -- (2, -3);
     \fill[opacity=0.125, purple] (-2, 1) -- (2, -3) -- (2, -2) -- (-2, 2) -- cycle;
 
+    \draw[thick, black, fill=black] (1, 0) circle (0.075cm);
+    \draw[thick, black, fill=black] (0, 1) circle (0.075cm);
+    \draw[thick, black, fill=black] (-1, 0) circle (0.075cm);
+    \draw[thick, black, fill=black] (0, -1) circle (0.075cm);
+
   \end{tikzpicture}
   \caption{Nebenbedingungen von $f(x_1, x_2)$}
 \end{figure}
+
+erkennt man, das nur einseitig beschränkte Flächen entstehen, wenn entweder
+
+$$ \text{(1) und (3)}$$
+$$ \text{(1) und (2)}$$
+$$ \text{(2) und (4)}$$
+$$ \text{(3) und (4)}$$
+
+aktiv sind (bzw. nur diese Kombinationen haben linear unabhängige Gradienten nach \textit{LICQ}).
+
+Ausgehend von der Stationaritätsgleichung:
+
+$$ \begin{bmatrix}2(x_1 - 1.5)\\4(x_2 - 1)^3\end{bmatrix} + \lambda_1 \begin{bmatrix}1\\1\end{bmatrix} + \lambda_2 \begin{bmatrix}1\\-1\end{bmatrix} + \lambda_3 \begin{bmatrix}-1\\1\end{bmatrix} + \lambda_4 \begin{bmatrix}-1\\-1\end{bmatrix} = \begin{bmatrix}0\\0\end{bmatrix}$$
+
+probiert man nun diese Möglichkeiten durch.
+
+\begin{itemize}
+  \item $\lambda_1 = \lambda_2 = 0, \lambda_3 \neq 0, \lambda_4 \neq 0$\\
+  Aus den Nebenbedingungen (3) und (4) erhält man:\\
+  $$ -x_1 + x_2 = 1 \Leftrightarrow x_2 = 1 + x_1$$
+  $$ -x_1 - x_2 = 1 \Leftrightarrow x_1 = -1 \Rightarrow x_2 = 0$$
+
+  Einsetzen in die Stationaritätsgleichung:
+  $$\begin{bmatrix}-5\\-4\end{bmatrix} + \lambda_3 \begin{bmatrix}-1\\1\end{bmatrix} + \lambda_3 \begin{bmatrix}-1\\-1\end{bmatrix} = \begin{bmatrix}0\\0\end{bmatrix}$$
+  und man erhält $\lambda_3 = -0.5 \text{ , } \lambda_4 = -4.5$. Das ist also keine gültige Lösung.
+
+  \item $\lambda_1 = \lambda_3 = 0, \lambda_2 \neq 0, \lambda_4 \neq 0$\\
+  Man erhält aus den NB (2) und (4): $x_1 = 0 \text{ , } x_2 = -1$ und nach Einsetzen:
+
+  $$\begin{bmatrix}-3\\-32\end{bmatrix} + \lambda_2 \begin{bmatrix}1\\-1\end{bmatrix} + \lambda_4 \begin{bmatrix}-1\\-1\end{bmatrix} = \begin{bmatrix}0\\0\end{bmatrix}$$
+
+  Daraus dann: $\lambda_2 = -14.5 \text{ , } \lambda_4 = -17.5$, auch keine gültige Lösung.
+\end{itemize}
+
 
 \end{document}
