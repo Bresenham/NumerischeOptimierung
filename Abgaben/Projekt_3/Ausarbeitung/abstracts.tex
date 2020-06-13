@@ -163,7 +163,28 @@ $$ \Leftrightarrow \begin{bmatrix}1\\0\end{bmatrix} + \lambda_1\cdot \begin{bmat
 $$\lambda_1\text{, } \lambda_2 \geq 0\text{, } \lambda_1\cdot (x_1^2 + x_2^2 - 1) = 0 \text{, } \lambda_2\cdot (x_1 + x_2 - \gamma) = 0 \text{ (Komplementarität)}$$
 $$g_1(x) \leq 0 \text{, } g_2(x) \leq 0 \text{ (Zulässigkeit)}$$
 
-Um die Komplementarität zu erfüllen kann man einen der beiden Faktoren gleich Null setzen, für $\lambda_1 \neq 0$ und $\lambda_2 \neq 0$ erhält man
+Um die Komplementarität zu erfüllen kann man nun verschiedene Faktoren gleich Null setzen.\par
+
+Für $\lambda_1 = 0$ und $\lambda_2 = 0$ erhält man einen Widerspruch in der Stationarität, ebenso für
+$\lambda_1 = 0$ und $\lambda_2 \neq 0$.\par
+Für $\lambda_1 \neq 0$ und $\lambda_2 = 0$ erhält man:
+
+$$\begin{bmatrix}1\\0\end{bmatrix} + \lambda_1 \cdot \begin{bmatrix}2x_1\\2x_2\end{bmatrix} = \begin{bmatrix}0\\0\end{bmatrix}$$
+
+mit
+
+$$1 + 2\lambda_1x_1 = 0$$
+$$2\lambda_1x_2 = 0 \Rightarrow^{\lambda_1 \neq 0} x_2 = 0$$
+
+Da $\lambda_1 \neq 0$ muss wegen der Komplementarität zwangsläufig gelten\\
+$x_1^2 + x_2^2 = 1 \Leftrightarrow x_1 = \pm \sqrt{1 - x_2^2}$ bzw. $x_1 = \pm 1$. Nun einsetzen
+
+$$1 + 2\lambda_1 = 0 \Leftrightarrow \lambda_1 = -\frac{1}{2} \text{  (ungültig) }$$
+$$1 - 2\lambda_1 = 0 \Leftrightarrow \lambda_1 = \frac{1}{2}$$
+
+Damit erhält man den KKT-Punkt: $x_1 = -1 \text{ , } x_2 = 0$.\par
+
+Für $\lambda_1 \neq 0$ und $\lambda_2 \neq 0$ erhält man
 
 $$x_1 + x_2 - \gamma = 0 \Leftrightarrow x_1 = \gamma - x_2 \Leftrightarrow x_1 = \gamma \mp \frac{1}{2}\left(\gamma - \sqrt{2 - \gamma^2} \right)$$
 
