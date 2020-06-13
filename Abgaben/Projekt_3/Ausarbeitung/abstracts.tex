@@ -355,7 +355,7 @@ $\lambda_3 = \lambda_4 = 0$. Die Stationaritätsgleichung verkürzt sich daher z
 
 $$\begin{bmatrix}-1\\-4t^3\end{bmatrix} + \lambda_1 \begin{bmatrix}1\\1\end{bmatrix} + \lambda_2\begin{bmatrix}1\\-1\end{bmatrix} = \begin{bmatrix}0\\0\end{bmatrix}$$
 
-Man erhält dann
+$\nabla g_1$ und $\nabla g_2$ sind linear unabhängig (\textit{LICQ} erfüllt). Man erhält dann
 
 $$\lambda_1 = -\lambda_2 + 1$$
 
@@ -372,5 +372,43 @@ Um die Komplementaritätsbedingungen zu erfüllen muss gelten
 $$\frac{4t^3 - 1}{2} + 1 \geq 0 \land - \frac{4t^3 - 1}{2} \geq 0$$
 
 Für $t \leq \frac{1}{\sqrt[3]{2^2}}$ und $t \geq -\frac{1}{\sqrt[3]{2^2}}$ (ungefähr $t \in [-0.63, 0.63]$) ist $\hat{x}$ ein KKT-Punkt.
+
+\subsubsection{Aufgabe 8}
+
+Wenn man die Nebenbedingungen in ein Koordinatensystem zeichnet:
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \newcommand*{\from}{-3}
+    \newcommand*{\too}{3}
+    \newcommand*{\scaleFactor}{1}
+
+    \tikzstyle{interval border}=[thin, red];
+    \draw[-{Latex}] (\from*\scaleFactor,0) -- (\too*\scaleFactor,0) node[right] {$x_1$};
+    \draw[-{Latex}] (0,\from*\scaleFactor) -- (0,\too*\scaleFactor) node[above] {$x_2$};
+
+    \draw (0, 0) node[xshift=-0.21cm, yshift=-0.25cm, font=\small] {$0$};
+
+    \foreach \x in {-3, -2, -1, 1, 2, 3} {
+      \draw (\x*\scaleFactor, 0) node[yshift=-0.25cm, font=\small] {$\x$};
+      \draw (0,\x*\scaleFactor) node[xshift=-0.425cm, font=\small] {$\x$};
+    }
+
+    \draw[thick, blue] (-2, 3) node[above=0.0cm, font=\tiny] {(1)} -- (2, -1);
+    \fill[opacity=0.125, blue] (-2, 3) -- (2, -1) --(2, -2) -- (-2, 2) -- cycle;
+
+    \draw[thick, red] (-2, -3) -- (2, 1) node[right=0.0cm, font=\tiny] {(2)};
+    \fill[opacity=0.125, red] (-2, -3) -- (2, 1) -- (2, 2) -- (-2, -2) -- cycle;
+
+    \draw[thick, green] (-2, -1) -- (2, 3) node[right=0.0cm, font=\tiny] {(3)};
+    \fill[opacity=0.125, green] (-2, -1) -- (2, 3) -- (2, 2) -- (-2, -2) -- cycle;
+
+    \draw[thick, purple] (-2, 1) node[below=0.0cm, font=\tiny] {(4)} -- (2, -3);
+    \fill[opacity=0.125, purple] (-2, 1) -- (2, -3) -- (2, -2) -- (-2, 2) -- cycle;
+
+  \end{tikzpicture}
+  \caption{Nebenbedingungen von $f(x_1, x_2)$}
+\end{figure}
 
 \end{document}
