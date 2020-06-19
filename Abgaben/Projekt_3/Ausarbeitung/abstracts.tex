@@ -117,7 +117,7 @@ Außerdem muss \textit{LICQ} gelten: $\nabla h_1(\hat{x}), \nabla h_2(\hat{x})$ 
 
 \subsubsection{Aufgabe 2}
 Implementierung siehe \lstinline[basicstyle=\ttfamily\color{black}]|BFGS_Pen.m| und
-\lstinline[basicstyle=\ttfamily\color{black}]|ArmijoPen.m|.
+\lstinline[basicstyle=\ttfamily\color{black}]|ArmijoPen.m| sowie \lstinline[basicstyle=\ttfamily\color{black}]|Projekt_3.m|.
 
 Das Verfahren \textit{Armijo-Regel mit Aufweitung} überprüft zuerst, ob die Armijo-Regel aus dem allgemeinen Verfahren mit der als
 Parameter übergebenen Startschrittweite erfüllt ist. Falls nicht wird die aktuelle Schrittweite solange mit einem Faktor $\beta \in (0, 1)$
@@ -132,10 +132,41 @@ Anschließend wird überprüft ob mit der Approximation der Hesse-Matrix eine g�
 negative Gradient verwendet (anschließend hätte man noch die Matrix B z.B. auf $I$ zurücksetzen können). Mit der Abstiegsrichtung
 wird dann auch die Schrittweite mit dem oben beschriebenen Armijo-Verfahren mit Aufweitung berechnet. Mit Schrittweite und Richtung
 kann der Ergebnisvektor $x$ nun geupdated werden. Zuletzt wird für den nächsten Schritt eine Update-Formel, die auf zweimaliger Anwendung
-von Sherman-Morrison-Woodbury basiert, auf die Hesse-Matrix-Approximation angewendet.
+von Sherman-Morrison-Woodbury basiert, auf die Hesse-Matrix-Approximation angewendet.\par
+Sowohl das BFGS-Verfahren und das Armijo-Verfahren mit Aufweitung erwarten eine Funktion, die Funktionswert und Gradient liefert.
 
 \subsubsection{Aufgabe 3}
 Tests siehe \lstinline[basicstyle=\ttfamily\color{black}]|Projekt_3.m|.
+
+Zum Minimieren wird dem BFGS-Verfahren folgende Funktion übergeben:
+
+$$P(x, r) = f(x) + \frac{1}{2}r\left((h_1(x))^2 + (h_2(x))^2\right)$$
+$$P(x,r) = 1000 - x_1^2 - 2x_2^2 - x_3^2 - x_1x_2 - x_1x_3 + \frac{1}{2} r \left( \left(x_1^2 + x_2^2 + x_3^2 - 25\right)^2 + \left(8x_1 + 14x_2 + 7x_3 - 56\right)^2 \right)$$
+
+Als Gradient erhält die BFGS-Funktion
+
+$$\nabla P(x, r) = \nabla f(x) + r\left(h_1(x)\cdot \nabla h_1(x) + h_2(x)\cdot \nabla h_2(x)\right)$$
+$$\nabla P(x, r) = \begin{bmatrix}-2x_1 - x_2 - x_3\\-4x_2-x_1\\-2x_3-x_1\end{bmatrix} + r\left(h_1(x) \cdot \begin{bmatrix}2x_1\\2x_2\\2x_3\end{bmatrix} + h_2(x)\cdot \begin{bmatrix}8\\14\\7\end{bmatrix}\right)$$
+
+\begin{figure}[H]
+  \centering
+  \def\arraystretch{1.25}
+  \begin{tabular}{l|c|r}
+    \hline
+    \textbf{Schritt} & \textbf{$x$} & \textbf{$P(x)$}\\
+    \hline
+    1 & $[25.00, 35.00, 45.00]^T$ & $3.9308\cdot 10^{10}$\\
+    $\vdots$ & $\vdots$ & $\vdots$\\
+    10 & $[-10.18, -13.95, -15.62]^T$ & $0.1157\cdot 10^{10}$\\
+    $\vdots$ & $\vdots$ & $\vdots$\\
+    25 & $[3.16, 4.81, 4.06]^T$ & $1.2063 \cdot 10^7$\\
+    $\vdots$ & $\vdots$ & $\vdots$\\
+    100 & $[1.53, 0.95, 4.43]^T$ & $1.3411\cdot 10^4$
+  \end{tabular}
+  \caption{Verlauf von \lstinline[basicstyle=\ttfamily\color{black}]|BFGS_Pen|}
+\end{figure}
+
+
 
 \subsubsection{Aufgabe 4}
 
