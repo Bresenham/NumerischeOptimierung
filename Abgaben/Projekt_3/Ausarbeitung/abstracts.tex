@@ -1,7 +1,9 @@
 \documentclass[a4paper, 12pt]{report}
-\usepackage{graphicx}
 \usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
 \usepackage[ngerman]{babel}
+\usepackage{graphicx}
 \usepackage{geometry}
 \usepackage{csquotes}
 \usepackage[toc,page]{appendix}
@@ -11,9 +13,8 @@
 \usepackage[hang,flushmargin]{footmisc} 
 \usepackage{makecell}
 \usepackage{amsmath}% http://ctan.org/pkg/amsmath
-\usepackage[utf8]{inputenc}
+
 \usepackage[default]{cantarell} %% Use option "defaultsans" to use cantarell as sans serif only
-\usepackage[T1]{fontenc}
 \usepackage{hyperref}
 \usepackage{helvet}
 \usepackage[eulergreek]{sansmath}
@@ -22,6 +23,9 @@
 \usepackage{url}
 \usepackage{lscape}
 \usepackage{changepage}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{matlab-prettifier}
+\lstset{style=Matlab-editor}
 
 \usepackage{tikz}
 \usetikzlibrary{calc,positioning,shapes,decorations.pathreplacing}
@@ -316,7 +320,92 @@ $$x_1 = -\sqrt{2 - \gamma^2}\cdot \left(-\frac{\gamma}{2\cdot \sqrt{2 - \gamma^2
 
 \subsubsection{Aufgabe 6}
 
-Implementierung siehe \lstinline[basicstyle=\ttfamily\color{black}]|Projekt_3.m|.
+Man löst das Problem
+
+$$\text{min } x_1$$
+
+mit den Nebenbedingungen
+
+$$g_1(x) = x_1^2 + x_2^2 \leq 1$$
+$$g_2(x) = x_1 + x_2 \leq 1$$
+
+mit dem Matlab-Befehl \lstinline[basicstyle=\ttfamily\color{black}]|fmincon| indem man die Ungleichungsnebenbedingungen in einer separaten Funktion
+definiert:
+
+% This is the color used for MATLAB comments below
+\definecolor{MyDarkGreen}{rgb}{0.0,0.4,0.0}
+
+% For faster processing, load Matlab syntax for listings
+\lstloadlanguages{Matlab}%
+\lstset{language=Matlab,                        % Use MATLAB
+        frame=single,                           % Single frame around code
+        basicstyle=\small\ttfamily,             % Use small true type font
+        keywordstyle=[1]\color{Blue}\bfseries,        % MATLAB functions bold and blue
+        keywordstyle=[2]\color{Purple},         % MATLAB function arguments purple
+        keywordstyle=[3]\color{Blue}\underbar,  % User functions underlined and blue
+        identifierstyle=,                       % Nothing special about identifiers
+                                                % Comments small dark green courier
+        commentstyle=\usefont{T1}{pcr}{m}{sl}\color{MyDarkGreen}\small,
+        stringstyle=\color{Purple},             % Strings are purple
+        showstringspaces=false,                 % Don't put marks in string spaces
+        tabsize=5,                              % 5 spaces per tab
+        %
+        %%% Put standard MATLAB functions not included in the default
+        %%% language here
+        morekeywords={xlim,ylim,var,alpha,factorial,poissrnd,normpdf,normcdf},
+        %
+        %%% Put MATLAB function parameters here
+        morekeywords=[2]{on, off, interp},
+        %
+        %%% Put user defined functions here
+        morekeywords=[3]{confunNeqG},
+        %
+        morecomment=[l][\color{Blue}]{...},     % Line continuation (...) like blue comment
+        inputencoding=latin1
+        }
+        \lstset{literate=%
+        {Ö}{{\"O}}1
+        {Ä}{{\"A}}1
+        {Ü}{{\"U}}1
+        {ß}{{\ss}}1
+        {ü}{{\"u}}1
+        {ä}{{\"a}}1
+        {ö}{{\"o}}1
+      }
+\begin{lstlisting}
+  % Ungleichheitsbedingungen aus Aufgabe 4 für fmincon
+  function [c,ceq] = confunNeqG(g1, g2, x)
+      % Nonlinear inequality constraints
+      c = [g1(x), g2(x)];
+      % Nonlinear equality constraints
+      ceq = [];
+  end\end{lstlisting}
+
+und dann \lstinline|fmincon(g, x0, [], [], [], [], [], [], confunNeqG)| aufruft. Das Ergebnis ist $x_1 = -1, x_2 = 0$.
+
+Ähnlich verhält es sich mit dem Problem
+
+$$\text{min } x_1$$
+
+und den Nebenbedingungen
+
+$$h_1(x) = x_1^2 + x_2^2 = 1$$
+$$h_2(x) = x_1 + x_2 = 1$$
+
+Hier wird folgende Matlab-Funktion verwendet:
+
+\begin{lstlisting}
+  % Gleichheitsbedingungen aus Aufgabe 5 für fmincon
+  function [c,ceq] = confuneqG(h1, h2, x)
+      % Nonlinear inequality constraints
+      c = [];
+      % Nonlinear equality constraints
+      ceq = [h1(x), h2(x)];
+  end\end{lstlisting}
+
+Das Ergebnis ist $x_1 = 0, x_2 = 1$.
+
+Konkrete Implementierung siehe \lstinline[basicstyle=\ttfamily\color{black}]|Projekt_3.m|.
 
 \subsubsection{Aufgabe 7}
 
