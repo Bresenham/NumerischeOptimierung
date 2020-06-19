@@ -64,6 +64,47 @@
   \endgroup
 }
 
+% This is the color used for MATLAB comments below
+\definecolor{MyDarkGreen}{rgb}{0.0,0.4,0.0}
+
+% For faster processing, load Matlab syntax for listings
+\lstloadlanguages{Matlab}%
+\lstset{language=Matlab,                        % Use MATLAB
+        frame=single,                           % Single frame around code
+        basicstyle=\small\ttfamily,             % Use small true type font
+        keywordstyle=[1]\color{Blue}\bfseries,        % MATLAB functions bold and blue
+        keywordstyle=[2]\color{Purple},         % MATLAB function arguments purple
+        keywordstyle=[3]\color{Blue}\underbar,  % User functions underlined and blue
+        identifierstyle=,                       % Nothing special about identifiers
+                                                % Comments small dark green courier
+        commentstyle=\usefont{T1}{pcr}{m}{sl}\color{MyDarkGreen}\small,
+        stringstyle=\color{Purple},             % Strings are purple
+        showstringspaces=false,                 % Don't put marks in string spaces
+        tabsize=5,                              % 5 spaces per tab
+        %
+        %%% Put standard MATLAB functions not included in the default
+        %%% language here
+        morekeywords={xlim,ylim,var,alpha,factorial,poissrnd,normpdf,normcdf, quadprog, fmincon, fminunc},
+        %
+        %%% Put MATLAB function parameters here
+        morekeywords=[2]{on, off, interp},
+        %
+        %%% Put user defined functions here
+        morekeywords=[3]{confunNeqG},
+        %
+        morecomment=[l][\color{Blue}]{...},     % Line continuation (...) like blue comment
+        inputencoding=latin1
+        }
+        \lstset{literate=%
+        {Ö}{{\"O}}1
+        {Ä}{{\"A}}1
+        {Ü}{{\"U}}1
+        {ß}{{\ss}}1
+        {ü}{{\"u}}1
+        {ä}{{\"a}}1
+        {ö}{{\"o}}1
+      }
+
 \begin{document}
 
 \begin{center}
@@ -156,17 +197,67 @@ $$\nabla P(x, r) = \begin{bmatrix}-2x_1 - x_2 - x_3\\-4x_2-x_1\\-2x_3-x_1\end{bm
     \textbf{Schritt} & \textbf{$x$} & \textbf{$P(x)$}\\
     \hline
     1 & $[25.00, 35.00, 45.00]^T$ & $3.9308\cdot 10^{10}$\\
-    $\vdots$ & $\vdots$ & $\vdots$\\
     10 & $[-10.18, -13.95, -15.62]^T$ & $0.1157\cdot 10^{10}$\\
-    $\vdots$ & $\vdots$ & $\vdots$\\
     25 & $[3.16, 4.81, 4.06]^T$ & $1.2063 \cdot 10^7$\\
-    $\vdots$ & $\vdots$ & $\vdots$\\
-    100 & $[1.53, 0.95, 4.43]^T$ & $1.3411\cdot 10^4$
+    100 & $[1.53, 0.95, 4.43]^T$ & $1.3411\cdot 10^4$\\
+    500 & $[2.75, 0.35, 4.16]^T$ & $962.49$\\
+    961 & $[3.51, 0.22, 3.55]^T$ & $961.72$\\
+    \hline
   \end{tabular}
-  \caption{Verlauf von \lstinline[basicstyle=\ttfamily\color{black}]|BFGS_Pen|}
+  \caption{Verlauf von \lstinline[basicstyle=\ttfamily\color{black}]|BFGS_Pen| mit $r = 5000$ und Genauigkeit $10^{-6}$}
 \end{figure}
 
+Mit Matlab
 
+\begin{figure}[H]
+  \centering
+  \def\arraystretch{1.25}
+  \begin{tabular}{l|c|r}
+    \hline
+    \textbf{Schritt} & \textbf{$x$} & \textbf{$P(x)$}\\
+    \hline
+    1 & $[25.00, 35.00, 45.00]^T$ & $3.9308\cdot 10^{10}$\\
+    3 & k.A. & $1.5288\cdot 10^9$\\
+    5 & k.A. & $1.5364\cdot 10^8$\\
+    7 & k.A. & $9.2605\cdot 10^6$\\
+    10 & k.A. & $35476$\\
+    19 & $[1.29, 0.89, 4.75]^T$ & $968.92$\\
+    \hline
+  \end{tabular}
+  \caption{Verlauf von \lstinline[basicstyle=\ttfamily\color{black}]|fminunc| mit $r = 5000$ und\\
+  \lstinline[basicstyle=\ttfamily\color{black}]|OptimalityTolerance = 1e-6|}
+\end{figure}
+
+Für \lstinline[basicstyle=\ttfamily\color{black}]|fmincon| benötigt man eine extra Matlab-Funktion:
+
+\begin{lstlisting}
+% Gleichheitsbedingungen aus Aufgabe 2 für fmincon
+function [c,ceq] = confuneqF(h1, h2, x)
+    % Nonlinear inequality constraints
+    c = [];
+    % Nonlinear equality constraints
+    ceq = [h1(x), h2(x)];
+end\end{lstlisting}
+
+um die Funktion letztendlich so aufzurufen:\par
+\lstinline|fmincon(f,x0,[],[],[],[],[],[], confuneqF, options)|
+
+Zusammengefasst:
+
+\begin{figure}[H]
+  \centering
+  \def\arraystretch{1.25}
+  \begin{tabular}{l|c|c|c|r}
+    \hline
+    \textbf{Funktion} & \textbf{Endergebnis} & \textbf{Genauigkeit} & \textbf{Anzahl Schritte} & \textbf{$f(x)$}\\
+    \hline
+    \lstinline|BFGS| & $[3.51, 0.22, 3.55]^T$ & $10^{-6}$ & 961 & $961.72$\\
+    \lstinline|fminunc| & $[1.29, 0.89, 4.75]^T$ & $10^{-6}$ & 19 & $966.92$ \\
+    \lstinline|fmincon| & $[0.33, 4.68, -1.73]$ & $10^{-6}$ & 10 &$952.14$\\
+    \hline
+  \end{tabular}
+  \caption{Ergebnisse für alle betrachteten Funktionen}
+\end{figure}
 
 \subsubsection{Aufgabe 4}
 
@@ -221,7 +312,8 @@ lässt sich so graphisch darstellen:
     \fill[opacity=0.125, blue] (1.6, -3.014) -- (-1.6, 0.18579) -- (-1.6, 3.014) -- (1.6, -0.18579) -- cycle;
 
   \end{tikzpicture}
-  \caption{Graphische Darstellung der Zielfunktion und Nebenbedingungen, gültige Punkte müssen in der Schnittmenge aus Blau und Orange liegen}
+  \caption{Graphische Darstellung der Zielfunktion und Nebenbedingungen als Scheibe und Fläche, gültige Punkte müssen in der Schnittmenge
+    aus Blau und Orange liegen}
 \end{figure}
 
 Anhand der Lagrange-Funktion:
@@ -345,7 +437,8 @@ Da $\lambda_1$ für $\gamma \neq \pm \sqrt{2}$ immer negativ ist, ist dies kein 
     \draw[-{Latex}] (0, 0) -- node[font=\tiny, above=-0.1cm] {$\nabla f$} (1,0);
 
   \end{tikzpicture}
-  \caption{Graphische Darstellung der Zielfunktion und Nebenbedingungen, gültige Punkte liegen auf der Schnittmenge zwischen Kreis und blauen Linien}
+  \caption{Graphische Darstellung der Zielfunktion und Nebenbedingungen als Kreis und Gerade, gültige Punkte liegen auf der Schnittmenge
+    zwischen oranger und den blauen Linien}
 \end{figure}
 
 Anhand der Lagrange-Funktion:
@@ -406,46 +499,6 @@ $$g_2(x) = x_1 + x_2 \leq 1$$
 mit dem Matlab-Befehl \lstinline[basicstyle=\ttfamily\color{black}]|fmincon| indem man die Ungleichungsnebenbedingungen in einer separaten Funktion
 definiert:
 
-% This is the color used for MATLAB comments below
-\definecolor{MyDarkGreen}{rgb}{0.0,0.4,0.0}
-
-% For faster processing, load Matlab syntax for listings
-\lstloadlanguages{Matlab}%
-\lstset{language=Matlab,                        % Use MATLAB
-        frame=single,                           % Single frame around code
-        basicstyle=\scriptsize\ttfamily,             % Use small true type font
-        keywordstyle=[1]\color{Blue}\bfseries,        % MATLAB functions bold and blue
-        keywordstyle=[2]\color{Purple},         % MATLAB function arguments purple
-        keywordstyle=[3]\color{Blue}\underbar,  % User functions underlined and blue
-        identifierstyle=,                       % Nothing special about identifiers
-                                                % Comments small dark green courier
-        commentstyle=\usefont{T1}{pcr}{m}{sl}\color{MyDarkGreen}\scriptsize,
-        stringstyle=\color{Purple},             % Strings are purple
-        showstringspaces=false,                 % Don't put marks in string spaces
-        tabsize=5,                              % 5 spaces per tab
-        %
-        %%% Put standard MATLAB functions not included in the default
-        %%% language here
-        morekeywords={xlim,ylim,var,alpha,factorial,poissrnd,normpdf,normcdf, quadprog, fmincon},
-        %
-        %%% Put MATLAB function parameters here
-        morekeywords=[2]{on, off, interp},
-        %
-        %%% Put user defined functions here
-        morekeywords=[3]{confunNeqG},
-        %
-        morecomment=[l][\color{Blue}]{...},     % Line continuation (...) like blue comment
-        inputencoding=latin1
-        }
-        \lstset{literate=%
-        {Ö}{{\"O}}1
-        {Ä}{{\"A}}1
-        {Ü}{{\"U}}1
-        {ß}{{\ss}}1
-        {ü}{{\"u}}1
-        {ä}{{\"a}}1
-        {ö}{{\"o}}1
-      }
 \begin{lstlisting}
   % Ungleichheitsbedingungen aus Aufgabe 4 für fmincon
   function [c,ceq] = confunNeqG(g1, g2, x)
@@ -705,6 +758,8 @@ $$g_4(x) + \nabla g_4(x)^Td \leq 0 \Leftrightarrow \nabla g_4(x)^Td \leq -g_4(x)
 In Matrixschreibweise $A\cdot d = b$
 
 $$\begin{bmatrix}1 & 1\\1 & -1\\-1 & 1\\-1 & -1\end{bmatrix}^T\cdot d \leq -\begin{bmatrix}g_1(x)\\g_2(x)\\g_3(x)\\g_4(x)\end{bmatrix}$$
+
+\newpage
 
 Das Problem wird mit \lstinline[basicstyle=\ttfamily\color{black}]|quadprog| wie folgt gelöst
 (konkrete Implementierung \lstinline[basicstyle=\ttfamily\color{black}]|Projekt_3.m|)

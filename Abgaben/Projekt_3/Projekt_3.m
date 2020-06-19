@@ -39,11 +39,12 @@ fprintf("BFGS_PEN returned x=%s with f(x)=%0.4f and f1(x)=%0.4f, f2(x)=%0.4f\n",
 
 % Lösung mit fmincon
 confunF = @(x) confuneqF(f1, f2, x);
-ret = fmincon(f,x0,[],[],[],[],[],[],confunF);
-fprintf("fmincon returned x=%s with f(x)=%0.4f and f1(x)=%0.4f, f2(x)=%0.4f\n", vec2str(ret), f(ret'), f1(ret'), f2(ret'));
+options = optimoptions("fmincon", "OptimalityTolerance", 1e-6, "MaxFunctionEvaluations", 1e+8, "MaxIterations", max_iters, "Display", "iter-detailed");
+ret = fmincon(f,x0,[],[],[],[],[],[],confunF, options);
+fprintf("fmincon returned x=%s with f(x)=%0.4f and f1(x)=%0.4f, f2(x)=%0.4f\n", vec2str(ret), f(ret'), f1(ret'), f2(ret'), "Display", "iter-detailed");
 
 % Lösung mit fminunc bei festem r
-options = optimoptions("fminunc", "OptimalityTolerance", 1e-6, "MaxFunctionEvaluations", 1e+8, "MaxIterations", max_iters);
+options = optimoptions("fminunc", "OptimalityTolerance", 1e-6, "MaxFunctionEvaluations", 1e+8, "MaxIterations", max_iters, "Display", "iter-detailed");
 pen_f_f = @(x) pen_f(x, r);
 ret = fminunc(pen_f_f, x0, options);
 fprintf("fminunc returned x=%s with f(x)=%0.4f and f1(x)=%0.4f, f2(x)=%0.4f\n", vec2str(ret), f(ret'), f1(ret'), f2(ret'));
