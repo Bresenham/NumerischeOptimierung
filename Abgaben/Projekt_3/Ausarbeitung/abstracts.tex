@@ -113,11 +113,26 @@ $$\begin{bmatrix}-2x_1 - x_2 - x_3\\-4x_2 - x_1\\-2x_3-x_1\end{bmatrix} + \mu_1 
 
 Zudem müssen folgende Zulässigkeiten gelten: $h_1(\hat{x}) = 0, h_2(\hat{x}) = 0$.
 
-Außerdem muss \textit{LICQ} gelten: $\nabla h_1(\hat{x}) + k\cdot \nabla h_2(\hat{x}) = 0$ nur dann wenn $k = 0$ ($\Rightarrow$ linear unabhängig).
+Außerdem muss \textit{LICQ} gelten: $\nabla h_1(\hat{x}), \nabla h_2(\hat{x})$ sind linear unabhängig.
 
 \subsubsection{Aufgabe 2}
 Implementierung siehe \lstinline[basicstyle=\ttfamily\color{black}]|BFGS_Pen.m| und
 \lstinline[basicstyle=\ttfamily\color{black}]|ArmijoPen.m|.
+
+Das Verfahren \textit{Armijo-Regel mit Aufweitung} überprüft zuerst, ob die Armijo-Regel aus dem allgemeinen Verfahren mit der als
+Parameter übergebenen Startschrittweite erfüllt ist. Falls nicht wird die aktuelle Schrittweite solange mit einem Faktor $\beta \in (0, 1)$
+multipliziert, bis die Armijo-Regel erfüllt ist. Sollte dagegen die Armijo-Regel von Anfang an schon erfüllt sein, wird versucht die
+Schrittweite so lange zu vergrößern, bis die Armijo-Regel gerade nicht mehr erfüllt ist. Dadurch verhindert man zu kleine Schrittweiten
+weswegen das normale Armijo-Verfahren auch nicht effizient ist (mit Aufweitung hingegen ist es effizient). Dadurch, dass die als
+Parameter übergebene Schrittweite im BFGS-Verfahren als neue Schrittweite auch für den nächsten Funktionsaufruf von \textit{Armijo-Pen}
+verwendet wird, versucht man schon eine bereits gut passende Schrittweite für den nächsten Schritt zu bekommen.\par
+Im globalen BFGS-Verfahren wird eine Kombination aus verschiedenen Abbruchbedingung gewählt. Zuerst eine Grenze an den Betrag des Gradienten,
+wodurch die Genauigkeit des Ergebnisses festgelegt wird. Außerdem wird eine obere Grenze für die Anzahl der Durchläufe festgelegt.\par
+Anschließend wird überprüft ob mit der Approximation der Hesse-Matrix eine gültige Abstiegsrichtung vorliegt, falls nicht, wird der
+negative Gradient verwendet (anschließend hätte man noch die Matrix B z.B. auf $I$ zurücksetzen können). Mit der Abstiegsrichtung
+wird dann auch die Schrittweite mit dem oben beschriebenen Armijo-Verfahren mit Aufweitung berechnet. Mit Schrittweite und Richtung
+kann der Ergebnisvektor $x$ nun geupdated werden. Zuletzt wird für den nächsten Schritt eine Update-Formel, die auf zweimaliger Anwendung
+von Sherman-Morrison-Woodbury basiert, auf die Hesse-Matrix-Approximation angewendet.
 
 \subsubsection{Aufgabe 3}
 Tests siehe \lstinline[basicstyle=\ttfamily\color{black}]|Projekt_3.m|.
