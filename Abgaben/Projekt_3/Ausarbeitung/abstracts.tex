@@ -339,20 +339,20 @@ definiert:
 \lstloadlanguages{Matlab}%
 \lstset{language=Matlab,                        % Use MATLAB
         frame=single,                           % Single frame around code
-        basicstyle=\small\ttfamily,             % Use small true type font
+        basicstyle=\scriptsize\ttfamily,             % Use small true type font
         keywordstyle=[1]\color{Blue}\bfseries,        % MATLAB functions bold and blue
         keywordstyle=[2]\color{Purple},         % MATLAB function arguments purple
         keywordstyle=[3]\color{Blue}\underbar,  % User functions underlined and blue
         identifierstyle=,                       % Nothing special about identifiers
                                                 % Comments small dark green courier
-        commentstyle=\usefont{T1}{pcr}{m}{sl}\color{MyDarkGreen}\small,
+        commentstyle=\usefont{T1}{pcr}{m}{sl}\color{MyDarkGreen}\scriptsize,
         stringstyle=\color{Purple},             % Strings are purple
         showstringspaces=false,                 % Don't put marks in string spaces
         tabsize=5,                              % 5 spaces per tab
         %
         %%% Put standard MATLAB functions not included in the default
         %%% language here
-        morekeywords={xlim,ylim,var,alpha,factorial,poissrnd,normpdf,normcdf},
+        morekeywords={xlim,ylim,var,alpha,factorial,poissrnd,normpdf,normcdf, quadprog},
         %
         %%% Put MATLAB function parameters here
         morekeywords=[2]{on, off, interp},
@@ -588,7 +588,7 @@ mit $f(x_1, x_2) \cong 0.87687$
 \subsubsection{Aufgabe 9}
 Betrachtet wird das Problem
 
-$$\text{min } (x_1 - 1.5)^2 + (x_2 - 0.75)^4$$
+$$\text{min } g(x) = (x_1 - 1.5)^2 + (x_2 - 0.75)^4$$
 
 unter den Nebenbedingungen
 
@@ -607,7 +607,7 @@ $$+\lambda_4(-1-x_1-x_2)$$
 
 Für das SQP-Verfahren benötigt man sowohl den Gradienten der Zielfunktion als auch den der Lagrange-Funktion:
 
-$$\nabla f(x) = \begin{bmatrix}2(x_1 - 1.5)\\4(x_2 - 0.75)^3\end{bmatrix} \text{  } \nabla L = \begin{bmatrix}2(x_1 - 1.5) + \lambda_1 + \lambda_2 - \lambda_3 - \lambda_4\\4(x_2 - 0.75)^3 + \lambda_1 - \lambda_2 + \lambda_3 - \lambda_4\end{bmatrix}$$
+$$\nabla g(x) = \begin{bmatrix}2(x_1 - 1.5)\\4(x_2 - 0.75)^3\end{bmatrix} \text{  } \nabla L = \begin{bmatrix}2(x_1 - 1.5) + \lambda_1 + \lambda_2 - \lambda_3 - \lambda_4\\4(x_2 - 0.75)^3 + \lambda_1 - \lambda_2 + \lambda_3 - \lambda_4\end{bmatrix}$$
 
 und weiterhin auch die Hesse-Matrix der Lagrange-Funktion
 
@@ -619,7 +619,7 @@ $$\nabla g_1 = \begin{bmatrix}1\\1\end{bmatrix} \text{  } \nabla g_2 = \begin{bm
 
 Mit $B = \nabla^2L$ kann man das quadratische Hilfsproblem aufstellen:
 
-$$\text{min }\nabla f(x)^Td + \frac{1}{2}d^TBd$$
+$$\text{min }\nabla g(x)^Td + \frac{1}{2}d^TBd$$
 
 unter den Nebenbedingungen
 
@@ -627,5 +627,33 @@ $$g_1(x) + \nabla g_1(x)^Td \leq 0 \Leftrightarrow \nabla g_1(x)^Td \leq -g_1(x)
 $$g_2(x) + \nabla g_2(x)^Td \leq 0 \Leftrightarrow \nabla g_2(x)^Td \leq -g_2(x)$$
 $$g_3(x) + \nabla g_3(x)^Td \leq 0 \Leftrightarrow \nabla g_3(x)^Td \leq -g_3(x)$$
 $$g_4(x) + \nabla g_4(x)^Td \leq 0 \Leftrightarrow \nabla g_4(x)^Td \leq -g_4(x)$$
+
+In Matrixschreibweise $A\cdot d = b$
+
+$$\begin{bmatrix}1 & 1\\1 & -1\\-1 & 1\\-1 & -1\end{bmatrix}^T\cdot d \leq -\begin{bmatrix}g_1(x)\\g_2(x)\\g_3(x)\\g_4(x)\end{bmatrix}$$
+
+Das Problem wird mit \lstinline[basicstyle=\ttfamily\color{black}]|quadprog| wie folgt gelöst
+(konkrete Implementierung \lstinline[basicstyle=\ttfamily\color{black}]|Projekt_3.m|)
+
+\begin{lstlisting}
+  g1 = @(x) -1 + x(1) + x(2);
+  g2 = @(x) -1 + x(1) - x(2);
+  g3 = @(x) -1 - x(1) + x(2);
+  g4 = @(x) -1 - x(1) - x(2);
+
+  g_deriv = @(x) [2 * ( x(1) - 1.5 ); 4 * ( x(2) - 0.75).^3];
+  g_hessian = @(x) [ 2, 0; 0, 12 * ( x(2) - 0.75).^2 ];
+  
+  x0 = [0; 0];
+  n = x0;
+  
+  b = -[g1(n), g2(n), g3(n), g4(n)];
+  A = [1, 1; 1, -1; -1, 1; -1, -1];
+
+  ret = quadprog(g_hessian(n), g_deriv(n), A, b);
+  
+  n = n + ret;\end{lstlisting}
+
+Nach dem 1. Schritt erhält man $n = \begin{bmatrix}0.9214\\0.0786\end{bmatrix}$ mit $g(n) = 0.5380$.
 
 \end{document}

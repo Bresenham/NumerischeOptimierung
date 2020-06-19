@@ -106,8 +106,7 @@ grad_g = [1, 1; 1, -1; -1, 1; -1, -1];
 ret = quadprog(m_hessian(n), m_deriv(n), grad_g, -g);
 
 n = n + ret;
-disp(n);
-
+fprintf("quadprog returned x=%s with g(x)=%0.4f and g1(x) = %0.4f, g2(x) = %0.4f, g3(x) = %0.4f, g4(x) = %0.4f\n", vec2str(n), m(n), m1(n), m2(n), m3(n), m4(n));
 
 % Aufgabe 10
 
