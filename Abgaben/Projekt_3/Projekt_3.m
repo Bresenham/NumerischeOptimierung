@@ -78,7 +78,7 @@ fprintf("fmincon returned x=%s with g(x)=%0.4f and g1(x)=%0.4f, g2(x)=%0.4f\n", 
 % Aufgabe 8
 % Siehe PDF
 
-t = 1;
+t = 0.75;
 m = @(x) ( x(1) - 1.5 ).^2 + ( x(2) - t ).^4;
 m1 = @(x) -1 + x(1) + x(2);
 m2 = @(x) -1 + x(1) - x(2);
@@ -86,10 +86,28 @@ m3 = @(x) -1 - x(1) + x(2);
 m4 = @(x) -1 - x(1) - x(2);
 
 conNeqM = @(x) confunNeqM(m1, m2, m3, m4, x);
-fmincon(m, [2; 3], [], [], [], [], [], [], conNeqM);
+ret = fmincon(m, [2; 3], [], [], [], [], [], [], conNeqM);
+fprintf("fmincon returned x=%s with m(x)=%0.4f and m1(x)=%0.4f, m2(x)=%0.4f, m3(x)=%0.4f, m4(x)=%0.4f\n", vec2str(ret), m(ret), m1(ret), m2(ret), m3(ret), m4(ret));
 
 % Aufgabe 9
 % Siehe PDF
+
+m_deriv = @(x) [2 * ( x(1) - 1.5 ); 4 * ( x(2) - 0.75).^3];
+m_hessian = @(x) [ 2, 0; 0, 12 * ( x(2) - 0.75).^2 ];
+
+x0 = [0; 0];
+n = x0;
+
+g = [m1(n), m2(n), m3(n), m4(n)];
+grad_g = [1, 1; 1, -1; -1, 1; -1, -1];
+
+% m_f = @(x) m_deriv(n)' * x + 0.5 * (x') * m_hessian(n) * x;
+% ret = fmincon(m_f, zeros(2,1), grad_g, -g);
+ret = quadprog(m_hessian(n), m_deriv(n), grad_g, -g);
+
+n = n + ret;
+disp(n);
+
 
 % Aufgabe 10
 
