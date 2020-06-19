@@ -86,6 +86,34 @@
 \newpage
 
 \subsubsection{Aufgabe 1}
+Für das Problem
+
+$$\text{min } f(x) = 1000 - x_1^2 - 2x_2^2 - x_3^2 - x_1x_2 - x_1x_3$$
+
+unter den Nebenbedingungen
+
+$$h_1(x) = x_1^2 + x_2^2 + x_3^2 - 25 = 0$$
+$$h_2(x) = 8x_1 + 14x_2 - 7x_3 - 56 = 0$$
+
+kann man die Lagrange-Funktion aufstellen
+
+$$L(x, \mu) = 1000 - x_1^2 - 2x_2^2 - x_3^2 - x_1x_2 - x_1x_3 + \mu_1 (x_1^2 + x_2^2 + x_3^2 - 25) + \mu_2 (8x_1 + 14x_2 - 7x_3 - 56)$$
+
+sowie deren Ableitung bestimmen
+
+$$\nabla L = \nabla f(x) + \mu_1\nabla h_1(x) + \mu_2 \nabla h_2(x)$$
+
+mit
+
+$$\nabla f(x) = \begin{bmatrix}-2x_1 - x_2 - x_3\\-4x_2 - x_1\\-2x_3-x_1\end{bmatrix} \text{  } \nabla h_1(x) = \begin{bmatrix}2_x1\\2x_2\\2x_3\end{bmatrix} \text{  } \nabla h_2(x) = \begin{bmatrix}8\\14\\7\end{bmatrix}$$
+
+Daraus ergibt sich die Stationaritätsgleichung
+
+$$\begin{bmatrix}-2x_1 - x_2 - x_3\\-4x_2 - x_1\\-2x_3-x_1\end{bmatrix} + \mu_1 \begin{bmatrix}2x_1\\2x_2\\2x_3\end{bmatrix} + \mu_2 \begin{bmatrix}8\\14\\7\end{bmatrix} = \begin{bmatrix}0\\0\\0\end{bmatrix}$$
+
+Zudem müssen folgende Zulässigkeiten gelten: $h_1(\hat{x}) = 0, h_2(\hat{x}) = 0$.
+
+Außerdem muss \textit{LICQ} gelten: $\nabla h_1(\hat{x}) + k\cdot \nabla h_2(\hat{x}) = 0$ nur dann wenn $k = 0$ ($\Rightarrow$ linear unabhängig).
 
 \subsubsection{Aufgabe 2}
 Implementierung siehe \lstinline[basicstyle=\ttfamily\color{black}]|BFGS_Pen.m| und
@@ -352,7 +380,7 @@ definiert:
         %
         %%% Put standard MATLAB functions not included in the default
         %%% language here
-        morekeywords={xlim,ylim,var,alpha,factorial,poissrnd,normpdf,normcdf, quadprog},
+        morekeywords={xlim,ylim,var,alpha,factorial,poissrnd,normpdf,normcdf, quadprog, fmincon},
         %
         %%% Put MATLAB function parameters here
         morekeywords=[2]{on, off, interp},
@@ -655,5 +683,30 @@ Das Problem wird mit \lstinline[basicstyle=\ttfamily\color{black}]|quadprog| wie
   n = n + ret;\end{lstlisting}
 
 Nach dem 1. Schritt erhält man $n = \begin{bmatrix}0.9214\\0.0786\end{bmatrix}$ mit $g(n) = 0.5380$.
+
+\subsubsection{Aufgabe 10}
+
+Für die Ungleichungsnebenbedingungen benötigt man eine weitere Funktion in Matlab:
+
+\begin{lstlisting}
+  % Ungleichheitsbedingungen aus Aufgabe 8 für fmincon
+  function [c,ceq] = confunNeqG(g1, g2, g3, g4, x)
+      % Nonlinear inequality constraints
+      c = [g1(x), g2(x), g3(x), g4(x)];
+      % Nonlinear equality constraints
+      ceq = [];
+  end\end{lstlisting}
+
+So dass man das Problem mit Startwert $x^0 = \begin{bmatrix}2\\3\end{bmatrix}$ wie folgt lösen kann
+(konkrete Implementierung siehe \lstinline[basicstyle=\ttfamily\color{black}]|Projekt_3.m|)
+
+\begin{lstlisting}
+  t = 0.75;
+  g = @(x) ( x(1) - 1.5 ).^2 + ( x(2) - t ).^4;
+
+  options = optimoptions("fmincon", "Algorithm", "sqp");
+  ret = fmincon(g, [2; 3], [], [], [], [], [], [], confunNeqG, options);\end{lstlisting}
+
+Man erhält $x = \begin{bmatrix}0.9141\\0.0859\end{bmatrix}$ mit $g(x)=0.5378$.
 
 \end{document}
