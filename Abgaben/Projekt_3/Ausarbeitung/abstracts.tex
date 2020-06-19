@@ -585,4 +585,47 @@ Bisher wurde kein KKT-Punkt gefunden. Nun werden noch alle Nebenbedingungen einz
 Die Lösung des Systems ist demnach $x_1 \cong 0.72808, x_2 \cong 0.27192$\\
 mit $f(x_1, x_2) \cong 0.87687$
 
+\subsubsection{Aufgabe 9}
+Betrachtet wird das Problem
+
+$$\text{min } (x_1 - 1.5)^2 + (x_2 - 0.75)^4$$
+
+unter den Nebenbedingungen
+
+$$g_1(x) = x_1 + x_1 \leq 1$$
+$$g_2(x) = x_1 - x_1 \leq 1$$
+$$g_3(x) = -x_1 + x_1 \leq 1$$
+$$g_4(x) = -x_1 - x_1 \leq 1$$
+
+mit der Lagrange-Funktion
+
+$$L(x) = (x_1 - 1.5)^2 + (x_2 - 0.75)^4$$
+$$+\lambda_1(-1 + x_1 + x_2)$$
+$$+\lambda_2(-1 + x_1 - x_2)$$
+$$+\lambda_3(-1-x_1+x_2)$$
+$$+\lambda_4(-1-x_1-x_2)$$
+
+Für das SQP-Verfahren benötigt man sowohl den Gradienten der Zielfunktion als auch den der Lagrange-Funktion:
+
+$$\nabla f(x) = \begin{bmatrix}2(x_1 - 1.5)\\4(x_2 - 0.75)^3\end{bmatrix} \text{  } \nabla L = \begin{bmatrix}2(x_1 - 1.5) + \lambda_1 + \lambda_2 - \lambda_3 - \lambda_4\\4(x_2 - 0.75)^3 + \lambda_1 - \lambda_2 + \lambda_3 - \lambda_4\end{bmatrix}$$
+
+und weiterhin auch die Hesse-Matrix der Lagrange-Funktion
+
+$$\nabla^2L = \begin{bmatrix}2 & 0\\0 & 12(x_2 - 0.75)^2\end{bmatrix}$$
+
+Weiterhin benötigt man die Gradienten der Nebenbedingungen:
+
+$$\nabla g_1 = \begin{bmatrix}1\\1\end{bmatrix} \text{  } \nabla g_2 = \begin{bmatrix}1\\-1\end{bmatrix} \text{  } \nabla g_3 = \begin{bmatrix}-1\\1\end{bmatrix} \text{  } \nabla g_4 = \begin{bmatrix}-1\\-1\end{bmatrix}$$
+
+Mit $B = \nabla^2L$ kann man das quadratische Hilfsproblem aufstellen:
+
+$$\text{min }\nabla f(x)^Td + \frac{1}{2}d^TBd$$
+
+unter den Nebenbedingungen
+
+$$g_1(x) + \nabla g_1(x)^Td \leq 0 \Leftrightarrow \nabla g_1(x)^Td \leq -g_1(x)$$
+$$g_2(x) + \nabla g_2(x)^Td \leq 0 \Leftrightarrow \nabla g_2(x)^Td \leq -g_2(x)$$
+$$g_3(x) + \nabla g_3(x)^Td \leq 0 \Leftrightarrow \nabla g_3(x)^Td \leq -g_3(x)$$
+$$g_4(x) + \nabla g_4(x)^Td \leq 0 \Leftrightarrow \nabla g_4(x)^Td \leq -g_4(x)$$
+
 \end{document}
