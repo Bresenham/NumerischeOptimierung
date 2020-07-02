@@ -188,4 +188,45 @@ gelten die Ableitungen
 $$ \nabla g(x_1, x_2) = \begin{bmatrix} 400x_1^3 - 400x_1x_2 + 2x_1 - 2\\200(x_2 - x_1^2)\end{bmatrix} $$
 $$ H_g(x_1, x_2) = \begin{bmatrix} 800x_1^2 - 400(x_2-x_1^2) + 2 & -400x_1\\-400x_1 & 200 \end{bmatrix} $$
 
+\begin{figure}[H]
+  \centering
+  \def\arraystretch{1.25}
+  \begin{tabular}{l|c|r}
+    \hline
+    \textbf{Schritt} & \textbf{x} & \textbf{$g(x)$}\\
+    \hline
+    1 & $[0.00, 0.00]^T$ & 1.00\\
+    2 & $[0.25, 0.00]^T$ & 0.95\\
+    3 & $[0.31, 0.09]^T$ & 0.48\\
+    4 & $[0.52, 0.22]^T$ & 0.46\\
+    5 & $[0.57, 0.32]^T$ & 0.19\\
+    $\vdots$ & $\vdots$ & $\vdots$\\
+    15 & $[1.00, 1.00]^T$ & $8.21 \cdot 10^{-28}$\\
+    \hline
+  \end{tabular}
+  \caption{Verlauf von \lstinline[basicstyle=\ttfamily\color{black}]|GlobNewton| für $g$ bei einer Genauigkeit von $10^{-12}$}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \def\arraystretch{1.25}
+  \begin{tabular}{l|c|r}
+    \hline
+    \textbf{Schritt} & \textbf{x} & \textbf{$g(x)$}\\
+    \hline
+    1 & $[-1.20, 1.00]^T$ & 24.20\\
+    2 & $[-1.18, 1.38]^T$ & 4.73\\
+    3 & $[-0.93, 0.81]^T$ & 4.09\\
+    4 & $[-0.78, 0.59]^T$ & 3.23\\
+    5 & $[-0.46, 0.11]^T$ & 3.21\\
+    $\vdots$ & $\vdots$ & $\vdots$\\
+    12 & $[1.00, 1.00]^T$ & $4.93 \cdot 10^{-28}$\\
+    \hline
+  \end{tabular}
+  \caption{Verlauf von \lstinline[basicstyle=\ttfamily\color{black}]|GlobNewton| für $g$ bei einer Genauigkeit von $10^{-12}$}
+\end{figure}
+
+\subsubsection{Aufgabe 3}
+
+
 \end{document}
