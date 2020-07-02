@@ -30,3 +30,25 @@ ret = GlobNewton(f_himmel, f_himmel_grad, f_himmel_hessian, x1, tol);
 
 ret = GlobNewton(f_rosen, f_rosen_grad, f_rosen_hessian, x0, tol);
 ret = GlobNewton(f_rosen, f_rosen_grad, f_rosen_hessian, x1, tol);
+
+% Aufgabe 3
+% Siehe PDF Dokument
+
+% Aufgabe 4
+% Siehe PDF Dokument
+
+% Aufgabe 5
+% Siehe PDF Dokument
+
+% Aufgabe 6
+% Siehe PDF Dokument
+
+% Aufgabe 7
+f_func = @(x) -2 * x(1) - 3 * x(2) - 4 * x(3);
+
+f = [-2, -3, -4];
+A = [1, 1, -1; 0, 3, 1; 1, 0, 0; 0, 0, 1];
+b = [4; 5; 2; 3];
+
+options = optimoptions("linprog", "OptimalityTolerance", 1e-8, "Algorithm", "dual-simplex");
+ret = linprog(f, A, b, [], [], [0, 0, 0], []);
