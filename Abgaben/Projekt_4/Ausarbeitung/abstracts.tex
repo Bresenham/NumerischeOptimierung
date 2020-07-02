@@ -158,6 +158,7 @@ $$ H_f(x_1, x_2) = \begin{bmatrix}4(x_1^2 + x_2 - 11) + 8x_1^2 & 4x_1 + 4x_2\\4x
     \hline
   \end{tabular}
   \caption{Verlauf von \lstinline[basicstyle=\ttfamily\color{black}]|GlobNewton| für $f$ bei einer Genauigkeit von $10^{-12}$}
+  \label{convHimmel1}
 \end{figure}
 
 \begin{figure}[H]
@@ -177,6 +178,7 @@ $$ H_f(x_1, x_2) = \begin{bmatrix}4(x_1^2 + x_2 - 11) + 8x_1^2 & 4x_1 + 4x_2\\4x
     \hline
   \end{tabular}
   \caption{Verlauf von \lstinline[basicstyle=\ttfamily\color{black}]|GlobNewton| für $f$ bei einer Genauigkeit von $10^{-12}$}
+  \label{convHimmel2}
 \end{figure}
 
 Für die 2D Rosenbrock-Funktion
@@ -227,6 +229,23 @@ $$ H_g(x_1, x_2) = \begin{bmatrix} 800x_1^2 - 400(x_2-x_1^2) + 2 & -400x_1\\-400
 \end{figure}
 
 \subsubsection{Aufgabe 3}
+Die Hesse-Matrizen der beiden Funktionen $f$ und $g$ ist stetig und kontinuierlich, d.h. es kann in beiden Fällen vom
+Zutreffen der Lipschitz-Bedingung
 
+$$ ||H(x) - H(y)|| \leq L||x-y|| \forall x,y \in R^n$$
+
+ausgegangen werden. Weiterhin enthalten beide Funktionen keine mehrfachen Nullstellen durch die das Newton-Verfahren
+gebremst werden könnte. Aufgrundessen konvergieren beide Funktionen lokal-quadratisch. Global gesehen konvergiert
+das Newton-Verfahren je nach Schrittweitenstrategie (ob effizient oder nicht) entweder gar nicht aufgrund zu kleiner
+Schrittweiten (z.B. normales Armijo-Verfahren) oder zumindest nur superlinearer. Die lokale quadratische Konvergenz
+der Himmelblau-Funktion kann man in (\ref{convHimmel1}) und (\ref{convHimmel2}) zwischen Schritt 3 und 4 bzw. 2 und 3
+gut erkennen.\par
+Bei Quasi-Newton-Verfahren mit approximierter Hesse-Matrix und effizienter Schrittweitenstrategie kann man global gesehen
+von einer superlinearen Konvergenz für beide Funktionen $f$ und $g$ ausgehen. Broyden \textit{et al.} haben 1973
+in \textit{On the Local and Superlinear Convergence of Quasi-Newton Methods} gezeigt, dass die Fehler in der Approximation
+von $H_k$ begrenzt sind und sich nicht unbeschränkt erhöhen.\par
+Weiterhin sind beide Funktionen nicht quadratischer Natur ansonsten könnte die Schrittweite ggf. exakt berechnet werden.
+
+\subsubsection{Aufgabe 4}
 
 \end{document}
