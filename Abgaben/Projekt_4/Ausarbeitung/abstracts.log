@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.6.29) (preloaded format=pdflatex 2020.7.1)  2 JUL 2020 14:27
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.6.29) (preloaded format=pdflatex 2020.7.1)  2 JUL 2020 15:22
 entering extended mode
 **c:/Users/test/Documents/Studium/NumerischeOptimierung/Abgaben/Projekt_4/Ausarbeitung/abstracts.tex
 (c:/Users/test/Documents/Studium/NumerischeOptimierung/Abgaben/Projekt_4/Ausarbeitung/abstracts.tex
@@ -826,34 +826,65 @@ LaTeX Font Info:    Font shape `T1/cantarell-TLF/m/n' will be
 {C:/Users/test/AppData/Local/MiKTeX/pdftex/config/pdftex.map}]
 LaTeX Font Info:    Font shape `T1/cantarell-TLF/b/n' will be
 (Font)              scaled to size 12.0pt on input line 129.
-
+LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 130.
+ (C:\Users\test\AppData\Local\Programs\MiKTeX\tex/latex/base\t1cmtt.fd
+File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
+)
+Package csquotes Info: Input encoding change on input line 130.
+ (C:\Users\test\AppData\Local\Programs\MiKTeX\tex/latex/base\latin1.def
+File: latin1.def 2018/08/11 v1.3c Input encoding file
+)
+Package csquotes Info: Input encoding change on input line 133.
+ (C:\Users\test\AppData\Local\Programs\MiKTeX\tex/latex/base\latin1.def
+File: latin1.def 2018/08/11 v1.3c Input encoding file
+)
+LaTeX Font Info:    Trying to load font information for U+eur on input line 137.
+ (C:\Users\test\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\ueur.fd
+File: ueur.fd 2013/01/14 v3.01 Euler Roman
+)
+LaTeX Font Info:    Trying to load font information for U+msa on input line 137.
+ (C:\Users\test\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 137.
+ (C:\Users\test\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+Package csquotes Info: Input encoding change on input line 160.
+ (C:\Users\test\AppData\Local\Programs\MiKTeX\tex/latex/base\latin1.def
+File: latin1.def 2018/08/11 v1.3c Input encoding file
+)
+Package csquotes Info: Input encoding change on input line 179.
+ (C:\Users\test\AppData\Local\Programs\MiKTeX\tex/latex/base\latin1.def
+File: latin1.def 2018/08/11 v1.3c Input encoding file
+) [2]
 
 Package movie15 Warning: @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 (movie15)                @@ Package `movie15' is obsolete and @@
 (movie15)                @@ superseded by `media9'.           @@
 (movie15)                @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@.
 
-[2]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 132.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 132.
+[3]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 191.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 191.
  (c:/Users\test\Documents\Studium\NumerischeOptimierung\Abgaben\Projekt_4\Ausarbeitung\abstracts.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 132.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 132.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 191.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 191.
 Package rerunfilecheck Info: File `abstracts.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 25965 strings out of 480790
- 519399 string characters out of 2897771
- 1032683 words of memory out of 3000000
- 41410 multiletter control sequences out of 15000+200000
- 535905 words of font info for 32 fonts, out of 3000000 for 9000
+ 26914 strings out of 480790
+ 530311 string characters out of 2897771
+ 1040683 words of memory out of 3000000
+ 42318 multiletter control sequences out of 15000+200000
+ 541414 words of font info for 53 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 60i,5n,118p,914b,408s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Users/test/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/cantarell/a_5r5lpu.enc}<C:/Users/test/AppData/Local/Programs/MiKTeX/fonts/type1/gnome/cantarell/Cantarell-Bold.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX/fonts/type1/gnome/cantarell/Cantarell-Regular.pfb>
-Output written on c:/Users\test\Documents\Studium\NumerischeOptimierung\Abgaben\Projekt_4\Ausarbeitung\abstracts.pdf (2 pages, 38551 bytes).
+ 60i,11n,118p,914b,2038s stack positions out of 5000i,500n,10000p,200000b,50000s
+ <C:\Users\test\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1200.pk>{C:/Users/test/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/cantarell/a_5r5lpu.enc}<C:/Users/test/AppData/Local/Programs/MiKTeX/fonts/type1/gnome/cantarell/Cantarell-Bold.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX/fonts/type1/gnome/cantarell/Cantarell-Regular.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
+Output written on c:/Users\test\Documents\Studium\NumerischeOptimierung\Abgaben\Projekt_4\Ausarbeitung\abstracts.pdf (3 pages, 114323 bytes).
 PDF statistics:
- 52 PDF objects out of 1000 (max. 8388607)
- 4 named destinations out of 1000 (max. 500000)
+ 110 PDF objects out of 1000 (max. 8388607)
+ 8 named destinations out of 1000 (max. 500000)
  109 words of extra memory for PDF output out of 10000 (max. 10000000)
 

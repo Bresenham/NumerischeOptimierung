@@ -127,6 +127,65 @@
 \newpage
 
 \subsubsection{Aufgabe 1}
+Siehe \lstinline[basicstyle=\ttfamily\color{black}]|GlobNewton.m|.
 
+\subsubsection{Aufgabe 2}
+Siehe auch \lstinline[basicstyle=\ttfamily\color{black}]|Projekt_4.m|.\par
+
+Für die Himmelblau-Funktion
+
+$$ f(x_1, x_2) = (x_1^2 + x_2 - 11)^2 + (x_1 + x_2^2 - 7)^2 $$
+
+gelten folgende Ableitungen
+
+$$ \nabla f(x_1, x_2) = \begin{bmatrix}2(x_1^2 + x_2 - 11)\cdot 2x_1 + 2 (x_1 + x_2^2 - 7)\\2(x_1^2 + x_2 - 11) + 2(x_1 + x_2^2 - 7)\cdot 2x_2\end{bmatrix} $$
+$$ H_f(x_1, x_2) = \begin{bmatrix}4(x_1^2 + x_2 - 11) + 8x_1^2 & 4x_1 + 4x_2\\4x_1 + 4x_2 & 4 (x_1 + x_2^2 - 7) + 8x_2^2\end{bmatrix} $$
+
+\begin{figure}[H]
+  \centering
+  \def\arraystretch{1.25}
+  \begin{tabular}{l|c|r}
+    \hline
+    \textbf{Schritt} & \textbf{x} & \textbf{$f(x)$}\\
+    \hline
+    1 & $[0.00, 0.00]^T$ & 170.0\\
+    2 & $[1.75, 2.75]^T$ & 32.26\\
+    3 & $[3.76, 2.22]^T$ & 31.69\\
+    4 & $[3.19, 1.96]^T$ & 1.31\\
+    5 & $[3.02, 1.99]^T$ & 0.01\\
+    $\vdots$ & $\vdots$ & $\vdots$\\
+    15 & $[3.00, 2.00]^T$ & $1.10 \cdot 10^{-26}$\\
+    \hline
+  \end{tabular}
+  \caption{Verlauf von \lstinline[basicstyle=\ttfamily\color{black}]|GlobNewton| für $f$ bei einer Genauigkeit von $10^{-12}$}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \def\arraystretch{1.25}
+  \begin{tabular}{l|c|r}
+    \hline
+    \textbf{Schritt} & \textbf{x} & \textbf{$f(x)$}\\
+    \hline
+    1 & $[-1.20, 1.00]^T$ & 125.11\\
+    2 & $[-2.87, 3.87]^T$ & 27.30\\
+    3 & $[-2.80, 3.29]^T$ & 1.05\\
+    4 & $[-2.80, 3.14]^T$ & 0.00\\
+    5 & $[-2.81, 3.13]^T$ & $9.83 \cdot 10^{-7}$\\
+    $\vdots$ & $\vdots$ & $\vdots$\\
+    12 & $[-2.81, 3.13]^T$ & $4.10 \cdot 10^{-29}$\\
+    \hline
+  \end{tabular}
+  \caption{Verlauf von \lstinline[basicstyle=\ttfamily\color{black}]|GlobNewton| für $f$ bei einer Genauigkeit von $10^{-12}$}
+\end{figure}
+
+Für die 2D Rosenbrock-Funktion
+
+$$ g(x_1, x_2) = 100(x_2 - x_1^2)^2 + (1 - x_1)^2 $$
+
+gelten die Ableitungen
+
+$$ \nabla g(x_1, x_2) = \begin{bmatrix} 400x_1^3 - 400x_1x_2 + 2x_1 - 2\\200(x_2 - x_1^2)\end{bmatrix} $$
+$$ H_g(x_1, x_2) = \begin{bmatrix} 800x_1^2 - 400(x_2-x_1^2) + 2 & -400x_1\\-400x_1 & 200 \end{bmatrix} $$
 
 \end{document}
