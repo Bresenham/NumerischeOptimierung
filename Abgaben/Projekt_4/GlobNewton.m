@@ -14,6 +14,8 @@ function ret = GlobNewton(f, grad, hessian, x0, tol)
     
     k = 1;
     kmax = 1000;
+    
+    ret = struct("x", x, "f", f(x), "gradient", grad(x), "hessian", hessian(x));
 
     while norm(grad(x)) > tol && k < kmax
        
@@ -31,8 +33,8 @@ function ret = GlobNewton(f, grad, hessian, x0, tol)
         
         k = k + 1;
         
+        ret = [ ret; struct("x", x, "f", f(x), "gradient", grad(x), "hessian", hessian(x)) ];
+        
     end
-    
-    ret = x;
 
 end
