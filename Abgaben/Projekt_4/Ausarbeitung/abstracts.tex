@@ -342,6 +342,35 @@ berechnen und das Tableau aufstellen (Pivot-Element farbig hinterlegt):
   \end{tabular}
 \end{figure}
 
+Es werden also die Elemente $x_7$ und $x_6$ getauscht. Daraus entstehen die neuen Index-Mengen
+$B = \{1, 3, 5, 6\}$ und $N=\{2, 4, 7\}$
 
+Daraus lässt sich wieder bestimmen
+
+$$ A_B = \begin{bmatrix} 1 & 1 & 0 & 0\\0 & 1 & 1 & 0\\1 & 0 & 0 & 1\\0 & 1 & 0 & 0 \end{bmatrix} A_N = \begin{bmatrix} 1 & 1 & 0\\3 & 0 & 0\\0 & 0 & 0\\0 & 0 & 1 \end{bmatrix} A_B^{-1} = \begin{bmatrix} 1 & 0 & 0 & -1\\0 & 0 & 0 & 1\\0 & 1 & 0 & -1\\-1 & 0 & 1 & 1 \end{bmatrix} $$
+
+und draus wiederum
+
+$$ \Gamma = A_B^{-1}A_N = \begin{bmatrix} 1 & 0 & -1\\0 & 0 & 1\\0 & 1 & -1\\-1 & 0 & 1 \end{bmatrix} \beta_B = A_B^{-1}b = \begin{bmatrix} 1\\3\\3\\1 \end{bmatrix} $$
+
+Mit $c_B = \begin{bmatrix} -2\\-4\\0\\0 \end{bmatrix}, c_N = \begin{bmatrix} -3\\0\\0 \end{bmatrix} $ kann man bestimmen $\xi = \Gamma^Tc_B - c_N = \begin{bmatrix} 1\\0\\-2 \end{bmatrix}$
+und daraus das neue Tableau aufstellen
+
+\begin{figure}[H]
+  \centering
+  \def\arraystretch{1.25}
+  \begin{tabular}{l|c c c|c|c}
+    & $x_2$ & $x_4$ & $x_7$ & &\\
+    \hline
+    $x_1$ & 1 & 0 & -1 & 1 & \\
+    $x_3$ & 0 & 0 & 1 & 3 & \\
+    $x_5$ & 0 & 1 & -1 & 3 & \\
+    $x_6$ & -1 & 0 & 1 & 1 & \\
+    \hline
+    & 1 & 0 & -2 & -14 &
+  \end{tabular}
+\end{figure}
+
+Aktuell ist $x = \begin{bmatrix} 1\\0\\3\\0\\3\\1\\0 \end{bmatrix}$ mit $f(x) = -14$.
 
 \end{document}
