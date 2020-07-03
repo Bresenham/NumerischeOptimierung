@@ -19,13 +19,17 @@
 \usepackage{helvet}
 \usepackage[eulergreek]{sansmath}
 \usepackage{amsfonts}
-\usepackage{movie15}
+\usepackage{media9}
 \usepackage{url}
 \usepackage{lscape}
 \usepackage{changepage}
 \usepackage[usenames,dvipsnames]{color}
 \usepackage{matlab-prettifier}
 \lstset{style=Matlab-editor}
+
+\usepackage{pifont}% http://ctan.org/pkg/pifont
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
 
 \usepackage{tikz}
 \usetikzlibrary{calc,positioning,shapes,decorations.pathreplacing}
@@ -232,20 +236,64 @@ $$ H_g(x_1, x_2) = \begin{bmatrix} 800x_1^2 - 400(x_2-x_1^2) + 2 & -400x_1\\-400
 Die Hesse-Matrizen der beiden Funktionen $f$ und $g$ ist stetig und kontinuierlich, d.h. es kann in beiden Fällen vom
 Zutreffen der Lipschitz-Bedingung
 
-$$ ||H(x) - H(y)|| \leq L||x-y|| \forall x,y \in R^n$$
+$$ ||H(x) - H(y)|| \leq L||x-y|| \text{  } \forall x,y \in R^n$$
 
 ausgegangen werden. Weiterhin enthalten beide Funktionen keine mehrfachen Nullstellen durch die das Newton-Verfahren
-gebremst werden könnte. Aufgrundessen konvergieren beide Funktionen lokal-quadratisch. Global gesehen konvergiert
-das Newton-Verfahren je nach Schrittweitenstrategie (ob effizient oder nicht) entweder gar nicht aufgrund zu kleiner
-Schrittweiten (z.B. normales Armijo-Verfahren) oder zumindest nur superlinearer. Die lokale quadratische Konvergenz
-der Himmelblau-Funktion kann man in (\ref{convHimmel1}) und (\ref{convHimmel2}) zwischen Schritt 3 und 4 bzw. 2 und 3
-gut erkennen.\par
+gebremst werden könnte. Aufgrundessen konvergieren beide Funktionen lokal-quadratisch (sollte die Hesse-Matrix eine
+Abstiegsrichtung liefern). Global gesehen konvergiert das Newton-Verfahren je nach Schrittweitenstrategie
+(ob effizient oder nicht) und Startwert entweder gar nicht aufgrund zu kleiner Schrittweiten (z.B. normales Armijo-Verfahren)
+oder zumindest nur superlinearer. Die lokale quadratische Konvergenz der Himmelblau-Funktion kann man in (\ref{convHimmel1})
+und (\ref{convHimmel2}) zwischen Schritt 3 und 4 bzw. 2 und 3 gut erkennen. Da beide Funktionen nicht quadratisch sind,
+konvergiert das Verfahren nicht in einem einzigen Schritt.\par
 Bei Quasi-Newton-Verfahren mit approximierter Hesse-Matrix und effizienter Schrittweitenstrategie kann man global gesehen
-von einer superlinearen Konvergenz für beide Funktionen $f$ und $g$ ausgehen. Broyden \textit{et al.} haben 1973
+von einer superlinearen Konvergenz für beide Funktionen $f$ und $g$ ausgehen. Im gegensatz zum reinen Newton-Verfahren kann man 
+die Update-Formeln der Hesse-Matrix so wählen, dass eine Abstiegsrichtung entsteht. Broyden \textit{et al.} haben 1973
 in \textit{On the Local and Superlinear Convergence of Quasi-Newton Methods} gezeigt, dass die Fehler in der Approximation
-von $H_k$ begrenzt sind und sich nicht unbeschränkt erhöhen.\par
+von $H_k$ begrenzt sind und sich nicht unbeschränkt erhöhen und daraus die superlineare Konvergenz
+abgeleitet werden kann.\par
 Weiterhin sind beide Funktionen nicht quadratischer Natur ansonsten könnte die Schrittweite ggf. exakt berechnet werden.
 
 \subsubsection{Aufgabe 4}
+
+Das Optimierungsproblem
+
+$$ \text{min } -2x_1 - 3x_2 - 4x_3$$
+
+unter den Nebenbedingungen
+
+\begin{align*} 
+  x_1 + x_2 + x_3 \leq 4\\
+  3x_2 + x_3 \leq 6\\
+  x_1 \leq 2\\
+  x_3 \leq 3\\
+  x_i \geq 0 \text{, } i \in \{1, 2, 3\}
+\end{align*}
+
+hat folgende Normalform
+
+$$ \text{min } -2x_1 - 3x_2 - 4x_3$$
+
+\begin{align*} 
+  x_1 + x_2 + x_3 + x_4 &= 4 \text{  }(I)\\
+  3x_2 + x_3 + x_5 &= 6 \text{  }(II)\\
+  x_1 + x_6 &= 2 \text{  }(III)\\
+  x_3 + x_7 &= 3 \text{  }(IV)\\
+  x_i \geq 0 \text{, } i \in \{1, 2, 3, 4, 5, 6, 7\}
+\end{align*}
+
+\subsubsection{Aufgabe 5}
+
+\begin{figure}[H]
+  \centering
+  \def\arraystretch{1.25}
+  \begin{tabular}{l|c c c c c}
+    & $\begin{bmatrix} 2\\1\\3\\-3\\0\\0\\0 \end{bmatrix}$ & $\begin{bmatrix} 1\\0\\3\\0\\1\\0\\0 \end{bmatrix}$ & $\begin{bmatrix}1\\0\\3\\0\\3\\\\0\end{bmatrix}$ & $\begin{bmatrix}2\\2\\0\\0\\0\\0\\3\end{bmatrix}$ & $\begin{bmatrix}2\\1\\1\\0\\2\\0\\2\end{bmatrix}$\\
+    \hline
+    $I$ & \xmark & & & & \\
+    $II$ & \cmark & & & & \\
+    $III$ & \cmark & & & & \\
+    $IV$ & \cmark & & & & \\
+  \end{tabular}
+\end{figure}
 
 \end{document}

@@ -50,6 +50,6 @@ f = [-2, -3, -4];
 A = [1, 1, -1; 0, 3, 1; 1, 0, 0; 0, 0, 1];
 b = [4; 5; 2; 3];
 
-% primal-simplex ggf. noch ausprobieren
+% primal-simplex ggf. noch ausprobi
 options = optimoptions("linprog", "OptimalityTolerance", 1e-8, "Algorithm", "dual-simplex");
 ret = linprog(f, A, b, [], [], [0, 0, 0], []);
