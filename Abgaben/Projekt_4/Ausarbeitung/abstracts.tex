@@ -302,6 +302,31 @@ sowie nicht alle Nebenbedingungen erfüllt. $x^{(2)}$ erfüllt ebenfalls nicht a
 
 \subsubsection{Aufgabe 6}
 
+Das Optimierungsproblem lässt sich in Matrixschreibweise als lineares Gleichungssystem der Form $Ax = b$ schreiben
 
+$$ \begin{bmatrix}1 & 1 & 1 & 1 & 0 & 0 & 0\\0 & 3 & 1 & 0 & 1 & 0 & 0\\1 & 0 & 0 & 0 & 0 & 1 & 0\\0 & 0 & 1 & 0 & 0 & 0 & 1\end{bmatrix} \cdot x = \begin{bmatrix}4\\6\\2\\3\end{bmatrix} $$
+
+Aus dem angegebenen Basisvektor $x = \begin{bmatrix}2\\0\\2\\0\\4\\0\\1\end{bmatrix}$ kann man die Indexmengen
+$B = \{1, 3, 5, 7\}$ und $N = \{2, 4, 6\}$ ablesen. $B$ enthält die Indizes bei denen $x_i \neq 0$ sind
+während $N$ gerade die Einträge enthält, bei denen $x_i = 0$ sind. Daraus wiederum kann man $A_B$ und $A_N$ bilden
+
+$$ A_B = \begin{bmatrix} 1 & 1 & 0 & 0\\0 & 1 & 1 & 0\\1 & 0 & 0 & 0\\0 & 1 & 0 & 1 \end{bmatrix} A_N = \begin{bmatrix} 1 & 1 & 0\\3 & 0 & 0\\0 & 0 & 1\\0 & 0 & 0 \end{bmatrix} $$
+
+die gerade die Spalten aus $A$ enthalten, die in der jeweiligen Indexmenge angegeben sind.
+
+Mit
+
+$$ A_B^{-1} = \begin{bmatrix} 0 & 0 & 1 & 0\\1 & 0 & -1 & 0\\-1 & 1 & 1 & 0\\-1 & 0 & 1 & 1 \end{bmatrix} $$
+
+kann man nun $\Gamma$ berechnen
+
+$$ \Gamma = A_B^{-1}\cdot A_N = \begin{bmatrix} 0 & 0 & 1\\1 & 1 & -1\\2 & -1 & 1\\-1 & -1 & 1 \end{bmatrix} $$
+
+und $\beta_B = A_B^{-1}\cdot b = \begin{bmatrix} 2\\2\\4\\1 \end{bmatrix}$. Mit zusätzlichem
+$c = \begin{bmatrix} -2\\-3\\-4\\0\\0\\0\\0 \end{bmatrix}$ und $c_B = \begin{bmatrix} -2\\-4\\0\\0 \end{bmatrix}$,
+$c_N = \begin{bmatrix} -3\\0\\0 \end{bmatrix}$ lässt sich $\xi = \Gamma^Tc_B - c_N = \begin{bmatrix} -1\\-4\\2 \end{bmatrix}$
+berechnen und das Tableau aufstellen:
+
+$$  $$
 
 \end{document}
