@@ -47,9 +47,8 @@ ret = GlobNewton(f_rosen, f_rosen_grad, f_rosen_hessian, x1, tol);
 f_func = @(x) -2 * x(1) - 3 * x(2) - 4 * x(3);
 
 f = [-2, -3, -4];
-A = [1, 1, -1; 0, 3, 1; 1, 0, 0; 0, 0, 1];
+A = [1, 1, 1; 0, 3, 1; 1, 0, 0; 0, 0, 1];
 b = [4; 5; 2; 3];
 
-% primal-simplex ggf. noch ausprobieren
 options = optimoptions("linprog", "OptimalityTolerance", 1e-8, "Algorithm", "dual-simplex");
-ret = linprog(f, A, b, [], [], [0, 0, 0], []);
+ret = linprog(f, A, b, [], [], [0, 0, 0], [], options);

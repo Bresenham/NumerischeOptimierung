@@ -88,7 +88,7 @@
         %
         %%% Put standard MATLAB functions not included in the default
         %%% language here
-        morekeywords={xlim,ylim,var,alpha,factorial,poissrnd,normpdf,normcdf, quadprog, fmincon, fminunc},
+        morekeywords={xlim,ylim,var,alpha,factorial,poissrnd,normpdf,normcdf, quadprog, fmincon, fminunc, linprog},
         %
         %%% Put MATLAB function parameters here
         morekeywords=[2]{on, off, interp},
@@ -389,5 +389,27 @@ Selbiges erhält man durch die Update-Formel:
 \end{figure}
 
 Aktuell ist $x = \begin{bmatrix} 1\\0\\3\\0\\3\\1\\0 \end{bmatrix}$ mit $f(x) = -14$.
+
+\subsubsection{Aufgabe 7}
+Wenn man in Matlab definiert
+
+\begin{lstlisting}
+  f = [-2, -3, -4];
+  A = [1, 1, 1; 0, 3, 1; 1, 0, 0; 0, 0, 1];
+  lower_bound = [0, 0, 0];
+  b = [4; 5; 2; 3];\end{lstlisting}
+
+und \lstinline[basicstyle=\ttfamily\color{black}]|linprog| so aufruft
+(\lstinline[basicstyle=\ttfamily\color{black}]|primal-simplex| hat in meiner Version 2020a nicht funktioniert,
+konkrete Implementierung siehe \lstinline[basicstyle=\ttfamily\color{black}]|Projekt_4.m|):
+
+\begin{lstlisting}
+  options = optimoptions("linprog", "OptimalityTolerance", 1e-8,
+            "Algorithm", "dual-simplex");
+  linprog(f, A, b, [], [], lower_bound, [], options);\end{lstlisting}
+
+dann erhält man $x = \begin{bmatrix}\frac{1}{3}\\[6pt]\frac{2}{3}\\[6pt]3\end{bmatrix}$ mit $f(x) = -\frac{44}{3}$.
+
+
 
 \end{document}

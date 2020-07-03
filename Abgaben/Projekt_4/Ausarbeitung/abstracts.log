@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.6.29) (preloaded format=pdflatex 2020.7.1)  3 JUL 2020 14:10
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.6.29) (preloaded format=pdflatex 2020.7.1)  3 JUL 2020 14:22
 entering extended mode
 **c:/Users/test/Documents/Studium/NumerischeOptimierung/Abgaben/Projekt_4/Ausarbeitung/abstracts.tex
 (c:/Users/test/Documents/Studium/NumerischeOptimierung/Abgaben/Projekt_4/Ausarbeitung/abstracts.tex
@@ -893,27 +893,63 @@ LaTeX Font Info:    Font shape `T1/cantarell-TLF/m/it' in size <12> not availabl
 (Font)              Font shape `T1/cantarell-TLF/m/sl' tried instead on input line 250.
 LaTeX Font Info:    Font shape `T1/cantarell-TLF/m/sl' will be
 (Font)              scaled to size 12.0pt on input line 250.
- [4] [5] [6] [7]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 393.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 393.
+ [4] [5] [6]
+LaTeX Font Info:    Font shape `T1/cantarell-TLF/m/n' will be
+(Font)              scaled to size 10.95pt on input line 396.
+Package csquotes Info: Input encoding change on input line 396.
+ (C:\Users\test\AppData\Local\Programs\MiKTeX\tex/latex/base\latin1.def
+File: latin1.def 2018/08/11 v1.3c Input encoding file
+)
+Package csquotes Info: Input encoding change on input line 402.
+ (C:\Users\test\AppData\Local\Programs\MiKTeX\tex/latex/base\latin1.def
+File: latin1.def 2018/08/11 v1.3c Input encoding file
+)
+
+Package xcolor Warning: Incompatible color definition on input line 402.
+
+LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <12> not available
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 402.
+Package csquotes Info: Input encoding change on input line 403.
+(C:\Users\test\AppData\Local\Programs\MiKTeX\tex/latex/base\latin1.def
+File: latin1.def 2018/08/11 v1.3c Input encoding file
+)
+Package csquotes Info: Input encoding change on input line 404.
+ (C:\Users\test\AppData\Local\Programs\MiKTeX\tex/latex/base\latin1.def
+File: latin1.def 2018/08/11 v1.3c Input encoding file
+) [7]
+Package csquotes Info: Input encoding change on input line 406.
+ (C:\Users\test\AppData\Local\Programs\MiKTeX\tex/latex/base\latin1.def
+File: latin1.def 2018/08/11 v1.3c Input encoding file
+)
+
+Package xcolor Warning: Incompatible color definition on input line 407.
+
+LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10.95> not available
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 407.
+
+Package xcolor Warning: Incompatible color definition on input line 409.
+
+[8]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 415.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 415.
  (c:/Users\test\Documents\Studium\NumerischeOptimierung\Abgaben\Projekt_4\Ausarbeitung\abstracts.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 393.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 393.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 415.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 415.
 Package rerunfilecheck Info: File `abstracts.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 27874 strings out of 480790
- 560522 string characters out of 2897771
- 1048226 words of memory out of 3000000
- 43241 multiletter control sequences out of 15000+200000
- 543792 words of font info for 59 fonts, out of 3000000 for 9000
+ 27915 strings out of 480790
+ 561610 string characters out of 2897771
+ 1067226 words of memory out of 3000000
+ 43260 multiletter control sequences out of 15000+200000
+ 544532 words of font info for 61 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 60i,15n,118p,914b,2038s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Users/test/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/cantarell/a_5r5lpu.enc} <C:\Users\test\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1200.pk><C:/Users/test/AppData/Local/Programs/MiKTeX/fonts/type1/gnome/cantarell/Cantarell-Bold.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX/fonts/type1/gnome/cantarell/Cantarell-Regular.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX/fonts/type1/gnome/cantarell/Cantarell-Regular.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX/fonts/type1/urw/zapfding/uzdr.pfb>
-Output written on c:/Users\test\Documents\Studium\NumerischeOptimierung\Abgaben\Projekt_4\Ausarbeitung\abstracts.pdf (7 pages, 163298 bytes).
+ 60i,15n,118p,914b,2039s stack positions out of 5000i,500n,10000p,200000b,50000s
+ <C:\Users\test\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1095.pk>{C:/Users/test/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/cantarell/a_5r5lpu.enc} <C:\Users\test\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1200.pk><C:/Users/test/AppData/Local/Programs/MiKTeX/fonts/type1/gnome/cantarell/Cantarell-Bold.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX/fonts/type1/gnome/cantarell/Cantarell-Regular.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX/fonts/type1/gnome/cantarell/Cantarell-Regular.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX/fonts/type1/urw/zapfding/uzdr.pfb>
+Output written on c:/Users\test\Documents\Studium\NumerischeOptimierung\Abgaben\Projekt_4\Ausarbeitung\abstracts.pdf (8 pages, 182670 bytes).
 PDF statistics:
- 152 PDF objects out of 1000 (max. 8388607)
- 18 named destinations out of 1000 (max. 500000)
+ 221 PDF objects out of 1000 (max. 8388607)
+ 29 named destinations out of 1000 (max. 500000)
  109 words of extra memory for PDF output out of 10000 (max. 10000000)
 
