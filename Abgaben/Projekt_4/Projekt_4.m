@@ -52,3 +52,11 @@ b = [4; 5; 2; 3];
 
 options = optimoptions("linprog", "OptimalityTolerance", 1e-8, "Algorithm", "dual-simplex");
 ret = linprog(f, A, b, [], [], [0, 0, 0], [], options);
+
+% Aufgabe 8
+Q = [2, -2; -2, 4];
+q = [-2; -6];
+U = [0.5, 0.5; -1, 2];
+r = [1, 2];
+
+ret = ActiveSet(Q, q, [], U, [], r, [1; 1]);

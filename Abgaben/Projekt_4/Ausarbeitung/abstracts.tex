@@ -404,8 +404,7 @@ und \lstinline[basicstyle=\ttfamily\color{black}]|linprog| so aufruft
 konkrete Implementierung siehe \lstinline[basicstyle=\ttfamily\color{black}]|Projekt_4.m|):
 
 \begin{lstlisting}
-  options = optimoptions("linprog", "OptimalityTolerance", 1e-8,
-            "Algorithm", "dual-simplex");
+  options = optimoptions("linprog", "OptimalityTolerance", 1e-8, "Algorithm", "dual-simplex");
   linprog(f, A, b, [], [], lower_bound, [], options);\end{lstlisting}
 
 dann erhält man $x = \begin{bmatrix}\frac{1}{3}\\[6pt]\frac{2}{3}\\[6pt]3\end{bmatrix}$ mit $f(x) = -\frac{44}{3}$.
