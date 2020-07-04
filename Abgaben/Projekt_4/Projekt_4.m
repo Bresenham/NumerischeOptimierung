@@ -71,6 +71,9 @@ conNeqG = @(x) confunNeqG(g1, g2, x);
 ret = fmincon(g, x0, [], [], [], [], [0, 0], [], conNeqG);
 disp(ret);
 
+% Aufgabe 9
+% Siehe PDF Dokument
+
 % Ungleichheitsbedingungen aus Aufgabe 8 für fmincon
 function [c,ceq] = confunNeqG(g1, g2, x)
     % Nonlinear inequality constraints

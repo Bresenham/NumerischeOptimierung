@@ -422,7 +422,7 @@ $$ \text{min } f(x) = x_1^2 + 2x_2^2 - 2x_1 - 6x_2 - 2x_1x_2 $$
 unter den Nebenbedingungen
 
 \begin{align*} 
-  \frac{1}{2}x_1 + \frac{1}{2}x_2 &\leq 1 \text{  } (I)\\
+  0.5x_1 + 0.5x_2 &\leq 1 \text{  } (I)\\
   -x_1 + 2x_2 &\leq 2 \text{  } (II)\\
   x_1, x_2 &\geq 0
 \end{align*}
@@ -455,9 +455,8 @@ Für \lstinline[basicstyle=\ttfamily]|fmincon| muss man das Problem so in Matlab
 
   conNeqG = @(x) confunNeqG(g1, g2, x);
   ret = fmincon(g, x0, [], [], [], [], [0, 0], [], conNeqG);
-  disp(ret);
   
-  % Ungleichheitsbedingungen aus Aufgabe 8 für fmincon
+  % Ungleichungsnebenbedingungen aus Aufgabe 8 für fmincon
   function [c,ceq] = confunNeqG(g1, g2, x)
       % Nonlinear inequality constraints
       c = [g1(x), g2(x)];
@@ -468,5 +467,45 @@ Für \lstinline[basicstyle=\ttfamily]|fmincon| muss man das Problem so in Matlab
 und erhält dann das selbe Ergebnis $x = \begin{bmatrix}0.8\\1.2\end{bmatrix}$.
 
 \subsubsection{Aufgabe 9}
+Die quadratische Funktion $f(x) = x_1^2 + 2x_2^2 - 2x_1 - 6x_2 - 2x_1x_2$ kann man umformulieren zu
+
+$$ f(x) = 0.5x^TQx + q^Tx $$
+
+mit $Q = \begin{bmatrix}2, -2\\-2, 4\end{bmatrix}$ und $q = \begin{bmatrix}-2\\-6\end{bmatrix}$.
+
+Die Ungleichungsnebenbedingungen
+
+\begin{align*} 
+  0.5x_1 + 0.5x_2 &\leq 1\\
+  -x_1 + 2x_2 &\leq 2
+\end{align*}
+
+formuliert man um zu (da nach Aufgabenstellung alle aktiv sind)
+
+$$ Ux = r$$
+
+mit $U = \begin{bmatrix}0.5 & 0.5\\-1 & 2\end{bmatrix}$ und $r = \begin{bmatrix}1\\2\end{bmatrix}$.
+
+Damit kann man das KKT-System aufstellen
+
+$$ \begin{bmatrix}Q & U^T\\U & 0\end{bmatrix} \begin{bmatrix}x\\\lambda\end{bmatrix} = \begin{bmatrix}-q\\r\end{bmatrix} $$
+$$ \Leftrightarrow $$
+$$ \begin{bmatrix}2 & -2 & 0.5 & -1\\-2 & 4 & 0.5 & 2\\0.5 & 0.5 & 0 & 0\\-1 & 2 & 0 & 0\end{bmatrix} \cdot \begin{bmatrix}x_1\\x_2\\\lambda_1\\\lambda_2\end{bmatrix} = \begin{bmatrix}2\\6\\1\\2\end{bmatrix} $$
+
+Das Schur-Komplement dieser Matrix erhält man durch eine Multiplikation von links mit
+
+$$ \begin{bmatrix}I & 0\\-UQ^{-1} & I\end{bmatrix} $$
+
+Mit $Q^{-1} = \begin{bmatrix} 1 & 0.5\\ 0.5 & 0.5 \end{bmatrix}$ ergibt sich:
+
+$$ \begin{bmatrix}1 & 0 & 0 & 0\\0 & 1 & 0 & 0\\-0.75 & -0.5 & 1 & 0\\0 & -0.5 & 0 & 1\end{bmatrix} $$
+
+Die Rechnung ist dann folgende
+
+$$ \begin{bmatrix}1 & 0 & 0 & 0\\0 & 1 & 0 & 0\\-0.75 & -0.5 & 1 & 0\\0 & -0.5 & 0 & 1\end{bmatrix} \cdot \begin{bmatrix}2 & -2 & 0.5 & -1\\-2 & 4 & 0.5 & 2\\0.5 & 0.5 & 0 & 0\\-1 & 2 & 0 & 0\end{bmatrix} = \begin{bmatrix} 2 & -2 & 0.5 & -1\\-2 & 4 & 0.5 & 2\\0 & 0 & -0.625 & -0.25\\0 & 0 & -0.25 & -1 \end{bmatrix} $$
+
+Das Schur-Komplement $-UQ^{-1}U^T$ (rechts unten) ist also
+
+$$ \begin{bmatrix} -0.625 & -0.25\\-0.25 & -1 \end{bmatrix} $$
 
 \end{document}
