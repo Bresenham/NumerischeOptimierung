@@ -60,3 +60,21 @@ U = [0.5, 0.5; -1, 2];
 r = [1, 2];
 
 ret = ActiveSet(Q, q, [], U, [], r, [1; 1]);
+disp(ret)
+
+g = @(x) x(1).^2 + 2 * x(2).^2 - 2 * x(1) - 6 * x(2) - 2 * x(1) * x(2);
+g1 = @(x) 0.5 * x(1) + 0.5 * x(2) - 1;
+g2 = @(x) -x(1) + 2 * x(2) - 2;
+
+x0 = [12; 12];
+conNeqG = @(x) confunNeqG(g1, g2, x);
+ret = fmincon(g, x0, [], [], [], [], [0, 0], [], conNeqG);
+disp(ret);
+
+% Ungleichheitsbedingungen aus Aufgabe 8 für fmincon
+function [c,ceq] = confunNeqG(g1, g2, x)
+    % Nonlinear inequality constraints
+    c = [g1(x), g2(x)];
+    % Nonlinear equality constraints
+    ceq = [];
+end
