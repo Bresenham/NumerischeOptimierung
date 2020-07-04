@@ -5,7 +5,7 @@
 % Date: 04.07.2020
 %---------------------------------------------------------------
 
-function ret = ActiveSet(Q, q, G, U_ext, b, r, x0)
+function ret = ActiveSet(Q, q, G, U, b, r, x0)
 
     f = @(x) 0.5 * (x') * Q * x + (q') * x;
     gradient = @(x) Q * x + q;
@@ -16,18 +16,18 @@ function ret = ActiveSet(Q, q, G, U_ext, b, r, x0)
     
     ret = struct("x", x, "f", f(x));
     
-    [N, U] = getActiveIneqRestrictions(U_ext, x0, r);
+    N = getActiveIneqRestrictions(U, x0, r);
     
     while k < k_max
 
-        A = buildLeftMatrix(Q, G, U);
+        A = buildLeftMatrix( Q, G, U(N, 1:end) );
 
         right_side = zeros(size(A,1), 1);
         right_side(1:size(Q,1)) = -gradient(x);
 
         res = A \ right_side;
 
-        [d, mu, lambda] = extractFromResult(res, size(Q, 1), size(G, 1), N, size(U_ext, 1));
+        [d, mu, lambda] = extractFromResult(res, size(Q, 1), size(G, 1), N, size(U, 1));
         
         if isEnd(d, lambda)
             return
@@ -35,17 +35,14 @@ function ret = ActiveSet(Q, q, G, U_ext, b, r, x0)
             [is_true, min_lambda_idx] = isPoint4(d, lambda, N);
             if is_true
                 N(min_lambda_idx) = [];
-                U(min_lambda_idx,:) = [];
-            elseif isPoint5(d, x, U_ext, r, G, b)
+            elseif isPoint5(d, x, U, r, G, b)
                 x = x + d;
-                U = U_ext;
-                N = ( 1:size(U_ext, 1) );
-            elseif isPoint6(d, x, U_ext, r, G, b)
-                [t_min, t_min_idx] = calculateStepLengthPoint6(r, U_ext, N, x, d);
+                N = ( 1:size(U, 1) );
+            elseif isPoint6(d, x, U, r, G, b)
+                [t_min, t_min_idx] = calculateStepLengthPoint6(r, U, N, x, d);
                 if t_min_idx > -1
                     x = x + t_min * d;
                     N = [N, t_min_idx];
-                    U = [U; U_ext(t_min_idx, :)];
                 else
                     disp("ERROR: Invalid descent step length!");
                     return;
@@ -192,15 +189,13 @@ function A = buildLeftMatrix(Q, G, U)
 
 end
 
-function [N_ret, U_ret] = getActiveIneqRestrictions(U, x0, r)
+function N_ret = getActiveIneqRestrictions(U, x0, r)
 
     N_ret = [];
-    U_ret = [];
     
     for i = 1:size(U, 1)
         if U(i, :) * x0 == r(i)
             N_ret = [N_ret, i];
-            U_ret = [U_ret; U(i, :)];
         end
     end
 
