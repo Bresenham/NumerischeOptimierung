@@ -27,7 +27,7 @@ function ret = ActiveSet(Q, q, G, U_ext, b, r, x0)
 
         res = A \ right_side;
 
-        [d, mu, lambda] = extractFromResult(res, size(Q, 1), size(G, 1), size(U, 1));
+        [d, mu, lambda] = extractFromResult(res, size(Q, 1), size(G, 1), N, size(U_ext, 1));
         
         if isEnd(d, lambda)
             return
@@ -36,13 +36,16 @@ function ret = ActiveSet(Q, q, G, U_ext, b, r, x0)
             if is_true
                 N(min_lambda_idx) = [];
                 U(min_lambda_idx,:) = [];
-            elseif isPoint5(d, x)
+            elseif isPoint5(d, x, U_ext, r, G, b)
                 x = x + d;
-            elseif isPoint6(d, x)
-                [t_min, t_min_idx] = calculateStepLengthPoint6(r, U, N, x, d);
+                U = U_ext;
+                N = ( 1:size(U_ext, 1) );
+            elseif isPoint6(d, x, U_ext, r, G, b)
+                [t_min, t_min_idx] = calculateStepLengthPoint6(r, U_ext, N, x, d);
                 if t_min_idx > -1
                     x = x + t_min * d;
                     N = [N, t_min_idx];
+                    U = [U; U_ext(t_min_idx, :)];
                 else
                     disp("ERROR: Invalid descent step length!");
                     return;
@@ -75,49 +78,56 @@ function [t_min, t_min_idx] = calculateStepLengthPoint6(r, U, N, x, d)
 
 end
 
-function ret = isPoint6(d, x)
+function ret = isPoint6(d, x, U, r, G, b)
 
-    ret = true;
-    
-    if norm( d ) < 1e-8
-        ret = false;
-    end
+    d_not_zero = norm( d ) > 1e-8;
     
     d_x = x + d;
     
-    for i = 1:length(d)
-       if d_x(i) >= 0
-           ret = false;
-       end
+    has_wrong_ineq_constr = false;
+    for i = 1:size(U, 1)
+        if U(i, :) * d_x > r(i)
+            has_wrong_ineq_constr = true;
+        end
     end
+    
+    has_wrong_eq_constr = false;
+    for k = 1:size(G, 1)
+        if ~( G(i, :) * d_x == b(i) )
+            has_wrong_eq_constr = true;
+        end
+    end
+    
+    ret = d_not_zero && ( has_wrong_ineq_constr || has_wrong_eq_constr );
     
 end
 
-function ret = isPoint5(d, x)
-
-    ret = true;
+function ret = isPoint5(d, x, U, r, G, b)
     
-    if norm( d ) < 1e-8
-        ret = false;
-    end
+    d_not_zero = norm( d ) > 1e-8;
     
     d_x = x + d;
     
-    for i = 1:length(d)
-       if d_x(i) < 0
-           ret = false;
-       end
+    has_wrong_ineq_constr = false;
+    for i = 1:size(U, 1)
+        if U(i, :) * d_x > r(i)
+            has_wrong_ineq_constr = true;
+        end
     end
-
+    
+    has_wrong_eq_constr = false;
+    for k = 1:size(G, 1)
+        if ~( G(i, :) * d_x == b(i) )
+            has_wrong_eq_constr = true;
+        end
+    end
+    
+    ret = d_not_zero && ~( has_wrong_ineq_constr || has_wrong_eq_constr );
 end
 
 function [ret, min_lambda_idx] = isPoint4(d, lambda, N)
 
-    ret = true;
-    
-    if norm( d ) > 1e-8
-        ret = false;
-    end
+    d_is_zero = norm( d ) <= 1e-8;
     
     min_lambda_idx = -1;
     min_lambda = 1e45;
@@ -129,34 +139,36 @@ function [ret, min_lambda_idx] = isPoint4(d, lambda, N)
         end
     end
     
-    if min_lambda >= 0
-        ret = false;
-    end
+    ret = d_is_zero && ( min_lambda < 0 );
 
 end
     
 
 function ret = isEnd(d, lambda)
 
-    ret = true;
+    d_is_zero = norm( d ) <= 1e-8;
     
-    if norm( d ) > 1e-8
-        ret = false;
-    end
-    
+    has_lambda_below_zero = false;
     for k = 1:length(lambda)
-        if lambda(k) < 0
-            ret = false;
+        if lambda(k) < (-1e-12)
+            has_lambda_below_zero = true;
         end
     end
     
+    ret = d_is_zero && ~( has_lambda_below_zero );
+    
 end
 
-function [d, mu, lambda] = extractFromResult(res, Q_row_len, G_row_len, U_row_len)
+function [d, mu, lambda_full] = extractFromResult(res, Q_row_len, G_row_len, N, U_row_len)
 
     d = res(1:Q_row_len);
     mu = res(Q_row_len+1:G_row_len);
-    lambda = res(Q_row_len+G_row_len+1:Q_row_len+G_row_len+U_row_len);
+    lambda_full = zeros(U_row_len, 1) - 10 * ones(U_row_len, 1) ;
+    lambdas = res(Q_row_len+G_row_len+1:end);
+    
+    for i = 1:length(lambdas)
+        lambda_full( N(i) ) = lambdas(i);
+    end
 
 end
 
