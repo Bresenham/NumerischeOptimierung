@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.6.29) (preloaded format=pdflatex 2020.7.1)  5 JUL 2020 12:01
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.6.29) (preloaded format=pdflatex 2020.7.1)  5 JUL 2020 13:15
 entering extended mode
 **c:/Users/test/Documents/Studium/NumerischeOptimierung/Abgaben/Projekt_4/Ausarbeitung/abstracts.tex
 (c:/Users/test/Documents/Studium/NumerischeOptimierung/Abgaben/Projekt_4/Ausarbeitung/abstracts.tex
@@ -976,27 +976,42 @@ Overfull \hbox (59.86006pt too wide) detected at line 513
 [] \OMS/cmsy/m/n/12  [] \OT1/cmr/m/n/12 = []
  []
 
-[10] [11]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 520.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 520.
+[10]
+Overfull \hbox (29.96227pt too wide) detected at line 528
+\OT1/cmr/m/n/12 3000(\OML/cmm/m/it/12 x[] \OT1/cmr/m/n/12 + \OML/cmm/m/it/12 x[] \OT1/cmr/m/n/12 + \OML/cmm/m/it/12 x[] \OT1/cmr/m/n/12 + \OML/cmm/m/it/12 x[]\OT1/cmr/m/n/12 ) + 2\OML/cmm/m/it/12 x[] \OT1/cmr/m/n/12 + 1.75\OML/cmm/m/it/12 x[] \OT1/cmr/m/n/12 + 0.75\OML/cmm/m/it/12 x[] \OT1/cmr/m/n/12 + 500 \OMS/cmsy/m/n/12  []
+ []
+
+
+Overfull \hbox (18.13861pt too wide) detected at line 543
+\OML/cmm/m/it/12 g[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 x\OT1/cmr/m/n/12 ) = \OML/cmm/m/it/12 s[] \OT1/cmr/m/n/12 + [] [] \OMS/cmsy/m/n/12  \OML/cmm/m/it/12 L \OMS/cmsy/m/n/12 , \OT1/cmr/m/n/12 500 + \OML/cmm/m/it/12 x[] \OMS/cmsy/m/n/12   \OT1/cmr/m/n/12 2000 + \OML/cmm/m/it/12 x[] \OMS/cmsy/m/n/12   \OT1/cmr/m/n/12 4000 \OMS/cmsy/m/n/12  \OT1/cmr/m/n/12 2000 \OMS/cmsy/m/n/12 , \OML/cmm/m/it/12 x[] \OT1/cmr/m/n/12 + \OML/cmm/m/it/12 x[] \OMS/cmsy/m/n/12   \OT1/cmr/m/n/12 7500 \OMS/cmsy/m/n/12  \OT1/cmr/m/n/12 0
+ []
+
+
+Overfull \hbox (7.72772pt too wide) detected at line 556
+\OML/cmm/m/it/12 g[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 x\OT1/cmr/m/n/12 ) = \OML/cmm/m/it/12 s[] \OT1/cmr/m/n/12 + [] [] \OMS/cmsy/m/n/12  \OT1/cmr/m/n/12 0 \OMS/cmsy/m/n/12 , \OT1/cmr/m/n/12 500 + \OML/cmm/m/it/12 x[] \OMS/cmsy/m/n/12   \OT1/cmr/m/n/12 2000 + \OML/cmm/m/it/12 x[] \OMS/cmsy/m/n/12   \OT1/cmr/m/n/12 4000 \OMS/cmsy/m/n/12  \OT1/cmr/m/n/12 0 \OMS/cmsy/m/n/12 ,  \OML/cmm/m/it/12 x[] \OMS/cmsy/m/n/12   \OML/cmm/m/it/12 x[] \OT1/cmr/m/n/12 + 5500 \OMS/cmsy/m/n/12  \OT1/cmr/m/n/12 0
+ []
+
+[11] [12]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 571.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 571.
  (c:/Users\test\Documents\Studium\NumerischeOptimierung\Abgaben\Projekt_4\Ausarbeitung\abstracts.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 520.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 520.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 571.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 571.
 Package rerunfilecheck Info: File `abstracts.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 28001 strings out of 480790
- 563307 string characters out of 2897771
+ 28003 strings out of 480790
+ 563331 string characters out of 2897771
  1121226 words of memory out of 3000000
  43305 multiletter control sequences out of 15000+200000
  547100 words of font info for 70 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  60i,15n,118p,914b,2039s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Users/test/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc} <C:\Users\test\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1095.pk>{C:/Users/test/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/cantarell/a_5r5lpu.enc} <C:\Users\test\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1200.pk><C:/Users/test/AppData/Local/Programs/MiKTeX/fonts/type1/gnome/cantarell/Cantarell-Bold.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX/fonts/type1/gnome/cantarell/Cantarell-Regular.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX/fonts/type1/gnome/cantarell/Cantarell-Regular.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX/fonts/type1/urw/courier/ucrro8a.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX/fonts/type1/urw/zapfding/uzdr.pfb>
-Output written on c:/Users\test\Documents\Studium\NumerischeOptimierung\Abgaben\Projekt_4\Ausarbeitung\abstracts.pdf (11 pages, 211203 bytes).
+Output written on c:/Users\test\Documents\Studium\NumerischeOptimierung\Abgaben\Projekt_4\Ausarbeitung\abstracts.pdf (12 pages, 217625 bytes).
 PDF statistics:
- 285 PDF objects out of 1000 (max. 8388607)
- 55 named destinations out of 1000 (max. 500000)
+ 291 PDF objects out of 1000 (max. 8388607)
+ 57 named destinations out of 1000 (max. 500000)
  109 words of extra memory for PDF output out of 10000 (max. 10000000)
 
