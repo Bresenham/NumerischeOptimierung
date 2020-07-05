@@ -579,4 +579,36 @@ Zuerst die Stationaritätsgleichung
 $$ \begin{bmatrix}4x_1 + 4500\\3.5x_2 + 4000\\1.5x_3 + 3500\\3000\end{bmatrix} + \lambda_1 \begin{bmatrix}1\\0\\0\\0\end{bmatrix} + \lambda_2 \begin{bmatrix}1\\1\\0\\0\end{bmatrix} + \lambda_3 \begin{bmatrix} 1\\1\\1\\0 \end{bmatrix} + \lambda_4 \begin{bmatrix}-1\\0\\0\\0\end{bmatrix} + \lambda_5 \begin{bmatrix} -1\\-1\\0\\0 \end{bmatrix} + \lambda_6 \begin{bmatrix}-1\\-1\\-1\\0\end{bmatrix} + \mu_1 \begin{bmatrix}1\\1\\1\\1\end{bmatrix} = \begin{bmatrix}0\\0\\0\\0\end{bmatrix} $$
 \end{adjustwidth}
 
+\begin{figure}[H]
+  \centering
+  \begin{minipage}[t]{0.49\textwidth}
+    Komplementaritätsbedingungen
+    \begin{itemize}
+      \item $ \lambda_i \geq 0 \text{ , } i\in \{1, 2, 3, 4, 5, 6\}$
+      \item $ \lambda_1(x_1 - 3500) = 0 $
+      \item $ \lambda_2(x_1 + x_2 - 7500) = 0 $
+      \item $ \lambda_3(x_1 + x_2 + x_3 - 10500) = 0 $
+      \item $ \lambda_4(-x_1 + 1500) = 0 $
+      \item $ \lambda_5(-x_1 -x_2 + 5500) = 0 $
+      \item $ \lambda_6(-x_1 -x_2 -x_3 + 8500) = 0 $
+    \end{itemize}
+  \end{minipage}
+  \begin{minipage}[t]{0.49\textwidth}
+    Zulässigkeit
+    \begin{itemize}
+      \item $ g_1(\hat{x}) \leq 0 $
+      \item $ g_2(\hat{x}) \leq 0 $
+      \item $ g_3(\hat{x}) \leq 0 $
+      \item $ g_4(\hat{x}) \leq 0 $
+      \item $ g_5(\hat{x}) \leq 0 $
+      \item $ g_6(\hat{x}) \leq 0 $
+      \item $ h_1(\hat{x}) = 0 $
+    \end{itemize}
+  \end{minipage}
+\end{figure}
+
+Weiterhin muss die \textit{Linear Independence Constraint Qualification} (LICQ) für eine optimale Lösung $\hat{x}$ gelten.
+D.h. die Gradienten der aktiven Ungleichungsnebenbedingungen und die Gradienten der Gleichungsnebenbedingung müssen
+linear unabhängig sein.
+
 \end{document}
