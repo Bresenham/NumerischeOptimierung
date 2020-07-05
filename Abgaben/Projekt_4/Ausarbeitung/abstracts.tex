@@ -611,4 +611,40 @@ Weiterhin muss die \textit{Linear Independence Constraint Qualification} (LICQ) 
 D.h. die Gradienten der aktiven Ungleichungsnebenbedingungen und die Gradienten der Gleichungsnebenbedingung müssen
 linear unabhängig sein.
 
+\subsubsection{Aufgabe 11}
+Mit $x_1 = 2500$ und $x_2 = 3000$ ändern sich die Komplementaritätsbedingungen wie folgt:
+\begin{itemize}
+  \item $ \lambda_1(2500 - 3500) = 0 \Leftrightarrow -1000\lambda_1 \Rightarrow \lambda_1 = 0 $
+  \item $ \lambda_2(2500 + 3000 - 7500) = 0 \Leftrightarrow -2000\lambda_2 \Rightarrow \lambda_2 = 0 $
+  \item $ \lambda_3(2500 + 3000 + x_3 - 10500) = 0 \Leftrightarrow \lambda_3(x_3 - 5000) = 0$
+  \item $ \lambda_4(-2500 + 1500) = 0 \Leftrightarrow -1000\lambda_4 = 0 \Rightarrow \lambda_4 = 0$
+  \item $ \lambda_5(-2500 - 3000 + 5500) = 0 \Leftrightarrow 0\cdot \lambda_5 = 0 $
+  \item $ \lambda_6(-2500 - 3000 -x_3 + 8500) = 0 \Leftrightarrow \lambda_6(-x_3 + 3000) = 0 $
+\end{itemize}
+Aus der Gleichungsnebenbedingung wird $h_1(x) = x_3 + x_4 = 4500$.\par
+Damit verkürzt sich die Stationaritätsgleichung zu
+
+$$ \begin{bmatrix}14500\\14500\\1.5x_3 + 3500\\3000\end{bmatrix} + \lambda_3 \begin{bmatrix}1\\1\\1\\0\end{bmatrix} + \lambda_5 \begin{bmatrix}-1\\-1\\0\\0\end{bmatrix} + \lambda_6 \begin{bmatrix} -1\\-1\\-1\\0 \end{bmatrix} + \mu_1 \begin{bmatrix}1\\1\\1\\1\end{bmatrix} = \begin{bmatrix}0\\0\\0\\0\end{bmatrix} $$
+
+Da $g_5(x)$ aktiv, d.h. gleich $0$ ist, müssen weitere aktive Ungleichungsnebenbedingungen linear unabhängig von $\nabla g_5$ sein (und ebenso von $\nabla h_1$).
+Wie man sieht dürfen deswegen $g_3(x)$ und $g_6(x)$ nicht gleichzeitig aktiv sein da $\nabla g_3(x) = -\nabla g_6(x)$.\par
+
+
+
+Im ersten Fall setzt man $\lambda_3 = 0, \lambda_6 \neq 0$. Aus $\lambda_6(-x_3 + 3000) = 0$ kann man schlussfolgern dass $x_3 = 3000$
+sein muss. Aus $h_1(x) = x_3 + x_4 = 4500$ folgt dann $x_4 = 1500$. Die Stationaritätsgleichung verkürzt sich weiter zu
+
+$$ \begin{bmatrix}14500\\14500\\1.5x_3 + 3500\\3000\end{bmatrix} + \lambda_5 \begin{bmatrix}-1\\-1\\0\\0\end{bmatrix} + \lambda_6 \begin{bmatrix} -1\\-1\\-1\\0 \end{bmatrix} + \mu_1 \begin{bmatrix}1\\1\\1\\1\end{bmatrix} = \begin{bmatrix}0\\0\\0\\0\end{bmatrix} $$
+
+Aus $3000 + \mu_1 = 0$ folgt $\mu_1 = -3000$. Aus $1.5 \cdot 3000 + 3500 - \lambda_6 - 3000 = 0$ folgt dann $\lambda_6 = 5000$.
+Schließlich kann man aus $14500 - \lambda_5 - 5000 - 3000 = 0$ ableiten, dass $\lambda_5 = 6500$ sein muss. Man erhält also
+den KKT Punkt
+
+$$ x = \begin{bmatrix}2500\\3000\\3000\\1500\end{bmatrix} \text{ mit } \lambda_1 = 0, \lambda_2 = 0, \lambda_3 = 0, \lambda_4 = 0, \lambda_5 = 6500, \lambda_6 = 6500, \mu_1 = -3000$$
+
+der auch zulässig ist.\par
+
+
+
+
 \end{document}
