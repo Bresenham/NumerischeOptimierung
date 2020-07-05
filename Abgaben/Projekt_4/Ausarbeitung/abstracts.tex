@@ -566,6 +566,17 @@ lässt sich umformulieren zu
 
 $$ 500 + x_1 - 2000 + x_2 - 4000 + x_3 - 3000 + x_4 - 1000 = 500 \Leftrightarrow x_1 + x_2 + x_3 + x_4 = 10000 $$
 
+Mit
 
+$$ \nabla f = \begin{bmatrix}4x_1 + 4500\\3.5x_2 + 4000\\1.5x_3 + 3500\\3000\end{bmatrix}, \nabla g_1 = \begin{bmatrix}1\\0\\0\\0\end{bmatrix}, \nabla g_2 = \begin{bmatrix}1\\1\\0\\0\end{bmatrix}, \nabla g_3 = \begin{bmatrix} 1\\1\\1\\0 \end{bmatrix}, \nabla g_4 = \begin{bmatrix}-1\\0\\0\\0\end{bmatrix} $$
+
+$$ \nabla g_5 = \begin{bmatrix} -1\\-1\\0\\0 \end{bmatrix} \nabla g_6 = \begin{bmatrix}-1\\-1\\-1\\0\end{bmatrix}, \nabla h_1 = \begin{bmatrix}1\\1\\1\\1\end{bmatrix} $$
+
+kann man nun die KKT-Bedingungen aufstellen.\par
+Zuerst die Stationaritätsgleichung
+
+\begin{adjustwidth}{-25pt}{0pt}
+$$ \begin{bmatrix}4x_1 + 4500\\3.5x_2 + 4000\\1.5x_3 + 3500\\3000\end{bmatrix} + \lambda_1 \begin{bmatrix}1\\0\\0\\0\end{bmatrix} + \lambda_2 \begin{bmatrix}1\\1\\0\\0\end{bmatrix} + \lambda_3 \begin{bmatrix} 1\\1\\1\\0 \end{bmatrix} + \lambda_4 \begin{bmatrix}-1\\0\\0\\0\end{bmatrix} + \lambda_5 \begin{bmatrix} -1\\-1\\0\\0 \end{bmatrix} + \lambda_6 \begin{bmatrix}-1\\-1\\-1\\0\end{bmatrix} + \mu_1 \begin{bmatrix}1\\1\\1\\1\end{bmatrix} = \begin{bmatrix}0\\0\\0\\0\end{bmatrix} $$
+\end{adjustwidth}
 
 \end{document}
