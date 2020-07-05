@@ -424,10 +424,15 @@ unter den Nebenbedingungen
 \begin{align*} 
   0.5x_1 + 0.5x_2 &\leq 1 \text{  } (I)\\
   -x_1 + 2x_2 &\leq 2 \text{  } (II)\\
-  x_1, x_2 &\geq 0
+  x_1 &\geq 0 \text{  } (III)\\
+  x_2 &\geq 0 \text{  } (IV)
 \end{align*}
 
-erhält man mit dem Startwert $x^{(0)} = \begin{bmatrix}-12\\13\end{bmatrix}$ folgendes Ergebnis:
+übergibt man an \lstinline[basicstyle=\ttfamily\color{black}]|ActiveSet.m| folgende Parameter
+
+$$ Q = \begin{bmatrix}2 & -2\\-2 & 4\end{bmatrix} q = \begin{bmatrix}-2\\-6\end{bmatrix} U = \begin{bmatrix} 0.5 & 0.5\\-1 & 2\\-1 & 0\\0 & -1 \end{bmatrix} r = \begin{bmatrix}1\\2\\0\\0\end{bmatrix} $$
+
+und erhält man mit dem Startwert $x^{(0)} = \begin{bmatrix}-12\\13\end{bmatrix}$ das Ergebnis:
 
 \begin{figure}[H]
   \centering
@@ -438,13 +443,13 @@ erhält man mit dem Startwert $x^{(0)} = \begin{bmatrix}-12\\13\end{bmatrix}$ fo
     \hline
     1 & $\{\}$ & $[-12.00, 13.00]^T$ & 740.00\\
     2 & $\{I\}$ & $[-9.88, 11.88]^T$ & 562.58\\
-    3 & $\{I, II\}$ & $[0.80, 1.20]^T$ & -7.20\\
+    3 & $\{I\}$ & $[0.80, 1.20]^T$ & -7.20\\
     \hline
   \end{tabular}
   \caption{Verlauf von \lstinline[basicstyle=\ttfamily\color{black}]|ActiveSet.m| für gegebenes Problem}
 \end{figure}
 
-Für \lstinline[basicstyle=\ttfamily]|fmincon| muss man das Problem so in Matlab formulieren:
+Für \lstinline[basicstyle=\ttfamily]|fmincon| kann man das Problem so in Matlab formulieren:
 
 \begin{lstlisting}
   x0 = [-12; 13];
@@ -477,35 +482,39 @@ Die Ungleichungsnebenbedingungen
 
 \begin{align*} 
   0.5x_1 + 0.5x_2 &\leq 1\\
-  -x_1 + 2x_2 &\leq 2
+  -x_1 + 2x_2 &\leq 2\\
+  -x_1 &\leq 0\\
+  -x_2 &\leq 0
 \end{align*}
 
 formuliert man um zu (da nach Aufgabenstellung alle aktiv sind)
 
 $$ Ux = r$$
 
-mit $U = \begin{bmatrix}0.5 & 0.5\\-1 & 2\end{bmatrix}$ und $r = \begin{bmatrix}1\\2\end{bmatrix}$.
+mit $ U = \begin{bmatrix} 0.5 & 0.5\\-1 & 2\\-1 & 0\\0 & -1 \end{bmatrix} r = \begin{bmatrix}1\\2\\0\\0\end{bmatrix} $.
 
 Damit kann man das KKT-System aufstellen
 
 $$ \begin{bmatrix}Q & U^T\\U & 0\end{bmatrix} \begin{bmatrix}x\\\lambda\end{bmatrix} = \begin{bmatrix}-q\\r\end{bmatrix} $$
 $$ \Leftrightarrow $$
-$$ \begin{bmatrix}2 & -2 & 0.5 & -1\\-2 & 4 & 0.5 & 2\\0.5 & 0.5 & 0 & 0\\-1 & 2 & 0 & 0\end{bmatrix} \cdot \begin{bmatrix}x_1\\x_2\\\lambda_1\\\lambda_2\end{bmatrix} = \begin{bmatrix}2\\6\\1\\2\end{bmatrix} $$
+$$ \begin{bmatrix}2 & -2 & 0.5 & -1 & -1 & 0\\-2 & 4 & 0.5 & 2 & 0 & -1\\0.5 & 0.5 & 0 & 0 & 0 & 0\\-1 & 2 & 0 & 0 & 0 & 0\\-1 & 0 & 0 & 0 & 0 & 0\\0 & -1 & 0 & 0 & 0 & 0\end{bmatrix} \cdot \begin{bmatrix}x_1\\x_2\\\lambda_1\\\lambda_2\\\lambda_3\\\lambda_4\end{bmatrix} = \begin{bmatrix}2\\6\\1\\2\\0\\0\end{bmatrix} $$
 
 Das Schur-Komplement dieser Matrix erhält man durch eine Multiplikation von links mit
 
 $$ \begin{bmatrix}I & 0\\-UQ^{-1} & I\end{bmatrix} $$
 
-Mit $Q^{-1} = \begin{bmatrix} 1 & 0.5\\ 0.5 & 0.5 \end{bmatrix}$ ergibt sich:
+Mit $Q^{-1} = \begin{bmatrix} 1 & 0.5\\ 0.5 & 0.5 \end{bmatrix}$ und $-UQ^{-1} = \begin{bmatrix} -0.75 & -0.5\\0 & -0.5\\1 & 0.5\\0.5 & 0.5 \end{bmatrix}$ ergibt sich:
 
-$$ \begin{bmatrix}1 & 0 & 0 & 0\\0 & 1 & 0 & 0\\-0.75 & -0.5 & 1 & 0\\0 & -0.5 & 0 & 1\end{bmatrix} $$
+$$ \begin{bmatrix}1 & 0 & 0 & 0 & 0 & 0\\0 & 1 & 0 & 0 & 0 & 0\\-0.75 & -0.5 & 1 & 0 & 0 & 0\\0 & -0.5 & 0 & 1 & 0 & 0\\1 & 0.5 & 0 & 0 & 1 & 0\\ 0.5 & 0.5 & 0 & 0 & 0 & 1\end{bmatrix} $$
 
 Die Rechnung ist dann folgende
 
-$$ \begin{bmatrix}1 & 0 & 0 & 0\\0 & 1 & 0 & 0\\-0.75 & -0.5 & 1 & 0\\0 & -0.5 & 0 & 1\end{bmatrix} \cdot \begin{bmatrix}2 & -2 & 0.5 & -1\\-2 & 4 & 0.5 & 2\\0.5 & 0.5 & 0 & 0\\-1 & 2 & 0 & 0\end{bmatrix} = \begin{bmatrix} 2 & -2 & 0.5 & -1\\-2 & 4 & 0.5 & 2\\0 & 0 & -0.625 & -0.25\\0 & 0 & -0.25 & -1 \end{bmatrix} $$
+\begin{adjustwidth}{-55pt}{0pt}
+$$ \begin{bmatrix}1 & 0 & 0 & 0 & 0 & 0\\0 & 1 & 0 & 0 & 0 & 0\\-0.75 & -0.5 & 1 & 0 & 0 & 0\\0 & -0.5 & 0 & 1 & 0 & 0\\1 & 0.5 & 0 & 0 & 1 & 0\\ 0.5 & 0.5 & 0 & 0 & 0 & 1\end{bmatrix} \cdot \begin{bmatrix}2 & -2 & 0.5 & -1 & -1 & 0\\-2 & 4 & 0.5 & 2 & 0 & -1\\0.5 & 0.5 & 0 & 0 & 0 & 0\\-1 & 2 & 0 & 0 & 0 & 0\\-1 & 0 & 0 & 0 & 0 & 0\\0 & -1 & 0 & 0 & 0 & 0\end{bmatrix} = \begin{bmatrix} 2 & -2 & 0.5 & -1 & -1 & 0\\-2 & 4 & 0.5 & 2 & 0 & -1\\ 0 & 0 & -0.625 & -0.25 & 0.75 & 0.5\\ 0 & 0 & -0.25 & -1 & 0 & 0.5\\0 & 0 & 0.75 & 0 & -1 & -0.5\\0 & 0 & 0.5 & 0.5 & -0.5 & -0.5 \end{bmatrix} $$
+\end{adjustwidth}
 
-Das Schur-Komplement $-UQ^{-1}U^T$ (rechts unten) ist also
+Das Schur-Komplement $-UQ^{-1}U^T$ ($4 \times 4$-Block rechts unten) ist also
 
-$$ \begin{bmatrix} -0.625 & -0.25\\-0.25 & -1 \end{bmatrix} $$
+$$ \begin{bmatrix} -0.625 & -0.25 & 0.75 & 0.5\\ -0.25 & -1 & 0 & 0.5\\ 0.75 & 0 & -1 & -0.5\\0.5 & 0.5 & -0.5 & -0.5 \end{bmatrix} $$
 
 \end{document}

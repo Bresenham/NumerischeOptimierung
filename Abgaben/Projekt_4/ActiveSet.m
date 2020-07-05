@@ -29,7 +29,7 @@ function ret = ActiveSet(Q, q, G, U, b, r, x0)
 
         [d, mu, lambda] = extractFromResult(res, size(Q, 1), size(G, 1), N, size(U, 1));
         
-        if isEnd(d, lambda)
+        if isEnd( d, lambda(N) )
             return
         else
             [is_true, min_lambda_idx] = isPoint4(d, lambda, N);
@@ -37,7 +37,6 @@ function ret = ActiveSet(Q, q, G, U, b, r, x0)
                 N(min_lambda_idx) = [];
             elseif isPoint5(d, x, U, r, G, b)
                 x = x + d;
-                N = ( 1:size(U, 1) );
             elseif isPoint6(d, x, U, r, G, b)
                 [t_min, t_min_idx] = calculateStepLengthPoint6(r, U, N, x, d);
                 if t_min_idx > -1
