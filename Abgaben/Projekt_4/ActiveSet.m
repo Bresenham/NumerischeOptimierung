@@ -113,7 +113,7 @@ function ret = isPoint5(d, x, U, r, G, b)
     
     has_wrong_eq_constr = false;
     for k = 1:size(G, 1)
-        if ~( G(k, :) * d_x == b(k) )
+        if ~( abs( G(k, :) * d_x - b(k) ) < 1e-8 )
             has_wrong_eq_constr = true;
         end
     end
