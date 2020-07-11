@@ -63,7 +63,7 @@ function [t_min, t_min_idx] = calculateStepLengthPoint6(r, U, N, x, d)
     t_min_idx = -1;
     
     for i = 1:size(U,1)
-        if ~ismember(i, N) && norm( U(i, :) * d ) > 0
+        if ~ismember(i, N) && U(i, :) * d > 0
             t = ( r(i) - U(i, :) * x ) / ( U(i, :) * d );
             if t < t_min
                 t_min = t;
