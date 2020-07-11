@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.6.29) (preloaded format=pdflatex 2020.7.1)  11 JUL 2020 15:13
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.6.29) (preloaded format=pdflatex 2020.7.1)  11 JUL 2020 15:47
 entering extended mode
 **c:/Users/test/Documents/Studium/NumerischeOptimierung/Abgaben/Projekt_4/Ausarbeitung/abstracts.tex
 (c:/Users/test/Documents/Studium/NumerischeOptimierung/Abgaben/Projekt_4/Ausarbeitung/abstracts.tex
@@ -1011,6 +1011,10 @@ Package csquotes Info: Input encoding change on input line 683.
  (C:\Users\test\AppData\Local\Programs\MiKTeX\tex/latex/base\latin1.def
 File: latin1.def 2018/08/11 v1.3c Input encoding file
 )
+Package csquotes Info: Input encoding change on input line 683.
+ (C:\Users\test\AppData\Local\Programs\MiKTeX\tex/latex/base\latin1.def
+File: latin1.def 2018/08/11 v1.3c Input encoding file
+)
 Package csquotes Info: Input encoding change on input line 703.
  (C:\Users\test\AppData\Local\Programs\MiKTeX\tex/latex/base\latin1.def
 File: latin1.def 2018/08/11 v1.3c Input encoding file
@@ -1018,27 +1022,67 @@ File: latin1.def 2018/08/11 v1.3c Input encoding file
 Package csquotes Info: Input encoding change on input line 703.
  (C:\Users\test\AppData\Local\Programs\MiKTeX\tex/latex/base\latin1.def
 File: latin1.def 2018/08/11 v1.3c Input encoding file
+)
+Package csquotes Info: Input encoding change on input line 724.
+ (C:\Users\test\AppData\Local\Programs\MiKTeX\tex/latex/base\latin1.def
+File: latin1.def 2018/08/11 v1.3c Input encoding file
+)
+Package csquotes Info: Input encoding change on input line 724.
+ (C:\Users\test\AppData\Local\Programs\MiKTeX\tex/latex/base\latin1.def
+File: latin1.def 2018/08/11 v1.3c Input encoding file
 ) [15]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 708.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 708.
+Package csquotes Info: Input encoding change on input line 728.
+ (C:\Users\test\AppData\Local\Programs\MiKTeX\tex/latex/base\latin1.def
+File: latin1.def 2018/08/11 v1.3c Input encoding file
+)
+
+Package xcolor Warning: Incompatible color definition on input line 728.
+
+Package csquotes Info: Input encoding change on input line 730.
+(C:\Users\test\AppData\Local\Programs\MiKTeX\tex/latex/base\latin1.def
+File: latin1.def 2018/08/11 v1.3c Input encoding file
+)
+
+Package xcolor Warning: Incompatible color definition on input line 731.
+
+
+Package xcolor Warning: Incompatible color definition on input line 731.
+
+
+Package xcolor Warning: Incompatible color definition on input line 732.
+
+Package csquotes Info: Input encoding change on input line 734.
+(C:\Users\test\AppData\Local\Programs\MiKTeX\tex/latex/base\latin1.def
+File: latin1.def 2018/08/11 v1.3c Input encoding file
+)
+Package csquotes Info: Input encoding change on input line 735.
+ (C:\Users\test\AppData\Local\Programs\MiKTeX\tex/latex/base\latin1.def
+File: latin1.def 2018/08/11 v1.3c Input encoding file
+)
+
+Package xcolor Warning: Incompatible color definition on input line 735.
+
+[16]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 745.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 745.
  (c:/Users\test\Documents\Studium\NumerischeOptimierung\Abgaben\Projekt_4\Ausarbeitung\abstracts.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 708.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 708.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 745.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 745.
 Package rerunfilecheck Info: File `abstracts.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 28056 strings out of 480790
- 565051 string characters out of 2897771
+ 28084 strings out of 480790
+ 566153 string characters out of 2897771
  1121226 words of memory out of 3000000
- 43338 multiletter control sequences out of 15000+200000
+ 43347 multiletter control sequences out of 15000+200000
  547814 words of font info for 72 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  60i,15n,118p,914b,2039s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Users/test/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/cantarell/a_tv3tjz.enc}{C:/Users/test/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc} <C:\Users\test\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1095.pk>{C:/Users/test/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/cantarell/a_5r5lpu.enc} <C:\Users\test\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1200.pk><C:/Users/test/AppData/Local/Programs/MiKTeX/fonts/type1/gnome/cantarell/Cantarell-Bold.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX/fonts/type1/gnome/cantarell/Cantarell-Regular.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX/fonts/type1/gnome/cantarell/Cantarell-Regular.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX/fonts/type1/urw/courier/ucrro8a.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX/fonts/type1/urw/zapfding/uzdr.pfb>
-Output written on c:/Users\test\Documents\Studium\NumerischeOptimierung\Abgaben\Projekt_4\Ausarbeitung\abstracts.pdf (15 pages, 229286 bytes).
+Output written on c:/Users\test\Documents\Studium\NumerischeOptimierung\Abgaben\Projekt_4\Ausarbeitung\abstracts.pdf (16 pages, 235444 bytes).
 PDF statistics:
- 315 PDF objects out of 1000 (max. 8388607)
- 64 named destinations out of 1000 (max. 500000)
+ 332 PDF objects out of 1000 (max. 8388607)
+ 69 named destinations out of 1000 (max. 500000)
  109 words of extra memory for PDF output out of 10000 (max. 10000000)
 

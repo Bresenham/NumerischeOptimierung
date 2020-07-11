@@ -106,13 +106,14 @@ G = [1, 1, 1, 1];
 b = [10000];
 x0_0 = [3000; 4000; 2000; 1000];
 x0_1 = [2500; 4750; 1425; 1325];
+x0_2 = [1500; 6000; 2000; 500];
 
-ret = ActiveSet(Q, q, G, U, b, r, x0_1);
+ret = ActiveSet(Q, q, G, U, b, r, x0_2);
 disp( f(ret(end).x) );
 disp(ret)
 
 options = optimoptions("quadprog", "Algorithm", "active-set", "Display", "iter-detailed");
-ret = quadprog(Q, q, U, r, G, b, [0; 0; 0; 0], [], x0_0, options);
+ret = quadprog(Q, q, U, r, G, b, [], [], x0_2, options);
 disp(f(ret));
 disp(ret);
 

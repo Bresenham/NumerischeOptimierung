@@ -249,7 +249,7 @@ Bei Quasi-Newton-Verfahren mit approximierter Hesse-Matrix und effizienter Schri
 von einer superlinearen Konvergenz für beide Funktionen $f$ und $g$ ausgehen. Im gegensatz zum reinen Newton-Verfahren kann man 
 die Update-Formeln der Hesse-Matrix so wählen, dass eine Abstiegsrichtung entsteht. Broyden \textit{et al.} haben 1973
 in \textit{On the Local and Superlinear Convergence of Quasi-Newton Methods} gezeigt, dass die Fehler in der Approximation
-von $H_k$ begrenzt sind und sich nicht unbeschränkt erhöhen und daraus die superlineare Konvergenz
+von $H_k$ begrenzt sind und sich nicht unbeschränkt erhöhen, woraus daraus die superlineare Konvergenz
 abgeleitet werden kann.\par
 Weiterhin sind beide Funktionen nicht quadratischer Natur ansonsten könnte die Schrittweite ggf. exakt berechnet werden.
 
@@ -392,7 +392,7 @@ Selbiges erhält man durch die Update-Formel:
   \caption{Simplex Update-Formel für das 1. Tableau}
 \end{figure}
 
-Aktuell ist $x = \begin{bmatrix} 1\\0\\3\\0\\3\\1\\0 \end{bmatrix}$ mit $f(x) = -14$.
+Im aktuellen Schritt ist $x = \begin{bmatrix} 1\\0\\3\\0\\3\\1\\0 \end{bmatrix}$ mit $f(x) = -14$.
 
 \subsubsection{Aufgabe 7}
 Wenn man in Matlab definiert
@@ -432,7 +432,7 @@ unter den Nebenbedingungen
 
 $$ Q = \begin{bmatrix}2 & -2\\-2 & 4\end{bmatrix} q = \begin{bmatrix}-2\\-6\end{bmatrix} U = \begin{bmatrix} 0.5 & 0.5\\-1 & 2\\-1 & 0\\0 & -1 \end{bmatrix} r = \begin{bmatrix}1\\2\\0\\0\end{bmatrix} $$
 
-und erhält man mit dem Startwert $x^{(0)} = \begin{bmatrix}-12\\13\end{bmatrix}$ das Ergebnis:
+und erhält man mit dem Startwert $x_0^{(0)} = \begin{bmatrix}-12\\13\end{bmatrix}$ das Ergebnis:
 
 \begin{figure}[H]
   \centering
@@ -446,7 +446,7 @@ und erhält man mit dem Startwert $x^{(0)} = \begin{bmatrix}-12\\13\end{bmatrix}
     3 & $\{I\}$ & $[0.80, 1.20]^T$ & -7.20\\
     \hline
   \end{tabular}
-  \caption{Verlauf von \lstinline[basicstyle=\ttfamily\color{black}]|ActiveSet.m| für gegebenes Problem}
+  \caption{Verlauf von \lstinline[basicstyle=\ttfamily\color{black}]|ActiveSet.m| für gegebenes Problem mit $x_0^{(0)}$ }
 \end{figure}
 
 Für \lstinline[basicstyle=\ttfamily]|fmincon| kann man das Problem so in Matlab formulieren:
@@ -640,7 +640,7 @@ Aus $3000 + \mu_1 = 0$ folgt $\mu_1 = -3000$. Aus $1.5 \cdot 3000 + 3500 - \lamb
 Schließlich kann man aus $14500 - \lambda_5 - 5000 - 3000 = 0$ ableiten, dass $\lambda_5 = 6500$ sein muss. Man erhält also
 den KKT Punkt
 
-$$ x = \begin{bmatrix}2500\\3000\\3000\\1500\end{bmatrix} \text{ mit } \lambda_1 = 0, \lambda_2 = 0, \lambda_3 = 0, \lambda_4 = 0, \lambda_5 = 6500, \lambda_6 = 6500, \mu_1 = -3000$$
+$$ x = \begin{bmatrix}2500\\3000\\3000\\1500\end{bmatrix} \text{ mit } \lambda_1 = 0, \lambda_2 = 0, \lambda_3 = 0, \lambda_4 = 0, \lambda_5 = 6500, \lambda_6 = 5000, \mu_1 = -3000$$
 
 mit $f(x) = 65.75 \cdot 10^6$ der auch zulässig ist.\par
 
@@ -680,7 +680,7 @@ $Q, q, U, G$ kann man dann zusammen mit $x_0^{(1)} = \begin{bmatrix}3000\\4000\\
     4 & $\{V, VI\}$ & $[2500, 3000, 3000, 1500]^T$ & $6.58 \cdot 10^7$\\
     \hline
   \end{tabular}
-  \caption{Verlauf von \lstinline[basicstyle=\ttfamily\color{black}]|ActiveSet.m| für gegebenes Problem}
+  \caption{Verlauf von \lstinline[basicstyle=\ttfamily\color{black}]|ActiveSet.m| für gegebenes Problem mit $x_0^{(1)}$ als Startwert}
 \end{figure}
 
 Das Ergebnis ist also $x = \begin{bmatrix}2500\\3000\\3000\\1500\end{bmatrix}$ mit $\lambda_5 = 6500, \lambda_6 = 5000$ und $\mu_1 = -3000$.
@@ -700,9 +700,46 @@ Mit $x_0^{(2)} = \begin{bmatrix}2500\\4750\\1425\\1325\end{bmatrix}$ ergibt sich
     4 & $\{V, VI\}$ & $[2500, 3000, 3000, 1500]^T$ & $6.58 \cdot 10^7$\\
     \hline
   \end{tabular}
-  \caption{Verlauf von \lstinline[basicstyle=\ttfamily\color{black}]|ActiveSet.m| für gegebenes Problem mit anderem Startwert}
+  \caption{Verlauf von \lstinline[basicstyle=\ttfamily\color{black}]|ActiveSet.m| für gegebenes Problem mit $x_0^{(2)}$ als Startwert}
 \end{figure}
 
-und das selbe Ergebnis wie mit $x_0^{(1)}$.
+und das selbe Ergebnis wie mit $x_0^{(1)}$.\par
+Mit $x_0^{(3)} = \begin{bmatrix}1500\\6000\\2000\\500\end{bmatrix}$ erhält man den Verlauf
+
+\begin{figure}[H]
+  \centering
+  \def\arraystretch{1.25}
+  \begin{tabular}{l|c|c|r}
+    \hline
+    \textbf{Schritt} & \textbf{Aktive NB.} & \textbf{x} & \textbf{f(x)}\\
+    \hline
+    1 & $\{II, IV\}$ & $[1500, 6000, 2000, 500]^T$ & $10.98 \cdot 10^7$\\
+    2 & $\{II, IV, VI\}$ & $[1500, 6000, 1000, 1500]^T$ & $10.70 \cdot 10^7$\\
+    3 & $\{IV, VI\}$ & $[1500, 6000, 1000, 1500]^T$ & $10.70 \cdot 10^7$\\
+    4 & $\{IV, V, VI\}$ & $[1500, 4000, 3000, 1500]^T$ & $7.70 \cdot 10^7$\\
+    5 & $\{V, VI\}$ & $[1500, 4000, 3000, 1500]^T$ & $7.70 \cdot 10^7$\\
+    6 & $\{V, VI\}$ & $[2500, 3000, 3000, 1500]^T$ & $6.58 \cdot 10^7$\\
+    \hline
+  \end{tabular}
+  \caption{Verlauf von \lstinline[basicstyle=\ttfamily\color{black}]|ActiveSet.m| für gegebenes Problem mit anderem Startwert mit $x_0^{(3)}$ als Startwert}
+\end{figure}
+
+und das selbe Ergebnis wie mit den beiden anderen Startwerten.\par
+Mit \lstinline[basicstyle=\ttfamily\color{black}]|quadprog| löst man das Problem so
+
+\begin{lstlisting}
+  options = optimoptions("quadprog", "Algorithm", "active-set", "Display", "iter-detailed");
+  ret = quadprog(Q, q, U, r, G, b, [], [], x0, options);\end{lstlisting}
+
+Für $x_0^{(1)}$ und $x_0^{(2)}$ erhält man die selbe Lösung wie mit \lstinline[basicstyle=\ttfamily\color{black}]|ActiveSet.m|, auch
+jeweils nach 4 Schritten. Für $x_0^{(3)}$ liefert \lstinline[basicstyle=\ttfamily\color{black}]|quadprog| ebenfalls wie selbe
+Lösung aber nun nach 6 Schritten.\par
+Das Ergebnis kann man so beurteilen, dass im 1. Jahr 2500, im 2. Jahr 3000, im 3. Jahr 3000 und im 4. Jahr 1500 Stück
+produziert werden sollten um die Zielfunktion zu minimieren aber auch die Bedarfe im jeweiligen Jahr zu erfüllen.\par
+Dass die Nebenbedingungen $V$ und $VI$ aktiv sind bedeutet, dass $x_1 + x_2$ sowie $x_1 + x_2 + x_3$ an die untere
+Gültigkeitsgrenze (5500 bzw. 8500) gestoßen sind. Man kann nun vermuten, wenn der Bedarf in den Jahren 1, 2 und 3 geringer
+ausfallen würde, dass man die Zielfunktion noch weiter minimieren könnte.\par
+Das Verfahren konvergiert außerdem für die gegebenen Nebenbedingungen eventuell langsamer bzw. gar nicht, da die Zeilen
+von $\begin{bmatrix}G\\U\end{bmatrix}$ nicht linear unabhängig sind (Folie 111, Foliensatz 6-11).
 
 \end{document}
