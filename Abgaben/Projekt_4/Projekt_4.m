@@ -58,8 +58,11 @@ Q = [2, -2; -2, 4];
 q = [-2; -6];
 U = [0.5, 0.5; -1, 2; -1, 0; 0, -1];
 r = [1, 2, 0, 0];
+G = [];
+b = [];
+x0 = [-12; 13];
 
-ret = ActiveSet(Q, q, [], U, [], r, [-12; 13]);
+ret = ActiveSet(Q, q, G, U, b, r, x0);
 disp(ret)
 
 g = @(x) x(1).^2 + 2 * x(2).^2 - 2 * x(1) - 6 * x(2) - 2 * x(1) * x(2);
@@ -73,6 +76,44 @@ disp(ret);
 
 % Aufgabe 9
 % Siehe PDF Dokument
+
+% Aufgabe 10
+% Siehe PDF Dokument
+
+% Aufgabe 11
+% Siehe PDF Dokument
+
+% Aufgabe 12
+
+f = @(x) 2 * x(1).^2 + 1.75 * x(2).^2 + 0.75 * x(3)^2 + 4500 * x(1) + 4000 * x(2) + 3500 * x(3) + 3000 * x(4) - ( 7.5 * 10^6 );
+Q = [   4, 0, 0, 0;
+        0, 3.5, 0, 0;
+        0, 0, 1.5, 0;
+        0, 0, 0, 0;];
+q = [4500; 4000; 3500; 3000];
+U = [   1, 0, 0, 0;
+        1, 1, 0, 0;
+        1, 1, 1, 0;
+        -1, 0, 0, 0;
+        -1, -1, 0, 0;
+        -1, -1, -1, 0;
+        -1, 0, 0, 0;
+        0, -1, 0, 0;
+        0, 0, -1, 0;
+        0, 0, 0, -1];
+r = [3500; 7500; 10500; -1500; -5500; -8500; 0; 0; 0; 0];
+G = [1, 1, 1, 1];
+b = [10000];
+x0 = [3000; 4000; 2000; 1000];
+
+ret = ActiveSet(Q, q, G, U, b, r, x0);
+disp( f(ret(end).x) );
+disp(ret)
+
+options = optimoptions("quadprog", "Algorithm", "active-set", "Display", "iter-detailed");
+ret = quadprog(Q, q, U, r, G, b, [0; 0; 0; 0], [], x0, options);
+disp(f(ret));
+disp(ret);
 
 % Ungleichheitsbedingungen aus Aufgabe 8 für fmincon
 function [c,ceq] = confunNeqG(g1, g2, x)

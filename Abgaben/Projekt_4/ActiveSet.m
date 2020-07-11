@@ -12,7 +12,7 @@ function ret = ActiveSet(Q, q, G, U, b, r, x0)
 
     x = x0;
     k = 0;
-    k_max = 10000;
+    k_max = 1000;
     
     ret = struct("x", x, "f", f(x));
     
@@ -89,7 +89,7 @@ function ret = isPoint6(d, x, U, r, G, b)
     
     has_wrong_eq_constr = false;
     for k = 1:size(G, 1)
-        if ~( G(i, :) * d_x == b(i) )
+        if ~( G(k, :) * d_x == b(k) )
             has_wrong_eq_constr = true;
         end
     end
@@ -113,7 +113,7 @@ function ret = isPoint5(d, x, U, r, G, b)
     
     has_wrong_eq_constr = false;
     for k = 1:size(G, 1)
-        if ~( G(i, :) * d_x == b(i) )
+        if ~( G(k, :) * d_x == b(k) )
             has_wrong_eq_constr = true;
         end
     end
@@ -158,7 +158,7 @@ end
 function [d, mu, lambda_full] = extractFromResult(res, Q_row_len, G_row_len, N, U_row_len)
 
     d = res(1:Q_row_len);
-    mu = res(Q_row_len+1:G_row_len);
+    mu = res(Q_row_len+1:Q_row_len+G_row_len);
     lambda_full = zeros(U_row_len, 1) - 10 * ones(U_row_len, 1) ;
     lambdas = res(Q_row_len+G_row_len+1:end);
     
