@@ -85,7 +85,7 @@ disp(ret);
 
 % Aufgabe 12
 
-f = @(x) 2 * x(1).^2 + 1.75 * x(2).^2 + 0.75 * x(3)^2 + 4500 * x(1) + 4000 * x(2) + 3500 * x(3) + 3000 * x(4) - ( 7.5 * 10^6 );
+f = @(x) 2 * x(1).^2 + 1.75 * x(2).^2 + 0.75 * x(3).^2 + 4500 * x(1) + 4000 * x(2) + 3500 * x(3) + 3000 * x(4) - ( 7.5 * 10^6 );
 Q = [   4, 0, 0, 0;
         0, 3.5, 0, 0;
         0, 0, 1.5, 0;
@@ -104,14 +104,15 @@ U = [   1, 0, 0, 0;
 r = [3500; 7500; 10500; -1500; -5500; -8500; 0; 0; 0; 0];
 G = [1, 1, 1, 1];
 b = [10000];
-x0 = [3000; 4000; 2000; 1000];
+x0_0 = [3000; 4000; 2000; 1000];
+x0_1 = [2500; 4750; 1425; 1325];
 
-ret = ActiveSet(Q, q, G, U, b, r, x0);
+ret = ActiveSet(Q, q, G, U, b, r, x0_1);
 disp( f(ret(end).x) );
 disp(ret)
 
 options = optimoptions("quadprog", "Algorithm", "active-set", "Display", "iter-detailed");
-ret = quadprog(Q, q, U, r, G, b, [0; 0; 0; 0], [], x0, options);
+ret = quadprog(Q, q, U, r, G, b, [0; 0; 0; 0], [], x0_0, options);
 disp(f(ret));
 disp(ret);
 

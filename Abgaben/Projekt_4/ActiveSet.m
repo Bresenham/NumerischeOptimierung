@@ -89,7 +89,7 @@ function ret = isPoint6(d, x, U, r, G, b)
     
     has_wrong_eq_constr = false;
     for k = 1:size(G, 1)
-        if ~( G(k, :) * d_x == b(k) )
+        if ~( abs( G(k, :) * d_x - b(k) ) < 1e-8 )
             has_wrong_eq_constr = true;
         end
     end
@@ -146,7 +146,7 @@ function ret = isEnd(d, lambda)
     
     has_lambda_below_zero = false;
     for k = 1:length(lambda)
-        if lambda(k) < (-1e-12)
+        if lambda(k) < (-1e-8)
             has_lambda_below_zero = true;
         end
     end
@@ -193,7 +193,7 @@ function N_ret = getActiveIneqRestrictions(U, x0, r)
     N_ret = [];
     
     for i = 1:size(U, 1)
-        if U(i, :) * x0 == r(i)
+        if abs( U(i, :) * x0 - r(i) ) < 1e-8
             N_ret = [N_ret, i];
         end
     end

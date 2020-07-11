@@ -649,6 +649,60 @@ Gleichungsnebenbedingung $x_3 + x_4 = 4500$ erhält man $x_4 = -500$. Da für al
 sein.
 
 \subsubsection{Aufgabe 12}
+Mit
 
+$$ f(x) = 2x_1^2 + 1.75x_2^2 + 0.75x_3^2 + 4500x_1 + 4000x_ + 3500x_3 + 3000x_4 - 7.5\cdot 10^6 $$
+
+erhält man
+
+$$ Q = \begin{bmatrix}4 & 0 & 0 & 0\\0 & 3.5 & 0 & 0\\0 & 0 & 1.5 & 0\\0 & 0 & 0 & 0\end{bmatrix} q = \begin{bmatrix}4500\\4000\\3500\\3000\end{bmatrix} $$
+
+Aus den Nebenbedingungen in Aufgabe 11 erhält man weiterhin
+
+$$ U \begin{bmatrix}1 & 0 & 0 & 0\\1 & 1 & 0 & 0\\1 & 1 & 1 & 0\\-1 & 0 & 0 & 0\\-1 & -1 & 0 & 0\\-1 & -1 & -1 & 0\\-1 & 0 & 0 & 0\\0 & -1 & 0 & 0\\0 & 0 & -1 & 0\\0 & 0 & 0 & -1\end{bmatrix} r = \begin{bmatrix}3500\\7500\\10500\\-1500\\-5500\\-8500\\0\\0\\0\\0\end{bmatrix} $$
+
+sowie
+
+$$ G = \begin{bmatrix}1 & 1 & 1 & 1\end{bmatrix} b = \begin{bmatrix}10000\end{bmatrix} $$
+
+$Q, q, U, G$ kann man dann zusammen mit $x_0^{(1)} = \begin{bmatrix}3000\\4000\\2000\\1000\end{bmatrix}$ in \lstinline[basicstyle=\ttfamily\color{black}]|ActiveSet.m| einsetzen und erhält
+
+\begin{figure}[H]
+  \centering
+  \def\arraystretch{1.25}
+  \begin{tabular}{l|c|c|r}
+    \hline
+    \textbf{Schritt} & \textbf{Aktive NB.} & \textbf{x} & \textbf{f(x)}\\
+    \hline
+    1 & $\{\}$ & $[3000, 4000, 2000, 1000]^T$ & $8.85 \cdot 10^7$\\
+    2 & $\{VI\}$ & $[2831, 3786, 1883, 1500]^T$ & $8.27 \cdot 10^7$\\
+    3 & $\{V, VI\}$ & $[2380, 3120, 3000, 1500]^T$ & $7.33 \cdot 10^7$\\
+    4 & $\{V, VI\}$ & $[2500, 3000, 3000, 1500]^T$ & $6.58 \cdot 10^7$\\
+    \hline
+  \end{tabular}
+  \caption{Verlauf von \lstinline[basicstyle=\ttfamily\color{black}]|ActiveSet.m| für gegebenes Problem}
+\end{figure}
+
+Das Ergebnis ist also $x = \begin{bmatrix}2500\\3000\\3000\\1500\end{bmatrix}$ mit $\lambda_5 = 6500, \lambda_6 = 5000$ und $\mu_1 = -3000$.
+
+Mit $x_0^{(2)} = \begin{bmatrix}2500\\4750\\1425\\1325\end{bmatrix}$ ergibt sich folgender Verlauf
+
+\begin{figure}[H]
+  \centering
+  \def\arraystretch{1.25}
+  \begin{tabular}{l|c|c|r}
+    \hline
+    \textbf{Schritt} & \textbf{Aktive NB.} & \textbf{x} & \textbf{f(x)}\\
+    \hline
+    1 & $\{\}$ & $[2500, 4750, 1425, 1325]^T$ & $9.27 \cdot 10^7$\\
+    2 & $\{VI\}$ & $[2448, 4659, 1393, 1500]^T$ & $9.05 \cdot 10^7$\\
+    3 & $\{V, VI\}$ & $[2062, 3438, 3000, 1500]^T$ & $7.40 \cdot 10^7$\\
+    4 & $\{V, VI\}$ & $[2500, 3000, 3000, 1500]^T$ & $6.58 \cdot 10^7$\\
+    \hline
+  \end{tabular}
+  \caption{Verlauf von \lstinline[basicstyle=\ttfamily\color{black}]|ActiveSet.m| für gegebenes Problem mit anderem Startwert}
+\end{figure}
+
+und das selbe Ergebnis wie mit $x_0^{(1)}$.
 
 \end{document}
