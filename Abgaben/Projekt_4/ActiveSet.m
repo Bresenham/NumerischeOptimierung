@@ -89,6 +89,7 @@ function ret = isPoint6(d, x, U, r, G, b)
     
     has_wrong_eq_constr = false;
     for k = 1:size(G, 1)
+        % Floating-Point Werte auf Gleichheit überprüfen
         if ~( abs( G(k, :) * d_x - b(k) ) < 1e-8 )
             has_wrong_eq_constr = true;
         end
@@ -113,6 +114,7 @@ function ret = isPoint5(d, x, U, r, G, b)
     
     has_wrong_eq_constr = false;
     for k = 1:size(G, 1)
+        % Floating-Point Werte auf Gleichheit überprüfen
         if ~( abs( G(k, :) * d_x - b(k) ) < 1e-8 )
             has_wrong_eq_constr = true;
         end
@@ -146,6 +148,7 @@ function ret = isEnd(d, lambda)
     
     has_lambda_below_zero = false;
     for k = 1:length(lambda)
+        % Floating-Point Rundungen auf 0 überprüfen
         if lambda(k) < (-1e-8)
             has_lambda_below_zero = true;
         end
