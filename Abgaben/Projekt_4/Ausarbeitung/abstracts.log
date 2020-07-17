@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.6.29) (preloaded format=pdflatex 2020.7.1)  11 JUL 2020 15:47
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.6.29) (preloaded format=pdflatex 2020.7.1)  17 JUL 2020 09:29
 entering extended mode
 **c:/Users/test/Documents/Studium/NumerischeOptimierung/Abgaben/Projekt_4/Ausarbeitung/abstracts.tex
 (c:/Users/test/Documents/Studium/NumerischeOptimierung/Abgaben/Projekt_4/Ausarbeitung/abstracts.tex
@@ -941,148 +941,185 @@ Package csquotes Info: Input encoding change on input line 449.
  (C:\Users\test\AppData\Local\Programs\MiKTeX\tex/latex/base\latin1.def
 File: latin1.def 2018/08/11 v1.3c Input encoding file
 ) [8]
-Package csquotes Info: Input encoding change on input line 452.
+Package csquotes Info: Input encoding change on input line 467.
+ (C:\Users\test\AppData\Local\Programs\MiKTeX\tex/latex/base\latin1.def
+File: latin1.def 2018/08/11 v1.3c Input encoding file
+)
+Package csquotes Info: Input encoding change on input line 470.
  (C:\Users\test\AppData\Local\Programs\MiKTeX\tex/latex/base\latin1.def
 File: latin1.def 2018/08/11 v1.3c Input encoding file
 )
 
-Package xcolor Warning: Incompatible color definition on input line 452.
+Package xcolor Warning: Incompatible color definition on input line 470.
 
-Package csquotes Info: Input encoding change on input line 454.
+Package csquotes Info: Input encoding change on input line 472.
 (C:\Users\test\AppData\Local\Programs\MiKTeX\tex/latex/base\latin1.def
 File: latin1.def 2018/08/11 v1.3c Input encoding file
 )
 
-Package xcolor Warning: Incompatible color definition on input line 461.
+Package xcolor Warning: Incompatible color definition on input line 479.
 
 
-Package xcolor Warning: Incompatible color definition on input line 462.
+Package xcolor Warning: Incompatible color definition on input line 480.
 
-LaTeX Font Info:    Trying to load font information for T1+pcr on input line 464.
+LaTeX Font Info:    Trying to load font information for T1+pcr on input line 482.
 (C:\Users\test\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\t1pcr.fd
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
 )
 
-Package xcolor Warning: Incompatible color definition on input line 465.
+Package xcolor Warning: Incompatible color definition on input line 483.
 
 
-Package xcolor Warning: Incompatible color definition on input line 465.
+Package xcolor Warning: Incompatible color definition on input line 483.
 
 
-Package xcolor Warning: Incompatible color definition on input line 470.
+Package xcolor Warning: Incompatible color definition on input line 488.
 
 [9]
-Overfull \hbox (59.86006pt too wide) detected at line 513
+Overfull \hbox (59.86006pt too wide) detected at line 531
 [] \OMS/cmsy/m/n/12  [] \OT1/cmr/m/n/12 = []
  []
 
 [10]
-Overfull \hbox (29.96227pt too wide) detected at line 528
+Overfull \hbox (29.96227pt too wide) detected at line 546
 \OT1/cmr/m/n/12 3000(\OML/cmm/m/it/12 x[] \OT1/cmr/m/n/12 + \OML/cmm/m/it/12 x[] \OT1/cmr/m/n/12 + \OML/cmm/m/it/12 x[] \OT1/cmr/m/n/12 + \OML/cmm/m/it/12 x[]\OT1/cmr/m/n/12 ) + 2\OML/cmm/m/it/12 x[] \OT1/cmr/m/n/12 + 1.75\OML/cmm/m/it/12 x[] \OT1/cmr/m/n/12 + 0.75\OML/cmm/m/it/12 x[] \OT1/cmr/m/n/12 + 500 \OMS/cmsy/m/n/12  []
  []
 
 
-Overfull \hbox (18.13861pt too wide) detected at line 543
+Overfull \hbox (18.13861pt too wide) detected at line 561
 \OML/cmm/m/it/12 g[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 x\OT1/cmr/m/n/12 ) = \OML/cmm/m/it/12 s[] \OT1/cmr/m/n/12 + [] [] \OMS/cmsy/m/n/12  \OML/cmm/m/it/12 L \OMS/cmsy/m/n/12 , \OT1/cmr/m/n/12 500 + \OML/cmm/m/it/12 x[] \OMS/cmsy/m/n/12   \OT1/cmr/m/n/12 2000 + \OML/cmm/m/it/12 x[] \OMS/cmsy/m/n/12   \OT1/cmr/m/n/12 4000 \OMS/cmsy/m/n/12  \OT1/cmr/m/n/12 2000 \OMS/cmsy/m/n/12 , \OML/cmm/m/it/12 x[] \OT1/cmr/m/n/12 + \OML/cmm/m/it/12 x[] \OMS/cmsy/m/n/12   \OT1/cmr/m/n/12 7500 \OMS/cmsy/m/n/12  \OT1/cmr/m/n/12 0
  []
 
-
-Overfull \hbox (7.72772pt too wide) detected at line 556
+[11]
+Overfull \hbox (7.72772pt too wide) detected at line 574
 \OML/cmm/m/it/12 g[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 x\OT1/cmr/m/n/12 ) = \OML/cmm/m/it/12 s[] \OT1/cmr/m/n/12 + [] [] \OMS/cmsy/m/n/12  \OT1/cmr/m/n/12 0 \OMS/cmsy/m/n/12 , \OT1/cmr/m/n/12 500 + \OML/cmm/m/it/12 x[] \OMS/cmsy/m/n/12   \OT1/cmr/m/n/12 2000 + \OML/cmm/m/it/12 x[] \OMS/cmsy/m/n/12   \OT1/cmr/m/n/12 4000 \OMS/cmsy/m/n/12  \OT1/cmr/m/n/12 0 \OMS/cmsy/m/n/12 ,  \OML/cmm/m/it/12 x[] \OMS/cmsy/m/n/12   \OML/cmm/m/it/12 x[] \OT1/cmr/m/n/12 + 5500 \OMS/cmsy/m/n/12  \OT1/cmr/m/n/12 0
  []
 
-[11]
-Overfull \hbox (16.80083pt too wide) detected at line 579
+
+Overfull \hbox (16.80083pt too wide) detected at line 597
 [] \OT1/cmr/m/n/12 + \OML/cmm/m/it/12 [] [] \OT1/cmr/m/n/12 + \OML/cmm/m/it/12 [] [] \OT1/cmr/m/n/12 + \OML/cmm/m/it/12 [] [] \OT1/cmr/m/n/12 + \OML/cmm/m/it/12 [] [] \OT1/cmr/m/n/12 + \OML/cmm/m/it/12 [] [] \OT1/cmr/m/n/12 + \OML/cmm/m/it/12 [] [] \OT1/cmr/m/n/12 + \OML/cmm/m/it/12 [] [] \OT1/cmr/m/n/12 = []
  []
 
-LaTeX Font Info:    Trying to load font information for TS1+cantarell-TLF on input line 587.
-(C:\Users\test\AppData\Local\Programs\MiKTeX\tex/latex/cantarell\ts1cantarell-tlf.fd
+[12]
+LaTeX Font Info:    Trying to load font information for TS1+cantarell-TLF on input line 605.
+ (C:\Users\test\AppData\Local\Programs\MiKTeX\tex/latex/cantarell\ts1cantarell-tlf.fd
 File: TS1cantarell-TLF.fd 2019/06/24 Font definitions for TS1/cantarell-TLF.
 )
 LaTeX Font Info:    Font shape `TS1/cantarell-TLF/m/n' will be
-(Font)              scaled to size 12.0pt on input line 587.
- [12] [13] [14]
-Package csquotes Info: Input encoding change on input line 668.
+(Font)              scaled to size 12.0pt on input line 605.
+ [13] [14]
+Package csquotes Info: Input encoding change on input line 686.
  (C:\Users\test\AppData\Local\Programs\MiKTeX\tex/latex/base\latin1.def
 File: latin1.def 2018/08/11 v1.3c Input encoding file
 )
-Package csquotes Info: Input encoding change on input line 683.
+Package csquotes Info: Input encoding change on input line 701.
  (C:\Users\test\AppData\Local\Programs\MiKTeX\tex/latex/base\latin1.def
 File: latin1.def 2018/08/11 v1.3c Input encoding file
 )
-Package csquotes Info: Input encoding change on input line 683.
+Package csquotes Info: Input encoding change on input line 701.
  (C:\Users\test\AppData\Local\Programs\MiKTeX\tex/latex/base\latin1.def
 File: latin1.def 2018/08/11 v1.3c Input encoding file
 )
-Package csquotes Info: Input encoding change on input line 703.
+Package csquotes Info: Input encoding change on input line 721.
  (C:\Users\test\AppData\Local\Programs\MiKTeX\tex/latex/base\latin1.def
 File: latin1.def 2018/08/11 v1.3c Input encoding file
 )
-Package csquotes Info: Input encoding change on input line 703.
- (C:\Users\test\AppData\Local\Programs\MiKTeX\tex/latex/base\latin1.def
-File: latin1.def 2018/08/11 v1.3c Input encoding file
-)
-Package csquotes Info: Input encoding change on input line 724.
- (C:\Users\test\AppData\Local\Programs\MiKTeX\tex/latex/base\latin1.def
-File: latin1.def 2018/08/11 v1.3c Input encoding file
-)
-Package csquotes Info: Input encoding change on input line 724.
+Package csquotes Info: Input encoding change on input line 721.
  (C:\Users\test\AppData\Local\Programs\MiKTeX\tex/latex/base\latin1.def
 File: latin1.def 2018/08/11 v1.3c Input encoding file
 ) [15]
-Package csquotes Info: Input encoding change on input line 728.
+Package csquotes Info: Input encoding change on input line 743.
+ (C:\Users\test\AppData\Local\Programs\MiKTeX\tex/latex/base\latin1.def
+File: latin1.def 2018/08/11 v1.3c Input encoding file
+)
+Package csquotes Info: Input encoding change on input line 743.
+ (C:\Users\test\AppData\Local\Programs\MiKTeX\tex/latex/base\latin1.def
+File: latin1.def 2018/08/11 v1.3c Input encoding file
+)
+Package csquotes Info: Input encoding change on input line 767.
+ (C:\Users\test\AppData\Local\Programs\MiKTeX\tex/latex/base\latin1.def
+File: latin1.def 2018/08/11 v1.3c Input encoding file
+)
+Package csquotes Info: Input encoding change on input line 767.
+ (C:\Users\test\AppData\Local\Programs\MiKTeX\tex/latex/base\latin1.def
+File: latin1.def 2018/08/11 v1.3c Input encoding file
+) [16]
+Package csquotes Info: Input encoding change on input line 770.
  (C:\Users\test\AppData\Local\Programs\MiKTeX\tex/latex/base\latin1.def
 File: latin1.def 2018/08/11 v1.3c Input encoding file
 )
 
-Package xcolor Warning: Incompatible color definition on input line 728.
+Package xcolor Warning: Incompatible color definition on input line 770.
 
-Package csquotes Info: Input encoding change on input line 730.
+Package csquotes Info: Input encoding change on input line 772.
 (C:\Users\test\AppData\Local\Programs\MiKTeX\tex/latex/base\latin1.def
 File: latin1.def 2018/08/11 v1.3c Input encoding file
 )
 
-Package xcolor Warning: Incompatible color definition on input line 731.
+Package xcolor Warning: Incompatible color definition on input line 773.
 
 
-Package xcolor Warning: Incompatible color definition on input line 731.
+Package xcolor Warning: Incompatible color definition on input line 773.
 
 
-Package xcolor Warning: Incompatible color definition on input line 732.
+Package xcolor Warning: Incompatible color definition on input line 774.
 
-Package csquotes Info: Input encoding change on input line 734.
+Package csquotes Info: Input encoding change on input line 776.
 (C:\Users\test\AppData\Local\Programs\MiKTeX\tex/latex/base\latin1.def
 File: latin1.def 2018/08/11 v1.3c Input encoding file
 )
-Package csquotes Info: Input encoding change on input line 735.
+Package csquotes Info: Input encoding change on input line 777.
  (C:\Users\test\AppData\Local\Programs\MiKTeX\tex/latex/base\latin1.def
 File: latin1.def 2018/08/11 v1.3c Input encoding file
 )
 
-Package xcolor Warning: Incompatible color definition on input line 735.
+Package xcolor Warning: Incompatible color definition on input line 777.
 
-[16]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 745.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 745.
+Package csquotes Info: Input encoding change on input line 778.
+(C:\Users\test\AppData\Local\Programs\MiKTeX\tex/latex/base\latin1.def
+File: latin1.def 2018/08/11 v1.3c Input encoding file
+)
+
+Package xcolor Warning: Incompatible color definition on input line 778.
+
+Package csquotes Info: Input encoding change on input line 781.
+(C:\Users\test\AppData\Local\Programs\MiKTeX\tex/latex/base\latin1.def
+File: latin1.def 2018/08/11 v1.3c Input encoding file
+)
+
+Package xcolor Warning: Incompatible color definition on input line 782.
+
+
+Package xcolor Warning: Incompatible color definition on input line 789.
+
+Package csquotes Info: Input encoding change on input line 797.
+(C:\Users\test\AppData\Local\Programs\MiKTeX\tex/latex/base\latin1.def
+File: latin1.def 2018/08/11 v1.3c Input encoding file
+)
+
+Package xcolor Warning: Incompatible color definition on input line 797.
+
+[17] [18]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 807.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 807.
  (c:/Users\test\Documents\Studium\NumerischeOptimierung\Abgaben\Projekt_4\Ausarbeitung\abstracts.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 745.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 745.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 807.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 807.
 Package rerunfilecheck Info: File `abstracts.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 28084 strings out of 480790
- 566153 string characters out of 2897771
- 1121226 words of memory out of 3000000
- 43347 multiletter control sequences out of 15000+200000
+ 28129 strings out of 480790
+ 567389 string characters out of 2897771
+ 1122226 words of memory out of 3000000
+ 43361 multiletter control sequences out of 15000+200000
  547814 words of font info for 72 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  60i,15n,118p,914b,2039s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Users/test/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/cantarell/a_tv3tjz.enc}{C:/Users/test/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc} <C:\Users\test\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1095.pk>{C:/Users/test/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/cantarell/a_5r5lpu.enc} <C:\Users\test\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1200.pk><C:/Users/test/AppData/Local/Programs/MiKTeX/fonts/type1/gnome/cantarell/Cantarell-Bold.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX/fonts/type1/gnome/cantarell/Cantarell-Regular.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX/fonts/type1/gnome/cantarell/Cantarell-Regular.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX/fonts/type1/urw/courier/ucrro8a.pfb><C:/Users/test/AppData/Local/Programs/MiKTeX/fonts/type1/urw/zapfding/uzdr.pfb>
-Output written on c:/Users\test\Documents\Studium\NumerischeOptimierung\Abgaben\Projekt_4\Ausarbeitung\abstracts.pdf (16 pages, 235444 bytes).
+Output written on c:/Users\test\Documents\Studium\NumerischeOptimierung\Abgaben\Projekt_4\Ausarbeitung\abstracts.pdf (18 pages, 244366 bytes).
 PDF statistics:
- 332 PDF objects out of 1000 (max. 8388607)
- 69 named destinations out of 1000 (max. 500000)
+ 369 PDF objects out of 1000 (max. 8388607)
+ 88 named destinations out of 1000 (max. 500000)
  109 words of extra memory for PDF output out of 10000 (max. 10000000)
 

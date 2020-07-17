@@ -64,7 +64,7 @@ U = [0.5, 0.5; -1, 2; -1, 0; 0, -1];
 r = [1, 2, 0, 0];
 G = [];
 b = [];
-x0 = [-12; 13];
+x0 = [1; 1]; % x0 = [-12; 13];
 
 ret = ActiveSet(Q, q, G, U, b, r, x0);
 disp(ret)
@@ -111,13 +111,14 @@ b = [10000];
 x0_0 = [3000; 4000; 2000; 1000];
 x0_1 = [2500; 4750; 1425; 1325];
 x0_2 = [1500; 6000; 2000; 500];
+x0_3 = [255; 785; 5000; 10];
 
-ret = ActiveSet(Q, q, G, U, b, r, x0_2);
+ret = ActiveSet(Q, q, G, U, b, r, x0_3);
 disp( f(ret(end).x) );
 disp(ret)
 
 options = optimoptions("quadprog", "Algorithm", "active-set", "Display", "iter-detailed");
-ret = quadprog(Q, q, U, r, G, b, [], [], x0_2, options);
+ret = quadprog(Q, q, U, r, G, b, [], [], x0_3, options);
 disp(f(ret));
 disp(ret);
 

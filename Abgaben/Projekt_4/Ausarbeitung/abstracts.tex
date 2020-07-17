@@ -449,6 +449,24 @@ und erhält man mit dem Startwert $x_0^{(0)} = \begin{bmatrix}-12\\13\end{bmatri
   \caption{Verlauf von \lstinline[basicstyle=\ttfamily\color{black}]|ActiveSet.m| für gegebenes Problem mit $x_0^{(0)}$ }
 \end{figure}
 
+Das Verfahren konvergiert sogar mit Startwerten, die keine gültige Anfangslösung darstellen (eben $x_0^{(0)}$).
+Für gültige Startwerte wie $x_0^{(1)} = \begin{bmatrix}1\\1\end{bmatrix}$ konvergiert das Verfahren genauso, jedoch
+in einem Schritt weniger:
+
+\begin{figure}[H]
+  \centering
+  \def\arraystretch{1.25}
+  \begin{tabular}{l|c|c|r}
+    \hline
+    \textbf{Schritt} & \textbf{Aktive NB.} & \textbf{x} & \textbf{f(x)}\\
+    \hline
+    1 & $\{I\}$ & $[1.00, 1.00]^T$ & -7.0\\
+    2 & $\{I\}$ & $[0.80, 1.20]^T$ & -7.2\\
+    \hline
+  \end{tabular}
+  \caption{Verlauf von \lstinline[basicstyle=\ttfamily\color{black}]|ActiveSet.m| für gegebenes Problem mit $x_0^{(1)}$ }
+\end{figure}
+
 Für \lstinline[basicstyle=\ttfamily]|fmincon| kann man das Problem so in Matlab formulieren:
 
 \begin{lstlisting}
@@ -614,8 +632,8 @@ linear unabhängig sein.
 \subsubsection{Aufgabe 11}
 Mit $x_1 = 2500$ und $x_2 = 3000$ ändern sich die Komplementaritätsbedingungen wie folgt:
 \begin{itemize}
-  \item $ \lambda_1(2500 - 3500) = 0 \Leftrightarrow -1000\lambda_1 \Rightarrow \lambda_1 = 0 $
-  \item $ \lambda_2(2500 + 3000 - 7500) = 0 \Leftrightarrow -2000\lambda_2 \Rightarrow \lambda_2 = 0 $
+  \item $ \lambda_1(2500 - 3500) = 0 \Leftrightarrow -1000\lambda_1 = 0 \Rightarrow \lambda_1 = 0 $
+  \item $ \lambda_2(2500 + 3000 - 7500) = 0 \Leftrightarrow -2000\lambda_2 = 0 \Rightarrow \lambda_2 = 0 $
   \item $ \lambda_3(2500 + 3000 + x_3 - 10500) = 0 \Leftrightarrow \lambda_3(x_3 - 5000) = 0$
   \item $ \lambda_4(-2500 + 1500) = 0 \Leftrightarrow -1000\lambda_4 = 0 \Rightarrow \lambda_4 = 0$
   \item $ \lambda_5(-2500 - 3000 + 5500) = 0 \Leftrightarrow 0\cdot \lambda_5 = 0 $
@@ -704,6 +722,7 @@ Mit $x_0^{(2)} = \begin{bmatrix}2500\\4750\\1425\\1325\end{bmatrix}$ ergibt sich
 \end{figure}
 
 und das selbe Ergebnis wie mit $x_0^{(1)}$.\par
+
 Mit $x_0^{(3)} = \begin{bmatrix}1500\\6000\\2000\\500\end{bmatrix}$ erhält man den Verlauf
 
 \begin{figure}[H]
@@ -725,6 +744,29 @@ Mit $x_0^{(3)} = \begin{bmatrix}1500\\6000\\2000\\500\end{bmatrix}$ erhält man 
 \end{figure}
 
 und das selbe Ergebnis wie mit den beiden anderen Startwerten.\par
+
+Bisher wurden Startwerte verwendet, die bereits eine gültige Problemlösung dargestellt haben. Wenn man
+andere Werte wie $x_0^{(4)} = \begin{bmatrix}255\\785\\5000\\10\end{bmatrix}$ verwendet, konvergiert
+das Verfahren nicht mehr:
+
+\begin{figure}[H]
+  \centering
+  \def\arraystretch{1.25}
+  \begin{tabular}{l|c|c|r}
+    \hline
+    \textbf{Schritt} & \textbf{Aktive NB.} & \textbf{x} & \textbf{f(x)}\\
+    \hline
+    1 & $\{\}$ & $[255, 785, 5000, 10]^T$ & $4.18 \cdot 10^7$\\
+    2 & $\{V\}$ & $[1907, 3593, 18986, -18436]^T$ & $3.34 \cdot 10^8$\\
+    3 & $\{V, VI\}$ & $[2398, 3102, 3000, -2450]^T$ & $6.14 \cdot 10^7$\\
+    4 & $\{I, V, VI\}$ & $[3500, 2000, 3000, -2450]^T$ & $6.52 \cdot 10^7$\\
+    $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$\\
+    1000 & $\{V, VI\}$ & $[3500, 2000, 3000, -2450]^T$ & $6.52 \cdot 10^7$\\
+    \hline
+  \end{tabular}
+  \caption{Verlauf von \lstinline[basicstyle=\ttfamily\color{black}]|ActiveSet.m| für gegebenes Problem mit $x_0^{(4)}$ als Startwert}
+\end{figure}
+
 Mit \lstinline[basicstyle=\ttfamily\color{black}]|quadprog| löst man das Problem so
 
 \begin{lstlisting}
@@ -733,8 +775,28 @@ Mit \lstinline[basicstyle=\ttfamily\color{black}]|quadprog| löst man das Proble
 
 Für $x_0^{(1)}$ und $x_0^{(2)}$ erhält man die selbe Lösung wie mit \lstinline[basicstyle=\ttfamily\color{black}]|ActiveSet.m|, auch
 jeweils nach 4 Schritten. Für $x_0^{(3)}$ liefert \lstinline[basicstyle=\ttfamily\color{black}]|quadprog| ebenfalls wie selbe
-Lösung aber nun nach 6 Schritten.\par
-Das Ergebnis kann man so beurteilen, dass im 1. Jahr 2500, im 2. Jahr 3000, im 3. Jahr 3000 und im 4. Jahr 1500 Stück
+Lösung aber nun nach 6 Schritten. Bei $x_0^{(4)}$ sucht \lstinline[basicstyle=\ttfamily\color{black}]|quadprog| zuerst nach
+einer gültigen Startlösung und konvergiert dann in insgesamt 7 Schritten:
+
+\begin{lstlisting}
+Searching for feasible point:
+ Iter    Feasibility        Norm of  
+                               step
+    0   1.001000e+03   0.000000e+00  
+    1   1.000000e+03   1.000000e+00  
+    2   0.000000e+00   6.546537e-01  
+
+Searching for optimal solution:
+ Iter            Fval    Feasibility    First-order        Norm of  
+                                         optimality           step
+    2    7.462500e+07   0.000000e+00   1.583333e+04   0.000000e+00  
+    3    7.345753e+07   0.000000e+00   1.544099e+04   2.582112e+03  
+    4    7.325000e+07   0.000000e+00   1.450000e+04   3.326907e+02  
+    5    7.325000e+07   0.000000e+00   1.818989e-12   0.000000e+00\end{lstlisting}
+
+\lstinline[basicstyle=\ttfamily\color{black}]|quadprog| prüft also zuerst nach einer gültigen Lösung und optimiert dann von dieser
+ausgehend.\par
+Insgesamt kann man das Ergebnis so beurteilen, dass im 1. Jahr 2500, im 2. Jahr 3000, im 3. Jahr 3000 und im 4. Jahr 1500 Stück
 produziert werden sollten um die Zielfunktion zu minimieren aber auch die Bedarfe im jeweiligen Jahr zu erfüllen.\par
 Dass die Nebenbedingungen $V$ und $VI$ aktiv sind bedeutet, dass $x_1 + x_2$ sowie $x_1 + x_2 + x_3$ an die untere
 Gültigkeitsgrenze (5500 bzw. 8500) gestoßen sind. Man kann nun vermuten, wenn der Bedarf in den Jahren 1, 2 und 3 geringer
